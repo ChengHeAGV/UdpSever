@@ -19,10 +19,10 @@ namespace DispatchSystem
         int deviceNum = 0;
 
         string[] datekey = new string[10];
-        public DataForm()
+        public DataForm(int num)
         {
             InitializeComponent();
-            deviceNum = Form1.DataFormNum;
+            deviceNum = num;
             this.Text = string.Format("设备{0}", deviceNum);
 
             datekey[0] = "寄存器";
@@ -33,7 +33,6 @@ namespace DispatchSystem
             datekey[5] = "字符串";
 
             doubleBufferListView1.FullRowSelect = true;//要选择就是一行
-                                                       // doubleBufferListView1.Columns.Add("设备", 100, HorizontalAlignment.Center);
             doubleBufferListView1.Columns.Add(datekey[0], 80, HorizontalAlignment.Center);
             doubleBufferListView1.Columns.Add(datekey[1], 100, HorizontalAlignment.Center);
             doubleBufferListView1.Columns.Add(datekey[2], 100, HorizontalAlignment.Center);
@@ -45,17 +44,17 @@ namespace DispatchSystem
         private void DataForm_Load(object sender, EventArgs e)
         {
             //加载数据
-            for (int i = 0; i < Form1.Ddata.GetLength(0); i++)
+            for (int i = 0; i < UdpSever.Ddata.GetLength(0); i++)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = i.ToString();//"寄存器"
-                item.SubItems.Add(Form1.Ddata[deviceNum, i, 1].ToString());//"时间戳"
-                item.SubItems.Add(Form1.Ddata[deviceNum, i, 0].ToString());//"十进制"
-                item.SubItems.Add(Form1.Ddata[deviceNum, i, 0].ToString("X2"));// "十六进制"
-                item.SubItems.Add(Convert.ToString(Form1.Ddata[deviceNum, i, 0], 2).PadLeft(16, '0'));//"二进制"
+                item.SubItems.Add(UdpSever.Ddata[deviceNum, i, 1].ToString());//"时间戳"
+                item.SubItems.Add(UdpSever.Ddata[deviceNum, i, 0].ToString());//"十进制"
+                item.SubItems.Add(UdpSever.Ddata[deviceNum, i, 0].ToString("X2"));// "十六进制"
+                item.SubItems.Add(Convert.ToString(UdpSever.Ddata[deviceNum, i, 0], 2).PadLeft(16, '0'));//"二进制"
                 byte[] bt = new byte[2];
-                bt[0] = (byte)(Form1.Ddata[deviceNum, i, 0] >> 8);
-                bt[1] = (byte)(Form1.Ddata[deviceNum, i, 0]);
+                bt[0] = (byte)(UdpSever.Ddata[deviceNum, i, 0] >> 8);
+                bt[1] = (byte)(UdpSever.Ddata[deviceNum, i, 0]);
                 string str = Encoding.GetEncoding("GB2312").GetString(bt, 0, 2).Replace("\0", "");
                 item.SubItems.Add(str);//"字符串"
                 doubleBufferListView1.Items.Add(item);
@@ -72,24 +71,27 @@ namespace DispatchSystem
             while (true)
             {
                 Thread.Sleep(50);
-                //更新数据
-                for (int i = 0; i < Form1.Ddata.GetLength(0); i++)
+                this.Invoke(new MethodInvoker(delegate
                 {
-                    doubleBufferListView1.Items[i].SubItems[1].Text = Form1.Ddata[deviceNum, i, 1].ToString();//时间戳
-                    doubleBufferListView1.Items[i].SubItems[2].Text = Form1.Ddata[deviceNum, i,0].ToString();//十进制
-                    doubleBufferListView1.Items[i].SubItems[3].Text = Form1.Ddata[deviceNum, i,0].ToString("X2");//十六进制
-                    doubleBufferListView1.Items[i].SubItems[4].Text = Convert.ToString(Form1.Ddata[deviceNum, i,0], 2).PadLeft(16, '0');//二进制
-                    byte[] bt = new byte[2];
-                    bt[0] = (byte)(Form1.Ddata[deviceNum, i,0] >> 8);
-                    bt[1] = (byte)(Form1.Ddata[deviceNum, i,0]);
-                    string str = Encoding.GetEncoding("GB2312").GetString(bt, 0, 2).Replace("\0","");
-                    doubleBufferListView1.Items[i].SubItems[5].Text = str;//ASCII字符串
+                    //更新数据
+                    for (int i = 0; i < UdpSever.Ddata.GetLength(0); i++)
+                    {
+                        doubleBufferListView1.Items[i].SubItems[1].Text = UdpSever.Ddata[deviceNum, i, 1].ToString();//时间戳
+                        doubleBufferListView1.Items[i].SubItems[2].Text = UdpSever.Ddata[deviceNum, i, 0].ToString();//十进制
+                        doubleBufferListView1.Items[i].SubItems[3].Text = UdpSever.Ddata[deviceNum, i, 0].ToString("X2");//十六进制
+                        doubleBufferListView1.Items[i].SubItems[4].Text = Convert.ToString(UdpSever.Ddata[deviceNum, i, 0], 2).PadLeft(16, '0');//二进制
+                        byte[] bt = new byte[2];
+                        bt[0] = (byte)(UdpSever.Ddata[deviceNum, i, 0] >> 8);
+                        bt[1] = (byte)(UdpSever.Ddata[deviceNum, i, 0]);
+                        string str = Encoding.GetEncoding("GB2312").GetString(bt, 0, 2).Replace("\0", "");
+                        doubleBufferListView1.Items[i].SubItems[5].Text = str;//ASCII字符串
 
-                    if (i % 2 == 0)
-                        doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
-                }
-                doubleBufferListView1.Columns[1].Width = -1;
-                doubleBufferListView1.Columns[4].Width = -1;
+                        if (i % 2 == 0)
+                            doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
+                    }
+                    doubleBufferListView1.Columns[1].Width = 100;
+                    //doubleBufferListView1.Columns[4].Width = -1;
+                }));
             }
         }
 
@@ -98,14 +100,26 @@ namespace DispatchSystem
             th.Abort();
         }
 
+        Form f;
         private void doubleBufferListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (doubleBufferListView1.SelectedItems.Count > 0)
             {
                 selectDataNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[0].Text);
                 outdeviceNum = deviceNum;
-                Form f = new DisplayForm();
-                f.Show();
+
+
+                try
+                {
+                    f.WindowState = FormWindowState.Normal;
+                    f.Show();//弹出这个窗口
+                    f.Activate();//激活显示
+                }
+                catch (Exception)
+                {
+                    f = new DisplayForm();
+                    f.Show();//弹出这个窗口
+                }
             }
         }
     }

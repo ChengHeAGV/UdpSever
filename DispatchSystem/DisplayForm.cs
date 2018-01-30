@@ -36,46 +36,49 @@ namespace DispatchSystem
             while (true)
             {
                 Thread.Sleep(50);
-                //更新数据
-                label_Hex.Text = Form1.Ddata[deviceNum, selectDataNum, 0].ToString("X2");//十六进制
-
-                label_Dec.Text = Form1.Ddata[deviceNum, selectDataNum, 0].ToString();//十进制
-
-
-                string bin = Convert.ToString(Form1.Ddata[deviceNum, selectDataNum, 0], 2).PadLeft(16, '0');//二进制
-
-                byte[] bt = new byte[2];
-                bt[0] = (byte)(Form1.Ddata[deviceNum, selectDataNum, 0] >> 8);
-                bt[1] = (byte)(Form1.Ddata[deviceNum, selectDataNum, 0]);
-                string str = Encoding.GetEncoding("GB2312").GetString(bt, 0, 2).Replace("\0", "");
-                label_str.Text = str;//ASCII字符串
-
-                //显示时间
-                DateTime dtstart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-                long itime = long.Parse(Form1.Ddata[deviceNum, selectDataNum, 1] + "0000000");
-                TimeSpan tonow = new TimeSpan(itime);
-                label_updataTime.Text = dtstart.Add(tonow).ToLongDateString() + " " + dtstart.Add(tonow).ToLongTimeString();
-
-                string b = string.Empty;
-                for (int i = 0; i < 16; i++)
+                this.Invoke(new MethodInvoker(delegate
                 {
-                    b = "button_" + i.ToString();
-                    ((Button)this.Controls.Find(b, true)[0]).Text = bin.Substring(15 - i, 1);
-                }
+                    //更新数据
+                    label_Hex.Text = UdpSever.Ddata[deviceNum, selectDataNum, 0].ToString("X2");//十六进制
 
-                Color trueColor = Color.Green;
-                Color falseColor = Color.Red;
+                    label_Dec.Text = UdpSever.Ddata[deviceNum, selectDataNum, 0].ToString();//十进制
 
-                for (int i = 0; i < 16; i++)
-                {
-                    b = "button_" + i.ToString();
-                    Button btn = ((Button)this.Controls.Find(b, true)[0]);
 
-                    if (btn.Text == "0")
-                        btn.BackColor = falseColor;
-                    else
-                        btn.BackColor = trueColor;
-                }
+                    string bin = Convert.ToString(UdpSever.Ddata[deviceNum, selectDataNum, 0], 2).PadLeft(16, '0');//二进制
+
+                    byte[] bt = new byte[2];
+                    bt[0] = (byte)(UdpSever.Ddata[deviceNum, selectDataNum, 0] >> 8);
+                    bt[1] = (byte)(UdpSever.Ddata[deviceNum, selectDataNum, 0]);
+                    string str = Encoding.GetEncoding("GB2312").GetString(bt, 0, 2).Replace("\0", "");
+                    label_str.Text = str;//ASCII字符串
+
+                    //显示时间
+                    DateTime dtstart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+                    long itime = long.Parse(UdpSever.Ddata[deviceNum, selectDataNum, 1] + "0000000");
+                    TimeSpan tonow = new TimeSpan(itime);
+                    label_updataTime.Text = dtstart.Add(tonow).ToLongDateString() + " " + dtstart.Add(tonow).ToLongTimeString();
+
+                    string b = string.Empty;
+                    for (int i = 0; i < 16; i++)
+                    {
+                        b = "button_" + i.ToString();
+                        ((Button)this.Controls.Find(b, true)[0]).Text = bin.Substring(15 - i, 1);
+                    }
+
+                    Color trueColor = Color.Green;
+                    Color falseColor = Color.Red;
+
+                    for (int i = 0; i < 16; i++)
+                    {
+                        b = "button_" + i.ToString();
+                        Button btn = ((Button)this.Controls.Find(b, true)[0]);
+
+                        if (btn.Text == "0")
+                            btn.BackColor = falseColor;
+                        else
+                            btn.BackColor = trueColor;
+                    }
+                }));
             }
         }
 
@@ -86,130 +89,130 @@ namespace DispatchSystem
 
         private void button_0_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_1_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 1;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_2_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 2;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_3_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 3;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_4_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 4;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_5_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 5;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_6_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 6;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_7_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 7;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_8_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 8;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_9_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 9;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_10_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 10;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_11_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 11;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_12_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 12;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_13_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 13;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_14_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 14;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void button_15_Click(object sender, EventArgs e)
         {
-            UInt32 data = Form1.Ddata[deviceNum, selectDataNum, 0];
+            UInt32 data = UdpSever.Ddata[deviceNum, selectDataNum, 0];
             data ^= 1 << 15;
-            Form1.writeWord(deviceNum, selectDataNum, (UInt16)data);
-            Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+            UdpSever.writeWord(deviceNum, selectDataNum, (UInt16)data);
+            UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
         }
 
         private void sendhex(TextBox tx)
@@ -227,8 +230,8 @@ namespace DispatchSystem
                 {
                     data = (UInt16)((byt[0] << 8) | byt[1]);
                 }
-                Form1.writeWord(deviceNum, selectDataNum, data);
-                Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+                UdpSever.writeWord(deviceNum, selectDataNum, data);
+                UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
             }
         }
         //发送Hex数据
@@ -258,8 +261,8 @@ namespace DispatchSystem
                 if (tx.Text.Length > 0)
                 {
                     UInt16 data = UInt16.Parse(tx.Text);
-                    Form1.writeWord(deviceNum, selectDataNum, data);
-                    Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+                    UdpSever.writeWord(deviceNum, selectDataNum, data);
+                    UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
                 }
             }
             catch
@@ -304,8 +307,8 @@ namespace DispatchSystem
                     {
                         data = (UInt16)((byt[0] << 8) | byt[1]);
                     }
-                    Form1.writeWord(deviceNum, selectDataNum, data);
-                    Form1.Ddata[deviceNum, selectDataNum, 0] = data;
+                    UdpSever.writeWord(deviceNum, selectDataNum, data);
+                    UdpSever.Ddata[deviceNum, selectDataNum, 0] = data;
                 }
             }
         }

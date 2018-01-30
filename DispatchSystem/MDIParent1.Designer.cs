@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("状态");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("配置");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("AGV1");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("AGV2");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("状态");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配置");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("AGV1");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("AGV2");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,10 +79,10 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
@@ -98,6 +98,7 @@
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
+            this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -472,6 +473,14 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
             this.toolStripStatusLabel.Text = "状态";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(44, 17);
+            this.toolStripStatusLabel1.Text = "已断开";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.UdpConfig);
+            // 
             // toolStripSplitButton1
             // 
             this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -494,14 +503,6 @@
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(44, 17);
-            this.toolStripStatusLabel1.Text = "已断开";
-            this.toolStripStatusLabel1.Click += new System.EventHandler(this.UdpConfig);
             // 
             // splitContainer1
             // 
@@ -557,32 +558,35 @@
             this.treeView1.ItemHeight = 48;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode6.Name = "节点3";
-            treeNode6.Text = "状态";
-            treeNode7.Name = "节点5";
-            treeNode7.Text = "配置";
-            treeNode8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            treeNode8.Name = "节点0";
-            treeNode8.Text = "AGV0";
-            treeNode9.ForeColor = System.Drawing.Color.Red;
-            treeNode9.Name = "节点1";
-            treeNode9.Text = "AGV1";
-            treeNode10.ForeColor = System.Drawing.Color.Red;
-            treeNode10.Name = "节点2";
-            treeNode10.Text = "AGV2";
+            treeNode1.Name = "节点3";
+            treeNode1.Text = "状态";
+            treeNode2.Name = "节点5";
+            treeNode2.Text = "配置";
+            treeNode3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            treeNode3.Name = "节点0";
+            treeNode3.Text = "AGV0";
+            treeNode4.ForeColor = System.Drawing.Color.Red;
+            treeNode4.Name = "节点1";
+            treeNode4.Text = "AGV1";
+            treeNode5.ForeColor = System.Drawing.Color.Red;
+            treeNode5.Name = "节点2";
+            treeNode5.Text = "AGV2";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode9,
-            treeNode10});
+            treeNode3,
+            treeNode4,
+            treeNode5});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(179, 482);
             this.treeView1.TabIndex = 0;
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            this.treeView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseMove);
             // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "agv1.png");
+            this.imageList1.Images.SetKeyName(1, "1.png");
             // 
             // toolStripSeparator1
             // 
@@ -682,6 +686,12 @@
             this.timerState.Interval = 500;
             this.timerState.Tick += new System.EventHandler(this.timerState_Tick);
             // 
+            // timerOnlineCheck
+            // 
+            this.timerOnlineCheck.Enabled = true;
+            this.timerOnlineCheck.Interval = 200;
+            this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -779,6 +789,7 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timerState;
+        private System.Windows.Forms.Timer timerOnlineCheck;
     }
 }
 

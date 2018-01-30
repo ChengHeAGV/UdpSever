@@ -76,8 +76,8 @@ namespace DispatchSystem
                     buttonStart.Text = "启动";
                     textBoxIP.ReadOnly = false;
                     textBoxPort.ReadOnly = false;
-
-                    MessageBox.Show(rs.Message, "提示");
+                    //MessageBox.Show(rs.Message, "提示");
+                    this.Close();
                 }
                 else
                 {
@@ -94,15 +94,14 @@ namespace DispatchSystem
                     buttonStart.Text = "停止";
                     textBoxIP.ReadOnly = true;
                     textBoxPort.ReadOnly = true;
-
-                    MessageBox.Show(rs.Message, "提示");
+                    this.Close();
+                    //MessageBox.Show(rs.Message, "提示");
                 }
                 else
                 {
                     MessageBox.Show(rs.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
             //触发事件     
             MyEvent();
         }

@@ -90,12 +90,6 @@
     <Compile Include="doubleBufferListView.Designer.cs">
       <DependentUpon>doubleBufferListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="ini.cs" />
     <Compile Include="MDIParent1.cs">
       <SubType>Form</SubType>
@@ -120,9 +114,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="doubleBufferListView.resx">
       <DependentUpon>doubleBufferListView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
@@ -155,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="m6.ico" />
+    <Content Include="Readme.txt" />
     <None Include="Resources\自动化.png" />
     <None Include="Resources\配置.png" />
     <None Include="Resources\2.png" />

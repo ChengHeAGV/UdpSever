@@ -53,7 +53,6 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolve
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DataForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DisplayForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.doubleBufferListView.resources
-D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Form1.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.MDIParent1.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Properties.Resources.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpConfigForm.resources

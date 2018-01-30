@@ -20,10 +20,9 @@ namespace DispatchSystem
             InitializeComponent();
         }
 
-
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-            
+            //treeView1.Nodes.Clear();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -62,6 +61,7 @@ namespace DispatchSystem
                 udpConfigForm.Show();//弹出这个窗口
             }
         }
+
         //处理     
         void udpConfigForm_MyEvent()
         {
@@ -104,6 +104,40 @@ namespace DispatchSystem
             }
         }
 
+        #region 双击AGV列表子节点
+        private Point pi; //用pi记录光标所在的位置
+        private void treeView1_MouseMove(object sender, MouseEventArgs e) //得到光标所在的位置
+        {
+            pi = new Point(e.X, e.Y);
+        }
+        DataForm dataForm;
+        private void treeView1_DoubleClick(object sender, EventArgs e) //从光标所在的位置得到该位置上的节点
+        {
+            TreeNode node = this.treeView1.GetNodeAt(pi);
+            if (pi.X < node.Bounds.Left || pi.X > node.Bounds.Right)
+            {
+                //textBox1.Text = "不触发事件";
+            }
+            else
+            {
+                //寄存器监控
+                if (node.Index == 1)
+                {
+                    try
+                    {
+                        dataForm.WindowState = FormWindowState.Normal;
+                        dataForm.Show();//弹出这个窗口
+                        dataForm.Activate();//激活显示
+                    }
+                    catch (Exception)
+                    {
+                        dataForm = new DataForm(int.Parse(node.Parent.Name));
+                        dataForm.Show();//弹出这个窗口
+                    }
+                }
+            }
+        }
+
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -114,6 +148,8 @@ namespace DispatchSystem
                 string FileName = saveFileDialog.FileName;
             }
         }
+        #endregion
+
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -170,7 +206,6 @@ namespace DispatchSystem
             }
         }
 
-
         private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //如果服务器运行，则关闭服务器
@@ -180,5 +215,32 @@ namespace DispatchSystem
             }
         }
 
+        //设备在线监测
+        private void timerOnlineCheck_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < UdpSever.DeviceNum; i++)
+            {
+                //超过心跳周期未更新认为设备离线
+                if ((DateTime.Now - UdpSever.UpdateTime[i]).TotalSeconds > UdpSever.HeartCycle)
+                {
+                    if (treeView1.Nodes[i.ToString()] != null)
+                    {
+                        treeView1.Nodes[i.ToString()].Remove();
+                    }
+                }
+                else
+                {
+                    if (treeView1.Nodes[i.ToString()] == null)
+                    {
+                        treeView1.Nodes.Add(i.ToString(), "AGV" + i.ToString());
+                        treeView1.Nodes[i.ToString()].Nodes.Add("1", "设备状态");
+                        treeView1.Nodes[i.ToString()].Nodes.Add("2", "寄存器监控");
+                        treeView1.Nodes[i.ToString()].Nodes.Add("3", "设备操作");
+                        treeView1.Nodes[i.ToString()].Nodes["1"].ImageIndex = 1;
+                        treeView1.Nodes[i.ToString()].Nodes["1"].SelectedImageIndex = 1;
+                    }
+                }
+            }
+        }
     }
 }

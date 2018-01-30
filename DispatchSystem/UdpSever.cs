@@ -33,8 +33,15 @@ namespace DispatchSystem
 
         //设备端口及IP
         public static EndPoint[] EndPointArray = new EndPoint[DeviceNum];
+
+        //设备更新时间(最后一次收到数据时间)
+        public static DateTime[] UpdateTime = new DateTime[DeviceNum];
+
         //服务器地址
         public static int ServerAddress = 1;
+
+        //设备心跳周期(单位：秒)
+        public static int HeartCycle = 5;
 
         //数据接收结构体
         struct PointData
@@ -46,8 +53,6 @@ namespace DispatchSystem
 
         //监听服务总进程
         static Thread threadMain;
-        //更新设备在线状态进程
-        static Thread threadCheckOnline;
 
         //函数返回结构体
         public struct Resault
@@ -76,9 +81,6 @@ namespace DispatchSystem
                 threadMain.Start();
 
                 //启动检测连接进程
-                threadCheckOnline = new Thread(CheckConnet);
-                threadCheckOnline.IsBackground = true;
-                threadCheckOnline.Start();
                 State = true;//更新服务器状态
                 return rs;
             }
@@ -101,7 +103,6 @@ namespace DispatchSystem
                 //注销检测连接进程
                 threadMain.Abort();
                 socket.Close();
-                threadCheckOnline.Abort();
                 State = false;//更新服务器状态 
 
                 rs.Reault = true;
@@ -450,7 +451,7 @@ namespace DispatchSystem
                                 str += "\r\n";
                                 // addText(str);
                             }
-                            pd.recv[3] = 1;//将目标地址改为本机，更新本机数组内容
+                            pd.recv[3] = (byte)ServerAddress;//将目标地址改为本机，更新本机数组内容
                         }
                         //else
                         //{
@@ -460,26 +461,8 @@ namespace DispatchSystem
                                 #region 心跳00
                                 //存储设备端口信息到EndPointArray
                                 EndPointArray[SrcAddress] = pd.endpoint;
-                                ////获取设备index
-                                //int index = Helper.GetIndex(listViewUser, SrcAddress, 0);
-
-                                //if (index >= 0)
-                                //{
-                                //    //存在更新
-                                //    listViewUser.Items[index].SubItems[2].Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff");
-                                //    listViewUser.Items[index].SubItems[3].Text = "0";
-                                //    listViewUser.Items[index].BackColor = Color.Green;
-                                //}
-                                //else
-                                //{
-                                //    //不存在增加
-                                //    ListViewItem lvi1 = Helper.listAdd(SrcAddress, pd.remote.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "0");
-                                //    lvi1.BackColor = Color.Green;
-                                //    listViewUser.Items.Add(lvi1);
-                                //    //对列表进行排序
-                                //    this.listViewUser.ListViewItemSorter = new ListViewItemComparer();
-                                //    listViewUser.Sort();
-                                //}
+                                //更新设备响应时间
+                                UpdateTime[SrcAddress] = DateTime.Now;
                                 #endregion
                                 break;
                             case 1:
@@ -613,34 +596,6 @@ namespace DispatchSystem
             }
         }
 
-        //检测连接进程
-        private static void CheckConnet()
-        {
-            while (true)
-            {
-                Thread.Sleep(1000);
-                //for (int i = 0; i < listViewUser.Items.Count; i++)
-                //{
-                //    //空闲时间小于5则加一，大于5显示离线
-                //    int time = int.Parse(listViewUser.Items[i].SubItems[3].Text.ToString());
-                //    if (time <= 4)
-                //    {
-                //        time++;
-                //        //更新数据
-                //        listViewUser.Items[i].SubItems[3].Text = time.ToString();
-                //        listViewUser.Items[i].BackColor = Color.Green;
-                //    }
-                //    else
-                //    {
-                //        //显示离线
-                //        listViewUser.Items[i].BackColor = Color.Red;
-                //        //更新设备端口信息到Dip
-                //        Dip[int.Parse(listViewUser.Items[i].SubItems[0].Text)] = null;
-                //    }
-                //}
-                //DeleteDuplicate(ref listViewUser);
-            }
-        }
         /// <summary>
         /// 字节数组转10进制字符串
         /// </summary>
