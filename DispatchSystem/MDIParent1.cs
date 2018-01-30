@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace DispatchSystem
 {
+
     public partial class MDIParent1 : Form
     {
         private int childFormNumber = 0;
@@ -22,13 +23,7 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-            //#region 初始化dbus数据变量
-            //UdpSever.DbusData[] db = new UdpSever.DbusData[UdpSever.RegisterNum];
-            //for (int i = 0; i < UdpSever.DeviceNum; i++)
-            //{
-            //    UdpSever.DbusDatalist.Add(db);
-            //}
-            //#endregion
+            
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -50,6 +45,7 @@ namespace DispatchSystem
         /// <param name="sender"></param>
         /// <param name="e"></param>
         UdpConfigForm udpConfigForm = null;
+
         private void UdpConfig(object sender, EventArgs e)
         {
             try
@@ -61,10 +57,41 @@ namespace DispatchSystem
             catch (Exception)
             {
                 udpConfigForm = new UdpConfigForm();
+                //注册udpConfigForm_MyEvent方法的MyEvent事件     
+                udpConfigForm.MyEvent += new MyDelegate(udpConfigForm_MyEvent);
                 udpConfigForm.Show();//弹出这个窗口
             }
         }
-
+        //处理     
+        void udpConfigForm_MyEvent()
+        {
+            if (UdpSever.State)
+            {
+                toolStripStatusLabel1.ForeColor = Color.Green;
+                toolStripStatusLabel1.Text = "运行中";
+                timerState.Enabled = false;
+            }
+            else
+            {
+                toolStripStatusLabel1.ForeColor = Color.Red;
+                toolStripStatusLabel1.Text = "已断开";
+                //断开连接时以500ms闪烁显示
+                timerState.Interval = 500;
+                timerState.Enabled = true;
+            }
+        }
+        //断开连接时状态自动闪烁
+        private void timerState_Tick(object sender, EventArgs e)
+        {
+            if (toolStripStatusLabel1.ForeColor == Color.LightGray)
+            {
+                toolStripStatusLabel1.ForeColor = Color.Red;
+            }
+            else
+            {
+                toolStripStatusLabel1.ForeColor = Color.LightGray;
+            }
+        }
 
         private void OpenFile(object sender, EventArgs e)
         {
@@ -152,5 +179,6 @@ namespace DispatchSystem
                 UdpSever.Stop();
             }
         }
+
     }
 }

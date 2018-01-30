@@ -24,29 +24,6 @@ namespace DispatchSystem
         public static int RxLength;
         public static int TxLength;
 
-        //#region Dbus 数据变量
-        ////Dbus总线数据结构
-        //public struct DbusData
-        //{
-        //    public int DeviceID { get; set; }//设备地址
-        //    public int Register { get; set; }//寄存器地址
-        //    public EndPoint EndPoint { get; set; }//设备端口
-        //    public UInt16 Data { get; set; }//数据
-        //    public DateTime Datetime { get; set; }//时间戳
-
-        //    public override string ToString()
-        //    {
-        //        return string.Format("设备地址：{0}；寄存器地址：{1}；数据：{2}；时间戳：{3}", DeviceID, Register, Data, Datetime);
-        //    }
-        //}
-        ////初始化设备数
-        //public static int DeviceNum = 20;
-        ////初始化寄存器数
-        //public static int RegisterNum = 100;
-        ////定义数据变量
-        //public static List<DbusData[]> DbusDatalist = new List<DbusData[]>();
-        //#endregion
-
         //初始化设备数
         public static int DeviceNum = 20;
         //初始化寄存器数

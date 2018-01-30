@@ -11,8 +11,12 @@ using System.Windows.Forms;
 
 namespace DispatchSystem
 {
+    //定义一个需要string类型参数的委托
+    public delegate void MyDelegate();
     public partial class UdpConfigForm : Form
     {
+        //定义该委托的事件     
+        public event MyDelegate MyEvent;
         public UdpConfigForm()
         {
             InitializeComponent();
@@ -98,6 +102,9 @@ namespace DispatchSystem
                     MessageBox.Show(rs.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            //触发事件     
+            MyEvent();
         }
 
         private void textBoxIP_TextChanged(object sender, EventArgs e)
