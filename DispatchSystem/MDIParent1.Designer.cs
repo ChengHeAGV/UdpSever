@@ -101,6 +101,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
+            this.网络助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -341,7 +342,8 @@
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
-            this.串口助手ToolStripMenuItem});
+            this.串口助手ToolStripMenuItem,
+            this.网络助手ToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(59, 21);
             this.toolsMenu.Text = "工具(&T)";
@@ -670,8 +672,16 @@
             // 
             // timerOnlineCheck
             // 
+            this.timerOnlineCheck.Enabled = true;
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
+            // 
+            // 网络助手ToolStripMenuItem
+            // 
+            this.网络助手ToolStripMenuItem.Name = "网络助手ToolStripMenuItem";
+            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.网络助手ToolStripMenuItem.Text = "网络助手";
+            this.网络助手ToolStripMenuItem.Click += new System.EventHandler(this.网络助手ToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -769,6 +779,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 路径规划ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 流程规划ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 网络助手ToolStripMenuItem;
     }
 }
 

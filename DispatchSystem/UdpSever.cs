@@ -675,9 +675,16 @@ namespace DispatchSystem
             {
                 if (str != null && EndPort.ToString() != null)
                 {
-                    TxLength += str.Length;
+                    byte[] buf = new byte[str.Length+2];
+                    buf[0] = (byte)('$');
+                    for (int i = 0; i < str.Length; i++)
+                    {
+                        buf[i + 1] = str[i];
+                    }
+                    buf[buf.Length-1] =(byte)('!');
+                    TxLength += buf.Length;
                     //    labelTx.Text = string.Format("发送数据：{0}", TxLength);
-                    socket.SendTo(str, EndPort);
+                    socket.SendTo(buf, EndPort);
                 }
                 else
                 {
