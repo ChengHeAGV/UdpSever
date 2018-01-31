@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace DispatchSystem
 {
-
     public partial class MDIParent1 : Form
     {
         private int childFormNumber = 0;
@@ -22,7 +21,32 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-            //treeView1.Nodes.Clear();
+            treeView1.Nodes.Clear();
+            for (int i = 0; i < 5; i++)
+            {
+                treeView1.Nodes.Add(i.ToString(), "AGV" + i.ToString());
+                //传感器
+                treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Sensor.Key, AGV.Sensor.Text);
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].ImageIndex = AGV.Sensor.ImageIndex;
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].SelectedImageIndex = AGV.Sensor.SelectedImageIndex;
+                //运行状态
+                treeView1.Nodes[i.ToString()].Nodes.Add(AGV.State.Key, AGV.State.Text);
+                treeView1.Nodes[i.ToString()].Nodes[AGV.State.Key].ImageIndex = AGV.State.ImageIndex;
+                treeView1.Nodes[i.ToString()].Nodes[AGV.State.Key].SelectedImageIndex = AGV.State.SelectedImageIndex;
+                //远程操作
+                treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Control.Key, AGV.Control.Text);
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Control.Key].ImageIndex = AGV.Control.ImageIndex;
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Control.Key].SelectedImageIndex = AGV.Control.SelectedImageIndex;
+                //参数设置
+                treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Set.Key, AGV.Set.Text);
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Set.Key].ImageIndex = AGV.Set.ImageIndex;
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Set.Key].SelectedImageIndex = AGV.Set.SelectedImageIndex;
+                //寄存器
+                treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Register.Key, AGV.Register.Text);
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].ImageIndex = AGV.Register.ImageIndex;
+                treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].SelectedImageIndex = AGV.Register.SelectedImageIndex;
+
+            }
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -110,29 +134,34 @@ namespace DispatchSystem
         {
             pi = new Point(e.X, e.Y);
         }
-        DataForm dataForm;
+        DataForm[] dataForm;
         private void treeView1_DoubleClick(object sender, EventArgs e) //从光标所在的位置得到该位置上的节点
         {
+            if (dataForm == null)
+            {
+                dataForm = new DataForm[UdpSever.DeviceNum];
+            }
             TreeNode node = this.treeView1.GetNodeAt(pi);
             if (pi.X < node.Bounds.Left || pi.X > node.Bounds.Right)
             {
                 //textBox1.Text = "不触发事件";
             }
-            else
+            else if (node.Parent != null)
             {
+                int parent = int.Parse(node.Parent.Name);
                 //寄存器监控
-                if (node.Index == 1)
+                if (node.Index == (int.Parse(AGV.Register.Key)-1))
                 {
                     try
                     {
-                        dataForm.WindowState = FormWindowState.Normal;
-                        dataForm.Show();//弹出这个窗口
-                        dataForm.Activate();//激活显示
+                        dataForm[parent].WindowState = FormWindowState.Normal;
+                        dataForm[parent].Show();//弹出这个窗口
+                        dataForm[parent].Activate();//激活显示
                     }
                     catch (Exception)
                     {
-                        dataForm = new DataForm(int.Parse(node.Parent.Name));
-                        dataForm.Show();//弹出这个窗口
+                        dataForm[parent] = new DataForm(int.Parse(node.Parent.Name));
+                        dataForm[parent].Show();//弹出这个窗口
                     }
                 }
             }
@@ -206,15 +235,6 @@ namespace DispatchSystem
             }
         }
 
-        private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //如果服务器运行，则关闭服务器
-            if (UdpSever.State)
-            {
-                UdpSever.Stop();
-            }
-        }
-
         //设备在线监测
         private void timerOnlineCheck_Tick(object sender, EventArgs e)
         {
@@ -233,14 +253,105 @@ namespace DispatchSystem
                     if (treeView1.Nodes[i.ToString()] == null)
                     {
                         treeView1.Nodes.Add(i.ToString(), "AGV" + i.ToString());
-                        treeView1.Nodes[i.ToString()].Nodes.Add("1", "设备状态");
-                        treeView1.Nodes[i.ToString()].Nodes.Add("2", "寄存器监控");
-                        treeView1.Nodes[i.ToString()].Nodes.Add("3", "设备操作");
-                        treeView1.Nodes[i.ToString()].Nodes["1"].ImageIndex = 1;
-                        treeView1.Nodes[i.ToString()].Nodes["1"].SelectedImageIndex = 1;
+                        //传感器
+                        treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Sensor.Key, AGV.Sensor.Text);
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].ImageIndex = AGV.Sensor.ImageIndex;
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].SelectedImageIndex = AGV.Sensor.SelectedImageIndex;
+                        //运行状态
+                        treeView1.Nodes[i.ToString()].Nodes.Add(AGV.State.Key, AGV.State.Text);
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.State.Key].ImageIndex = AGV.State.ImageIndex;
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.State.Key].SelectedImageIndex = AGV.State.SelectedImageIndex;
+                        //远程操作
+                        treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Control.Key, AGV.Control.Text);
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Control.Key].ImageIndex = AGV.Control.ImageIndex;
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Control.Key].SelectedImageIndex = AGV.Control.SelectedImageIndex;
+                        //参数设置
+                        treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Set.Key, AGV.Set.Text);
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Set.Key].ImageIndex = AGV.Set.ImageIndex;
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Set.Key].SelectedImageIndex = AGV.Set.SelectedImageIndex;
+                        //寄存器
+                        treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Register.Key, AGV.Register.Text);
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].ImageIndex = AGV.Register.ImageIndex;
+                        treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].SelectedImageIndex = AGV.Register.SelectedImageIndex;
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// AGV类
+        /// </summary>
+        static class AGV
+        {
+            /// <summary>
+            /// 传感器
+            /// </summary>
+            public static class Sensor
+            {
+                public static string Key = "1";
+                public static string Text = "传感器";
+                public static int ImageIndex = 1;
+                public static int SelectedImageIndex = 1;
+            }
+            /// <summary>
+            /// 运行状态
+            /// </summary>
+            public static class State
+            {
+                public static string Key = "2";
+                public static string Text = "运行状态";
+                public static int ImageIndex = 2;
+                public static int SelectedImageIndex = 2;
+            }
+            /// <summary>
+            /// 远程操作
+            /// </summary>
+            public static class Control
+            {
+                public static string Key = "3";
+                public static string Text = "远程操作";
+                public static int ImageIndex = 3;
+                public static int SelectedImageIndex = 3;
+            }
+            /// <summary>
+            /// 参数设置
+            /// </summary>
+            public static class Set
+            {
+                public static string Key = "4";
+                public static string Text = "参数设置";
+                public static int ImageIndex = 4;
+                public static int SelectedImageIndex = 4;
+            }
+            /// <summary>
+            /// 寄存器
+            /// </summary>
+            public static class Register
+            {
+                public static string Key = "5";
+                public static string Text = "寄存器";
+                public static int ImageIndex = 5;
+                public static int SelectedImageIndex = 5;
+            }
+        }
+
+        private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("真的要退出程序吗？", "退出程序", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+            else
+            if (UdpSever.State)//如果服务器运行，则关闭服务器
+            {
+                UdpSever.Stop();
+            }
+        }
+
+        private void MDIParent1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //关闭所有界面及线程
+            System.Environment.Exit(0);
         }
     }
 }

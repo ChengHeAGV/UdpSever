@@ -14,8 +14,8 @@ namespace DispatchSystem
     public partial class DataForm : Form
     {
         Thread th;
-        public static int selectDataNum = 0;
-        public static int outdeviceNum = 0;
+        //public static int selectDataNum = 0;
+        //int outdeviceNum = 0;
         int deviceNum = 0;
 
         string[] datekey = new string[10];
@@ -100,25 +100,28 @@ namespace DispatchSystem
             th.Abort();
         }
 
-        Form f;
+        DisplayForm[] displayform;
         private void doubleBufferListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (displayform == null)
+            {
+                displayform = new DisplayForm[UdpSever.RegisterNum];
+            }
             if (doubleBufferListView1.SelectedItems.Count > 0)
             {
-                selectDataNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[0].Text);
-                outdeviceNum = deviceNum;
-
-
+                int registerNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[0].Text);
+                //selectDataNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[0].Text);
+                //outdeviceNum = deviceNum;
                 try
                 {
-                    f.WindowState = FormWindowState.Normal;
-                    f.Show();//弹出这个窗口
-                    f.Activate();//激活显示
+                    displayform[registerNum].WindowState = FormWindowState.Normal;
+                    displayform[registerNum].Show();//弹出这个窗口
+                    displayform[registerNum].Activate();//激活显示
                 }
                 catch (Exception)
                 {
-                    f = new DisplayForm();
-                    f.Show();//弹出这个窗口
+                    displayform[registerNum] = new DisplayForm(deviceNum,registerNum);
+                    displayform[registerNum].Show();//弹出这个窗口
                 }
             }
         }

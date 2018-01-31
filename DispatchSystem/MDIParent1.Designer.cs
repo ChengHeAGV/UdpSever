@@ -30,13 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("状态");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配置");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("AGV1");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("AGV2");
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("AGV1");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("AGV2");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,9 +86,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
@@ -457,10 +460,7 @@
             this.statusStrip.BackColor = System.Drawing.Color.LightGray;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
-            this.toolStripStatusLabel1,
-            this.toolStripSplitButton1,
-            this.toolStripDropDownButton1,
-            this.toolStripProgressBar1});
+            this.toolStripStatusLabel1});
             this.statusStrip.Location = new System.Drawing.Point(0, 624);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1008, 22);
@@ -481,29 +481,6 @@
             this.toolStripStatusLabel1.Text = "已断开";
             this.toolStripStatusLabel1.Click += new System.EventHandler(this.UdpConfig);
             // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 20);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 20);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.White;
@@ -515,7 +492,7 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1008, 511);
-            this.splitContainer1.SplitterDistance = 179;
+            this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 4;
             // 
             // splitContainer2
@@ -532,7 +509,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.treeView1);
-            this.splitContainer2.Size = new System.Drawing.Size(179, 511);
+            this.splitContainer2.Size = new System.Drawing.Size(250, 511);
             this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.TabIndex = 2;
             // 
@@ -544,7 +521,7 @@
             this.button1.Font = new System.Drawing.Font("宋体", 12F);
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 25);
+            this.button1.Size = new System.Drawing.Size(250, 25);
             this.button1.TabIndex = 1;
             this.button1.Text = "AGV连接";
             this.button1.UseVisualStyleBackColor = false;
@@ -558,25 +535,41 @@
             this.treeView1.ItemHeight = 48;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "节点3";
-            treeNode1.Text = "状态";
-            treeNode2.Name = "节点5";
-            treeNode2.Text = "配置";
-            treeNode3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            treeNode1.ImageIndex = 1;
+            treeNode1.Name = "0";
+            treeNode1.SelectedImageIndex = 1;
+            treeNode1.Text = "传感器";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "1";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "运行状态";
+            treeNode3.ImageIndex = 3;
             treeNode3.Name = "节点0";
-            treeNode3.Text = "AGV0";
-            treeNode4.ForeColor = System.Drawing.Color.Red;
+            treeNode3.SelectedImageIndex = 3;
+            treeNode3.Text = "远程控制";
+            treeNode4.ImageIndex = 4;
             treeNode4.Name = "节点1";
-            treeNode4.Text = "AGV1";
-            treeNode5.ForeColor = System.Drawing.Color.Red;
+            treeNode4.SelectedImageIndex = 4;
+            treeNode4.Text = "参数设置";
+            treeNode5.ImageIndex = 5;
             treeNode5.Name = "节点2";
-            treeNode5.Text = "AGV2";
+            treeNode5.SelectedImageIndex = 5;
+            treeNode5.Text = "寄存器";
+            treeNode6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            treeNode6.Name = "0";
+            treeNode6.Text = "AGV0";
+            treeNode7.ForeColor = System.Drawing.Color.Red;
+            treeNode7.Name = "1";
+            treeNode7.Text = "AGV1";
+            treeNode8.ForeColor = System.Drawing.Color.Red;
+            treeNode8.Name = "2";
+            treeNode8.Text = "AGV2";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4,
-            treeNode5});
+            treeNode6,
+            treeNode7,
+            treeNode8});
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(179, 482);
+            this.treeView1.Size = new System.Drawing.Size(250, 482);
             this.treeView1.TabIndex = 0;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseMove);
@@ -586,7 +579,11 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "agv1.png");
-            this.imageList1.Images.SetKeyName(1, "1.png");
+            this.imageList1.Images.SetKeyName(1, "sensor.png");
+            this.imageList1.Images.SetKeyName(2, "state.png");
+            this.imageList1.Images.SetKeyName(3, "control.png");
+            this.imageList1.Images.SetKeyName(4, "set.png");
+            this.imageList1.Images.SetKeyName(5, "register.png");
             // 
             // toolStripSeparator1
             // 
@@ -688,7 +685,6 @@
             // 
             // timerOnlineCheck
             // 
-            this.timerOnlineCheck.Enabled = true;
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
             // 
@@ -707,6 +703,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "诚合AGV 调度软件 V1.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDIParent1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDIParent1_FormClosed);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -784,9 +781,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timerState;
         private System.Windows.Forms.Timer timerOnlineCheck;
