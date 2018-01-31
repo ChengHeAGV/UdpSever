@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("smtvoiceSever")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DispatchSystem")]
+[assembly: AssemblyDescription("AGV调度系统")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("smtvoiceSever")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("西安诚合自动化设备有限公司")]
+[assembly: AssemblyProduct("AGV")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
+[assembly: AssemblyTrademark("ChengHe")]
 [assembly: AssemblyCulture("")]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型

@@ -48,7 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>m6.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\robot.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DispatchSystem.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -145,12 +153,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="m6.ico" />
     <Content Include="Readme.txt" />
-    <None Include="Resources\自动化.png" />
+    <Content Include="Resources\NetAssist.exe" />
+    <Content Include="Resources\robot.ico" />
+    <Content Include="Resources\robot2.ico" />
+    <Content Include="Resources\robot3.ico" />
+    <Content Include="Resources\编辑.png" />
+    <Content Include="Resources\编辑2.png" />
+    <None Include="Resources\串口助手.exe" />
+    <None Include="Resources\task.png" />
+    <None Include="Resources\location.png" />
     <None Include="Resources\配置.png" />
-    <None Include="Resources\2.png" />
-    <None Include="Resources\1.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

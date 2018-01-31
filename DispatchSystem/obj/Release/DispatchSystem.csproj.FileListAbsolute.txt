@@ -1,0 +1,12 @@
+D:\github\winform\UdpSever\DispatchSystem\bin\Release\AGV调度系统.exe.config
+D:\github\winform\UdpSever\DispatchSystem\bin\Release\AGV调度系统.exe
+D:\github\winform\UdpSever\DispatchSystem\bin\Release\AGV调度系统.pdb
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.DataForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.DisplayForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.doubleBufferListView.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.MDIParent1.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.Properties.Resources.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.UdpConfigForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.csproj.GenerateResource.Cache
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\AGV调度系统.exe
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\AGV调度系统.pdb

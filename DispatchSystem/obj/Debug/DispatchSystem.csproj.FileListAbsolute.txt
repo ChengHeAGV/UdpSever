@@ -47,9 +47,6 @@ D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpConfigForm.resourc
 D:\github\winform\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 D:\github\winform\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
-D:\github\winform\UdpSever\DispatchSystem\bin\Debug\MySql.Data.xml
-D:\github\winform\UdpSever\DispatchSystem\bin\Debug\Newtonsoft.Json.xml
-D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DataForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DisplayForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.doubleBufferListView.resources

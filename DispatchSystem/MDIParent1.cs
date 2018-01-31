@@ -185,18 +185,6 @@ namespace DispatchSystem
             this.Close();
         }
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStrip.Visible = toolBarToolStripMenuItem.Checked;
@@ -352,6 +340,16 @@ namespace DispatchSystem
         {
             //关闭所有界面及线程
             System.Environment.Exit(0);
+        }
+
+        private void 路径规划ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 串口助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
