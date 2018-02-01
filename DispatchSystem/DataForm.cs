@@ -34,10 +34,10 @@ namespace DispatchSystem
 
             doubleBufferListView1.FullRowSelect = true;//要选择就是一行
             doubleBufferListView1.Columns.Add(datekey[0], 80, HorizontalAlignment.Center);
-            doubleBufferListView1.Columns.Add(datekey[1], 100, HorizontalAlignment.Center);
+            doubleBufferListView1.Columns.Add(datekey[1], 230, HorizontalAlignment.Center);
             doubleBufferListView1.Columns.Add(datekey[2], 100, HorizontalAlignment.Center);
             doubleBufferListView1.Columns.Add(datekey[3], 100, HorizontalAlignment.Center);
-            doubleBufferListView1.Columns.Add(datekey[4], 150, HorizontalAlignment.Center);
+            doubleBufferListView1.Columns.Add(datekey[4], 200, HorizontalAlignment.Center);
             doubleBufferListView1.Columns.Add(datekey[5], 100, HorizontalAlignment.Center);
         }
 
@@ -59,8 +59,6 @@ namespace DispatchSystem
                 item.SubItems.Add(str);//"字符串"
                 doubleBufferListView1.Items.Add(item);
             }
-            doubleBufferListView1.Columns[1].Width = -1;
-            doubleBufferListView1.Columns[4].Width = -1;
             //启动自动更新进程
             th = new Thread(fun);
             th.Start();
@@ -75,8 +73,8 @@ namespace DispatchSystem
                 {
                     //更新数据
                     for (int i = 0; i < UdpSever.Ddata.GetLength(0); i++)
-                    {
-                        doubleBufferListView1.Items[i].SubItems[1].Text = UdpSever.Ddata[deviceNum, i, 1].ToString();//时间戳
+                    {//UdpSever.Ddata[deviceNum, i, 1].ToString();
+                        doubleBufferListView1.Items[i].SubItems[1].Text = UdpSever.StampToString(UdpSever.Ddata[deviceNum, i, 1]);//时间戳
                         doubleBufferListView1.Items[i].SubItems[2].Text = UdpSever.Ddata[deviceNum, i, 0].ToString();//十进制
                         doubleBufferListView1.Items[i].SubItems[3].Text = UdpSever.Ddata[deviceNum, i, 0].ToString("X2");//十六进制
                         doubleBufferListView1.Items[i].SubItems[4].Text = Convert.ToString(UdpSever.Ddata[deviceNum, i, 0], 2).PadLeft(16, '0');//二进制
@@ -89,8 +87,6 @@ namespace DispatchSystem
                         if (i % 2 == 0)
                             doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
                     }
-                    doubleBufferListView1.Columns[1].Width = 100;
-                    //doubleBufferListView1.Columns[4].Width = -1;
                 }));
             }
         }
@@ -110,8 +106,6 @@ namespace DispatchSystem
             if (doubleBufferListView1.SelectedItems.Count > 0)
             {
                 int registerNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[0].Text);
-                //selectDataNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[0].Text);
-                //outdeviceNum = deviceNum;
                 try
                 {
                     displayform[registerNum].WindowState = FormWindowState.Normal;

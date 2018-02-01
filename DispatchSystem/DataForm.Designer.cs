@@ -38,7 +38,7 @@
             this.doubleBufferListView1.GridLines = true;
             this.doubleBufferListView1.Location = new System.Drawing.Point(0, 0);
             this.doubleBufferListView1.Name = "doubleBufferListView1";
-            this.doubleBufferListView1.Size = new System.Drawing.Size(798, 488);
+            this.doubleBufferListView1.Size = new System.Drawing.Size(850, 488);
             this.doubleBufferListView1.TabIndex = 0;
             this.doubleBufferListView1.UseCompatibleStateImageBehavior = false;
             this.doubleBufferListView1.View = System.Windows.Forms.View.Details;
@@ -48,7 +48,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 488);
+            this.ClientSize = new System.Drawing.Size(850, 488);
             this.Controls.Add(this.doubleBufferListView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "DataForm";

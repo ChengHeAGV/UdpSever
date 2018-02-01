@@ -150,7 +150,7 @@ namespace DispatchSystem
             {
                 int parent = int.Parse(node.Parent.Name);
                 //寄存器监控
-                if (node.Index == (int.Parse(AGV.Register.Key)-1))
+                if (node.Index == (int.Parse(AGV.Register.Key) - 1))
                 {
                     try
                     {
@@ -349,12 +349,23 @@ namespace DispatchSystem
 
         private void 串口助手ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
+        UdpToolForm udpform;
         private void 网络助手ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                udpform.WindowState = FormWindowState.Normal;
+                udpform.Show();//弹出这个窗口
+                udpform.Activate();//激活显示
+            }
+            catch (Exception)
+            {
+                udpform = new UdpToolForm();
+                udpform.Show();//弹出这个窗口
+            }
         }
     }
 }

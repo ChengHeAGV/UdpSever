@@ -114,6 +114,12 @@
       <DependentUpon>UdpConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UdpSever.cs" />
+    <Compile Include="UdpToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UdpToolForm.Designer.cs">
+      <DependentUpon>UdpToolForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +144,9 @@
     </Compile>
     <EmbeddedResource Include="UdpConfigForm.resx">
       <DependentUpon>UdpConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UdpToolForm.resx">
+      <DependentUpon>UdpToolForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

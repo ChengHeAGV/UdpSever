@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -10,6 +11,8 @@ using System.Windows.Forms;
 
 namespace DispatchSystem
 {
+    //定义委托
+    public delegate void UdpReciveDelegate(string str);
     class UdpSever
     {
         //服务器IP
@@ -29,7 +32,7 @@ namespace DispatchSystem
         //初始化寄存器数
         public static int RegisterNum = 100;
         //设备，寄存器，数据和时间戳
-        public static UInt32[,,] Ddata = new UInt32[100, 500, 2];
+        public static Int64[,,] Ddata = new Int64[100, 500, 2];
 
         //设备端口及IP
         public static EndPoint[] EndPointArray = new EndPoint[DeviceNum];
@@ -60,6 +63,12 @@ namespace DispatchSystem
             public bool Reault;
             public string Message;
         }
+
+        //
+
+
+        //定义该委托的事件     
+        public static event UdpReciveDelegate UdpReciveEvent;
 
         /// <summary>
         /// 启动UDP服务器
@@ -126,57 +135,89 @@ namespace DispatchSystem
             EndPoint Remote = (EndPoint)(sender);
             while (true)
             {
-                try
+                //try
+                //{
+                Thread.Sleep(1);
+                // labelTx.Refresh();
+                //从缓冲区读取数据
+                byte[] bytes = new byte[1000];
+                int length = socket.ReceiveFrom(bytes, ref Remote);
+                RxLength += length;
+                // labelRX.Text = string.Format("接收数据：{0}", RxLength);
+                byte[] temp = new byte[length];
+                for (int i = 0; i < length; i++)
                 {
-                    Thread.Sleep(1);
-                    // labelTx.Refresh();
-                    //从缓冲区读取数据
-                    byte[] bytes = new byte[1000];
-                    int length = socket.ReceiveFrom(bytes, ref Remote);
-                    RxLength += length;
-                    // labelRX.Text = string.Format("接收数据：{0}", RxLength);
-                    byte[] temp = new byte[length];
-                    for (int i = 0; i < length; i++)
+                    temp[i] = bytes[i];
+                }
+                Console.WriteLine(string.Format("测试点1\r\n"));
+                //发送接收数据事件
+
+                // UdpReciveEvent();
+                Console.WriteLine(string.Format("收到数据:{0}\r\n", byteToHexString(temp)));
+                Console.WriteLine(string.Format("数据长度:{0}\r\n", length));
+                //显示为16进制数
+                //addText("收到数据：\r\n");
+                //addText(byteToHexString(temp) + "\r\n");
+                //解析数据，对数据进行分包
+                int num = 0;
+                int L = 0;
+                while (length >= 7)
+                {
+                    //判断帧类型
+                    switch (temp[2 + num])
                     {
-                        temp[i] = bytes[i];
-                    }
+                        case 0://心跳帧
+                            Console.WriteLine(string.Format("帧类型:心跳帧\r\n"));
+                            L = 7;//长度固定为 7
+                            byte[] tempByte = new byte[L];
+                            for (int i = 0; i < L; i++)
+                            {
+                                tempByte[i] = temp[i + num];
+                            }
 
-                    //显示为16进制数
-                    //addText("收到数据：\r\n");
-                    //addText(byteToHexString(temp) + "\r\n");
-                    //解析数据，对数据进行分包
-                    int num = 0;
-                    int L = 0;
-                    while (length >= 7)
-                    {
-                        //判断帧类型
-                        switch (temp[2 + num])
-                        {
-                            case 0://心跳帧
-                                L = 7;//长度固定为 7
-                                byte[] tempByte = new byte[L];
-                                for (int i = 0; i < L; i++)
-                                {
-                                    tempByte[i] = temp[i + num];
-                                }
-                                num += L;
-                                length -= L;
-                                pd = new PointData();
-                                pd.length = L;
-                                pd.endpoint = Remote;
-                                pd.recv = tempByte;
+                            num += L;
+                            length -= L;
+                            pd = new PointData();
+                            pd.length = L;
+                            pd.endpoint = Remote;
+                            pd.recv = tempByte;
 
-                                //发送到子进程处理
-                                Thread clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                clientThread.IsBackground = true;
-                                clientThread.Start(pd);
-                                break;
-                            case 1://操作帧
-                                switch (temp[5 + num])//功能码
-                                {
-                                    case 1:
-                                        #region 读单个寄存器
-                                        L = 10;
+                            //发送到子进程处理
+                            Thread clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                            clientThread.IsBackground = true;
+                            clientThread.Start(pd);
+                            Console.WriteLine(string.Format("测试点1\r\n"));
+                            break;
+                        case 1://操作帧
+                            Console.WriteLine(string.Format("帧类型:操作帧\r\n"));
+                            switch (temp[5 + num])//功能码
+                            {
+                                case 1:
+                                    #region 读单个寄存器
+                                    L = 10;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
+
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                case 2:
+                                    #region 写单个寄存器
+                                    L = 12;
+                                    if ((num + L) <= temp.Length)
+                                    {
                                         tempByte = new byte[L];
                                         for (int i = 0; i < L; i++)
                                         {
@@ -188,235 +229,188 @@ namespace DispatchSystem
                                         pd.length = L;
                                         pd.endpoint = Remote;
                                         pd.recv = tempByte;
+                                        ThreadFunc(pd);
+                                    }
+                                    else
+                                    {
+                                        length =0;
+                                    }
 
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
-                                        #endregion
-                                        break;
-                                    case 2:
-                                        #region 写单个寄存器
-                                        L = 12;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
+                                    //发送到子进程处理
+                                    //clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    //clientThread.IsBackground = true;
+                                    //clientThread.Start(pd);
 
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                case 3:
+                                    #region 读多个寄存器
+                                    L = 11;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
 
-                                        //1.CRC校验
-                                        byte[] tempb = new byte[pd.length - 2];
-                                        for (int i = 0; i < pd.length - 2; i++)
-                                        {
-                                            tempb[i] = pd.recv[i];
-                                        }
-                                        int crc16 = CRC.crc_16(tempb);
-                                        if (crc16 == (pd.recv[pd.length - 2] << 8 | pd.recv[pd.length - 1]))
-                                        {
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                case 4://
+                                    #region 写多个寄存器
+                                    L = 9 + temp[8 + num] * 2 + 2;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
 
-                                        }
-                                        else
-                                        {
-                                            //校验失败
-                                            //addText(string.Format("主进程，校验失败：{0}\r\n", byteToHexString(temp)));
-                                        }
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
 
-                                        #endregion
-                                        break;
-                                    case 3:
-                                        #region 读多个寄存器
-                                        L = 11;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
+                                    #endregion
+                                    break;
+                                default:
+                                    // ErrorLength += length;
+                                    // label_Error.Text = string.Format("错误数据：{0}", ErrorLength);
+                                    length = 0;
+                                    break;
+                            }
+                            break;
+                        case 2://响应帧
+                            Console.WriteLine(string.Format("帧类型:响应帧\r\n"));
+                            switch (temp[5 + num])//功能码
+                            {
+                                case 1:
+                                    #region 读单个寄存器
+                                    L = 12;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
 
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
-                                        #endregion
-                                        break;
-                                    case 4://
-                                        #region 写多个寄存器
-                                        L = 9 + temp[8 + num] * 2 + 2;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                case 2:
+                                    #region 写单个寄存器
+                                    L = 9;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
 
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                case 3:
+                                    #region 读多个寄存器
+                                    L = 13;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
 
-                                        //1.CRC校验
-                                        tempb = new byte[pd.length - 2];
-                                        for (int i = 0; i < pd.length - 2; i++)
-                                        {
-                                            tempb[i] = pd.recv[i];
-                                        }
-                                        crc16 = CRC.crc_16(tempb);
-                                        if (crc16 == (pd.recv[pd.length - 2] << 8 | pd.recv[pd.length - 1]))
-                                        {
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                case 4://
+                                    #region 写多个寄存器
+                                    L = 9;
+                                    tempByte = new byte[L];
+                                    for (int i = 0; i < L; i++)
+                                    {
+                                        tempByte[i] = temp[i + num];
+                                    }
+                                    num += L;
+                                    length -= L;
+                                    pd = new PointData();
+                                    pd.length = L;
+                                    pd.endpoint = Remote;
+                                    pd.recv = tempByte;
 
-                                        }
-                                        else
-                                        {
-                                            //校验失败
-                                            //  addText(string.Format("主进程，校验失败：{0}\r\n", byteToHexString(temp)));
-                                        }
-
-                                        #endregion
-                                        break;
-                                    default:
-                                        // ErrorLength += length;
-                                        // label_Error.Text = string.Format("错误数据：{0}", ErrorLength);
-                                        length = 0;
-                                        break;
-                                }
-                                break;
-                            case 2://响应帧
-                                switch (temp[5 + num])//功能码
-                                {
-                                    case 1:
-                                        #region 读单个寄存器
-                                        L = 12;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
-
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
-                                        #endregion
-                                        break;
-                                    case 2:
-                                        #region 写单个寄存器
-                                        L = 9;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
-
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
-                                        #endregion
-                                        break;
-                                    case 3:
-                                        #region 读多个寄存器
-                                        L = 13;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
-
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
-                                        #endregion
-                                        break;
-                                    case 4://
-                                        #region 写多个寄存器
-                                        L = 9;
-                                        tempByte = new byte[L];
-                                        for (int i = 0; i < L; i++)
-                                        {
-                                            tempByte[i] = temp[i + num];
-                                        }
-                                        num += L;
-                                        length -= L;
-                                        pd = new PointData();
-                                        pd.length = L;
-                                        pd.endpoint = Remote;
-                                        pd.recv = tempByte;
-
-                                        //发送到子进程处理
-                                        clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
-                                        clientThread.IsBackground = true;
-                                        clientThread.Start(pd);
-                                        #endregion
-                                        break;
-                                    default:
-                                        // ErrorLength += length;
-                                        // label_Error.Text = string.Format("错误数据：{0}", ErrorLength);
-                                        length = 0;
-                                        break;
-                                }
-                                break;
-                            default:
-                                //ErrorLength += length;
-                                //label_Error.Text = string.Format("错误数据：{0}", ErrorLength);
-                                length = 0;
-                                break;
-                        }
+                                    //发送到子进程处理
+                                    clientThread = new Thread(new ParameterizedThreadStart(ThreadFunc));
+                                    clientThread.IsBackground = true;
+                                    clientThread.Start(pd);
+                                    #endregion
+                                    break;
+                                default:
+                                    // ErrorLength += length;
+                                    // label_Error.Text = string.Format("错误数据：{0}", ErrorLength);
+                                    length = 0;
+                                    break;
+                            }
+                            break;
+                        default:
+                            //ErrorLength += length;
+                            //label_Error.Text = string.Format("错误数据：{0}", ErrorLength);
+                            Console.WriteLine(string.Format("错误数据：{0}\r\n", byteToHexString(temp)));
+                            length = 0;
+                            break;
                     }
                 }
-                catch (Exception ex)
-                {
-                    // addText(ex.ToString());
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    throw;
+                //    // addText(ex.ToString());
+                //}
             }
-
         }
 
         //功能函数
         private static void ThreadFunc(object obj)
         {
-            try
-            {
-                // Thread.Sleep(10);
+            //try
+            //{
+                //Thread.Sleep(10);
                 byte[] bytes = new byte[1024];
                 PointData pd = (PointData)obj;
                 //显示为16进制数
@@ -438,21 +432,21 @@ namespace DispatchSystem
                         //目标地址
                         int DstAddress = (pd.recv[3] << 8 | pd.recv[4]);
 
-                        if (DstAddress != ServerAddress)
-                        {
-                            //目标地址不是本机，转发数据到目标地址
-                            //判断目标地址是否在线
-                            if (EndPointArray[SrcAddress] != null)
-                            {
-                                sendToUdp(EndPointArray[DstAddress], pd.recv);
-                                string str = "时间：" + DateTime.Now.ToLongTimeString() + "." + DateTime.Now.Millisecond + "\r\n";
-                                str += "设备地址：" + SrcAddress + "，目标地址：" + DstAddress + "\r\n";
-                                str += byteToHexString(pd.recv) + "\r\n";
-                                str += "\r\n";
-                                // addText(str);
-                            }
-                            pd.recv[3] = (byte)ServerAddress;//将目标地址改为本机，更新本机数组内容
-                        }
+                        //if (DstAddress != ServerAddress)
+                        //{
+                        //    //目标地址不是本机，转发数据到目标地址
+                        //    //判断目标地址是否在线
+                        //    if (EndPointArray[SrcAddress] != null)
+                        //    {
+                        //        sendToUdp(EndPointArray[DstAddress], pd.recv);
+                        //        string str = "时间：" + DateTime.Now.ToLongTimeString() + "." + DateTime.Now.Millisecond + "\r\n";
+                        //        str += "设备地址：" + SrcAddress + "，目标地址：" + DstAddress + "\r\n";
+                        //        str += byteToHexString(pd.recv) + "\r\n";
+                        //        str += "\r\n";
+                        //        // addText(str);
+                        //    }
+                        //    pd.recv[3] = (byte)ServerAddress;//将目标地址改为本机，更新本机数组内容
+                        //}
                         //else
                         //{
                         switch (pd.recv[2])//帧类型
@@ -503,13 +497,14 @@ namespace DispatchSystem
                                         break;
                                     case 2:
                                         #region 写单个寄存器02
-                                        //寄存器地址
+                                        //写入寄存器
                                         Ddata[(pd.recv[0] << 8 | pd.recv[1]), (pd.recv[6] << 8 | pd.recv[7]), 0] = (UInt16)(pd.recv[8] << 8 | pd.recv[9]);
 
                                         //更新时间戳
-                                        DateTime datestart = new DateTime(1970, 1, 1, 8, 0, 0);
-                                        Ddata[(pd.recv[0] << 8 | pd.recv[1]), (pd.recv[6] << 8 | pd.recv[7]), 1] = Convert.ToUInt32((DateTime.Now - datestart).TotalSeconds);
+                                        Ddata[(pd.recv[0] << 8 | pd.recv[1]), (pd.recv[6] << 8 | pd.recv[7]), 1] = DateTimeToStamp(DateTime.Now);
 
+                                        //发送响应帧
+                                        Respose(SrcAddress, 2);
                                         #endregion
                                         break;
                                     case 3:
@@ -558,8 +553,7 @@ namespace DispatchSystem
                                             {
                                                 Ddata[(pd.recv[0] << 8 | pd.recv[1]), (pd.recv[6] << 8 | pd.recv[7]) + i, 0] = (UInt16)(pd.recv[9 + 2 * i] << 8 | pd.recv[10 + 2 * i]);
                                                 //更新时间戳
-                                                datestart = new DateTime(1970, 1, 1, 8, 0, 0);
-                                                Ddata[(pd.recv[0] << 8 | pd.recv[1]), (pd.recv[6] << 8 | pd.recv[7]), 1] = Convert.ToUInt32((DateTime.Now - datestart).TotalSeconds);
+                                                Ddata[(pd.recv[0] << 8 | pd.recv[1]), (pd.recv[6] << 8 | pd.recv[7]), 1] = DateTimeToStamp(DateTime.Now);
                                             }
                                         }
                                         #endregion
@@ -588,11 +582,51 @@ namespace DispatchSystem
                     // addText("---\r\n\r\n");
                 }
 
-            }
-            catch (Exception ex)
+            //}
+            //catch (Exception ex)
+            //{
+            //    //  addText(ex.ToString() + "\r\n");
+            //    //MessageBox.Show(ex.ToString());
+            //}
+        }
+
+        /// <summary>
+        /// 发送响应帧
+        /// </summary>
+        /// <param name="dstAddress">目标地址</param>
+        /// <param name="type">帧类型</param>
+        private static void Respose(int dstAddress, int type)
+        {
+            byte[] sendbyte;
+            switch (type)
             {
-                //  addText(ex.ToString() + "\r\n");
-                //MessageBox.Show(ex.ToString());
+                case 2://写单个字节
+                    {
+                        sendbyte = new byte[7];
+                        sendbyte[0] = (byte)(ServerAddress >> 8);
+                        sendbyte[1] = (byte)(ServerAddress);
+                        sendbyte[2] = 0x02;
+                        sendbyte[3] = (byte)(dstAddress >> 8);
+                        sendbyte[4] = (byte)(dstAddress);
+                        sendbyte[5] = 0x02;
+                        sendbyte[6] = 0x01;
+
+                        int crcRes = CRC.crc_16(sendbyte);
+
+                        byte[] sendbyte1 = new byte[9];
+                        for (int i = 0; i < 7; i++)
+                        {
+                            sendbyte1[i] = sendbyte[i];
+                        }
+
+                        sendbyte1[7] = (byte)(crcRes >> 8);
+                        sendbyte1[8] = (byte)(crcRes);
+                        sendToUdp(EndPointArray[dstAddress], sendbyte1);
+                        Console.WriteLine(string.Format("帧类型:响应帧 {0}\r\n", byteToHexString(sendbyte1)));
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -671,17 +705,17 @@ namespace DispatchSystem
         /// <param name="str">byte[]</param>
         public static void sendToUdp(EndPoint EndPort, byte[] str)
         {
-            try
-            {
-                if (str != null && EndPort.ToString() != null)
+            //try
+            //{
+                if (str != null && EndPort!= null)
                 {
-                    byte[] buf = new byte[str.Length+2];
+                    byte[] buf = new byte[str.Length + 2];
                     buf[0] = (byte)('$');
                     for (int i = 0; i < str.Length; i++)
                     {
                         buf[i + 1] = str[i];
                     }
-                    buf[buf.Length-1] =(byte)('!');
+                    buf[buf.Length - 1] = (byte)('!');
                     TxLength += buf.Length;
                     //    labelTx.Text = string.Format("发送数据：{0}", TxLength);
                     socket.SendTo(buf, EndPort);
@@ -690,12 +724,12 @@ namespace DispatchSystem
                 {
                     //MessageBox.Show("请选择目标客户端");
                 }
-            }
-            catch (Exception ex)
-            {
-                // MessageBox.Show(ex.Message.ToString());
-                //addText("转发失败，设备不在线！");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // MessageBox.Show(ex.Message.ToString());
+            //    //addText("转发失败，设备不在线！");
+            //}
         }
 
         public class CRC
@@ -731,6 +765,42 @@ namespace DispatchSystem
                 crc += buf2;
                 return crc;
             }
+        }
+
+        /// <summary>
+        /// 日期转时间戳
+        /// </summary>
+        /// <param name="datetime">日期时间</param>
+        /// <returns></returns>
+        public static long DateTimeToStamp(DateTime datetime)
+        {
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, datetime.Kind);
+            return Convert.ToInt64((datetime - start).TotalSeconds);
+        }
+
+        /// <summary>
+        /// 时间戳转日期
+        /// </summary>
+        /// <param name="timestamp">时间戳</param>
+        /// <returns></returns>
+        public static DateTime StampToDateTime(long timestamp)
+        {
+            var datetime = new DateTime();
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, datetime.Kind);
+            return start.AddSeconds(timestamp);
+        }
+
+        /// <summary>
+        /// 时间戳转日期
+        /// </summary>
+        /// <param name="timestamp">时间戳</param>
+        /// <param name="format">输出格式，DateTimeFormatInfo</param>
+        /// <returns></returns>
+        public static string StampToString(long timestamp)
+        {
+            var datetime = new DateTime();
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, datetime.Kind);
+            return start.AddSeconds(timestamp).ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
 }

@@ -57,3 +57,4 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.Genera
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
