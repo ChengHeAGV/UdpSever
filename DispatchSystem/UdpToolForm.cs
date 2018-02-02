@@ -15,8 +15,6 @@ namespace DispatchSystem
         public UdpToolForm()
         {
             InitializeComponent();
-            //注册接收数据事件  
-            UdpSever.UdpReciveEvent += new UdpReciveDelegate(UdpSever_UdpReciveEvent);
         }
         //处理  
         private void UdpSever_UdpReciveEvent(string str)

@@ -162,6 +162,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
     <Content Include="Resources\NetAssist.exe" />
     <Content Include="Resources\robot.ico" />
