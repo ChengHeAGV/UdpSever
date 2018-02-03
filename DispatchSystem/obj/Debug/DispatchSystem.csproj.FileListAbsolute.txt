@@ -58,3 +58,17 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DataForm.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DisplayForm.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.doubleBufferListView.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.MDIParent1.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Properties.Resources.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpConfigForm.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
+C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.Cache
