@@ -31,13 +31,10 @@ D:\项目\哈工大\无线系统\UdpSever\DispatchSystem\obj\Debug\AGV调度系�
 D:\github\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 D:\github\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
 D:\github\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
-D:\github\UdpSever\DispatchSystem\bin\Debug\MySql.Data.xml
-D:\github\UdpSever\DispatchSystem\bin\Debug\Newtonsoft.Json.xml
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DataForm.resources
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DisplayForm.resources
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.doubleBufferListView.resources
-D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Form1.resources
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.MDIParent1.resources
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Properties.Resources.resources
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.Cache
@@ -72,3 +69,4 @@ C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.P
 C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpConfigForm.resources
 C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
 C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.Cache
+D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
