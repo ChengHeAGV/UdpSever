@@ -64,7 +64,7 @@ namespace DispatchSystem
         {
             public bool resault;
             public UInt16 Data;
-            public byte[] DataBuf;
+            public UInt16[] DataBuf;
         }
 
         //函数返回结构体
@@ -461,7 +461,6 @@ namespace DispatchSystem
                             if (((ResponseBuf[i, 1] << 8) | ResponseBuf[i, 2]) == frameID)
                             {
                                 msg.resault = true;
-                                msg.Data = (ushort)(ResponseBuf[i, 10] << 8 | ResponseBuf[i, 11]);
                                 ResponseBuf[i, 0] = 0;
                                 return msg;
                             }
@@ -516,7 +515,6 @@ namespace DispatchSystem
                             if (((ResponseBuf[i, 1] << 8) | ResponseBuf[i, 2]) == frameID)
                             {
                                 msg.resault = true;
-                                msg.Data = (ushort)(ResponseBuf[i, 10] << 8 | ResponseBuf[i, 11]);
                                 ResponseBuf[i, 0] = 0;
                                 return msg;
                             }
@@ -528,8 +526,106 @@ namespace DispatchSystem
             return msg;
         }
 
+        //读单个寄存器
+        public static ReturnMsg Read_Register(int TargetAddress, int RegisterAddress)
+        {
+            byte[] sendbyte = new byte[12];
+            FrameID++;
+            ReturnMsg msg = new ReturnMsg();
+            int frameID = FrameID;
+            sendbyte[0] = (byte)(frameID >> 8);
+            sendbyte[1] = (byte)(frameID);
+            sendbyte[2] = (byte)(ServerAddress >> 8);
+            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[4] = 0x01;
+            sendbyte[5] = (byte)(TargetAddress >> 8);
+            sendbyte[6] = (byte)(TargetAddress);
+            sendbyte[7] = 0x01;
+            sendbyte[8] = (byte)(RegisterAddress >> 8);
+            sendbyte[9] = (byte)(RegisterAddress);
 
+            int crcRes = CRC.crc_16(sendbyte, 10);
 
+            sendbyte[10] = (byte)(crcRes >> 8);
+            sendbyte[11] = (byte)(crcRes);
+
+            for (int j = 0; j < RepeatNum; j++)
+            {
+                //发送数据
+                sendToUdp(EndPointArray[TargetAddress], sendbyte);
+                //等待响应
+                for (int k = 0; k < ResponseTimeout; k++)
+                {
+                    for (int i = 0; i < RESPONSE_MAX_LEN; i++)
+                    {
+                        if (ResponseBuf[i, 0] != 0)
+                        {
+                            if (((ResponseBuf[i, 1] << 8) | ResponseBuf[i, 2]) == frameID)
+                            {
+                                msg.resault = true;
+                                msg.Data = (ushort)(ResponseBuf[i, 10] << 8 | ResponseBuf[i, 11]);
+                                ResponseBuf[i, 0] = 0;
+                                return msg;
+                            }
+                        }
+                    }
+                }
+            }
+            msg.resault = false;
+            return msg;
+        }
+        //读多个寄存器
+        public static ReturnMsg Read_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num)
+        {
+            byte[] sendbyte = new byte[13];
+            FrameID++;
+            ReturnMsg msg = new ReturnMsg();
+            int frameID = FrameID;
+            sendbyte[0] = (byte)(frameID >> 8);
+            sendbyte[1] = (byte)(frameID);
+            sendbyte[2] = (byte)(ServerAddress >> 8);
+            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[4] = 0x01;
+            sendbyte[5] = (byte)(TargetAddress >> 8);
+            sendbyte[6] = (byte)(TargetAddress);
+            sendbyte[7] = 0x03;
+            sendbyte[8] = (byte)(RegisterAddress >> 8);
+            sendbyte[9] = (byte)(RegisterAddress);
+            sendbyte[10] = (byte)(Num);
+
+            int crcRes = CRC.crc_16(sendbyte, 11);
+
+            sendbyte[11] = (byte)(crcRes >> 8);
+            sendbyte[12] = (byte)(crcRes);
+
+            for (int j = 0; j < RepeatNum; j++)
+            {
+                //发送数据
+                sendToUdp(EndPointArray[TargetAddress], sendbyte);
+                //等待响应
+                for (int k = 0; k < ResponseTimeout; k++)
+                {
+                    for (int i = 0; i < RESPONSE_MAX_LEN; i++)
+                    {
+                        if (ResponseBuf[i, 0] != 0)
+                        {
+                            if (((ResponseBuf[i, 1] << 8) | ResponseBuf[i, 2]) == frameID)
+                            {
+                                msg.resault = true;
+                                for (int t = 0; t < Num; t++)
+                                {
+                                    msg.DataBuf[t] = (ushort)(ResponseBuf[i, 11 + 2 * t] << 8 | ResponseBuf[i, 12 + 2 * t]);
+                                }
+                                ResponseBuf[i, 0] = 0;
+                                return msg;
+                            }
+                        }
+                    }
+                }
+            }
+            msg.resault = false;
+            return msg;
+        }
 
         /// <summary>
         /// 发送
