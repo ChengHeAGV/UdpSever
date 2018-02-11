@@ -91,7 +91,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -99,7 +99,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 1;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -107,7 +107,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 2;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -115,7 +115,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 3;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -123,7 +123,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 4;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -131,7 +131,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 5;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -139,7 +139,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 6;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -147,7 +147,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 7;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -155,7 +155,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 8;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -163,7 +163,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 9;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -171,7 +171,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 10;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -179,7 +179,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 11;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -187,7 +187,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 12;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -195,7 +195,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 13;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -203,7 +203,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 14;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -211,7 +211,7 @@ namespace DispatchSystem
         {
             Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
             data ^= 1 << 15;
-            UdpSever.writeWord(deviceID, registerID, (UInt16)data);
+            UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             UdpSever.Ddata[deviceID, registerID, 0] = data;
         }
 
@@ -230,7 +230,7 @@ namespace DispatchSystem
                 {
                     data = (UInt16)((byt[0] << 8) | byt[1]);
                 }
-                UdpSever.writeWord(deviceID, registerID, data);
+                UdpSever.Write_Register(deviceID, registerID, data);
                 UdpSever.Ddata[deviceID, registerID, 0] = data;
             }
         }
@@ -261,7 +261,7 @@ namespace DispatchSystem
                 if (tx.Text.Length > 0)
                 {
                     UInt16 data = UInt16.Parse(tx.Text);
-                    UdpSever.writeWord(deviceID, registerID, data);
+                    UdpSever.Write_Register(deviceID, registerID, data);
                     UdpSever.Ddata[deviceID, registerID, 0] = data;
                 }
             }
@@ -307,7 +307,7 @@ namespace DispatchSystem
                     {
                         data = (UInt16)((byt[0] << 8) | byt[1]);
                     }
-                    UdpSever.writeWord(deviceID, registerID, data);
+                    UdpSever.Write_Register(deviceID, registerID, data);
                     UdpSever.Ddata[deviceID, registerID, 0] = data;
                 }
             }
