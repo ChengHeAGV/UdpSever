@@ -16,7 +16,7 @@ namespace DispatchSystem
         /// </summary>
         /// <param name="device">设备号</param>
         /// <param name="register">寄存器号</param>
-        public DisplayForm(int device,int register)
+        public DisplayForm(int device, int register)
         {
             InitializeComponent();
             deviceID = device;
@@ -217,6 +217,7 @@ namespace DispatchSystem
 
         private void sendhex(TextBox tx)
         {
+            UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             byte[] byt = HexStringToBytes(tx.Text);
             UInt16 data = 0;
             if (byt.Length > 0)
@@ -230,7 +231,8 @@ namespace DispatchSystem
                 {
                     data = (UInt16)((byt[0] << 8) | byt[1]);
                 }
-                UdpSever.Write_Register(deviceID, registerID, data);
+                returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
+                Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
                 UdpSever.Ddata[deviceID, registerID, 0] = data;
             }
         }

@@ -47,7 +47,7 @@ namespace DispatchSystem
         //错误重发次数
         public static int RepeatNum = 3;
         //响应超时时间，单位ms
-        public static int ResponseTimeout = 300;
+        public static int ResponseTimeout = 3000;
 
         //响应帧缓冲池大小
         public static int RESPONSE_MAX_LEN = 100;
@@ -192,7 +192,7 @@ namespace DispatchSystem
                             {
                                 case 0:
                                     #region 心跳帧
-                                    Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n"), DeviceAddress);
+                                    Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n", DeviceAddress));
                                     //存储设备端口信息到EndPointArray
                                     EndPointArray[DeviceAddress] = endPoint;
                                     //更新设备响应时间
@@ -364,7 +364,7 @@ namespace DispatchSystem
                                             //缓冲池第1字节为帧长度
                                             ResponseBuf[i, 0] = (byte)Buf.Length;
                                             //将该响应帧加入缓冲池
-                                            for (int j = 0; i < Buf.Length; j++)
+                                            for (int j = 0; j < Buf.Length; j++)
                                                 ResponseBuf[i, j + 1] = Buf[j];
                                         }
                                     }
@@ -466,6 +466,7 @@ namespace DispatchSystem
                             }
                         }
                     }
+                    Thread.Sleep(1);
                 }
             }
             msg.resault = false;
@@ -634,6 +635,7 @@ namespace DispatchSystem
         /// <param name="str">byte[]</param>
         public static void sendToUdp(EndPoint EndPort, byte[] str)
         {
+            Console.WriteLine(string.Format("待发送数据:{0}\r\n", ByteToHexStr(str)));
             if (str != null && EndPort != null)
             {
                 byte[] buf = new byte[str.Length * 2 + 2];
@@ -646,6 +648,7 @@ namespace DispatchSystem
                 buf[buf.Length - 1] = (byte)('!');
                 TxLength += buf.Length;
                 socket.SendTo(buf, EndPort);
+                Console.WriteLine(string.Format("编码后数据:{0}\r\n", ByteToHexStr(buf)));
             }
         }
 
