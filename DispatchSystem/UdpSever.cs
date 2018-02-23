@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -12,10 +13,53 @@ using System.Windows.Forms;
 
 namespace DispatchSystem
 {
+
     //定义委托
     public delegate void UdpReciveDelegate(string str);
     class UdpSever
     {
+        [DllImport("kernel32.dll")]
+        public static extern Boolean AllocConsole();
+        [DllImport("kernel32.dll")]
+        public static extern Boolean FreeConsole();
+
+        public static class Shell
+        {
+            /// <summary>  
+            /// 输出信息  
+            /// </summary>  
+            /// <param name="format"></param>  
+            /// <param name="args"></param>  
+            public static void WriteLine(string format, params object[] args)
+            {
+                WriteLine(string.Format(format, args));
+            }
+
+            /// <summary>  
+            /// 输出信息  
+            /// </summary>  
+            /// <param name="output"></param>  
+            public static void WriteLine(string output)
+            {
+                Console.ForegroundColor = GetConsoleColor(output);
+                Console.WriteLine(@"[{0}]{1}", DateTimeOffset.Now, output);
+            }
+
+            /// <summary>  
+            /// 根据输出文本选择控制台文字颜色  
+            /// </summary>  
+            /// <param name="output"></param>  
+            /// <returns></returns>  
+            private static ConsoleColor GetConsoleColor(string output)
+            {
+                if (output.StartsWith("警告")) return ConsoleColor.Yellow;
+                if (output.StartsWith("错误")) return ConsoleColor.Red;
+                if (output.StartsWith("注意")) return ConsoleColor.Green;
+                return ConsoleColor.Gray;
+            }
+        }
+
+
         //服务器IP
         public static IPAddress ipaddress;
         //服务器端口
@@ -134,6 +178,8 @@ namespace DispatchSystem
         //启动监听
         private static void mainFunc()
         {
+
+            //FreeConsole();
             //PointData pd = new PointData();
             IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
             EndPoint endPoint = (EndPoint)(sender);
@@ -143,7 +189,7 @@ namespace DispatchSystem
             {
                 Thread.Sleep(1);
                 //从缓冲区读取数据
-                byte[] bytes = new byte[1000];
+                byte[] bytes = new byte[10000];
                 int length = socket.ReceiveFrom(bytes, ref endPoint);
                 //更新接收到的数据总长度
                 RxLength += length;
@@ -158,7 +204,7 @@ namespace DispatchSystem
                 string str = Encoding.ASCII.GetString(Buf);
                 //清除多余的\0
                 str = str.Replace("\0", "");
-                Console.WriteLine(string.Format("收到数据:{0}\r\n", str));
+                //Console.WriteLine(string.Format("收到数据:{0}\r\n", str));
                 //将收到的数据追加到缓冲池
                 StringBuf += str;
                 #endregion
@@ -170,9 +216,10 @@ namespace DispatchSystem
                     int count = 0;
                     foreach (var item in mc)
                     {
+
                         count++;
                         Buf = StrToHexByte(item.ToString());
-                        Console.WriteLine(string.Format("第{0}次分包解析:{1}\r\n", count, ByteToHexStr(Buf)));
+                        //Console.WriteLine(string.Format("第{0}次分包解析:{1}\r\n", count, ByteToHexStr(Buf)));
 
                         //CRC校验
                         int crc16 = CRC.crc_16(Buf, Buf.Length - 2);
@@ -192,7 +239,7 @@ namespace DispatchSystem
                             {
                                 case 0:
                                     #region 心跳帧
-                                    Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n", DeviceAddress));
+                                    //Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n", DeviceAddress));
                                     //存储设备端口信息到EndPointArray
                                     EndPointArray[DeviceAddress] = endPoint;
                                     //更新设备响应时间
@@ -368,7 +415,7 @@ namespace DispatchSystem
                                                 ResponseBuf[i, j + 1] = Buf[j];
                                         }
                                     }
-                                    Console.WriteLine(string.Format("帧类型:响应帧\r\n"));
+                                    Console.WriteLine(string.Format("帧类型:响应帧{0}\r\n", ByteToHexStr(Buf)));
                                     #endregion
                                     break;
                                 default:
@@ -825,12 +872,22 @@ namespace DispatchSystem
         /// <returns></returns>
         public static byte[] StrToHexByte(string hexString)
         {
-            hexString = hexString.Replace(" ", "");
-            if ((hexString.Length % 2) != 0)
-                hexString += " ";
-            byte[] returnBytes = new byte[hexString.Length / 2];
-            for (int i = 0; i < returnBytes.Length; i++)
-                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            byte[] returnBytes= new byte[1];
+            try
+            {
+                hexString = hexString.Replace(" ", "");
+                if ((hexString.Length % 2) != 0)
+                    hexString += " ";
+                returnBytes = new byte[hexString.Length / 2];
+                for (int i = 0; i < returnBytes.Length; i++)
+                    returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            }
+            catch 
+            {
+
+                //throw;
+            }
+
             return returnBytes;
         }
 

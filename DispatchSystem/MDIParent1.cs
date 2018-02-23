@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,6 +24,22 @@ namespace DispatchSystem
         private void MDIParent1_Load(object sender, EventArgs e)
         {
             treeView1.Nodes.Clear();
+
+            //UdpSever.AllocConsole();
+            //UdpSever.Shell.WriteLine("注意：启动程序...");
+            //UdpSever.Shell.WriteLine("\tWritten by wuming");
+            //UdpSever.Shell.WriteLine("{0}：{1}", "警告", "这是一条警告信息。");
+            //UdpSever.Shell.WriteLine("{0}：{1}", "错误", "这是一条错误信息！");
+            //UdpSever.Shell.WriteLine("{0}：{1}", "注意", "这是一条需要的注意信息。");
+            //UdpSever.Shell.WriteLine("");
+            //UdpSever.Shell.WriteLine("注意：2秒后关闭...");
+            //Thread.Sleep(1000);
+            //UdpSever.Shell.WriteLine("注意：1秒后关闭...");
+            //Thread.Sleep(1000);
+            //UdpSever.Shell.WriteLine("注意：正在关闭...");
+            //Thread.Sleep(100);
+
+
             //for (int i = 0; i < 5; i++)
             //{
             //    treeView1.Nodes.Add(i.ToString(), "AGV" + i.ToString());
