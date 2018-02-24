@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -58,6 +58,15 @@
     <Win32Resource>
     </Win32Resource>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
@@ -80,17 +89,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataForm.cs">
+    <Compile Include="AGV\ControlForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataForm.Designer.cs">
-      <DependentUpon>DataForm.cs</DependentUpon>
+    <Compile Include="AGV\ControlForm.Designer.cs">
+      <DependentUpon>ControlForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DisplayForm.cs">
+    <Compile Include="AGV\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DisplayForm.Designer.cs">
+    <Compile Include="AGV\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGV\DisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGV\DisplayForm.Designer.cs">
       <DependentUpon>DisplayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGV\SetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGV\SetForm.Designer.cs">
+      <DependentUpon>SetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGV\StateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGV\StateForm.Designer.cs">
+      <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="doubleBufferListView.cs">
       <SubType>UserControl</SubType>
@@ -107,6 +134,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AGV\SensorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGV\SensorForm.Designer.cs">
+      <DependentUpon>SensorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UdpConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,11 +153,20 @@
     <Compile Include="UdpToolForm.Designer.cs">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DataForm.resx">
-      <DependentUpon>DataForm.cs</DependentUpon>
+    <EmbeddedResource Include="AGV\ControlForm.resx">
+      <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DisplayForm.resx">
+    <EmbeddedResource Include="AGV\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGV\DisplayForm.resx">
       <DependentUpon>DisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGV\SetForm.resx">
+      <DependentUpon>SetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGV\StateForm.resx">
+      <DependentUpon>StateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="doubleBufferListView.resx">
       <DependentUpon>doubleBufferListView.cs</DependentUpon>
@@ -142,12 +184,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="AGV\SensorForm.resx">
+      <DependentUpon>SensorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UdpConfigForm.resx">
       <DependentUpon>UdpConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UdpToolForm.resx">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

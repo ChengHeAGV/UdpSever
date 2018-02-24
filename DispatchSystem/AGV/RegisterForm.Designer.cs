@@ -1,6 +1,6 @@
 ﻿namespace DispatchSystem
 {
-    partial class DataForm
+    partial class RegisterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "DataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DataForm";
+            this.Text = "RegisterForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataForm_FormClosing);
             this.Load += new System.EventHandler(this.DataForm_Load);
             this.ResumeLayout(false);

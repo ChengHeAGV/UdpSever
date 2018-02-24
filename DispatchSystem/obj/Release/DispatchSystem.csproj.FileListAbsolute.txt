@@ -10,3 +10,4 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.UdpConfigFo
 D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.csproj.GenerateResource.Cache
 D:\github\winform\UdpSever\DispatchSystem\obj\Release\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\obj\Release\AGV调度系统.pdb
+D:\github\winform\UdpSever\DispatchSystem\obj\Release\DispatchSystem.UdpToolForm.resources

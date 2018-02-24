@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DispatchSystem
 {
-    public partial class DataForm : Form
+    public partial class RegisterForm : Form
     {
         Thread th;
         //public static int selectDataNum = 0;
@@ -19,11 +19,11 @@ namespace DispatchSystem
         int deviceNum = 0;
 
         string[] datekey = new string[10];
-        public DataForm(int num)
+        public RegisterForm(int num)
         {
             InitializeComponent();
             deviceNum = num;
-            this.Text = string.Format("设备{0}", deviceNum);
+            this.Text = string.Format("AGV{0}-寄存器", deviceNum);
 
             datekey[0] = "寄存器";
             datekey[1] = "时间戳";

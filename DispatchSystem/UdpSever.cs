@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -86,15 +87,15 @@ namespace DispatchSystem
         //服务器地址
         public static int ServerAddress = 1;
         //设备心跳周期(单位：秒)
-        public static int HeartCycle = 5;
+        public static int HeartCycle = 10;
 
         //错误重发次数
         public static int RepeatNum = 3;
         //响应超时时间，单位ms
-        public static int ResponseTimeout = 3000;
+        public static int ResponseTimeout = 1000;
 
         //响应帧缓冲池大小
-        public static int RESPONSE_MAX_LEN = 100;
+        public static int RESPONSE_MAX_LEN = 300;
         //响应帧缓冲池
         public static byte[,] ResponseBuf = new byte[RESPONSE_MAX_LEN, FrameLen];
 
@@ -109,6 +110,21 @@ namespace DispatchSystem
             public bool resault;
             public UInt16 Data;
             public UInt16[] DataBuf;
+
+            public override string ToString()
+            {
+                string str = String.Empty;
+                if (DataBuf != null)
+                {
+                    int num = 0;
+                    foreach (var item in DataBuf)
+                    {
+                        str += String.Format("DataBuf[{0}]:{1}\r\n", num,item.ToString("X2"));
+                        num++;
+                    }
+                }
+                return string.Format("Resault:{0}\r\nData:{1}\r\n{2}", resault, Data.ToString("X2"), str);
+            }
         }
 
         //函数返回结构体
@@ -178,7 +194,16 @@ namespace DispatchSystem
         //启动监听
         private static void mainFunc()
         {
+            //AllocConsole();
+            //Trace.WriteLine("sdf");
+            //Shell.WriteLine("注意：启动程序...");
 
+            //Shell.WriteLine("/tWritten by Oyi319");
+            //Shell.WriteLine("/tBlog: http://blog.csdn.com/oyi319");
+            //Shell.WriteLine("{0}：{1}", "警告", "这是一条警告信息。");
+            //Shell.WriteLine("{0}：{1}", "错误", "这是一条错误信息！");
+            //Shell.WriteLine("{0}：{1}", "注意", "这是一条需要的注意信息。");
+            //Shell.WriteLine("");
             //FreeConsole();
             //PointData pd = new PointData();
             IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
@@ -189,7 +214,7 @@ namespace DispatchSystem
             {
                 Thread.Sleep(1);
                 //从缓冲区读取数据
-                byte[] bytes = new byte[10000];
+                byte[] bytes = new byte[1000];
                 int length = socket.ReceiveFrom(bytes, ref endPoint);
                 //更新接收到的数据总长度
                 RxLength += length;
@@ -568,6 +593,7 @@ namespace DispatchSystem
                             }
                         }
                     }
+                    Thread.Sleep(1);
                 }
             }
             msg.resault = false;
@@ -611,12 +637,13 @@ namespace DispatchSystem
                             if (((ResponseBuf[i, 1] << 8) | ResponseBuf[i, 2]) == frameID)
                             {
                                 msg.resault = true;
-                                msg.Data = (ushort)(ResponseBuf[i, 10] << 8 | ResponseBuf[i, 11]);
+                                msg.Data = (ushort)(ResponseBuf[i, 11] << 8 | ResponseBuf[i, 12]);
                                 ResponseBuf[i, 0] = 0;
                                 return msg;
                             }
                         }
                     }
+                    Thread.Sleep(1);
                 }
             }
             msg.resault = false;
@@ -628,6 +655,7 @@ namespace DispatchSystem
             byte[] sendbyte = new byte[13];
             FrameID++;
             ReturnMsg msg = new ReturnMsg();
+            msg.DataBuf = new UInt16[Num];
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
@@ -662,13 +690,14 @@ namespace DispatchSystem
                                 msg.resault = true;
                                 for (int t = 0; t < Num; t++)
                                 {
-                                    msg.DataBuf[t] = (ushort)(ResponseBuf[i, 11 + 2 * t] << 8 | ResponseBuf[i, 12 + 2 * t]);
+                                    msg.DataBuf[t] = (ushort)(ResponseBuf[i, 12 + 2 * t] << 8 | ResponseBuf[i, 13 + 2 * t]);
                                 }
                                 ResponseBuf[i, 0] = 0;
                                 return msg;
                             }
                         }
                     }
+                    Thread.Sleep(1);
                 }
             }
             msg.resault = false;
@@ -872,7 +901,7 @@ namespace DispatchSystem
         /// <returns></returns>
         public static byte[] StrToHexByte(string hexString)
         {
-            byte[] returnBytes= new byte[1];
+            byte[] returnBytes = new byte[1];
             try
             {
                 hexString = hexString.Replace(" ", "");
@@ -882,10 +911,10 @@ namespace DispatchSystem
                 for (int i = 0; i < returnBytes.Length; i++)
                     returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
             }
-            catch 
+            catch
             {
 
-                //throw;
+                throw;
             }
 
             return returnBytes;

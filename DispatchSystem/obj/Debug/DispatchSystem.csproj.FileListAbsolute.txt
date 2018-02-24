@@ -44,7 +44,6 @@ D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpConfigForm.resourc
 D:\github\winform\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 D:\github\winform\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
-D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DataForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DisplayForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.doubleBufferListView.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.MDIParent1.resources
@@ -70,3 +69,8 @@ C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.U
 C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
 C:\Users\sun\Documents\GitHub\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.Cache
 D:\github\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UdpToolForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.SensorForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.ControlForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.StateForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.RegisterForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.SetForm.resources

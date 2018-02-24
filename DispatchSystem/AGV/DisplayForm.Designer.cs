@@ -161,7 +161,7 @@
             // 
             this.textBox_dec4.Font = new System.Drawing.Font("宋体", 16F);
             this.textBox_dec4.Location = new System.Drawing.Point(6, 138);
-            this.textBox_dec4.MaxLength = 2;
+            this.textBox_dec4.MaxLength = 5;
             this.textBox_dec4.Name = "textBox_dec4";
             this.textBox_dec4.Size = new System.Drawing.Size(66, 32);
             this.textBox_dec4.TabIndex = 69;
@@ -171,7 +171,7 @@
             // 
             this.textBox_dec3.Font = new System.Drawing.Font("宋体", 16F);
             this.textBox_dec3.Location = new System.Drawing.Point(6, 101);
-            this.textBox_dec3.MaxLength = 2;
+            this.textBox_dec3.MaxLength = 5;
             this.textBox_dec3.Name = "textBox_dec3";
             this.textBox_dec3.Size = new System.Drawing.Size(66, 32);
             this.textBox_dec3.TabIndex = 66;
@@ -181,7 +181,7 @@
             // 
             this.textBox_dec2.Font = new System.Drawing.Font("宋体", 16F);
             this.textBox_dec2.Location = new System.Drawing.Point(6, 62);
-            this.textBox_dec2.MaxLength = 2;
+            this.textBox_dec2.MaxLength = 5;
             this.textBox_dec2.Name = "textBox_dec2";
             this.textBox_dec2.Size = new System.Drawing.Size(66, 32);
             this.textBox_dec2.TabIndex = 63;
@@ -191,7 +191,7 @@
             // 
             this.textBox_dec1.Font = new System.Drawing.Font("宋体", 16F);
             this.textBox_dec1.Location = new System.Drawing.Point(6, 26);
-            this.textBox_dec1.MaxLength = 2;
+            this.textBox_dec1.MaxLength = 5;
             this.textBox_dec1.Name = "textBox_dec1";
             this.textBox_dec1.Size = new System.Drawing.Size(66, 32);
             this.textBox_dec1.TabIndex = 52;
@@ -637,7 +637,7 @@
             // 
             this.textBox_str4.Font = new System.Drawing.Font("宋体", 16F);
             this.textBox_str4.Location = new System.Drawing.Point(13, 138);
-            this.textBox_str4.MaxLength = 2;
+            this.textBox_str4.MaxLength = 1;
             this.textBox_str4.Name = "textBox_str4";
             this.textBox_str4.Size = new System.Drawing.Size(46, 32);
             this.textBox_str4.TabIndex = 69;

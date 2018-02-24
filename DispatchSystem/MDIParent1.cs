@@ -1,9 +1,11 @@
-﻿using System;
+﻿using DispatchSystem.AGV;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -153,34 +155,100 @@ namespace DispatchSystem
         {
             pi = new Point(e.X, e.Y);
         }
-        DataForm[] dataForm;
+        //传感器
+        SensorForm[] sensorForm = new SensorForm[UdpSever.DeviceNum];
+        //运行状态
+        StateForm[] stateForm = new StateForm[UdpSever.DeviceNum];
+        //远程操作
+        ControlForm[] controlForm = new ControlForm[UdpSever.DeviceNum];
+        //参数设置
+        SetForm[] setForm = new SetForm[UdpSever.DeviceNum];
+        //寄存器
+        RegisterForm[] registerForm = new RegisterForm[UdpSever.DeviceNum];
+
         private void treeView1_DoubleClick(object sender, EventArgs e) //从光标所在的位置得到该位置上的节点
         {
-            if (dataForm == null)
-            {
-                dataForm = new DataForm[UdpSever.DeviceNum];
-            }
             TreeNode node = this.treeView1.GetNodeAt(pi);
             if (pi.X < node.Bounds.Left || pi.X > node.Bounds.Right)
             {
-                //textBox1.Text = "不触发事件";
+                //不触发事件;
             }
             else if (node.Parent != null)
             {
                 int parent = int.Parse(node.Parent.Name);
-                //寄存器监控
-                if (node.Index == (int.Parse(AGV.Register.Key) - 1))
+                //传感器
+                if (node.Index == (int.Parse(AGV.Sensor.Key) - 1))
                 {
                     try
                     {
-                        dataForm[parent].WindowState = FormWindowState.Normal;
-                        dataForm[parent].Show();//弹出这个窗口
-                        dataForm[parent].Activate();//激活显示
+                        sensorForm[parent].WindowState = FormWindowState.Normal;
+                        sensorForm[parent].Show();//弹出这个窗口
+                        sensorForm[parent].Activate();//激活显示
                     }
                     catch (Exception)
                     {
-                        dataForm[parent] = new DataForm(int.Parse(node.Parent.Name));
-                        dataForm[parent].Show();//弹出这个窗口
+                        sensorForm[parent] = new SensorForm(int.Parse(node.Parent.Name));
+                        sensorForm[parent].Show();//弹出这个窗口
+                    }
+                }
+                //运行状态
+                else if (node.Index == (int.Parse(AGV.State.Key) - 1))
+                {
+                    try
+                    {
+                        stateForm[parent].WindowState = FormWindowState.Normal;
+                        stateForm[parent].Show();//弹出这个窗口
+                        stateForm[parent].Activate();//激活显示
+                    }
+                    catch (Exception)
+                    {
+                        stateForm[parent] = new StateForm(int.Parse(node.Parent.Name));
+                        stateForm[parent].Show();//弹出这个窗口
+                    }
+                }
+                //远程操作
+                else if (node.Index == (int.Parse(AGV.Control.Key) - 1))
+                {
+                    try
+                    {
+                        controlForm[parent].WindowState = FormWindowState.Normal;
+                        controlForm[parent].Show();//弹出这个窗口
+                        controlForm[parent].Activate();//激活显示
+                    }
+                    catch (Exception)
+                    {
+                        controlForm[parent] = new ControlForm(int.Parse(node.Parent.Name));
+                        controlForm[parent].Show();//弹出这个窗口
+                    }
+                }
+                //参数设置
+                else if (node.Index == (int.Parse(AGV.Set.Key) - 1))
+                {
+                    try
+                    {
+                        setForm[parent].WindowState = FormWindowState.Normal;
+                        setForm[parent].Show();//弹出这个窗口
+                        setForm[parent].Activate();//激活显示
+                    }
+                    catch (Exception)
+                    {
+                        setForm[parent] = new SetForm(int.Parse(node.Parent.Name));
+                        setForm[parent].Show();//弹出这个窗口
+                    }
+                }
+                //寄存器
+                else if (node.Index == (int.Parse(AGV.Register.Key) - 1))
+                {
+                    try
+                    {
+                        registerForm[parent].WindowState = FormWindowState.Normal;
+                        registerForm[parent].Show();//弹出这个窗口
+                        registerForm[parent].Activate();//激活显示
+                    }
+                    catch (Exception)
+                    {
+                        registerForm[parent] = new RegisterForm(int.Parse(node.Parent.Name));
+                        registerForm[parent].Show();//弹出这个窗口
                     }
                 }
             }
