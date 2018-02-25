@@ -77,7 +77,7 @@ namespace DispatchSystem
         //初始化寄存器数
         public static int RegisterNum = 128;
         //单帧数据长度
-        public static int FrameLen = 512;
+        public static int FrameLen = 2048;
         //设备，寄存器，数据和时间戳
         public static Int64[,,] Ddata = new Int64[DeviceNum, RegisterNum, 2];
         //设备端口及IP
@@ -92,10 +92,10 @@ namespace DispatchSystem
         //错误重发次数
         public static int RepeatNum = 3;
         //响应超时时间，单位ms
-        public static int ResponseTimeout = 1000;
+        public static int ResponseTimeout = 2000;
 
         //响应帧缓冲池大小
-        public static int RESPONSE_MAX_LEN = 300;
+        public static int RESPONSE_MAX_LEN = 2048;
         //响应帧缓冲池
         public static byte[,] ResponseBuf = new byte[RESPONSE_MAX_LEN, FrameLen];
 
@@ -214,7 +214,7 @@ namespace DispatchSystem
             {
                 Thread.Sleep(1);
                 //从缓冲区读取数据
-                byte[] bytes = new byte[1000];
+                byte[] bytes = new byte[2048];
                 int length = socket.ReceiveFrom(bytes, ref endPoint);
                 //更新接收到的数据总长度
                 RxLength += length;
@@ -572,7 +572,6 @@ namespace DispatchSystem
             int crcRes = CRC.crc_16(sendbyte, 11 + Num * 2);
             sendbyte[11 + Num * 2] = (byte)(crcRes >> 8);
             sendbyte[12 + Num * 2] = (byte)(crcRes);
-            sendToUdp(EndPointArray[TargetAddress], sendbyte);
 
             for (int j = 0; j < RepeatNum; j++)
             {
@@ -724,7 +723,7 @@ namespace DispatchSystem
                 buf[buf.Length - 1] = (byte)('!');
                 TxLength += buf.Length;
                 socket.SendTo(buf, EndPort);
-                Console.WriteLine(string.Format("编码后数据:{0}\r\n", ByteToHexStr(buf)));
+                Console.WriteLine(string.Format("编码后数据:{0}\r\n", System.Text.Encoding.ASCII.GetString(buf)));
             }
         }
 

@@ -27,7 +27,7 @@ namespace DispatchSystem.AGV
         //读多个寄存器
         private void button1_Click(object sender, EventArgs e)
         {
-            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, 1);
+            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, 128);
             Console.WriteLine("读取结果:\r\n{0}", rm.ToString());
         }
 
