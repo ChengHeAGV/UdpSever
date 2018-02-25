@@ -87,7 +87,7 @@ namespace DispatchSystem
         //服务器地址
         public static int ServerAddress = 1;
         //设备心跳周期(单位：秒)
-        public static int HeartCycle = 10;
+        public static int HeartCycle = 100;
 
         //错误重发次数
         public static int RepeatNum = 3;
@@ -95,7 +95,7 @@ namespace DispatchSystem
         public static int ResponseTimeout = 2000;
 
         //响应帧缓冲池大小
-        public static int RESPONSE_MAX_LEN = 2048;
+        public static int RESPONSE_MAX_LEN = 20;
         //响应帧缓冲池
         public static byte[,] ResponseBuf = new byte[RESPONSE_MAX_LEN, FrameLen];
 
@@ -119,7 +119,7 @@ namespace DispatchSystem
                     int num = 0;
                     foreach (var item in DataBuf)
                     {
-                        str += String.Format("DataBuf[{0}]:{1}\r\n", num,item.ToString("X2"));
+                        str += String.Format("DataBuf[{0}]:{1}\r\n", num, item.ToString("X2"));
                         num++;
                     }
                 }
@@ -229,249 +229,508 @@ namespace DispatchSystem
                 string str = Encoding.ASCII.GetString(Buf);
                 //清除多余的\0
                 str = str.Replace("\0", "");
-                //Console.WriteLine(string.Format("收到数据:{0}\r\n", str));
+                Console.WriteLine(string.Format("收到数据:{0}\r\n", str));
                 //将收到的数据追加到缓冲池
                 StringBuf += str;
                 #endregion
 
-                //利用正则表达式截取所有有效数据
-                MatchCollection mc = Regex.Matches(StringBuf, @"(?<=\$).+?(?=\!)");
-                if (mc.Count > 0)//找到了有效数据
+
+                //开始标志
+                int Start = 0;
+                //结束标志
+                int Stop = 0;
+                //搜索结果
+                bool reault;
+                //循环搜索并解析有效数据
+                while (StringBuf.Length > (Stop + 1))
                 {
                     int count = 0;
-                    foreach (var item in mc)
+                    reault = false;
+                    for (int k = Stop; k < StringBuf.Length; k++)
                     {
-
-                        count++;
-                        Buf = StrToHexByte(item.ToString());
-                        //Console.WriteLine(string.Format("第{0}次分包解析:{1}\r\n", count, ByteToHexStr(Buf)));
-
-                        //CRC校验
-                        int crc16 = CRC.crc_16(Buf, Buf.Length - 2);
-                        if (crc16 == (Buf[Buf.Length - 2] << 8 | Buf[Buf.Length - 1]))
+                        //查找开始符
+                        if (StringBuf[k] == '$')
                         {
-                            //帧ID
-                            int FrameID = Buf[0] << 8 | Buf[1];
-                            //设备地址
-                            int DeviceAddress = Buf[2] << 8 | Buf[3];
-                            //帧类型
-                            int FrameType = Buf[4];
-                            //目标地址
-                            int DstAddress = Buf[5] << 8 | Buf[6];
-
-                            #region 判断帧类型
-                            switch (FrameType)
-                            {
-                                case 0:
-                                    #region 心跳帧
-                                    //Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n", DeviceAddress));
-                                    //存储设备端口信息到EndPointArray
-                                    EndPointArray[DeviceAddress] = endPoint;
-                                    //更新设备响应时间
-                                    UpdateTime[DeviceAddress] = DateTime.Now;
-                                    #endregion
-                                    break;
-                                case 1:
-                                    #region 操作帧
-                                    Console.WriteLine(string.Format("帧类型:操作帧\r\n"));
-                                    switch (Buf[7])//功能码
-                                    {
-                                        case 1:
-                                            #region 读单个寄存器
-                                            //判断目标地址是否在线
-                                            if (EndPointArray[DeviceAddress] != null)
-                                            {
-                                                byte[] sendbyte = new byte[14];
-
-                                                sendbyte[0] = Buf[0];//帧ID高
-                                                sendbyte[1] = Buf[1];//帧ID底
-                                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
-                                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
-                                                sendbyte[4] = 0x02;//帧类型
-                                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
-                                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
-                                                sendbyte[7] = 0x01;//功能码
-                                                sendbyte[8] = Buf[8];//寄存器地址高
-                                                sendbyte[9] = Buf[9];//寄存器地址低
-
-                                                sendbyte[10] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0] >> 8);//数据高
-                                                sendbyte[11] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0]);//数据低
-
-                                                int crcRes = CRC.crc_16(sendbyte, 12);
-
-                                                sendbyte[12] = (byte)(crcRes >> 8);
-                                                sendbyte[13] = (byte)(crcRes);
-                                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
-                                            }
-                                            #endregion
-                                            break;
-                                        case 2:
-                                            #region 写单个寄存器
-                                            //判断目标地址是否在线
-                                            if (EndPointArray[DeviceAddress] != null)
-                                            {
-                                                byte[] sendbyte = new byte[11];
-                                                int RegAddress = Buf[8] << 8 | Buf[9];
-                                                sendbyte[0] = Buf[0];//帧ID高
-                                                sendbyte[1] = Buf[1];//帧ID底
-                                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
-                                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
-                                                sendbyte[4] = 0x02;//帧类型
-                                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
-                                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
-                                                sendbyte[7] = 0x02;//功能码
-
-                                                if (RegAddress <= RegisterNum)
-                                                {
-                                                    //写入寄存器
-                                                    Ddata[DeviceAddress, RegAddress, 0] = (UInt16)(Buf[10] << 8 | Buf[11]);
-                                                    //更新时间戳
-                                                    Ddata[DeviceAddress, RegAddress, 1] = DateTimeToStamp(DateTime.Now);
-                                                    sendbyte[8] = 1;//结果
-                                                }
-                                                else
-                                                {
-                                                    sendbyte[8] = 0;//结果
-                                                }
-
-                                                int crcRes = CRC.crc_16(sendbyte, 9);
-
-                                                sendbyte[9] = (byte)(crcRes >> 8);
-                                                sendbyte[10] = (byte)(crcRes);
-                                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
-                                            }
-                                            #endregion
-                                            break;
-                                        case 3:
-                                            #region 读多个寄存器
-                                            //判断目标地址是否在线
-                                            if (EndPointArray[DeviceAddress] != null)
-                                            {
-                                                int Num = Buf[11];
-                                                byte[] sendbyte = new byte[13 + Num * 2];
-                                                //寄存器起始地址
-                                                int RegStartAdd = Buf[8] << 8 | Buf[9];
-                                                sendbyte[0] = Buf[0];//帧ID高
-                                                sendbyte[1] = Buf[1];//帧ID底
-                                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
-                                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
-                                                sendbyte[4] = 0x02;//帧类型
-                                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
-                                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
-                                                sendbyte[7] = 0x03;//功能码
-                                                sendbyte[8] = Buf[8];//寄存器起始地址高
-                                                sendbyte[9] = Buf[9];//寄存器起始地址低
-
-                                                sendbyte[10] = Buf[10];//数量
-
-                                                for (int i = 0; i < Num; i++)
-                                                {
-                                                    sendbyte[11 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0] >> 8);//数据高
-                                                    sendbyte[12 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0]);//数据低
-                                                }
-
-                                                int crcRes = CRC.crc_16(sendbyte, 11 + 2 * Num);
-                                                sendbyte[11 + 2 * Num] = (byte)(crcRes >> 8);
-                                                sendbyte[11 + 2 * Num + 1] = (byte)(crcRes);
-                                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
-                                            }
-                                            #endregion
-                                            break;
-                                        case 4://
-                                            #region 写多个寄存器
-                                            //判断目标地址是否在线
-                                            if (EndPointArray[DeviceAddress] != null)
-                                            {
-                                                byte[] sendbyte = new byte[11];
-                                                int RegStartAddress = Buf[8] << 8 | Buf[9];
-                                                int Num = Buf[10];
-                                                sendbyte[0] = Buf[0];//帧ID高
-                                                sendbyte[1] = Buf[1];//帧ID底
-                                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
-                                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
-                                                sendbyte[4] = 0x02;//帧类型
-                                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
-                                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
-                                                sendbyte[7] = 0x04;//功能码
-
-                                                if ((RegStartAddress + Num) <= RegisterNum)
-                                                {
-                                                    for (int i = 0; i < Num; i++)
-                                                    {
-                                                        //写入寄存器
-                                                        Ddata[DeviceAddress, RegStartAddress + i, 0] = (UInt16)(Buf[11 + i * 2] << 8 | Buf[12 + i * 2]);
-                                                        //更新时间戳
-                                                        Ddata[DeviceAddress, RegStartAddress + i, 1] = DateTimeToStamp(DateTime.Now);
-                                                    }
-                                                    sendbyte[8] = 1;//结果
-                                                }
-                                                else
-                                                {
-                                                    sendbyte[8] = 0;//结果
-                                                }
-
-                                                int crcRes = CRC.crc_16(sendbyte, 9);
-                                                sendbyte[9] = (byte)(crcRes >> 8);
-                                                sendbyte[10] = (byte)(crcRes);
-                                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
-                                            }
-                                            #endregion
-                                            break;
-                                        default:
-                                            ErrorCount++;
-                                            Console.WriteLine(string.Format("帧类型错误：{0}\r\n", ErrorCount));
-                                            length = 0;
-                                            break;
-                                    }
-                                    #endregion
-                                    break;
-                                case 2:
-                                    #region 响应帧
-                                    //添加到响应帧缓冲池
-                                    for (int i = 0; i < RESPONSE_MAX_LEN; i++)
-                                    {
-                                        //将响应帧编入空闲的响应帧缓冲池
-                                        if (ResponseBuf[i, 0] == 0)
-                                        {
-                                            //缓冲池第1字节为帧长度
-                                            ResponseBuf[i, 0] = (byte)Buf.Length;
-                                            //将该响应帧加入缓冲池
-                                            for (int j = 0; j < Buf.Length; j++)
-                                                ResponseBuf[i, j + 1] = Buf[j];
-                                        }
-                                    }
-                                    Console.WriteLine(string.Format("帧类型:响应帧{0}\r\n", ByteToHexStr(Buf)));
-                                    #endregion
-                                    break;
-                                default:
-                                    //出错次数加一
-                                    ErrorCount++;
-                                    //打印消息
-                                    Console.WriteLine(string.Format("数据错误：{0}\r\n", ErrorCount));
-                                    break;
-                            }
-                            #endregion
+                            Start = k;
+                        }
+                        //查找结束符
+                        if ((Start >= Stop) && StringBuf[k] == '!')
+                        {
+                            Stop = k;
+                            reault = true;
+                            break;
                         }
                     }
-                    //清除已经处理的数据
-                    StringBuf = StringBuf.Remove(0, StringBuf.LastIndexOf("!"));
-                }
-                #region 如果还有残留数据，则去掉$之前的所有数据
-                //判断是否包含消息头
-                if (StringBuf.Contains("$"))
-                {
-                    //如果消息头前面有数据则清除，只保留后面的数据
-                    if (StringBuf.IndexOf("$") > 0)
+                    if (reault)//找到了有效的数据
                     {
-                        StringBuf = StringBuf.Remove(0, StringBuf.IndexOf("$"));
+                        //如果头尾中间没有数据，不处理
+                        if ((Stop - Start) == 1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            count++;
+                            Buf = StrToHexByte(StringBuf.Substring(Start + 1, Stop - Start - 1));
+                            //Console.WriteLine(string.Format("第{0}次分包解析:{1}\r\n", count, ByteToHexStr(Buf)));
+
+                            //CRC校验
+                            int crc16 = CRC.crc_16(Buf, Buf.Length - 2);
+                            if (crc16 == (Buf[Buf.Length - 2] << 8 | Buf[Buf.Length - 1]))
+                            {
+                                //帧ID
+                                int FrameID = Buf[0] << 8 | Buf[1];
+                                //设备地址
+                                int DeviceAddress = Buf[2] << 8 | Buf[3];
+                                //帧类型
+                                int FrameType = Buf[4];
+                                //目标地址
+                                int DstAddress = Buf[5] << 8 | Buf[6];
+
+                                #region 判断帧类型
+                                switch (FrameType)
+                                {
+                                    case 0:
+                                        #region 心跳帧
+                                        //Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n", DeviceAddress));
+                                        //存储设备端口信息到EndPointArray
+                                        EndPointArray[DeviceAddress] = endPoint;
+                                        //更新设备响应时间
+                                        UpdateTime[DeviceAddress] = DateTime.Now;
+                                        #endregion
+                                        break;
+                                    case 1:
+                                        #region 操作帧
+                                        Console.WriteLine(string.Format("帧类型:操作帧\r\n"));
+                                        switch (Buf[7])//功能码
+                                        {
+                                            case 1:
+                                                #region 读单个寄存器
+                                                //判断目标地址是否在线
+                                                if (EndPointArray[DeviceAddress] != null)
+                                                {
+                                                    byte[] sendbyte = new byte[14];
+
+                                                    sendbyte[0] = Buf[0];//帧ID高
+                                                    sendbyte[1] = Buf[1];//帧ID底
+                                                    sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                                                    sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                                                    sendbyte[4] = 0x02;//帧类型
+                                                    sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                                                    sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                                                    sendbyte[7] = 0x01;//功能码
+                                                    sendbyte[8] = Buf[8];//寄存器地址高
+                                                    sendbyte[9] = Buf[9];//寄存器地址低
+
+                                                    sendbyte[10] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0] >> 8);//数据高
+                                                    sendbyte[11] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0]);//数据低
+
+                                                    int crcRes = CRC.crc_16(sendbyte, 12);
+
+                                                    sendbyte[12] = (byte)(crcRes >> 8);
+                                                    sendbyte[13] = (byte)(crcRes);
+                                                    sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                                                }
+                                                #endregion
+                                                break;
+                                            case 2:
+                                                #region 写单个寄存器
+                                                //判断目标地址是否在线
+                                                if (EndPointArray[DeviceAddress] != null)
+                                                {
+                                                    byte[] sendbyte = new byte[11];
+                                                    int RegAddress = Buf[8] << 8 | Buf[9];
+                                                    sendbyte[0] = Buf[0];//帧ID高
+                                                    sendbyte[1] = Buf[1];//帧ID底
+                                                    sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                                                    sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                                                    sendbyte[4] = 0x02;//帧类型
+                                                    sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                                                    sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                                                    sendbyte[7] = 0x02;//功能码
+
+                                                    if (RegAddress <= RegisterNum)
+                                                    {
+                                                        //写入寄存器
+                                                        Ddata[DeviceAddress, RegAddress, 0] = (UInt16)(Buf[10] << 8 | Buf[11]);
+                                                        //更新时间戳
+                                                        Ddata[DeviceAddress, RegAddress, 1] = DateTimeToStamp(DateTime.Now);
+                                                        sendbyte[8] = 1;//结果
+                                                    }
+                                                    else
+                                                    {
+                                                        sendbyte[8] = 0;//结果
+                                                    }
+
+                                                    int crcRes = CRC.crc_16(sendbyte, 9);
+
+                                                    sendbyte[9] = (byte)(crcRes >> 8);
+                                                    sendbyte[10] = (byte)(crcRes);
+                                                    sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                                                }
+                                                #endregion
+                                                break;
+                                            case 3:
+                                                #region 读多个寄存器
+                                                //判断目标地址是否在线
+                                                if (EndPointArray[DeviceAddress] != null)
+                                                {
+                                                    int Num = Buf[11];
+                                                    byte[] sendbyte = new byte[13 + Num * 2];
+                                                    //寄存器起始地址
+                                                    int RegStartAdd = Buf[8] << 8 | Buf[9];
+                                                    sendbyte[0] = Buf[0];//帧ID高
+                                                    sendbyte[1] = Buf[1];//帧ID底
+                                                    sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                                                    sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                                                    sendbyte[4] = 0x02;//帧类型
+                                                    sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                                                    sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                                                    sendbyte[7] = 0x03;//功能码
+                                                    sendbyte[8] = Buf[8];//寄存器起始地址高
+                                                    sendbyte[9] = Buf[9];//寄存器起始地址低
+
+                                                    sendbyte[10] = Buf[10];//数量
+
+                                                    for (int i = 0; i < Num; i++)
+                                                    {
+                                                        sendbyte[11 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0] >> 8);//数据高
+                                                        sendbyte[12 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0]);//数据低
+                                                    }
+
+                                                    int crcRes = CRC.crc_16(sendbyte, 11 + 2 * Num);
+                                                    sendbyte[11 + 2 * Num] = (byte)(crcRes >> 8);
+                                                    sendbyte[11 + 2 * Num + 1] = (byte)(crcRes);
+                                                    sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                                                }
+                                                #endregion
+                                                break;
+                                            case 4://
+                                                #region 写多个寄存器
+                                                //判断目标地址是否在线
+                                                if (EndPointArray[DeviceAddress] != null)
+                                                {
+                                                    byte[] sendbyte = new byte[11];
+                                                    int RegStartAddress = Buf[8] << 8 | Buf[9];
+                                                    int Num = Buf[10];
+                                                    sendbyte[0] = Buf[0];//帧ID高
+                                                    sendbyte[1] = Buf[1];//帧ID底
+                                                    sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                                                    sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                                                    sendbyte[4] = 0x02;//帧类型
+                                                    sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                                                    sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                                                    sendbyte[7] = 0x04;//功能码
+
+                                                    if ((RegStartAddress + Num) <= RegisterNum)
+                                                    {
+                                                        for (int i = 0; i < Num; i++)
+                                                        {
+                                                            //写入寄存器
+                                                            Ddata[DeviceAddress, RegStartAddress + i, 0] = (UInt16)(Buf[11 + i * 2] << 8 | Buf[12 + i * 2]);
+                                                            //更新时间戳
+                                                            Ddata[DeviceAddress, RegStartAddress + i, 1] = DateTimeToStamp(DateTime.Now);
+                                                        }
+                                                        sendbyte[8] = 1;//结果
+                                                    }
+                                                    else
+                                                    {
+                                                        sendbyte[8] = 0;//结果
+                                                    }
+
+                                                    int crcRes = CRC.crc_16(sendbyte, 9);
+                                                    sendbyte[9] = (byte)(crcRes >> 8);
+                                                    sendbyte[10] = (byte)(crcRes);
+                                                    sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                                                }
+                                                #endregion
+                                                break;
+                                            default:
+                                                ErrorCount++;
+                                                Console.WriteLine(string.Format("帧类型错误：{0}\r\n", ErrorCount));
+                                                length = 0;
+                                                break;
+                                        }
+                                        #endregion
+                                        break;
+                                    case 2:
+                                        #region 响应帧
+                                        //添加到响应帧缓冲池
+                                        for (int i = 0; i < RESPONSE_MAX_LEN; i++)
+                                        {
+                                            //将响应帧编入空闲的响应帧缓冲池
+                                            if (ResponseBuf[i, 0] == 0)
+                                            {
+                                                //缓冲池第1字节为帧长度
+                                                ResponseBuf[i, 0] = (byte)Buf.Length;
+                                                //将该响应帧加入缓冲池
+                                                for (int j = 0; j < Buf.Length; j++)
+                                                    ResponseBuf[i, j + 1] = Buf[j];
+                                            }
+                                        }
+                                        Console.WriteLine(string.Format("帧类型:响应帧{0}\r\n", ByteToHexStr(Buf)));
+                                        #endregion
+                                        break;
+                                    default:
+                                        //出错次数加一
+                                        ErrorCount++;
+                                        //打印消息
+                                        Console.WriteLine(string.Format("数据错误：{0}\r\n", ErrorCount));
+                                        break;
+                                }
+                                #endregion
+                            }
+                        }
+                    }
+                    else//没有找到有效数据
+                    {
+                        //退出循环
+                        break;
                     }
                 }
+                if (Stop < StringBuf.Length - 1)
+                    StringBuf = StringBuf.Substring(Stop + 1, StringBuf.Length - Stop - 2);
                 else
-                {
-                    //没有包含消息头则清除数据
                     StringBuf = string.Empty;
-                }
-                #endregion
+
+                //利用正则表达式截取所有有效数据
+                //MatchCollection mc = Regex.Matches(StringBuf, @"(?<=\$).[0-9][a-f][A-F](?=\!)");
+                //if (mc.Count > 0)//找到了有效数据
+                //{
+                //    int count = 0;
+                //    foreach (var item in mc)
+                //    {
+
+                //        count++;
+                //        Buf = StrToHexByte(item.ToString());
+                //        //Console.WriteLine(string.Format("第{0}次分包解析:{1}\r\n", count, ByteToHexStr(Buf)));
+
+                //        //CRC校验
+                //        int crc16 = CRC.crc_16(Buf, Buf.Length - 2);
+                //        if (crc16 == (Buf[Buf.Length - 2] << 8 | Buf[Buf.Length - 1]))
+                //        {
+                //            //帧ID
+                //            int FrameID = Buf[0] << 8 | Buf[1];
+                //            //设备地址
+                //            int DeviceAddress = Buf[2] << 8 | Buf[3];
+                //            //帧类型
+                //            int FrameType = Buf[4];
+                //            //目标地址
+                //            int DstAddress = Buf[5] << 8 | Buf[6];
+
+                //            #region 判断帧类型
+                //            switch (FrameType)
+                //            {
+                //                case 0:
+                //                    #region 心跳帧
+                //                    //Console.WriteLine(string.Format("帧类型:心跳帧，设备ID：{0}\r\n", DeviceAddress));
+                //                    //存储设备端口信息到EndPointArray
+                //                    EndPointArray[DeviceAddress] = endPoint;
+                //                    //更新设备响应时间
+                //                    UpdateTime[DeviceAddress] = DateTime.Now;
+                //                    #endregion
+                //                    break;
+                //                case 1:
+                //                    #region 操作帧
+                //                    Console.WriteLine(string.Format("帧类型:操作帧\r\n"));
+                //                    switch (Buf[7])//功能码
+                //                    {
+                //                        case 1:
+                //                            #region 读单个寄存器
+                //                            //判断目标地址是否在线
+                //                            if (EndPointArray[DeviceAddress] != null)
+                //                            {
+                //                                byte[] sendbyte = new byte[14];
+
+                //                                sendbyte[0] = Buf[0];//帧ID高
+                //                                sendbyte[1] = Buf[1];//帧ID底
+                //                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                //                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                //                                sendbyte[4] = 0x02;//帧类型
+                //                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                //                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                //                                sendbyte[7] = 0x01;//功能码
+                //                                sendbyte[8] = Buf[8];//寄存器地址高
+                //                                sendbyte[9] = Buf[9];//寄存器地址低
+
+                //                                sendbyte[10] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0] >> 8);//数据高
+                //                                sendbyte[11] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0]);//数据低
+
+                //                                int crcRes = CRC.crc_16(sendbyte, 12);
+
+                //                                sendbyte[12] = (byte)(crcRes >> 8);
+                //                                sendbyte[13] = (byte)(crcRes);
+                //                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                //                            }
+                //                            #endregion
+                //                            break;
+                //                        case 2:
+                //                            #region 写单个寄存器
+                //                            //判断目标地址是否在线
+                //                            if (EndPointArray[DeviceAddress] != null)
+                //                            {
+                //                                byte[] sendbyte = new byte[11];
+                //                                int RegAddress = Buf[8] << 8 | Buf[9];
+                //                                sendbyte[0] = Buf[0];//帧ID高
+                //                                sendbyte[1] = Buf[1];//帧ID底
+                //                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                //                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                //                                sendbyte[4] = 0x02;//帧类型
+                //                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                //                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                //                                sendbyte[7] = 0x02;//功能码
+
+                //                                if (RegAddress <= RegisterNum)
+                //                                {
+                //                                    //写入寄存器
+                //                                    Ddata[DeviceAddress, RegAddress, 0] = (UInt16)(Buf[10] << 8 | Buf[11]);
+                //                                    //更新时间戳
+                //                                    Ddata[DeviceAddress, RegAddress, 1] = DateTimeToStamp(DateTime.Now);
+                //                                    sendbyte[8] = 1;//结果
+                //                                }
+                //                                else
+                //                                {
+                //                                    sendbyte[8] = 0;//结果
+                //                                }
+
+                //                                int crcRes = CRC.crc_16(sendbyte, 9);
+
+                //                                sendbyte[9] = (byte)(crcRes >> 8);
+                //                                sendbyte[10] = (byte)(crcRes);
+                //                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                //                            }
+                //                            #endregion
+                //                            break;
+                //                        case 3:
+                //                            #region 读多个寄存器
+                //                            //判断目标地址是否在线
+                //                            if (EndPointArray[DeviceAddress] != null)
+                //                            {
+                //                                int Num = Buf[11];
+                //                                byte[] sendbyte = new byte[13 + Num * 2];
+                //                                //寄存器起始地址
+                //                                int RegStartAdd = Buf[8] << 8 | Buf[9];
+                //                                sendbyte[0] = Buf[0];//帧ID高
+                //                                sendbyte[1] = Buf[1];//帧ID底
+                //                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                //                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                //                                sendbyte[4] = 0x02;//帧类型
+                //                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                //                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                //                                sendbyte[7] = 0x03;//功能码
+                //                                sendbyte[8] = Buf[8];//寄存器起始地址高
+                //                                sendbyte[9] = Buf[9];//寄存器起始地址低
+
+                //                                sendbyte[10] = Buf[10];//数量
+
+                //                                for (int i = 0; i < Num; i++)
+                //                                {
+                //                                    sendbyte[11 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0] >> 8);//数据高
+                //                                    sendbyte[12 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0]);//数据低
+                //                                }
+
+                //                                int crcRes = CRC.crc_16(sendbyte, 11 + 2 * Num);
+                //                                sendbyte[11 + 2 * Num] = (byte)(crcRes >> 8);
+                //                                sendbyte[11 + 2 * Num + 1] = (byte)(crcRes);
+                //                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                //                            }
+                //                            #endregion
+                //                            break;
+                //                        case 4://
+                //                            #region 写多个寄存器
+                //                            //判断目标地址是否在线
+                //                            if (EndPointArray[DeviceAddress] != null)
+                //                            {
+                //                                byte[] sendbyte = new byte[11];
+                //                                int RegStartAddress = Buf[8] << 8 | Buf[9];
+                //                                int Num = Buf[10];
+                //                                sendbyte[0] = Buf[0];//帧ID高
+                //                                sendbyte[1] = Buf[1];//帧ID底
+                //                                sendbyte[2] = (byte)(ServerAddress >> 8);//本机ID高
+                //                                sendbyte[3] = (byte)(ServerAddress);//本机ID低
+                //                                sendbyte[4] = 0x02;//帧类型
+                //                                sendbyte[5] = (byte)(DeviceAddress >> 8);//目标地址高
+                //                                sendbyte[6] = (byte)(DeviceAddress);//目标地址低
+                //                                sendbyte[7] = 0x04;//功能码
+
+                //                                if ((RegStartAddress + Num) <= RegisterNum)
+                //                                {
+                //                                    for (int i = 0; i < Num; i++)
+                //                                    {
+                //                                        //写入寄存器
+                //                                        Ddata[DeviceAddress, RegStartAddress + i, 0] = (UInt16)(Buf[11 + i * 2] << 8 | Buf[12 + i * 2]);
+                //                                        //更新时间戳
+                //                                        Ddata[DeviceAddress, RegStartAddress + i, 1] = DateTimeToStamp(DateTime.Now);
+                //                                    }
+                //                                    sendbyte[8] = 1;//结果
+                //                                }
+                //                                else
+                //                                {
+                //                                    sendbyte[8] = 0;//结果
+                //                                }
+
+                //                                int crcRes = CRC.crc_16(sendbyte, 9);
+                //                                sendbyte[9] = (byte)(crcRes >> 8);
+                //                                sendbyte[10] = (byte)(crcRes);
+                //                                sendToUdp(EndPointArray[DeviceAddress], sendbyte);
+                //                            }
+                //                            #endregion
+                //                            break;
+                //                        default:
+                //                            ErrorCount++;
+                //                            Console.WriteLine(string.Format("帧类型错误：{0}\r\n", ErrorCount));
+                //                            length = 0;
+                //                            break;
+                //                    }
+                //                    #endregion
+                //                    break;
+                //                case 2:
+                //                    #region 响应帧
+                //                    //添加到响应帧缓冲池
+                //                    for (int i = 0; i < RESPONSE_MAX_LEN; i++)
+                //                    {
+                //                        //将响应帧编入空闲的响应帧缓冲池
+                //                        if (ResponseBuf[i, 0] == 0)
+                //                        {
+                //                            //缓冲池第1字节为帧长度
+                //                            ResponseBuf[i, 0] = (byte)Buf.Length;
+                //                            //将该响应帧加入缓冲池
+                //                            for (int j = 0; j < Buf.Length; j++)
+                //                                ResponseBuf[i, j + 1] = Buf[j];
+                //                        }
+                //                    }
+                //                    Console.WriteLine(string.Format("帧类型:响应帧{0}\r\n", ByteToHexStr(Buf)));
+                //                    #endregion
+                //                    break;
+                //                default:
+                //                    //出错次数加一
+                //                    ErrorCount++;
+                //                    //打印消息
+                //                    Console.WriteLine(string.Format("数据错误：{0}\r\n", ErrorCount));
+                //                    break;
+                //            }
+                //            #endregion
+                //        }
+                //    }
+                //    //清除已经处理的数据
+                //    StringBuf = StringBuf.Remove(0, StringBuf.LastIndexOf("!"));
+                //}
+                //#region 如果还有残留数据，则去掉$之前的所有数据
+                ////判断是否包含消息头
+                //if (StringBuf.Contains("$"))
+                //{
+                //    //如果消息头前面有数据则清除，只保留后面的数据
+                //    if (StringBuf.IndexOf("$") > 0)
+                //    {
+                //        StringBuf = StringBuf.Remove(0, StringBuf.IndexOf("$"));
+                //    }
+                //}
+                //else
+                //{
+                //    //没有包含消息头则清除数据
+                //    StringBuf = string.Empty;
+                //}
+                //#endregion
             }
         }
 
