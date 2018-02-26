@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{220F810A-2641-4084-BFF7-35ED5AB1FE6D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DispatchSystem</RootNamespace>
     <AssemblyName>AGV调度系统</AssemblyName>
@@ -119,6 +119,12 @@
     <Compile Include="AGV\StateForm.Designer.cs">
       <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Developer\DebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Developer\DebugForm.Designer.cs">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="doubleBufferListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AGV\StateForm.resx">
       <DependentUpon>StateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Developer\DebugForm.resx">
+      <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="doubleBufferListView.resx">
       <DependentUpon>doubleBufferListView.cs</DependentUpon>

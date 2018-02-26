@@ -44,7 +44,7 @@ namespace DispatchSystem
         private void DataForm_Load(object sender, EventArgs e)
         {
             //加载数据
-            for (int i = 0; i < UdpSever.Ddata.GetLength(0); i++)
+            for (int i = 0; i < UdpSever.RegisterNum; i++)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = i.ToString();//"寄存器"
@@ -72,7 +72,7 @@ namespace DispatchSystem
                 this.Invoke(new MethodInvoker(delegate
                 {
                     //更新数据
-                    for (int i = 0; i < UdpSever.Ddata.GetLength(0); i++)
+                    for (int i = 0; i < UdpSever.RegisterNum; i++)
                     {//UdpSever.Ddata[deviceNum, i, 1].ToString();
                         doubleBufferListView1.Items[i].SubItems[1].Text = UdpSever.StampToString(UdpSever.Ddata[deviceNum, i, 1]);//时间戳
                         doubleBufferListView1.Items[i].SubItems[2].Text = UdpSever.Ddata[deviceNum, i, 0].ToString();//十进制

@@ -95,13 +95,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -114,13 +108,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -133,13 +121,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -152,13 +134,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -171,13 +147,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -190,13 +160,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -209,13 +173,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -228,13 +186,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -247,13 +199,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -266,13 +212,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -285,13 +225,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -304,13 +238,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -323,13 +251,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -342,13 +264,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -361,13 +277,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -380,13 +290,7 @@ namespace DispatchSystem
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
             Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-            if (returnmsg.resault)
-            {
-                UdpSever.Ddata[deviceID, registerID, 0] = data;
-                //更新时间戳
-                UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-            }
-            else
+            if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
             }
@@ -410,14 +314,7 @@ namespace DispatchSystem
                 }
                 returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
                 Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-                if (returnmsg.resault)
-                {
-                    UdpSever.Ddata[deviceID, registerID, 0] = data;
-                    //更新时间戳
-                    UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-                }
-
-                else
+                if (!returnmsg.resault)
                 {
                     MessageBox.Show("写入失败！");
                 }
@@ -453,13 +350,7 @@ namespace DispatchSystem
                     UInt16 data = UInt16.Parse(tx.Text);
                     returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
                     Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-                    if (returnmsg.resault)
-                    {
-                        UdpSever.Ddata[deviceID, registerID, 0] = data;
-                        //更新时间戳
-                        UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-                    }
-                    else
+                    if (!returnmsg.resault)
                     {
                         MessageBox.Show("写入失败！");
                     }
@@ -510,13 +401,7 @@ namespace DispatchSystem
                     }
                     returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
                     Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
-                    if (returnmsg.resault)
-                    {
-                        UdpSever.Ddata[deviceID, registerID, 0] = data;
-                        //更新时间戳
-                        UdpSever.Ddata[deviceID, registerID, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-                    }
-                    else
+                    if (!returnmsg.resault)
                     {
                         MessageBox.Show("写入失败！");
                     }

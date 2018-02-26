@@ -1,4 +1,5 @@
 ﻿using DispatchSystem.AGV;
+using DispatchSystem.Developer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -452,6 +453,24 @@ namespace DispatchSystem
             {
                 udpform = new UdpToolForm();
                 udpform.Show();//弹出这个窗口
+            }
+        }
+
+        //调试信息
+        DebugForm debugForm;
+        private void DebugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //启动调试界面
+            try
+            {
+                debugForm.WindowState = FormWindowState.Normal;
+                debugForm.Show();//弹出这个窗口
+                debugForm.Activate();//激活显示
+            }
+            catch (Exception)
+            {
+                debugForm = new DebugForm();
+                debugForm.Show();//弹出这个窗口
             }
         }
     }

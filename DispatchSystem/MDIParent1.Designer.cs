@@ -71,6 +71,7 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.网络助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,7 +102,8 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
-            this.网络助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.高级ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DebugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -124,7 +126,8 @@
             this.toolsMenu,
             this.windowsMenu,
             this.helpMenu,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.高级ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -324,7 +327,7 @@
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.toolBarToolStripMenuItem.Text = "工具栏(&T)";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
@@ -334,7 +337,7 @@
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.statusBarToolStripMenuItem.Text = "状态栏(&S)";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
             // 
@@ -360,6 +363,13 @@
             this.串口助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.串口助手ToolStripMenuItem.Text = "串口助手";
             this.串口助手ToolStripMenuItem.Click += new System.EventHandler(this.串口助手ToolStripMenuItem_Click);
+            // 
+            // 网络助手ToolStripMenuItem
+            // 
+            this.网络助手ToolStripMenuItem.Name = "网络助手ToolStripMenuItem";
+            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.网络助手ToolStripMenuItem.Text = "网络助手";
+            this.网络助手ToolStripMenuItem.Click += new System.EventHandler(this.网络助手ToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -676,12 +686,20 @@
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
             // 
-            // 网络助手ToolStripMenuItem
+            // 高级ToolStripMenuItem
             // 
-            this.网络助手ToolStripMenuItem.Name = "网络助手ToolStripMenuItem";
-            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.网络助手ToolStripMenuItem.Text = "网络助手";
-            this.网络助手ToolStripMenuItem.Click += new System.EventHandler(this.网络助手ToolStripMenuItem_Click);
+            this.高级ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DebugToolStripMenuItem});
+            this.高级ToolStripMenuItem.Name = "高级ToolStripMenuItem";
+            this.高级ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.高级ToolStripMenuItem.Text = "Developer";
+            // 
+            // DebugToolStripMenuItem
+            // 
+            this.DebugToolStripMenuItem.Name = "DebugToolStripMenuItem";
+            this.DebugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DebugToolStripMenuItem.Text = "Debug";
+            this.DebugToolStripMenuItem.Click += new System.EventHandler(this.DebugToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -780,6 +798,8 @@
         private System.Windows.Forms.ToolStripMenuItem 路径规划ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 流程规划ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 网络助手ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 高级ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DebugToolStripMenuItem;
     }
 }
 

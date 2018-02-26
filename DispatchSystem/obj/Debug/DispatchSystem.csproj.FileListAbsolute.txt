@@ -74,4 +74,4 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.ControlFo
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.StateForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.RegisterForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.SetForm.resources
-D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CoreCompileInputs.cache
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.DebugForm.resources
