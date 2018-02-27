@@ -125,10 +125,16 @@
     <Compile Include="Developer\DebugForm.Designer.cs">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="doubleBufferListView.cs">
+    <Compile Include="UserControls\Forklift.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="doubleBufferListView.Designer.cs">
+    <Compile Include="UserControls\Forklift.designer.cs">
+      <DependentUpon>Forklift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\doubleBufferListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\doubleBufferListView.Designer.cs">
       <DependentUpon>doubleBufferListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ini.cs" />
@@ -159,6 +165,12 @@
     <Compile Include="UdpToolForm.Designer.cs">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MagneticGuide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MagneticGuide.Designer.cs">
+      <DependentUpon>MagneticGuide.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AGV\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,7 +189,10 @@
     <EmbeddedResource Include="Developer\DebugForm.resx">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doubleBufferListView.resx">
+    <EmbeddedResource Include="UserControls\Forklift.resx">
+      <DependentUpon>Forklift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\doubleBufferListView.resx">
       <DependentUpon>doubleBufferListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
@@ -201,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UdpToolForm.resx">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MagneticGuide.resx">
+      <DependentUpon>MagneticGuide.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>

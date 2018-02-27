@@ -75,3 +75,5 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.StateForm
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.RegisterForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.SetForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.DebugForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.Forklift.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.MagneticGuide.resources
