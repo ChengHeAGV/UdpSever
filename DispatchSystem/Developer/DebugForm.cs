@@ -39,7 +39,7 @@ namespace DispatchSystem.Developer
             }
             catch (Exception ex)
             {
-                UdpSever.Shell.WriteLine(ConsoleColor.Yellow, "警告：{0}", ex.ToString());
+                UdpSever.Shell.WriteLine("错误", "警告：{0}", ex.ToString());
             }
             finally
             {
@@ -78,7 +78,7 @@ namespace DispatchSystem.Developer
             }
             catch (Exception ex)
             {
-                UdpSever.Shell.WriteLine(ConsoleColor.Yellow, "警告：{0}", ex.ToString());
+                UdpSever.Shell.WriteLine("错误",ConsoleColor.Yellow, "警告：{0}", ex.ToString());
             }
         }
 
@@ -99,6 +99,11 @@ namespace DispatchSystem.Developer
         private void DebugForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveDbugConfig();
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            Console.Clear();
         }
     }
 }

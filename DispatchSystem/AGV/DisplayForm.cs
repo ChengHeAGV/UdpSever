@@ -39,24 +39,24 @@ namespace DispatchSystem
                 this.Invoke(new MethodInvoker(delegate
                 {
                     //更新数据
-                    label_Hex.Text = UdpSever.Ddata[deviceID, registerID, 0].ToString("X2");//十六进制
+                    label_Hex.Text = UdpSever.Register[deviceID, registerID, 0].ToString("X2");//十六进制
 
-                    label_Dec.Text = UdpSever.Ddata[deviceID, registerID, 0].ToString();//十进制
+                    label_Dec.Text = UdpSever.Register[deviceID, registerID, 0].ToString();//十进制
 
 
-                    string bin = Convert.ToString(UdpSever.Ddata[deviceID, registerID, 0], 2).PadLeft(16, '0');//二进制
+                    string bin = Convert.ToString(UdpSever.Register[deviceID, registerID, 0], 2).PadLeft(16, '0');//二进制
 
                     byte[] bt = new byte[2];
-                    bt[0] = (byte)(UdpSever.Ddata[deviceID, registerID, 0] >> 8);
-                    bt[1] = (byte)(UdpSever.Ddata[deviceID, registerID, 0]);
+                    bt[0] = (byte)(UdpSever.Register[deviceID, registerID, 0] >> 8);
+                    bt[1] = (byte)(UdpSever.Register[deviceID, registerID, 0]);
                     string str = Encoding.GetEncoding("GB2312").GetString(bt, 0, 2).Replace("\0", "");
                     label_str.Text = str;//ASCII字符串
 
                     //显示时间
                     DateTime dtstart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-                    long itime = long.Parse(UdpSever.Ddata[deviceID, registerID, 1] + "0000000");
+                    long itime = long.Parse(UdpSever.Register[deviceID, registerID, 1] + "0000000");
                     TimeSpan tonow = new TimeSpan(itime);
-                    label_updataTime.Text = UdpSever.StampToString(UdpSever.Ddata[deviceID, registerID, 1]);
+                    label_updataTime.Text = UdpSever.StampToString(UdpSever.Register[deviceID, registerID, 1]);
                     //label_updataTime.Text = dtstart.Add(tonow).ToLongDateString() + " " + dtstart.Add(tonow).ToLongTimeString();
 
                     string b = string.Empty;
@@ -90,7 +90,7 @@ namespace DispatchSystem
 
         private void button_0_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -103,7 +103,7 @@ namespace DispatchSystem
 
         private void button_1_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 1;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -116,7 +116,7 @@ namespace DispatchSystem
 
         private void button_2_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 2;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -129,7 +129,7 @@ namespace DispatchSystem
 
         private void button_3_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 3;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -142,7 +142,7 @@ namespace DispatchSystem
 
         private void button_4_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 4;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -155,7 +155,7 @@ namespace DispatchSystem
 
         private void button_5_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 5;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -168,7 +168,7 @@ namespace DispatchSystem
 
         private void button_6_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 6;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -181,7 +181,7 @@ namespace DispatchSystem
 
         private void button_7_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 7;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -194,7 +194,7 @@ namespace DispatchSystem
 
         private void button_8_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 8;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -207,7 +207,7 @@ namespace DispatchSystem
 
         private void button_9_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 9;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -220,7 +220,7 @@ namespace DispatchSystem
 
         private void button_10_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 10;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -233,7 +233,7 @@ namespace DispatchSystem
 
         private void button_11_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 11;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -246,7 +246,7 @@ namespace DispatchSystem
 
         private void button_12_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 12;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -259,7 +259,7 @@ namespace DispatchSystem
 
         private void button_13_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 13;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -272,7 +272,7 @@ namespace DispatchSystem
 
         private void button_14_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 14;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -285,7 +285,7 @@ namespace DispatchSystem
 
         private void button_15_Click(object sender, EventArgs e)
         {
-            Int64 data = UdpSever.Ddata[deviceID, registerID, 0];
+            Int64 data = UdpSever.Register[deviceID, registerID, 0];
             data ^= 1 << 15;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
@@ -405,7 +405,7 @@ namespace DispatchSystem
                     {
                         MessageBox.Show("写入失败！");
                     }
-                    UdpSever.Ddata[deviceID, registerID, 0] = data;
+                    UdpSever.Register[deviceID, registerID, 0] = data;
                 }
             }
         }

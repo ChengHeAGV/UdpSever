@@ -49,7 +49,7 @@ namespace DispatchSystem
             }
 
 
-            UdpSever.Shell.WriteNotice("系统启动");
+            UdpSever.Shell.WriteNotice("系统消息", "系统启动...");
             UdpSever.Shell.WriteLine("-->服务器地址[ServerAddress]:{0}", UdpSever.ServerAddress);
             UdpSever.Shell.WriteLine("-->设备数[DeviceNum]:{0}", UdpSever.DeviceNum);
             UdpSever.Shell.WriteLine("-->寄存器数[RegisterNum]:{0}", UdpSever.RegisterNum);

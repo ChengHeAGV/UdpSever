@@ -42,53 +42,69 @@ namespace DispatchSystem
             /// <summary>
             /// 输出自定义颜色信息
             /// </summary>
-            /// <param name="color"></param>
+            /// <param name="type">消息类型</param>
+            /// <param name="color">显示颜色</param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteLine(ConsoleColor color, string format, params object[] args)
+            public static void WriteLine(string type, ConsoleColor color, string format, params object[] args)
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("[{0}]", DateTimeOffset.Now);
-                Console.ForegroundColor = color;
-                Console.WriteLine("{0}\r\n", string.Format(format, args));
+                if (DebugMsg.IsChecked(type))
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    Console.ForegroundColor = color;
+                    Console.WriteLine("{0}\r\n", string.Format(format, args));
+                }
             }
 
             /// <summary>
             /// 警告信息
             /// </summary>
+            /// <param name="type">消息类型</param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteWarning(string format, params object[] args)
+            public static void WriteWarning(string type, string format, params object[] args)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("[{0}]", DateTimeOffset.Now);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("{0}\r\n", string.Format(format, args));
+                if (DebugMsg.IsChecked(type))
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0}\r\n", string.Format(format, args));
+                }
             }
 
             /// <summary>
             /// 提示信息
             /// </summary>
+            /// <param name="type">消息类型</param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteNotice(string format, params object[] args)
+            public static void WriteNotice(string type, string format, params object[] args)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("[{0}]", DateTimeOffset.Now);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("{0}\r\n", string.Format(format, args));
+                if (DebugMsg.IsChecked(type))
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("{0}\r\n", string.Format(format, args));
+                }
             }
             /// <summary>
             /// 错误信息
             /// </summary>
+            /// <param name="type">消息类型</param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteError(string format, params object[] args)
+            public static void WriteError(string type, string format, params object[] args)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("[{0}]", DateTimeOffset.Now);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("{0}\r\n", string.Format(format, args));
+                if (DebugMsg.IsChecked(type))
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("{0}\r\n", string.Format(format, args));
+                }
             }
         }
 
@@ -147,20 +163,20 @@ namespace DispatchSystem
         //单帧数据长度
         public static int FrameLen = 2048;
         //设备，寄存器，数据和时间戳
-        public static Int64[,,] Ddata = new Int64[DeviceNum, RegisterNum, 2];
+        public static Int64[,,] Register = new Int64[DeviceNum, RegisterNum, 2];
         //设备端口及IP
         public static EndPoint[] EndPointArray = new EndPoint[DeviceNum];
         //设备更新时间(最后一次收到数据时间)
         public static DateTime[] UpdateTime = new DateTime[DeviceNum];
         //服务器地址
-        public static int ServerAddress = 1;
+        public static int ServerAddress = 0;
         //设备心跳周期(单位：秒)
         public static int HeartCycle = 100;
 
         //错误重发次数
         public static int RepeatNum = 3;
         //响应超时时间，单位ms
-        public static int ResponseTimeout = 2000;
+        public static int ResponseTimeout = 3000;
 
         //响应帧缓冲池大小
         public static int RESPONSE_MAX_LEN = 20;
@@ -224,7 +240,7 @@ namespace DispatchSystem
                 //启动检测连接进程
                 State = true;//更新服务器状态
 
-                Shell.WriteNotice("服务已启动!");
+                Shell.WriteNotice("系统消息", "服务已启动!");
                 return rs;
             }
             catch (Exception ex)
@@ -251,7 +267,7 @@ namespace DispatchSystem
                 rs.Reault = true;
                 rs.Message = "停止成功";
 
-                Shell.WriteNotice("服务已停止!");
+                Shell.WriteNotice("系统消息", "服务已停止!");
                 return rs;
             }
             catch (Exception ex)
@@ -291,8 +307,7 @@ namespace DispatchSystem
                     string str = Encoding.ASCII.GetString(Buf);
                     //清除多余的\0
                     str = str.Replace("\0", "");
-                    if (DebugMsg.IsChecked("收到数据"))
-                        Shell.WriteNotice(string.Format("收到数据：{0}", str));
+                    Shell.WriteNotice("收到数据", string.Format("收到数据：{0}", str));
                     //将收到的数据追加到缓冲池
                     StringBuf += str;
                     #endregion
@@ -354,8 +369,7 @@ namespace DispatchSystem
                                     {
                                         case 0:
                                             #region 心跳帧
-                                            if (DebugMsg.IsChecked("心跳帧"))
-                                                Shell.WriteNotice(string.Format("心跳帧，设备ID：{0}\r\n", DeviceAddress));
+                                            Shell.WriteNotice("心跳帧", string.Format("心跳帧，设备ID：{0}\r\n", DeviceAddress));
                                             //存储设备端口信息到EndPointArray
                                             EndPointArray[DeviceAddress] = endPoint;
                                             //更新设备响应时间
@@ -364,14 +378,12 @@ namespace DispatchSystem
                                             break;
                                         case 1:
                                             #region 操作帧
-                                            if (DebugMsg.IsChecked("操作帧"))
-                                                Shell.WriteNotice(string.Format("操作帧[ALL]:{0}", ByteToHexStr(Buf)));
+                                            Shell.WriteNotice("操作帧", string.Format("操作帧[ALL]:{0}", ByteToHexStr(Buf)));
                                             switch (Buf[7])//功能码
                                             {
                                                 case 1:
                                                     #region 读单个寄存器
-                                                    if (DebugMsg.IsChecked("读单个寄存器"))
-                                                        Shell.WriteNotice(string.Format("操作帧[读单个寄存器]:{0}", ByteToHexStr(Buf)));
+                                                    Shell.WriteNotice("读单个寄存器", string.Format("操作帧[读单个寄存器]:{0}", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -388,8 +400,8 @@ namespace DispatchSystem
                                                         sendbyte[8] = Buf[8];//寄存器地址高
                                                         sendbyte[9] = Buf[9];//寄存器地址低
 
-                                                        sendbyte[10] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0] >> 8);//数据高
-                                                        sendbyte[11] = (byte)(Ddata[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0]);//数据低
+                                                        sendbyte[10] = (byte)(Register[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0] >> 8);//数据高
+                                                        sendbyte[11] = (byte)(Register[DeviceAddress, (Buf[8] << 8 | Buf[9]), 0]);//数据低
 
                                                         int crcRes = CRC.crc_16(sendbyte, 12);
 
@@ -401,8 +413,7 @@ namespace DispatchSystem
                                                     break;
                                                 case 2:
                                                     #region 写单个寄存器
-                                                    if (DebugMsg.IsChecked("写单个寄存器"))
-                                                        Shell.WriteNotice(string.Format("操作帧[写单个寄存器]:{0}", ByteToHexStr(Buf)));
+                                                    Shell.WriteNotice("写单个寄存器", string.Format("操作帧[写单个寄存器]:{0}", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -420,9 +431,9 @@ namespace DispatchSystem
                                                         if (RegAddress <= RegisterNum)
                                                         {
                                                             //写入寄存器
-                                                            Ddata[DeviceAddress, RegAddress, 0] = (UInt16)(Buf[10] << 8 | Buf[11]);
+                                                            Register[DeviceAddress, RegAddress, 0] = (UInt16)(Buf[10] << 8 | Buf[11]);
                                                             //更新时间戳
-                                                            Ddata[DeviceAddress, RegAddress, 1] = DateTimeToStamp(DateTime.Now);
+                                                            Register[DeviceAddress, RegAddress, 1] = DateTimeToStamp(DateTime.Now);
                                                             sendbyte[8] = 1;//结果
                                                         }
                                                         else
@@ -440,8 +451,7 @@ namespace DispatchSystem
                                                     break;
                                                 case 3:
                                                     #region 读多个寄存器
-                                                    if (DebugMsg.IsChecked("读多个寄存器"))
-                                                        Shell.WriteNotice(string.Format("操作帧[读多个寄存器]:{0}", ByteToHexStr(Buf)));
+                                                    Shell.WriteNotice("读多个寄存器", string.Format("操作帧[读多个寄存器]:{0}", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -464,8 +474,8 @@ namespace DispatchSystem
 
                                                         for (int i = 0; i < Num; i++)
                                                         {
-                                                            sendbyte[11 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0] >> 8);//数据高
-                                                            sendbyte[12 + i * 2] = (byte)(Ddata[DeviceAddress, RegStartAdd + i, 0]);//数据低
+                                                            sendbyte[11 + i * 2] = (byte)(Register[DeviceAddress, RegStartAdd + i, 0] >> 8);//数据高
+                                                            sendbyte[12 + i * 2] = (byte)(Register[DeviceAddress, RegStartAdd + i, 0]);//数据低
                                                         }
 
                                                         int crcRes = CRC.crc_16(sendbyte, 11 + 2 * Num);
@@ -477,8 +487,7 @@ namespace DispatchSystem
                                                     break;
                                                 case 4://
                                                     #region 写多个寄存器
-                                                    if (DebugMsg.IsChecked("写多个寄存器"))
-                                                        Shell.WriteNotice(string.Format("操作帧[写多个寄存器]:{0}", ByteToHexStr(Buf)));
+                                                    Shell.WriteNotice("写多个寄存器", string.Format("操作帧[写多个寄存器]:{0}", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -499,9 +508,9 @@ namespace DispatchSystem
                                                             for (int i = 0; i < Num; i++)
                                                             {
                                                                 //写入寄存器
-                                                                Ddata[DeviceAddress, RegStartAddress + i, 0] = (UInt16)(Buf[11 + i * 2] << 8 | Buf[12 + i * 2]);
+                                                                Register[DeviceAddress, RegStartAddress + i, 0] = (UInt16)(Buf[11 + i * 2] << 8 | Buf[12 + i * 2]);
                                                                 //更新时间戳
-                                                                Ddata[DeviceAddress, RegStartAddress + i, 1] = DateTimeToStamp(DateTime.Now);
+                                                                Register[DeviceAddress, RegStartAddress + i, 1] = DateTimeToStamp(DateTime.Now);
                                                             }
                                                             sendbyte[8] = 1;//结果
                                                         }
@@ -519,7 +528,7 @@ namespace DispatchSystem
                                                     break;
                                                 default:
                                                     ErrorCount++;
-                                                    Console.WriteLine(string.Format("帧类型错误：{0}\r\n", ErrorCount));
+                                                    Shell.WriteError("无效误帧", string.Format("无效误帧[{0}]：{1}\r\n", ErrorCount, ByteToHexStr(Buf)));
                                                     length = 0;
                                                     break;
                                             }
@@ -527,8 +536,7 @@ namespace DispatchSystem
                                             break;
                                         case 2:
                                             #region 响应帧
-                                            if (DebugMsg.IsChecked("响应帧"))
-                                                Shell.WriteNotice(string.Format("响应帧[ALL]:", ByteToHexStr(Buf)));
+                                            Shell.WriteNotice("响应帧", string.Format("响应帧[ALL]:", ByteToHexStr(Buf)));
                                             //添加到响应帧缓冲池
                                             for (int i = 0; i < RESPONSE_MAX_LEN; i++)
                                             {
@@ -561,8 +569,7 @@ namespace DispatchSystem
                                             //出错次数加一
                                             ErrorCount++;
                                             //打印消息
-                                            if (DebugMsg.IsChecked("无效误帧"))
-                                                Shell.WriteError(string.Format("无效误帧[{0}]：{1}\r\n", ErrorCount, ByteToHexStr(Buf)));
+                                            Shell.WriteError("无效误帧", string.Format("无效误帧[{0}]：{1}\r\n", ErrorCount, ByteToHexStr(Buf)));
                                             break;
                                     }
                                     #endregion
@@ -574,8 +581,7 @@ namespace DispatchSystem
                             //退出循环
                             break;
                         }
-                        if (DebugMsg.IsChecked("单包数据有效帧数量"))
-                            Shell.WriteNotice(string.Format("单包数据有效帧数量：{0}", count));
+                        Shell.WriteNotice("单包数据有效帧数量", string.Format("单包数据有效帧数量：{0}", count));
                     }
                     if (Stop < StringBuf.Length - 1)
                         StringBuf = StringBuf.Substring(Stop + 1, StringBuf.Length - Stop - 2);
@@ -583,10 +589,9 @@ namespace DispatchSystem
                         StringBuf = string.Empty;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
-                throw;
+                Shell.WriteNotice("错误", string.Format("Error：{0}", ex.ToString()));
             }
         }
 
@@ -651,9 +656,9 @@ namespace DispatchSystem
                                 ResponseBuf[i, 0] = 0;
 
                                 //更新寄存器
-                                UdpSever.Ddata[TargetAddress, RegisterAddress, 0] = Data;
+                                UdpSever.Register[TargetAddress, RegisterAddress, 0] = Data;
                                 //更新时间戳
-                                UdpSever.Ddata[TargetAddress, RegisterAddress, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
+                                UdpSever.Register[TargetAddress, RegisterAddress, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
                                 return msg;
                             }
                         }
@@ -712,9 +717,9 @@ namespace DispatchSystem
                                 for (int t = 0; t < Num; t++)
                                 {
                                     //更新寄存器
-                                    UdpSever.Ddata[TargetAddress, RegisterAddress + t, 0] = Data[t];
+                                    UdpSever.Register[TargetAddress, RegisterAddress + t, 0] = Data[t];
                                     //更新时间戳
-                                    UdpSever.Ddata[TargetAddress, RegisterAddress + t, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
+                                    UdpSever.Register[TargetAddress, RegisterAddress + t, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
                                 }
 
                                 return msg;
@@ -851,8 +856,7 @@ namespace DispatchSystem
                 buf[buf.Length - 1] = (byte)('!');
                 TxLength += buf.Length;
                 socket.SendTo(buf, EndPort);
-                if (DebugMsg.IsChecked("发送数据"))
-                    Shell.WriteNotice(string.Format("发送数据:{0}\r\n", System.Text.Encoding.ASCII.GetString(buf)));
+                Shell.WriteNotice("发送数据", string.Format("发送数据:{0}\r\n", System.Text.Encoding.ASCII.GetString(buf)));
             }
         }
 
