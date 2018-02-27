@@ -82,13 +82,27 @@ namespace DispatchSystem.Developer
 
         private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
         {
-            DataGridViewRow dgvr = new DataGridViewRow();
-            dgvr = dataGridView1.Rows[0];
-            //设置当前单元格
-            dataGridView1.CurrentCell = dgvr.Cells[0];
-            //设置选中状态
-            dgvr.Cells[0].Selected = true;
-            dataGridView1.Columns[0].Selected = true;
+            //DataGridViewRow dgvr = new DataGridViewRow();
+            //dgvr = dataGridView1.Rows[0];
+            ////设置当前单元格
+            //dataGridView1.CurrentCell = dgvr.Cells[0];
+            ////设置选中状态
+            //dgvr.Cells[0].Selected = true;
+            //dataGridView1.Columns[0].Selected = true;
+        }
+
+        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            if (grid != null)
+            {
+                grid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
     }
 }
