@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Security.Principal;
@@ -26,6 +27,40 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            //加载配置
+            string strFilePath = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + Application.StartupPath + "\\Database.mdb";
+            string sql = "select * from Debug";
+            //声明一个数据连接
+            OleDbConnection con = new OleDbConnection(strFilePath);
+            OleDbDataAdapter da = new OleDbDataAdapter(sql, con);
+            try
+            {
+                da.Fill(UdpSever.DebugMsg.dt);
+            }
+            catch (Exception ex)
+            {
+                UdpSever.Shell.WriteError("加载配置错误：{0}", ex.ToString());
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+                da.Dispose();
+            }
+
+
+            UdpSever.Shell.WriteNotice("系统启动");
+            UdpSever.Shell.WriteLine("-->服务器地址[ServerAddress]:{0}", UdpSever.ServerAddress);
+            UdpSever.Shell.WriteLine("-->设备数[DeviceNum]:{0}", UdpSever.DeviceNum);
+            UdpSever.Shell.WriteLine("-->寄存器数[RegisterNum]:{0}", UdpSever.RegisterNum);
+            UdpSever.Shell.WriteLine("-->单帧数据长度[FrameLen]:{0}", UdpSever.FrameLen);
+            UdpSever.Shell.WriteLine("-->心跳周期[HeartCycle]:{0}秒", UdpSever.HeartCycle);
+            UdpSever.Shell.WriteLine("-->重发次数[RepeatNum]:{0}", UdpSever.RepeatNum);
+            UdpSever.Shell.WriteLine("-->超时时间[ResponseTimeout]:{0}", UdpSever.ResponseTimeout);
+            UdpSever.Shell.WriteLine("-->响应帧缓冲池容量[RESPONSE_MAX_LEN]:{0}", UdpSever.RESPONSE_MAX_LEN);
+            UdpSever.Shell.WriteLine("-->设备总数[DeviceNum]:{0}\r\n", UdpSever.DeviceNum);
+
+
             treeView1.Nodes.Clear();
 
             //UdpSever.AllocConsole();
@@ -95,16 +130,34 @@ namespace DispatchSystem
         {
             try
             {
-                udpConfigForm.WindowState = FormWindowState.Normal;
-                udpConfigForm.Show();//弹出这个窗口
-                udpConfigForm.Activate();//激活显示
+                if (udpConfigForm == null)
+                {
+                    udpConfigForm = new UdpConfigForm();
+                    //注册udpConfigForm_MyEvent方法的MyEvent事件     
+                    udpConfigForm.MyEvent += new MyDelegate(udpConfigForm_MyEvent);
+                    udpConfigForm.Show();//弹出这个窗口
+                }
+                else
+                {
+                    if (udpConfigForm.IsDisposed != true)
+                    {
+                        udpConfigForm.Show();//弹出这个窗口
+                        udpConfigForm.Focus();//激活显示
+                    }
+                    else
+                    {
+                        udpConfigForm = new UdpConfigForm();
+                        //注册udpConfigForm_MyEvent方法的MyEvent事件     
+                        udpConfigForm.MyEvent += new MyDelegate(udpConfigForm_MyEvent);
+                        udpConfigForm.Show();//弹出这个窗口
+                        udpConfigForm.Focus();//激活显示
+                    }
+                }
+
             }
             catch (Exception)
             {
-                udpConfigForm = new UdpConfigForm();
-                //注册udpConfigForm_MyEvent方法的MyEvent事件     
-                udpConfigForm.MyEvent += new MyDelegate(udpConfigForm_MyEvent);
-                udpConfigForm.Show();//弹出这个窗口
+
             }
         }
 
@@ -440,37 +493,50 @@ namespace DispatchSystem
 
         }
 
-        UdpToolForm udpform;
+        UdpToolForm udpform = new UdpToolForm();
         private void 网络助手ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                udpform.WindowState = FormWindowState.Normal;
-                udpform.Show();//弹出这个窗口
-                udpform.Activate();//激活显示
+                if (udpform.IsDisposed != true)
+                {
+                    udpform.Show();//弹出这个窗口
+                    udpform.Focus();//激活显示
+                }
+                else
+                {
+                    udpform = new UdpToolForm();
+                    udpform.Show();//弹出这个窗口
+                    udpform.Focus();//激活显示
+                }
             }
-            catch (Exception)
+            catch
             {
-                udpform = new UdpToolForm();
-                udpform.Show();//弹出这个窗口
             }
         }
 
         //调试信息
-        DebugForm debugForm;
+        DebugForm debugForm = new DebugForm();
         private void DebugToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //启动调试界面
             try
             {
-                debugForm.WindowState = FormWindowState.Normal;
-                debugForm.Show();//弹出这个窗口
-                debugForm.Activate();//激活显示
+                if (debugForm.IsDisposed != true)
+                {
+                    debugForm.Show();//弹出这个窗口
+                    debugForm.Focus();//激活显示
+                }
+                else
+                {
+                    debugForm = new DebugForm();
+                    debugForm.Show();//弹出这个窗口
+                    debugForm.Focus();//激活显示
+                }
             }
-            catch (Exception)
+            catch
             {
-                debugForm = new DebugForm();
-                debugForm.Show();//弹出这个窗口
+
             }
         }
     }
