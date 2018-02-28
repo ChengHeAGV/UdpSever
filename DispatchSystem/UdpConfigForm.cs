@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,16 +40,31 @@ namespace DispatchSystem
             }
 
             //加载IP和端口
-            string str = Ini.Read("网络配置", "IP");
-            if (str != "null")
+            //string str = Ini.Read("网络配置", "IP");
+            //if (str != "null")
+            //{
+            //    textBoxIP.Text = str;
+            //}
+            //else
+            //{
+            //    textBoxIP.Text = "192.168.2.23";
+            //}
+
+            //获取本机IP
+            string name = Dns.GetHostName();
+            IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
+
+            foreach (IPAddress ipa in ipadrlist)
             {
-                textBoxIP.Text = str;
+                if (ipa.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    textBoxIP.Text = ipa.ToString();
+                    break;
+                }
             }
-            else
-            {
-                textBoxIP.Text = "192.168.2.23";
-            }
-            str = Ini.Read("网络配置", "Port");
+           
+
+            string str = Ini.Read("网络配置", "Port");
             if (str != "null")
             {
                 textBoxPort.Text = str;

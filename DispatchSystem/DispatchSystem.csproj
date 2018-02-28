@@ -239,6 +239,7 @@
   <ItemGroup>
     <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
+    <None Include="Resources\16.png" />
     <Content Include="Resources\NetAssist.exe" />
     <Content Include="Resources\robot.ico" />
     <Content Include="Resources\robot2.ico" />
