@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.magneticGuide1 = new DispatchSystem.UserControls.MagneticGuide();
             this.SuspendLayout();
             // 
             // button1
@@ -41,11 +42,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // magneticGuide1
+            // 
+            this.magneticGuide1.Location = new System.Drawing.Point(12, -139);
+            this.magneticGuide1.Name = "magneticGuide1";
+            this.magneticGuide1.Size = new System.Drawing.Size(874, 783);
+            this.magneticGuide1.TabIndex = 1;
+            // 
             // SensorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 435);
+            this.ClientSize = new System.Drawing.Size(971, 581);
+            this.Controls.Add(this.magneticGuide1);
             this.Controls.Add(this.button1);
             this.Name = "SensorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -58,5 +67,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private UserControls.MagneticGuide magneticGuide1;
     }
 }
