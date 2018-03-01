@@ -105,5 +105,24 @@ namespace DispatchSystem.Developer
         {
             Console.Clear();
         }
+
+        private void buttonCheckAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < UdpSever.DebugMsg.dt.Rows.Count; i++)
+            {
+                UdpSever.DebugMsg.dt.Rows[i][2] = true;
+            }
+            dataGridView1.DataSource = UdpSever.DebugMsg.dt;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < UdpSever.DebugMsg.dt.Rows.Count; i++)
+            {
+                UdpSever.DebugMsg.dt.Rows[i][2] = false;
+            }
+
+            dataGridView1.DataSource = UdpSever.DebugMsg.dt;
+        }
     }
 }

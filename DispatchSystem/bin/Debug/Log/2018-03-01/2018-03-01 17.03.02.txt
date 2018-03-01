@@ -1,0 +1,18 @@
+[2018/3/1 星期四 下午 5:03:02 +08:00]
+[系统消息]本机IP:[192.168.10.106]
+
+[2018/3/1 星期四 下午 5:03:02 +08:00]
+[系统消息]服务已启动!
+
+[2018/3/1 星期四 下午 5:03:06 +08:00]
+[系统消息]正在关闭服务器，请稍等...!
+
+[2018/3/1 星期四 下午 5:03:06 +08:00]
+[错误]:System.Net.Sockets.SocketException (0x80004005): 一个封锁操作被对 WSACancelBlockingCall 的调用中断。
+   在 System.Net.Sockets.Socket.ReceiveFrom(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, EndPoint& remoteEP)
+   在 System.Net.Sockets.Socket.ReceiveFrom(Byte[] buffer, EndPoint& remoteEP)
+   在 DispatchSystem.UdpSever.mainFunc() 位置 D:\github\winform\UdpSever\DispatchSystem\UdpSever.cs:行号 438
+
+[2018/3/1 星期四 下午 5:03:06 +08:00]
+[系统消息]服务已停止!
+

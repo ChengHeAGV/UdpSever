@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -37,7 +38,9 @@ namespace DispatchSystem
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine(string.Format(format, args));
+                WriteLog(string.Format(format, args));
             }
+
             /// <summary>
             /// 
             /// </summary>
@@ -48,6 +51,7 @@ namespace DispatchSystem
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine(string.Format(format, args));
+                WriteLog(string.Format(format, args));
                 Thread.Sleep(sleep);
             }
 
@@ -64,8 +68,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = color;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
             /// <summary>
@@ -82,8 +88,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = color;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
             }
@@ -100,8 +108,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
             /// <summary>
@@ -117,8 +127,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
             }
@@ -135,8 +147,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
             /// <summary>
@@ -152,8 +166,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
             }
@@ -169,8 +185,10 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
             /// <summary>
@@ -186,11 +204,38 @@ namespace DispatchSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
             }
+
+            #region 写log
+            static string filePath = AppDomain.CurrentDomain.BaseDirectory + "Log";
+            static string fileDayPath = AppDomain.CurrentDomain.BaseDirectory + "Log\\" + DateTime.Now.ToString("yyyy-MM-dd");
+            static string logPath = fileDayPath +"\\"+ DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss") + ".txt";
+            public static void WriteLog(string msg)
+            {
+                try
+                {
+                    if (!Directory.Exists(filePath))
+                    {
+                        Directory.CreateDirectory(filePath);
+                    }
+                    if (!Directory.Exists(fileDayPath))
+                    {
+                        Directory.CreateDirectory(fileDayPath);
+                    }
+                    File.AppendAllText(logPath, msg + "\r\n");
+                }
+                catch
+                {
+                    
+                }
+            }
+            #endregion
         }
 
         /// <summary>
@@ -269,7 +314,7 @@ namespace DispatchSystem
         public static byte[,] ResponseBuf = new byte[RESPONSE_MAX_LEN, FrameLen];
 
         //监听服务总进程
-        static Thread threadMain;
+        static Thread MainThread;
 
         //帧ID
         public static int FrameID = 0;
@@ -303,11 +348,13 @@ namespace DispatchSystem
             public string Message;
         }
 
+        static IPEndPoint ipEndPoint;
+        static Socket socket;
+        //主线程状态
+        public static bool MainThreadIsClosed = true;
         /// <summary>
         /// 启动UDP服务器
         /// </summary>
-        static IPEndPoint ipEndPoint;
-        static Socket socket;
         public static Resault Start()
         {
             Resault rs = new Resault();
@@ -319,8 +366,9 @@ namespace DispatchSystem
                 rs.Reault = true;
                 rs.Message = "启动成功";
 
-                threadMain = new Thread(mainFunc);
-                threadMain.Start();
+                MainThreadIsClosed = false;
+                MainThread = new Thread(mainFunc);
+                MainThread.Start();
 
                 //启动检测连接进程
                 State = true;//更新服务器状态
@@ -344,9 +392,18 @@ namespace DispatchSystem
             Resault rs = new Resault();
             try
             {
-                //注销检测连接进程
-                threadMain.Abort();
+                //退出线程
+                MainThreadIsClosed = true;
+                Shell.WriteWarning("系统消息", "正在关闭服务器，请稍等...!");
                 socket.Close();
+                //等待线程退出
+                while (MainThread.ThreadState != System.Threading.ThreadState.Stopped)
+                {
+                    Thread.Sleep(10);
+                }
+                //注销检测连接进程
+                MainThread.Abort();
+               
                 State = false;//更新服务器状态 
 
                 rs.Reault = true;
@@ -373,7 +430,7 @@ namespace DispatchSystem
                 EndPoint endPoint = (EndPoint)(sender);
                 //定义接收池字符串
                 string StringBuf = string.Empty;
-                while (true)
+                while (MainThreadIsClosed == false)
                 {
                     Thread.Sleep(1);
                     //从缓冲区读取数据

@@ -46,6 +46,7 @@
             this.buttonStart.Size = new System.Drawing.Size(171, 44);
             this.buttonStart.TabIndex = 58;
             this.buttonStart.Text = "启动";
+            this.buttonStart.UseCompatibleTextRendering = true;
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.UdpStartStop);
             // 

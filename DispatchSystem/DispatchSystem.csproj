@@ -129,6 +129,11 @@
     <Compile Include="Developer\DebugForm.Designer.cs">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Forklift.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -169,11 +174,17 @@
     <Compile Include="UdpToolForm.Designer.cs">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MagneticGuide.cs">
+    <Compile Include="UserControls\MagneticGuide16.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MagneticGuide.Designer.cs">
-      <DependentUpon>MagneticGuide.cs</DependentUpon>
+    <Compile Include="UserControls\MagneticGuide16.Designer.cs">
+      <DependentUpon>MagneticGuide16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MagneticGuide8.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MagneticGuide8.Designer.cs">
+      <DependentUpon>MagneticGuide8.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AGV\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
@@ -204,14 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="AGV\SensorForm.resx">
       <DependentUpon>SensorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,8 +227,11 @@
     <EmbeddedResource Include="UdpToolForm.resx">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MagneticGuide.resx">
-      <DependentUpon>MagneticGuide.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MagneticGuide16.resx">
+      <DependentUpon>MagneticGuide16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MagneticGuide8.resx">
+      <DependentUpon>MagneticGuide8.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
@@ -243,7 +252,8 @@
   <ItemGroup>
     <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
-    <None Include="Resources\16.png" />
+    <None Include="Resources\8bit.png" />
+    <None Include="Resources\16bit.png" />
     <Content Include="Resources\NetAssist.exe" />
     <Content Include="Resources\robot.ico" />
     <Content Include="Resources\robot2.ico" />

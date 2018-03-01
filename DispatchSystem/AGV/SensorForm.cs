@@ -30,5 +30,10 @@ namespace DispatchSystem
             UdpSever.ReturnMsg  rm= UdpSever.Read_Register(deviceNum, 1);
             Console.WriteLine("读取结果:{0},{1}",rm.resault,rm.Data.ToString("X2"));
         }
+
+        private void SensorForm_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

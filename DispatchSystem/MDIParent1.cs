@@ -29,31 +29,45 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-            UdpSever.Shell.WriteNotice(100, "系统消息", "系统启动...");
-            UdpSever.Shell.WriteNotice(100, "系统消息", "加载调试信息...");
-            #region 加载Dbug调试信息配置
-            string strFilePath = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + Application.StartupPath + "\\Database.mdb";
-            string sql = "select * from Debug";
-            //声明一个数据连接
-            OleDbConnection con = new OleDbConnection(strFilePath);
-            OleDbDataAdapter da = new OleDbDataAdapter(sql, con);
-            try
-            {
-                da.Fill(UdpSever.DebugMsg.dt);
-            }
-            catch (Exception ex)
-            {
-                UdpSever.Shell.WriteError("加载配置错误：{0}", ex.ToString());
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-                da.Dispose();
-            }
-            #endregion
-            UdpSever.Shell.WriteNotice(100, "系统消息", "获取本机IP...");
-            //本机IP
+            //UdpSever.Shell.WriteNotice(100, "系统消息", "系统启动...");
+            //UdpSever.Shell.WriteNotice(100, "系统消息", "加载调试信息...");
+            //#region 加载Dbug调试信息配置
+            //string strFilePath = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + Application.StartupPath + "\\Database.mdb";
+            //string sql = "select * from Debug";
+            ////声明一个数据连接
+            //OleDbConnection con = new OleDbConnection(strFilePath);
+            //OleDbDataAdapter da = new OleDbDataAdapter(sql, con);
+            //try
+            //{
+            //    da.Fill(UdpSever.DebugMsg.dt);
+            //}
+            //catch (Exception ex)
+            //{
+            //    UdpSever.Shell.WriteError("加载配置错误：{0}", ex.ToString());
+            //}
+            //finally
+            //{
+            //    con.Close();
+            //    con.Dispose();
+            //    da.Dispose();
+            //}
+            //#endregion
+            //UdpSever.Shell.WriteNotice(100, "系统消息", "获取本机IP...");
+
+
+            //UdpSever.Shell.WriteNotice(100, "系统消息", "加载服务器配置...");
+
+            //UdpSever.Shell.WriteLine(100, "[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
+            //UdpSever.Shell.WriteLine(100, "[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
+            //UdpSever.Shell.WriteLine(100, "[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
+            //UdpSever.Shell.WriteLine(100, "[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
+            //UdpSever.Shell.WriteLine(100, "[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
+            //UdpSever.Shell.WriteLine(100, "[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
+            //UdpSever.Shell.WriteLine(100, "[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
+            //UdpSever.Shell.WriteLine(100, "[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
+            //UdpSever.Shell.WriteLine(100, "[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
+
+            #region 获取本机IP，自动开启服务器
             string name = Dns.GetHostName();
             IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
             foreach (IPAddress ipa in ipadrlist)
@@ -64,23 +78,18 @@ namespace DispatchSystem
                     UdpSever.ipaddress = ipa;
                 }
             }
-            UdpSever.Shell.WriteNotice(100, "系统消息", "加载服务器配置...");
-
-            UdpSever.Shell.WriteLine(100, "-->服务器地址[ServerAddress]:{0}", UdpSever.ServerAddress);
-            UdpSever.Shell.WriteLine(100, "-->设备数[DeviceNum]:{0}", UdpSever.DeviceNum);
-            UdpSever.Shell.WriteLine(100, "-->寄存器数[RegisterNum]:{0}", UdpSever.RegisterNum);
-            UdpSever.Shell.WriteLine(100, "-->单帧数据长度[FrameLen]:{0}", UdpSever.FrameLen);
-            UdpSever.Shell.WriteLine(100, "-->心跳周期[HeartCycle]:{0}秒", UdpSever.HeartCycle);
-            UdpSever.Shell.WriteLine(100, "-->重发次数[RepeatNum]:{0}", UdpSever.RepeatNum);
-            UdpSever.Shell.WriteLine(100, "-->超时时间[ResponseTimeout]:{0}", UdpSever.ResponseTimeout);
-            UdpSever.Shell.WriteLine(100, "-->响应帧缓冲池容量[RESPONSE_MAX_LEN]:{0}", UdpSever.RESPONSE_MAX_LEN);
-            UdpSever.Shell.WriteLine(100, "-->设备总数[DeviceNum]:{0}\r\n", UdpSever.DeviceNum);
+            //自动启动服务器
+            UdpSever.Resault rs = UdpSever.Start();
+            //更新界面
+            udpConfigForm_MyEvent();
+            #endregion
 
 
             treeView1.Nodes.Clear();
-            //自动启动服务器
-            UdpSever.Resault rs = UdpSever.Start();
 
+
+            SensorForm sensorForm = new SensorForm(1);
+            sensorForm.Show();
             //UdpSever.AllocConsole();
             //UdpSever.Shell.WriteLine("注意：启动程序...");
             //UdpSever.Shell.WriteLine("\tWritten by wuming");
