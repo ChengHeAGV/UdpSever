@@ -34,10 +34,11 @@ namespace DispatchSystem.AGV
         //写多个寄存器
         private void button2_Click(object sender, EventArgs e)
         {
+            Random rd = new Random();
             UInt16[] data = new ushort[128];
             for (int i = 0; i < data.Length; i++)
             {
-                data[i] = (ushort)i;
+                data[i] = (ushort)(rd.Next(1, 1000));
             }
             UdpSever.ReturnMsg rm = UdpSever.Write_Multiple_Registers(deviceNum, 0, 128, data);
             Console.WriteLine("写入结果:\r\n{0}", rm.ToString());

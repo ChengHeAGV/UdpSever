@@ -306,7 +306,7 @@ namespace DispatchSystem
         //错误重发次数
         public static int RepeatNum = 3;
         //响应超时时间，单位ms
-        public static int ResponseTimeout = 3000;
+        public static int ResponseTimeout = 200;
 
         //响应帧缓冲池大小
         public static int RESPONSE_MAX_LEN = 20;
@@ -434,7 +434,7 @@ namespace DispatchSystem
                 {
                     Thread.Sleep(1);
                     //从缓冲区读取数据
-                    byte[] bytes = new byte[2048];
+                    byte[] bytes = new byte[3096];
                     int length = socket.ReceiveFrom(bytes, ref endPoint);
                     //更新接收到的数据总长度
                     RxLength += length;

@@ -32,15 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SensorForm));
             this.button1 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.magneticGuide16Bit1 = new DispatchSystem.UserControls.MagneticGuide16Bit();
+            this.rfid1 = new DispatchSystem.UserControls.RFID();
             this.magneticGuide8Bit1 = new DispatchSystem.UserControls.MagneticGuide8Bit();
             this.lbButton2 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
             this.lbKnob1 = new LBSoft.IndustrialCtrls.Knobs.LBKnob();
             this.lbLed2 = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.lbLed1 = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.lbButton1 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.rfid1 = new DispatchSystem.UserControls.RFID();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.magneticGuide8Bit2 = new DispatchSystem.UserControls.MagneticGuide8Bit();
+            this.magneticGuide8Bit3 = new DispatchSystem.UserControls.MagneticGuide8Bit();
+            this.magneticGuide8Bit4 = new DispatchSystem.UserControls.MagneticGuide8Bit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,11 +68,13 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.rfid1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.rfid1);
-            this.splitContainer1.Panel2.Controls.Add(this.magneticGuide16Bit1);
+            this.splitContainer1.Panel2.Controls.Add(this.magneticGuide8Bit4);
+            this.splitContainer1.Panel2.Controls.Add(this.magneticGuide8Bit3);
+            this.splitContainer1.Panel2.Controls.Add(this.magneticGuide8Bit2);
             this.splitContainer1.Panel2.Controls.Add(this.magneticGuide8Bit1);
             this.splitContainer1.Panel2.Controls.Add(this.lbButton2);
             this.splitContainer1.Panel2.Controls.Add(this.lbKnob1);
@@ -81,23 +85,27 @@
             this.splitContainer1.SplitterDistance = 381;
             this.splitContainer1.TabIndex = 2;
             // 
-            // magneticGuide16Bit1
+            // rfid1
             // 
-            this.magneticGuide16Bit1.BorderColor = System.Drawing.Color.DarkGray;
-            this.magneticGuide16Bit1.ColorOff = System.Drawing.Color.Red;
-            this.magneticGuide16Bit1.ColorOn = System.Drawing.Color.Yellow;
-            this.magneticGuide16Bit1.Location = new System.Drawing.Point(16, 158);
-            this.magneticGuide16Bit1.Name = "magneticGuide16Bit1";
-            this.magneticGuide16Bit1.Size = new System.Drawing.Size(324, 113);
-            this.magneticGuide16Bit1.TabIndex = 15;
-            this.magneticGuide16Bit1.Value = 85;
+            this.rfid1.Location = new System.Drawing.Point(-44, 80);
+            this.rfid1.Name = "rfid1";
+            this.rfid1.PowerLed = true;
+            this.rfid1.PowerOffColor = System.Drawing.Color.Red;
+            this.rfid1.PowerOnColor = System.Drawing.Color.Green;
+            this.rfid1.Size = new System.Drawing.Size(422, 488);
+            this.rfid1.TabIndex = 16;
+            this.rfid1.Value = 0;
+            this.rfid1.ValueColor = System.Drawing.Color.Magenta;
+            this.rfid1.ValueLed = false;
+            this.rfid1.ValueOffColor = System.Drawing.Color.Red;
+            this.rfid1.ValueOnColor = System.Drawing.Color.Yellow;
             // 
             // magneticGuide8Bit1
             // 
             this.magneticGuide8Bit1.BorderColor = System.Drawing.Color.DarkGray;
             this.magneticGuide8Bit1.ColorOff = System.Drawing.Color.Red;
             this.magneticGuide8Bit1.ColorOn = System.Drawing.Color.Yellow;
-            this.magneticGuide8Bit1.Location = new System.Drawing.Point(16, 36);
+            this.magneticGuide8Bit1.Location = new System.Drawing.Point(666, 6);
             this.magneticGuide8Bit1.Name = "magneticGuide8Bit1";
             this.magneticGuide8Bit1.Size = new System.Drawing.Size(324, 116);
             this.magneticGuide8Bit1.TabIndex = 14;
@@ -108,7 +116,7 @@
             this.lbButton2.BackColor = System.Drawing.Color.Transparent;
             this.lbButton2.ButtonColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.lbButton2.Label = "";
-            this.lbButton2.Location = new System.Drawing.Point(522, 365);
+            this.lbButton2.Location = new System.Drawing.Point(251, 582);
             this.lbButton2.Name = "lbButton2";
             this.lbButton2.Renderer = null;
             this.lbButton2.RepeatInterval = 100;
@@ -150,7 +158,7 @@
             this.lbLed2.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
             this.lbLed2.LedColor = System.Drawing.Color.Peru;
             this.lbLed2.LedSize = new System.Drawing.SizeF(50F, 50F);
-            this.lbLed2.Location = new System.Drawing.Point(639, 135);
+            this.lbLed2.Location = new System.Drawing.Point(368, 352);
             this.lbLed2.Name = "lbLed2";
             this.lbLed2.Renderer = null;
             this.lbLed2.Size = new System.Drawing.Size(68, 56);
@@ -167,7 +175,7 @@
             this.lbLed1.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
             this.lbLed1.LedColor = System.Drawing.Color.Red;
             this.lbLed1.LedSize = new System.Drawing.SizeF(50F, 50F);
-            this.lbLed1.Location = new System.Drawing.Point(639, 63);
+            this.lbLed1.Location = new System.Drawing.Point(368, 280);
             this.lbLed1.Name = "lbLed1";
             this.lbLed1.Renderer = null;
             this.lbLed1.Size = new System.Drawing.Size(68, 56);
@@ -180,7 +188,7 @@
             this.lbButton1.BackColor = System.Drawing.Color.Transparent;
             this.lbButton1.ButtonColor = System.Drawing.Color.Red;
             this.lbButton1.Label = "";
-            this.lbButton1.Location = new System.Drawing.Point(676, 268);
+            this.lbButton1.Location = new System.Drawing.Point(405, 485);
             this.lbButton1.Name = "lbButton1";
             this.lbButton1.Renderer = null;
             this.lbButton1.RepeatInterval = 100;
@@ -191,26 +199,44 @@
             this.lbButton1.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Circular;
             this.lbButton1.TabIndex = 8;
             // 
-            // rfid1
-            // 
-            this.rfid1.Location = new System.Drawing.Point(16, 277);
-            this.rfid1.Name = "rfid1";
-            this.rfid1.PowerLed = false;
-            this.rfid1.PowerOffColor = System.Drawing.Color.Red;
-            this.rfid1.PowerOnColor = System.Drawing.Color.Green;
-            this.rfid1.Size = new System.Drawing.Size(422, 488);
-            this.rfid1.TabIndex = 16;
-            this.rfid1.Value = 0;
-            this.rfid1.ValueColor = System.Drawing.Color.Magenta;
-            this.rfid1.ValueLed = false;
-            this.rfid1.ValueOffColor = System.Drawing.Color.Red;
-            this.rfid1.ValueOnColor = System.Drawing.Color.Yellow;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // magneticGuide8Bit2
+            // 
+            this.magneticGuide8Bit2.BorderColor = System.Drawing.Color.DarkGray;
+            this.magneticGuide8Bit2.ColorOff = System.Drawing.Color.Red;
+            this.magneticGuide8Bit2.ColorOn = System.Drawing.Color.Yellow;
+            this.magneticGuide8Bit2.Location = new System.Drawing.Point(666, 128);
+            this.magneticGuide8Bit2.Name = "magneticGuide8Bit2";
+            this.magneticGuide8Bit2.Size = new System.Drawing.Size(324, 116);
+            this.magneticGuide8Bit2.TabIndex = 17;
+            this.magneticGuide8Bit2.Value = 85;
+            // 
+            // magneticGuide8Bit3
+            // 
+            this.magneticGuide8Bit3.BorderColor = System.Drawing.Color.DarkGray;
+            this.magneticGuide8Bit3.ColorOff = System.Drawing.Color.Red;
+            this.magneticGuide8Bit3.ColorOn = System.Drawing.Color.Yellow;
+            this.magneticGuide8Bit3.Location = new System.Drawing.Point(666, 250);
+            this.magneticGuide8Bit3.Name = "magneticGuide8Bit3";
+            this.magneticGuide8Bit3.Size = new System.Drawing.Size(324, 116);
+            this.magneticGuide8Bit3.TabIndex = 18;
+            this.magneticGuide8Bit3.Value = 85;
+            // 
+            // magneticGuide8Bit4
+            // 
+            this.magneticGuide8Bit4.BorderColor = System.Drawing.Color.DarkGray;
+            this.magneticGuide8Bit4.ColorOff = System.Drawing.Color.Red;
+            this.magneticGuide8Bit4.ColorOn = System.Drawing.Color.Yellow;
+            this.magneticGuide8Bit4.Location = new System.Drawing.Point(666, 372);
+            this.magneticGuide8Bit4.Name = "magneticGuide8Bit4";
+            this.magneticGuide8Bit4.Size = new System.Drawing.Size(324, 116);
+            this.magneticGuide8Bit4.TabIndex = 19;
+            this.magneticGuide8Bit4.Value = 85;
             // 
             // SensorForm
             // 
@@ -241,8 +267,10 @@
         private LBSoft.IndustrialCtrls.Knobs.LBKnob lbKnob1;
         private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton2;
         private UserControls.MagneticGuide8Bit magneticGuide8Bit1;
-        private UserControls.MagneticGuide16Bit magneticGuide16Bit1;
         private UserControls.RFID rfid1;
         private System.Windows.Forms.Timer timer1;
+        private UserControls.MagneticGuide8Bit magneticGuide8Bit4;
+        private UserControls.MagneticGuide8Bit magneticGuide8Bit3;
+        private UserControls.MagneticGuide8Bit magneticGuide8Bit2;
     }
 }
