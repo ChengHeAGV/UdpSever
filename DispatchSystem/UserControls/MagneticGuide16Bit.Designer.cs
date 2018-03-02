@@ -1,6 +1,6 @@
 ﻿namespace DispatchSystem.UserControls
 {
-    partial class MagneticGuide8
+    partial class MagneticGuide16Bit
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -37,10 +37,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::DispatchSystem.Properties.Resources._8bit;
+            this.pictureBox1.Image = global::DispatchSystem.Properties.Resources._16bit;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(631, 248);
+            this.pictureBox1.Size = new System.Drawing.Size(696, 180);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -50,19 +50,19 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(631, 248);
+            this.pictureBox2.Size = new System.Drawing.Size(696, 180);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // MagneticGuide8
+            // MagneticGuide16
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Name = "MagneticGuide8";
-            this.Size = new System.Drawing.Size(631, 248);
+            this.Name = "MagneticGuide16";
+            this.Size = new System.Drawing.Size(696, 180);
             this.Load += new System.EventHandler(this.MagneticGuide_Load);
             this.SizeChanged += new System.EventHandler(this.MagneticGuide_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

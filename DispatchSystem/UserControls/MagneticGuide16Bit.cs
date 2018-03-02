@@ -11,38 +11,42 @@ using System.Runtime.InteropServices;
 
 namespace DispatchSystem.UserControls
 {
-    public partial class MagneticGuide8 : UserControl
+    public partial class MagneticGuide16Bit : UserControl
     {
-        /// <summary>
-        /// 磁导航数据
-        /// </summary>
-        private int data = 0x5555;
-        public int Data
+        #region 属性变量
+        private int value = 0x5555;//磁导航数据
+        private Color borderColor = Color.DarkGray; //有效颜色
+        private Color colorOn = Color.Yellow; //有效颜色      
+        private Color colorOff = Color.Red; //无效颜色    
+        #endregion
+
+        #region 属性
+        [
+            Category("Value"),
+            Description("磁导航默认值。")
+        ]
+        public int Value
         {
             get
-            {
-                return data;
-            }
+            { return value; }
             set
             {
-                if (data != value)
+                if (this.value != value)
                 {
-                    data = value;
+                    this.value = value;
                     update();
                 }
             }
         }
 
-        /// <summary>
-        /// 有效颜色
-        /// </summary>
-        private Color borderColor = Color.DarkGray;
+        [
+             Category("BorderColor"),
+             Description("磁导航指示灯边框颜色。")
+        ]
         public Color BorderColor
         {
             get
-            {
-                return borderColor;
-            }
+            { return borderColor; }
             set
             {
                 if (borderColor != value)
@@ -53,47 +57,44 @@ namespace DispatchSystem.UserControls
             }
         }
 
-        /// <summary>
-        /// 有效颜色
-        /// </summary>
-        private Color trueColor = Color.Yellow;
-        public Color TrueColor
+
+        [
+             Category("ColorOn"),
+             Description("磁导航指示灯有效状态颜色。")
+        ]
+        public Color ColorOn
         {
             get
-            {
-                return trueColor;
-            }
+            { return colorOn; }
             set
             {
-                if (trueColor != value)
+                if (colorOn != value)
                 {
-                    trueColor = value;
+                    colorOn = value;
                     update();
                 }
             }
         }
 
-        /// <summary>
-        /// 无效颜色
-        /// </summary>
-        private Color falseColor = Color.Red;
-        public Color FalseColor
+        [
+             Category("ColorOff"),
+             Description("磁导航指示灯无效状态颜色。")
+        ]
+        public Color ColorOff
         {
             get
-            {
-                return falseColor;
-            }
+            { return colorOff; }
             set
             {
-                if (falseColor != value)
+                if (colorOff != value)
                 {
-                    falseColor = value;
+                    colorOff = value;
                     update();
                 }
             }
         }
-
-        public MagneticGuide8()
+        #endregion
+        public MagneticGuide16Bit()
         {
             InitializeComponent();
         }
@@ -119,28 +120,28 @@ namespace DispatchSystem.UserControls
             int height = pictureBox1.Height;
             Brush bush;
             //矩形宽
-            w = (int)(width * 0.0529);
+            w = (int)(width * 0.029);
             //矩形高
             h = (int)(height * 0.4);
             //矩形y坐标
             y1 = (int)(height * 0.5);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 16; i++)
             {
                 //计算坐标
-                x1 = (int)(width * 0.10 + width * 0.0529 * i * 2);
+                x1 = (int)(width * 0.05 + width * 0.029 * i * 2);
 
                 //画背景
                 bush = new SolidBrush(Color.Gray);//填充的颜色
                 g.FillRectangle(bush, x1 - 2, y1 - 2, w + 4, h + 4);
 
                 //画LED
-                if (GetBitValue(data, i))
+                if (GetBitValue(value, i))
                 {
-                    bush = new SolidBrush(trueColor);//填充的颜色
+                    bush = new SolidBrush(colorOn);//填充的颜色
                 }
                 else
                 {
-                    bush = new SolidBrush(falseColor);//填充的颜色
+                    bush = new SolidBrush(colorOff);//填充的颜色
                 }
                 g.FillRectangle(bush, x1, y1, w, h);
             }

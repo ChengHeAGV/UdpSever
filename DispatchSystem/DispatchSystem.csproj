@@ -76,6 +76,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\服务器软件改进\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -83,6 +85,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -91,6 +94,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AGV\ControlForm.cs">
@@ -174,17 +180,23 @@
     <Compile Include="UdpToolForm.Designer.cs">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MagneticGuide16.cs">
+    <Compile Include="UserControls\MagneticGuide16Bit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MagneticGuide16.Designer.cs">
-      <DependentUpon>MagneticGuide16.cs</DependentUpon>
+    <Compile Include="UserControls\MagneticGuide16Bit.Designer.cs">
+      <DependentUpon>MagneticGuide16Bit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MagneticGuide8.cs">
+    <Compile Include="UserControls\MagneticGuide8Bit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MagneticGuide8.Designer.cs">
-      <DependentUpon>MagneticGuide8.cs</DependentUpon>
+    <Compile Include="UserControls\MagneticGuide8Bit.Designer.cs">
+      <DependentUpon>MagneticGuide8Bit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RFID.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RFID.Designer.cs">
+      <DependentUpon>RFID.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AGV\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
@@ -227,11 +239,14 @@
     <EmbeddedResource Include="UdpToolForm.resx">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MagneticGuide16.resx">
-      <DependentUpon>MagneticGuide16.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MagneticGuide16Bit.resx">
+      <DependentUpon>MagneticGuide16Bit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MagneticGuide8.resx">
-      <DependentUpon>MagneticGuide8.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MagneticGuide8Bit.resx">
+      <DependentUpon>MagneticGuide8Bit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RFID.resx">
+      <DependentUpon>RFID.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
@@ -255,6 +270,7 @@
     <None Include="Resources\8bit.png" />
     <None Include="Resources\16bit.png" />
     <Content Include="Resources\NetAssist.exe" />
+    <None Include="Resources\RFID.png" />
     <Content Include="Resources\robot.ico" />
     <Content Include="Resources\robot2.ico" />
     <Content Include="Resources\robot3.ico" />
