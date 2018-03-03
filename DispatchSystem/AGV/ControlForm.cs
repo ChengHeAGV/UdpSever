@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,11 +25,25 @@ namespace DispatchSystem.AGV
             this.Text = string.Format("AGV{0}-远程操作", deviceNum);
         }
 
+        private async void DoSomething(Button bb)
+        {
+            await Task.Run(() =>
+            {
+                UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, 128);
+                Console.WriteLine("读取结果:\r\n{0}", rm.ToString());
+
+            });
+            bb.Enabled = true;
+        }
+
         //读多个寄存器
         private void button1_Click(object sender, EventArgs e)
         {
-            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, 128);
-            Console.WriteLine("读取结果:\r\n{0}", rm.ToString());
+            UdpSever.Shell.WriteNotice("系统消息", "开始执行{0}", DateTime.Now.ToLocalTime());
+            var bb = sender as Button;
+            bb.Enabled = false;
+            DoSomething(bb);
+            UdpSever.Shell.WriteNotice("系统消息", "结束{0}", DateTime.Now.ToLocalTime());
         }
 
         //写多个寄存器

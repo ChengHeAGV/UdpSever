@@ -29,8 +29,24 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-            UdpSever.Shell.WriteNotice(100, "系统消息", "系统启动...");
-            UdpSever.Shell.WriteNotice(100, "系统消息", "加载调试信息...");
+            try
+            {
+                if (listenForm.IsDisposed != true)
+                {
+                    listenForm.Show();//弹出这个窗口
+                    listenForm.Focus();//激活显示
+                }
+                else
+                {
+                    listenForm = new ListenForm();
+                    listenForm.Show();//弹出这个窗口
+                    listenForm.Focus();//激活显示
+                }
+            }
+            catch
+            {
+
+            }
             #region 加载Dbug调试信息配置
             string strFilePath = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + Application.StartupPath + "\\Database.mdb";
             string sql = "select * from Debug";
@@ -52,6 +68,10 @@ namespace DispatchSystem
                 da.Dispose();
             }
             #endregion
+
+            UdpSever.Shell.WriteNotice(100, "系统消息", "系统启动...");
+            UdpSever.Shell.WriteNotice(100, "系统消息", "加载调试信息...");
+            
             UdpSever.Shell.WriteNotice(100, "系统消息", "获取本机IP...");
 
 
@@ -90,20 +110,6 @@ namespace DispatchSystem
 
             //SensorForm sensorForm = new SensorForm(1);
             //sensorForm.Show();
-            //UdpSever.AllocConsole();
-            //UdpSever.Shell.WriteLine("注意：启动程序...");
-            //UdpSever.Shell.WriteLine("\tWritten by wuming");
-            //UdpSever.Shell.WriteLine("{0}：{1}", "警告", "这是一条警告信息。");
-            //UdpSever.Shell.WriteLine("{0}：{1}", "错误", "这是一条错误信息！");
-            //UdpSever.Shell.WriteLine("{0}：{1}", "注意", "这是一条需要的注意信息。");
-            //UdpSever.Shell.WriteLine("");
-            //UdpSever.Shell.WriteLine("注意：2秒后关闭...");
-            //Thread.Sleep(1000);
-            //UdpSever.Shell.WriteLine("注意：1秒后关闭...");
-            //Thread.Sleep(1000);
-            //UdpSever.Shell.WriteLine("注意：正在关闭...");
-            //Thread.Sleep(100);
-
 
             //for (int i = 0; i < 5; i++)
             //{
@@ -559,6 +565,33 @@ namespace DispatchSystem
                     debugForm = new DebugForm();
                     debugForm.Show();//弹出这个窗口
                     debugForm.Focus();//激活显示
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        /// <summary>
+        /// 网络监控
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ListenForm listenForm = new ListenForm();
+        private void ListenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listenForm.IsDisposed != true)
+                {
+                    listenForm.Show();//弹出这个窗口
+                    listenForm.Focus();//激活显示
+                }
+                else
+                {
+                    listenForm = new ListenForm();
+                    listenForm.Show();//弹出这个窗口
+                    listenForm.Focus();//激活显示
                 }
             }
             catch
