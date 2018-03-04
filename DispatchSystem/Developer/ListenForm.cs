@@ -77,10 +77,14 @@ namespace DispatchSystem.Developer
         UInt64 rx = 0, tx = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            UInt64 temp = (UInt64)((UdpSever.RxLength - rx) );
             listY.RemoveAt(0);
-            listY.Add((UdpSever.RxLength - rx) % 1000);
+            //Y轴标签间距
+            chart1.ChartAreas[0].AxisY.Interval = temp / 20.0;
+            listY.Add(temp);
             chart1.Series[0].Points.DataBindXY(listX, listY);
-            chart1.Series[1].Name = string.Format("接收流量:{0}", (UdpSever.RxLength - rx) % 1000);
+            chart1.Series[1].Name = string.Format("接收流量:{0}", temp);
+
             rx = UdpSever.RxLength;
 
             listY2.RemoveAt(0);
