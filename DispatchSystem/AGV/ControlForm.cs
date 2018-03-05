@@ -58,5 +58,38 @@ namespace DispatchSystem.AGV
             UdpSever.ReturnMsg rm = UdpSever.Write_Multiple_Registers(deviceNum, 0, 128, data);
             Console.WriteLine("写入结果:\r\n{0}", rm.ToString());
         }
+
+
+
+        private async void WriteRegister(Button bb,int reg,int data, string str)
+        {
+            await Task.Run(() =>
+            {
+                UdpSever.Write_Register(deviceNum, reg, data);
+            });
+            UdpSever.Shell.WriteNotice("debug", str);
+            bb.Enabled = true;
+        }
+        //滚筒左转
+        private void buttonGunTongLeft_Click(object sender, EventArgs e)
+        {
+            var bb = sender as Button;
+            bb.Enabled = false;
+            WriteRegister(bb,1,1,string.Format("滚筒左转[{0}][{1}]", deviceNum, 1));
+        }
+        //滚筒右转
+        private void buttonGunTongRight_Click(object sender, EventArgs e)
+        {
+            var bb = sender as Button;
+            bb.Enabled = false;
+            WriteRegister(bb, 2, 1, string.Format("滚筒右转[{0}][{1}]", deviceNum, 2));
+        }
+        //滚筒停止
+        private void button_GunTongStop_Click(object sender, EventArgs e)
+        {
+            var bb = sender as Button;
+            bb.Enabled = false;
+            WriteRegister(bb, 3, 1, string.Format("滚筒停止[{0}][{1}]", deviceNum, 3));
+        }
     }
 }

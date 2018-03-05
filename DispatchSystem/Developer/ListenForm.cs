@@ -43,7 +43,7 @@ namespace DispatchSystem.Developer
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray; ;
             //Y坐标轴标题
-            chart1.ChartAreas[0].AxisY.Title = "带宽(Kb)";
+            chart1.ChartAreas[0].AxisY.Title = "带宽(Byte)";
             chart1.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
             //Y轴网格线条
             chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
@@ -77,22 +77,25 @@ namespace DispatchSystem.Developer
         UInt64 rx = 0, tx = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            UInt64 temp = (UInt64)((UdpSever.RxLength - rx) );
+            UInt64 temp1 = (UInt64)(UdpSever.RxLength - rx);
             listY.RemoveAt(0);
-            //Y轴标签间距
-            chart1.ChartAreas[0].AxisY.Interval = temp / 20.0;
-            listY.Add(temp);
+            listY.Add(temp1);
             chart1.Series[0].Points.DataBindXY(listX, listY);
-            chart1.Series[1].Name = string.Format("接收流量:{0}", temp);
+            chart1.Series[0].Name = string.Format("接收:{0}", temp1);
 
             rx = UdpSever.RxLength;
 
+            UInt64 temp2 = (UInt64)((UdpSever.TxLength - tx));
             listY2.RemoveAt(0);
-            listY2.Add((UdpSever.TxLength - tx) % 1000);
+            listY2.Add(UdpSever.TxLength - tx);
             chart1.Series[1].Points.DataBindXY(listX, listY2);
             tx = UdpSever.TxLength;
 
-            chart1.Series[0].Name = string.Format("发送流量:{0}", UdpSever.RxLength);
+            chart1.Series[1].Name = string.Format("发送:{0}", temp2);
+
+            //搜索最大值
+            //Y轴标签间距
+            chart1.ChartAreas[0].AxisY.Interval = listY.Max() > listY2.Max() ? listY.Max() / 20 : listY2.Max() / 20;
         }
     }
 }

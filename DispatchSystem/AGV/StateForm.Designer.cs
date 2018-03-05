@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(452, 388);
             this.Name = "StateForm";
             this.Text = "AGV - 状态";
             this.Load += new System.EventHandler(this.StateForm_Load);

@@ -105,4 +105,3 @@ C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\obj\Debug\AGV调度系统
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.ListenForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.ListenForm.resources
-D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CoreCompileInputs.cache
