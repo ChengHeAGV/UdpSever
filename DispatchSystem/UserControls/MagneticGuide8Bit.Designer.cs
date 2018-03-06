@@ -64,7 +64,6 @@
             this.Name = "MagneticGuide8";
             this.Size = new System.Drawing.Size(631, 248);
             this.Load += new System.EventHandler(this.MagneticGuide_Load);
-            this.SizeChanged += new System.EventHandler(this.MagneticGuide_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

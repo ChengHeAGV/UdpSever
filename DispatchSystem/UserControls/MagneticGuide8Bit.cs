@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace DispatchSystem.UserControls
 {
@@ -105,50 +106,61 @@ namespace DispatchSystem.UserControls
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Parent = pictureBox1;
             update();
+            this.SizeChanged += MagneticGuide8Bit_SizeChanged;
         }
 
-        private void MagneticGuide_SizeChanged(object sender, EventArgs e)
+        private void MagneticGuide8Bit_SizeChanged(object sender, EventArgs e)
         {
             update();
         }
 
         void update()
         {
-            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Graphics g = Graphics.FromImage(bmp);
-            int x1, y1, w, h;
-            int width = pictureBox1.Width;
-            int height = pictureBox1.Height;
-            Brush bush;
-            //矩形宽
-            w = (int)(width * 0.0529);
-            //矩形高
-            h = (int)(height * 0.4);
-            //矩形y坐标
-            y1 = (int)(height * 0.5);
-            for (int i = 0; i < 8; i++)
-            {
-                //计算坐标
-                x1 = (int)(width * 0.10 + width * 0.0529 * i * 2);
-
-                //画背景
-                bush = new SolidBrush(Color.Gray);//填充的颜色
-                g.FillRectangle(bush, x1 - 2, y1 - 2, w + 4, h + 4);
-
-                //画LED
-                if (GetBitValue(value, i))
-                {
-                    bush = new SolidBrush(colorOn);//填充的颜色
-                }
-                else
-                {
-                    bush = new SolidBrush(colorOff);//填充的颜色
-                }
-                g.FillRectangle(bush, x1, y1, w, h);
-            }
-            pictureBox2.Image = new Bitmap(bmp);
-            g.Dispose();
+            Thread th = new Thread(Func);
+            th.Start();
         }
+
+        private void Func()
+        {
+            this.Invoke(new MethodInvoker(delegate
+            {
+                Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                Graphics g = Graphics.FromImage(bmp);
+                int x1, y1, w, h;
+                int width = pictureBox1.Width;
+                int height = pictureBox1.Height;
+                Brush bush;
+                //矩形宽
+                w = (int)(width * 0.0529);
+                //矩形高
+                h = (int)(height * 0.4);
+                //矩形y坐标
+                y1 = (int)(height * 0.5);
+                for (int i = 0; i < 8; i++)
+                {
+                    //计算坐标
+                    x1 = (int)(width * 0.10 + width * 0.0529 * i * 2);
+
+                    //画背景
+                    bush = new SolidBrush(Color.Gray);//填充的颜色
+                    g.FillRectangle(bush, x1 - 2, y1 - 2, w + 4, h + 4);
+
+                    //画LED
+                    if (GetBitValue(value, i))
+                    {
+                        bush = new SolidBrush(colorOn);//填充的颜色
+                    }
+                    else
+                    {
+                        bush = new SolidBrush(colorOff);//填充的颜色
+                    }
+                    g.FillRectangle(bush, x1, y1, w, h);
+                }
+                pictureBox2.Image = new Bitmap(bmp);
+                g.Dispose();
+            }));
+        }
+
         /// <summary>
         /// 返回Int数据中某一位是否为1
         /// </summary>
