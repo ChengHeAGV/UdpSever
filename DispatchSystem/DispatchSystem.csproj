@@ -68,14 +68,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LBIndustrialCtrls, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\LBIndustrialCtrls.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\服务器软件改进\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -142,10 +135,30 @@
     <Compile Include="Developer\ListenForm.Designer.cs">
       <DependentUpon>ListenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Developer\DbusTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Developer\DbusTestForm.Designer.cs">
+      <DependentUpon>DbusTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Base\LBIndustrialCtrlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Base\LBIndustrialCtrlBase.Designer.cs">
+      <DependentUpon>LBIndustrialCtrlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Base\Renderer.cs" />
+    <Compile Include="UserControls\Button\ButtonRenderer.cs" />
+    <Compile Include="UserControls\Button\LBButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Button\LBButton.Designer.cs">
+      <DependentUpon>LBButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Forklift.cs">
       <SubType>UserControl</SubType>
@@ -187,6 +200,27 @@
     <Compile Include="UdpToolForm.Designer.cs">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Knob\KnobRenderer.cs" />
+    <Compile Include="UserControls\Knob\LBKnob.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Knob\LBKnob.Designer.cs">
+      <DependentUpon>LBKnob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Led\LB7SegmentDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Led\LB7SegmentDisplay.Designer.cs">
+      <DependentUpon>LB7SegmentDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Led\LB7SegmentDisplayRenderer.cs" />
+    <Compile Include="UserControls\Led\LBLed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Led\LBLed.Designer.cs">
+      <DependentUpon>LBLed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Led\LedRenderer.cs" />
     <Compile Include="UserControls\MagneticGuide16Bit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,12 +233,35 @@
     <Compile Include="UserControls\MagneticGuide8Bit.Designer.cs">
       <DependentUpon>MagneticGuide8Bit.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Meters\LBAnalogMeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Meters\LBAnalogMeter.Designer.cs">
+      <DependentUpon>LBAnalogMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Meters\LBDigitalMeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Meters\LBDigitalMeter.Designer.cs">
+      <DependentUpon>LBDigitalMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Meters\LBDigitalMeterRenderer.cs" />
+    <Compile Include="UserControls\Meters\LBMeterThreshold.cs" />
+    <Compile Include="UserControls\Meters\MeterRenderer.cs" />
     <Compile Include="UserControls\RFID.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\RFID.Designer.cs">
       <DependentUpon>RFID.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SignalLed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SignalLed.Designer.cs">
+      <DependentUpon>SignalLed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Utils\ColorMng.cs" />
+    <Compile Include="UserControls\Utils\MathFunc.cs" />
     <EmbeddedResource Include="AGV\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Developer\ListenForm.resx">
       <DependentUpon>ListenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Developer\DbusTestForm.resx">
+      <DependentUpon>DbusTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Button\LBButton.resx">
+      <DependentUpon>LBButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Forklift.resx">
       <DependentUpon>Forklift.cs</DependentUpon>
@@ -249,14 +312,29 @@
     <EmbeddedResource Include="UdpToolForm.resx">
       <DependentUpon>UdpToolForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Knob\LBKnob.resx">
+      <DependentUpon>LBKnob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Led\LB7SegmentDisplay.resx">
+      <DependentUpon>LB7SegmentDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Led\LBLed.resx">
+      <DependentUpon>LBLed.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MagneticGuide16Bit.resx">
       <DependentUpon>MagneticGuide16Bit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MagneticGuide8Bit.resx">
       <DependentUpon>MagneticGuide8Bit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Meters\LBDigitalMeter.resx">
+      <DependentUpon>LBDigitalMeter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RFID.resx">
       <DependentUpon>RFID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SignalLed.resx">
+      <DependentUpon>SignalLed.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
@@ -277,6 +355,7 @@
   <ItemGroup>
     <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
+    <Content Include="UserControls\Knob\Knob.bmp" />
     <None Include="Resources\8bit.png" />
     <None Include="Resources\16bit.png" />
     <Content Include="Resources\NetAssist.exe" />
@@ -303,6 +382,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

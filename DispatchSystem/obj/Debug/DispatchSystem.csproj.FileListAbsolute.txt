@@ -78,7 +78,6 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.Cache
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
-D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
@@ -105,3 +104,11 @@ C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\obj\Debug\AGV调度系统
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 C:\Users\Administrator\Desktop\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.ListenForm.resources
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.ListenForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.DbusTestForm.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.SignalLed.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Buttons.LBButton.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Knobs.LBKnob.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Leds.LB7SegmentDisplay.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Leds.LBLed.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Meters.LBDigitalMeter.resources
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache

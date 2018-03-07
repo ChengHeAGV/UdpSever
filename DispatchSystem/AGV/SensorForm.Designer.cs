@@ -195,7 +195,7 @@
             this.lbLed2.Name = "lbLed2";
             this.lbLed2.Renderer = null;
             this.lbLed2.Size = new System.Drawing.Size(68, 56);
-            this.lbLed2.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.Blink;
+            this.lbLed2.LedState = LBSoft.IndustrialCtrls.Leds.LBLed.ledState.Blink;
             this.lbLed2.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Rectangular;
             this.lbLed2.TabIndex = 10;
             // 
@@ -212,7 +212,7 @@
             this.lbLed1.Name = "lbLed1";
             this.lbLed1.Renderer = null;
             this.lbLed1.Size = new System.Drawing.Size(68, 56);
-            this.lbLed1.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.Off;
+            this.lbLed1.LedState = LBSoft.IndustrialCtrls.Leds.LBLed.ledState.Off;
             this.lbLed1.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
             this.lbLed1.TabIndex = 9;
             // 

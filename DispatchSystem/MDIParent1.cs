@@ -599,5 +599,28 @@ namespace DispatchSystem
 
             }
         }
+
+        DbusTestForm dbusForm = new DbusTestForm();
+        private void dBUSTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dbusForm.IsDisposed != true)
+                {
+                    dbusForm.Show();//弹出这个窗口
+                    dbusForm.Focus();//激活显示
+                }
+                else
+                {
+                    dbusForm = new DbusTestForm();
+                    dbusForm.Show();//弹出这个窗口
+                    dbusForm.Focus();//激活显示
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

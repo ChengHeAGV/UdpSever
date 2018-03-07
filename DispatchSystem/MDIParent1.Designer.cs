@@ -90,6 +90,7 @@
             this.流程规划ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.高级ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ListenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -104,7 +105,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
-            this.ListenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dBUSTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -499,7 +500,8 @@
             // 
             this.高级ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DebugToolStripMenuItem,
-            this.ListenToolStripMenuItem});
+            this.ListenToolStripMenuItem,
+            this.dBUSTestToolStripMenuItem});
             this.高级ToolStripMenuItem.Name = "高级ToolStripMenuItem";
             this.高级ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.高级ToolStripMenuItem.Text = "Developer";
@@ -510,6 +512,13 @@
             this.DebugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DebugToolStripMenuItem.Text = "Debug";
             this.DebugToolStripMenuItem.Click += new System.EventHandler(this.DebugToolStripMenuItem_Click);
+            // 
+            // ListenToolStripMenuItem
+            // 
+            this.ListenToolStripMenuItem.Name = "ListenToolStripMenuItem";
+            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ListenToolStripMenuItem.Text = "Listen";
+            this.ListenToolStripMenuItem.Click += new System.EventHandler(this.ListenToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -703,12 +712,12 @@
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
             // 
-            // ListenToolStripMenuItem
+            // dBUSTestToolStripMenuItem
             // 
-            this.ListenToolStripMenuItem.Name = "ListenToolStripMenuItem";
-            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ListenToolStripMenuItem.Text = "Listen";
-            this.ListenToolStripMenuItem.Click += new System.EventHandler(this.ListenToolStripMenuItem_Click);
+            this.dBUSTestToolStripMenuItem.Name = "dBUSTestToolStripMenuItem";
+            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dBUSTestToolStripMenuItem.Text = "DBUS_Test";
+            this.dBUSTestToolStripMenuItem.Click += new System.EventHandler(this.dBUSTestToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -810,6 +819,7 @@
         private System.Windows.Forms.ToolStripMenuItem 高级ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DebugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dBUSTestToolStripMenuItem;
     }
 }
 

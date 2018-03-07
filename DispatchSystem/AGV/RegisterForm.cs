@@ -43,7 +43,7 @@ namespace DispatchSystem
 
         private void DataForm_Load(object sender, EventArgs e)
         {
-            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, UdpSever.RegisterNum);
+            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers( deviceNum, 0, UdpSever.RegisterNum);
             if (rm.resault)
             {
                 for (int i = 0; i < rm.DataBuf.Length; i++)

@@ -55,7 +55,7 @@ namespace DispatchSystem.AGV
             {
                 data[i] = (ushort)(rd.Next(1, 1000));
             }
-            UdpSever.ReturnMsg rm = UdpSever.Write_Multiple_Registers(deviceNum, 0, 128, data);
+            UdpSever.ReturnMsg rm = UdpSever.Write_Multiple_Registers( deviceNum, 0, 128, data);
             Console.WriteLine("写入结果:\r\n{0}", rm.ToString());
         }
 
@@ -65,7 +65,7 @@ namespace DispatchSystem.AGV
         {
             await Task.Run(() =>
             {
-                UdpSever.Write_Register(deviceNum, reg, data);
+                UdpSever.Write_Register( deviceNum, reg, data);
             });
             UdpSever.Shell.WriteNotice("debug", str);
             bb.Enabled = true;

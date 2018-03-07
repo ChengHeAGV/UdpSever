@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -301,7 +302,7 @@ namespace DispatchSystem
         //服务器地址
         public static int ServerAddress = 0;
         //设备心跳周期(单位：秒)
-        public static int HeartCycle = 100;
+        public static int HeartCycle = 10;
 
         //错误重发次数
         public static int RepeatNum = 3;
@@ -314,7 +315,7 @@ namespace DispatchSystem
         public static byte[,] ResponseBuf = new byte[RESPONSE_MAX_LEN, FrameLen];
 
         //监听服务总进程
-        static Thread MainThread;
+        static Thread UdpThread;
 
         //帧ID
         public static int FrameID = 0;
@@ -351,7 +352,8 @@ namespace DispatchSystem
         static IPEndPoint ipEndPoint;
         static Socket socket;
         //主线程状态
-        public static bool MainThreadIsClosed = true;
+        public static bool UdpThreadIsClosed = true;
+
         /// <summary>
         /// 启动UDP服务器
         /// </summary>
@@ -366,9 +368,11 @@ namespace DispatchSystem
                 rs.Reault = true;
                 rs.Message = "启动成功";
 
-                MainThreadIsClosed = false;
-                MainThread = new Thread(mainFunc);
-                MainThread.Start();
+                #region UDP数据接收
+                UdpThreadIsClosed = false;
+                UdpThread = new Thread(UdpFunc);
+                UdpThread.Start();
+                #endregion
 
                 //启动检测连接进程
                 State = true;//更新服务器状态
@@ -393,16 +397,16 @@ namespace DispatchSystem
             try
             {
                 //退出线程
-                MainThreadIsClosed = true;
+                UdpThreadIsClosed = true;
                 Shell.WriteWarning("系统消息", "正在关闭服务器，请稍等...!");
                 socket.Close();
                 //等待线程退出
-                while (MainThread.ThreadState != System.Threading.ThreadState.Stopped)
+                while (UdpThread.ThreadState != System.Threading.ThreadState.Stopped)
                 {
                     Thread.Sleep(10);
                 }
                 //注销检测连接进程
-                MainThread.Abort();
+                UdpThread.Abort();
 
                 State = false;//更新服务器状态 
 
@@ -422,7 +426,7 @@ namespace DispatchSystem
         }
 
         //启动监听
-        private static void mainFunc()
+        private static void UdpFunc()
         {
             try
             {
@@ -430,7 +434,7 @@ namespace DispatchSystem
                 EndPoint endPoint = (EndPoint)(sender);
                 //定义接收池字符串
                 string StringBuf = string.Empty;
-                while (MainThreadIsClosed == false)
+                while (UdpThreadIsClosed == false)
                 {
                     Thread.Sleep(1);
                     //从缓冲区读取数据
@@ -865,8 +869,36 @@ namespace DispatchSystem
             return str;
         }
 
+        //心跳函数
+
+        public static void Heart(int DeviceAdress, int TargetAddress, EndPoint ep)
+        {
+            byte[] sendbyte = new byte[9];
+            FrameID++;
+            int frameID = FrameID;
+            sendbyte[0] = (byte)(frameID >> 8);
+            sendbyte[1] = (byte)(frameID);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
+            sendbyte[4] = 0x00;
+            sendbyte[5] = (byte)(TargetAddress >> 8);
+            sendbyte[6] = (byte)(TargetAddress);
+
+            int crcRes = CRC.crc_16(sendbyte, 7);
+
+            sendbyte[7] = (byte)(crcRes >> 8);
+            sendbyte[8] = (byte)(crcRes);
+            //发送数据
+            sendToUdp(ep, sendbyte);
+        }
+        public static void Heart(int TargetAddress)
+        {
+            Heart(ServerAddress, TargetAddress, EndPointArray[TargetAddress]);
+        }
+
         //写单个字
-        public static ReturnMsg Write_Register(int TargetAddress, int RegisterAddress, int Data)
+
+        public static ReturnMsg Write_Register(int DeviceAdress, int TargetAddress, int RegisterAddress, int Data, EndPoint ep)
         {
             byte[] sendbyte = new byte[14];
             FrameID++;
@@ -874,8 +906,8 @@ namespace DispatchSystem
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
-            sendbyte[2] = (byte)(ServerAddress >> 8);
-            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
             sendbyte[4] = 0x01;
             sendbyte[5] = (byte)(TargetAddress >> 8);
             sendbyte[6] = (byte)(TargetAddress);
@@ -892,7 +924,7 @@ namespace DispatchSystem
             for (int j = 0; j < RepeatNum; j++)
             {
                 //发送数据
-                sendToUdp(EndPointArray[TargetAddress], sendbyte);
+                sendToUdp(ep, sendbyte);
                 //等待响应
                 for (int k = 0; k < ResponseTimeout; k++)
                 {
@@ -919,8 +951,13 @@ namespace DispatchSystem
             msg.resault = false;
             return msg;
         }
+        public static ReturnMsg Write_Register(int TargetAddress, int RegisterAddress, int Data)
+        {
+            return Write_Register(ServerAddress, TargetAddress, RegisterAddress, Data, EndPointArray[TargetAddress]);
+        }
+
         //写多个字
-        public static ReturnMsg Write_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
+        public static ReturnMsg Write_Multiple_Registers(int DeviceAdress, int TargetAddress, int RegisterAddress, int Num, UInt16[] Data, EndPoint ep)
         {
             byte[] sendbyte = new byte[13 + Num * 2];
             FrameID++;
@@ -928,8 +965,8 @@ namespace DispatchSystem
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
-            sendbyte[2] = (byte)(ServerAddress >> 8);
-            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
             sendbyte[4] = 0x01;
             sendbyte[5] = (byte)(TargetAddress >> 8);
             sendbyte[6] = (byte)(TargetAddress);
@@ -951,7 +988,7 @@ namespace DispatchSystem
             for (int j = 0; j < RepeatNum; j++)
             {
                 //发送数据
-                sendToUdp(EndPointArray[TargetAddress], sendbyte);
+                sendToUdp(ep, sendbyte);
                 //等待响应
                 for (int k = 0; k < ResponseTimeout; k++)
                 {
@@ -982,9 +1019,13 @@ namespace DispatchSystem
             msg.resault = false;
             return msg;
         }
+        public static ReturnMsg Write_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
+        {
+            return Write_Multiple_Registers(ServerAddress, TargetAddress, RegisterAddress, Num, Data, EndPointArray[TargetAddress]);
+        }
 
         //读单个寄存器
-        public static ReturnMsg Read_Register(int TargetAddress, int RegisterAddress)
+        public static ReturnMsg Read_Register(int DeviceAdress, int TargetAddress, int RegisterAddress, EndPoint ep)
         {
             byte[] sendbyte = new byte[12];
             FrameID++;
@@ -992,8 +1033,8 @@ namespace DispatchSystem
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
-            sendbyte[2] = (byte)(ServerAddress >> 8);
-            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
             sendbyte[4] = 0x01;
             sendbyte[5] = (byte)(TargetAddress >> 8);
             sendbyte[6] = (byte)(TargetAddress);
@@ -1009,7 +1050,7 @@ namespace DispatchSystem
             for (int j = 0; j < RepeatNum; j++)
             {
                 //发送数据
-                sendToUdp(EndPointArray[TargetAddress], sendbyte);
+                sendToUdp(ep, sendbyte);
                 //等待响应
                 for (int k = 0; k < ResponseTimeout; k++)
                 {
@@ -1032,8 +1073,13 @@ namespace DispatchSystem
             msg.resault = false;
             return msg;
         }
+        public static ReturnMsg Read_Register(int TargetAddress, int RegisterAddress)
+        {
+            return Read_Register(ServerAddress, TargetAddress, RegisterAddress, EndPointArray[TargetAddress]);
+        }
+
         //读多个寄存器
-        public static ReturnMsg Read_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num)
+        public static ReturnMsg Read_Multiple_Registers(int DeviceAdress, int TargetAddress, int RegisterAddress, int Num, EndPoint ep)
         {
             byte[] sendbyte = new byte[13];
             FrameID++;
@@ -1042,8 +1088,8 @@ namespace DispatchSystem
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
-            sendbyte[2] = (byte)(ServerAddress >> 8);
-            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
             sendbyte[4] = 0x01;
             sendbyte[5] = (byte)(TargetAddress >> 8);
             sendbyte[6] = (byte)(TargetAddress);
@@ -1060,7 +1106,7 @@ namespace DispatchSystem
             for (int j = 0; j < RepeatNum; j++)
             {
                 //发送数据
-                sendToUdp(EndPointArray[TargetAddress], sendbyte);
+                sendToUdp(ep, sendbyte);
                 //等待响应
                 for (int k = 0; k < ResponseTimeout; k++)
                 {
@@ -1086,18 +1132,22 @@ namespace DispatchSystem
             msg.resault = false;
             return msg;
         }
+        public static ReturnMsg Read_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num)
+        {
+            return Read_Multiple_Registers(ServerAddress, TargetAddress, RegisterAddress, Num, EndPointArray[TargetAddress]);
+        }
 
         /****************实时帧******************/
         //写单个字
-        public static void Post_Register(int TargetAddress, int RegisterAddress, int Data)
+        public static void Post_Register(int DeviceAdress, int TargetAddress, int RegisterAddress, int Data, EndPoint ep)
         {
             byte[] sendbyte = new byte[14];
             FrameID++;
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
-            sendbyte[2] = (byte)(ServerAddress >> 8);
-            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
             sendbyte[4] = 0x01;
             sendbyte[5] = (byte)(TargetAddress >> 8);
             sendbyte[6] = (byte)(TargetAddress);
@@ -1112,18 +1162,23 @@ namespace DispatchSystem
             sendbyte[12] = (byte)(crcRes >> 8);
             sendbyte[13] = (byte)(crcRes);
             //发送数据
-            sendToUdp(EndPointArray[TargetAddress], sendbyte);
+            sendToUdp(ep, sendbyte);
         }
+        public static void Post_Register(int TargetAddress, int RegisterAddress, int Data)
+        {
+            Post_Register(ServerAddress, TargetAddress, RegisterAddress, Data, EndPointArray[TargetAddress]);
+        }
+
         //写多个字
-        public static void Post_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
+        public static void Post_Multiple_Registers(int DeviceAdress, int TargetAddress, int RegisterAddress, int Num, UInt16[] Data, EndPoint ep)
         {
             byte[] sendbyte = new byte[13 + Num * 2];
             FrameID++;
             int frameID = FrameID;
             sendbyte[0] = (byte)(frameID >> 8);
             sendbyte[1] = (byte)(frameID);
-            sendbyte[2] = (byte)(ServerAddress >> 8);
-            sendbyte[3] = (byte)(ServerAddress);
+            sendbyte[2] = (byte)(DeviceAdress >> 8);
+            sendbyte[3] = (byte)(DeviceAdress);
             sendbyte[4] = 0x01;
             sendbyte[5] = (byte)(TargetAddress >> 8);
             sendbyte[6] = (byte)(TargetAddress);
@@ -1142,7 +1197,11 @@ namespace DispatchSystem
             sendbyte[11 + Num * 2] = (byte)(crcRes >> 8);
             sendbyte[12 + Num * 2] = (byte)(crcRes);
             //发送数据
-            sendToUdp(EndPointArray[TargetAddress], sendbyte);
+            sendToUdp(ep, sendbyte);
+        }
+        public static void Post_Multiple_Registers( int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
+        {
+            Post_Multiple_Registers(ServerAddress, TargetAddress, RegisterAddress, Num, Data, EndPointArray[TargetAddress]);
         }
 
         /// <summary>

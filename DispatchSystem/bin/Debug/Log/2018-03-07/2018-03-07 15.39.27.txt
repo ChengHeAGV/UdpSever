@@ -1,0 +1,4 @@
+[服务器][服务器地址][ServerAddress][0]
+[服务器][设备数][DeviceNum][20]
+[服务器][寄存器数][RegisterNum][128]
+[服务器][单帧数据长度][FrameLen][2048]
