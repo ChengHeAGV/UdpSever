@@ -37,7 +37,7 @@ namespace DispatchSystem
         {
             InitializeComponent();
             SetStyle();
-            //tvTaskList.Rows[0].ReadOnly = true;
+            tvTaskList.Rows[0].ReadOnly = true;
         }
         private void SetStyle()
         {
@@ -52,13 +52,15 @@ namespace DispatchSystem
             tvTaskList.ImageList = imageStrip;
 
             // attachment header cell
-            this.Column1.HeaderCell = new AttachmentColumnHeader(imageStrip.Images[0]);
+            //this.Column1.HeaderCell = new AttachmentColumnHeader(imageStrip.Images[0]);
 
             FillFormInfo();
         }
 
         private void FillFormInfo()
         {
+            AdvancedDataGridView.TreeGridView tr = new TreeGridView();
+
             boldFont = new Font(tvTaskList.DefaultCellStyle.Font, FontStyle.Bold);
             node_parment = tvTaskList.Nodes.Add("系统参数", " ", " ", " ", " ", " ");
             node_parment.ImageIndex = 0;
