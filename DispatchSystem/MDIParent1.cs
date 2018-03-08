@@ -71,7 +71,7 @@ namespace DispatchSystem
 
             UdpSever.Shell.WriteNotice(100, "系统消息", "系统启动...");
             UdpSever.Shell.WriteNotice(100, "系统消息", "加载调试信息...");
-            
+
             UdpSever.Shell.WriteNotice(100, "系统消息", "获取本机IP...");
 
 
@@ -615,6 +615,29 @@ namespace DispatchSystem
                     dbusForm = new DbusTestForm();
                     dbusForm.Show();//弹出这个窗口
                     dbusForm.Focus();//激活显示
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        AgvParameter agvParameter = new AgvParameter();
+        private void 参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (agvParameter.IsDisposed != true)
+                {
+                    agvParameter.Show();//弹出这个窗口
+                    agvParameter.Focus();//激活显示
+                }
+                else
+                {
+                    agvParameter = new AgvParameter();
+                    agvParameter.Show();//弹出这个窗口
+                    agvParameter.Focus();//激活显示
                 }
             }
             catch

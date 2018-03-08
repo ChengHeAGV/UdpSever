@@ -1,0 +1,1920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tvTaskList.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tvTaskList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tvTaskList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="tvTaskList.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="tvTaskList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>816, 345</value>
+  </data>
+  <data name="tvTaskList.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tvTaskList.Name" xml:space="preserve">
+    <value>tvTaskList</value>
+  </data>
+  <data name="&gt;&gt;tvTaskList.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridView, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tvTaskList.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tvTaskList.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 76</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>822, 365</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>参数列表</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column6.HeaderText" xml:space="preserve">
+    <value>参数号</value>
+  </data>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>参数名</value>
+  </data>
+  <metadata name="Column7.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column7.HeaderText" xml:space="preserve">
+    <value>当前值</value>
+  </data>
+  <metadata name="Column8.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column8.HeaderText" xml:space="preserve">
+    <value>设定值</value>
+  </data>
+  <metadata name="Column9.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column9.HeaderText" xml:space="preserve">
+    <value>描   述</value>
+  </data>
+  <data name="Column9.MinimumWidth" type="System.Int32, mscorlib">
+    <value>249</value>
+  </data>
+  <data name="Column9.Width" type="System.Int32, mscorlib">
+    <value>249</value>
+  </data>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column1.DefaultNodeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAQCAIAAADfzGvmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvAAA
+        DrwBlbxySQAAAUZJREFUSEudUgGShDAI69P3af7MS0JLsXQqZyaTxRIk6ra73QXCVnSSP2E5LLKyRj+t
+        /WqZGOWmtv88g/Nl5rou5SArC+CHTS/oGMixnHMiHTlxd3s93FFLgxzcIizdSchAzjTH7LEimGaQw2Fs
+        64/IfmfPIfQ6dr3CXeSZ8I/F26cF2Q+Pwph99XdCLITQa+9yaFR5gf0hDOyGsQ9+EiLIHmo35EB6HSRq
+        WzCL4Yx+qMFt0K2fhAisYu2GHOgJNKjbBTs/M5lmPwkRWMXaDcdAOO1aDORptn4SIrCKtRtyIP9k/uFw
+        tl1gfmgEnDg8BzL1QqeTayAB11HfP5nnMAWyn4RYgoH3QOkNsbddYH5oBJw4PAdiS5i1G1IgVNY37TwE
+        8gRRgezvhATo+sFHILvXFhwOYx/8kxFLKwZS4hPc+c1fYrv/AGKLfuM62xQgAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Column1.MinimumWidth" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="Column1.Width" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="label5_LED.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5_LED.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5_LED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 547</value>
+  </data>
+  <data name="label5_LED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="label5_LED.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label5_LED.Text" xml:space="preserve">
+    <value>●</value>
+  </data>
+  <data name="&gt;&gt;label5_LED.Name" xml:space="preserve">
+    <value>label5_LED</value>
+  </data>
+  <data name="&gt;&gt;label5_LED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5_LED.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5_LED.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 547</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 12</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>波特率:</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 547</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 12</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>串  口:</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="comboBox2_BaudRate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="comboBox2_BaudRate.AutoCompleteCustomSource" xml:space="preserve">
+    <value>9600</value>
+  </data>
+  <data name="comboBox2_BaudRate.AutoCompleteCustomSource1" xml:space="preserve">
+    <value>19200</value>
+  </data>
+  <data name="comboBox2_BaudRate.AutoCompleteCustomSource2" xml:space="preserve">
+    <value>115200</value>
+  </data>
+  <data name="comboBox2_BaudRate.Items" xml:space="preserve">
+    <value>9600</value>
+  </data>
+  <data name="comboBox2_BaudRate.Items1" xml:space="preserve">
+    <value>19200</value>
+  </data>
+  <data name="comboBox2_BaudRate.Items2" xml:space="preserve">
+    <value>115200</value>
+  </data>
+  <data name="comboBox2_BaudRate.Items3" xml:space="preserve">
+    <value>256000</value>
+  </data>
+  <data name="comboBox2_BaudRate.Items4" xml:space="preserve">
+    <value>921600</value>
+  </data>
+  <data name="comboBox2_BaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 543</value>
+  </data>
+  <data name="comboBox2_BaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="comboBox2_BaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBox2_BaudRate.Name" xml:space="preserve">
+    <value>comboBox2_BaudRate</value>
+  </data>
+  <data name="&gt;&gt;comboBox2_BaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox2_BaudRate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboBox2_BaudRate.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="comboBox1_PortName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="comboBox1_PortName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 543</value>
+  </data>
+  <data name="comboBox1_PortName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="comboBox1_PortName.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBox1_PortName.Name" xml:space="preserve">
+    <value>comboBox1_PortName</value>
+  </data>
+  <data name="&gt;&gt;comboBox1_PortName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox1_PortName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboBox1_PortName.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="button1_openclose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1_openclose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>389, 542</value>
+  </data>
+  <data name="button1_openclose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 23</value>
+  </data>
+  <data name="button1_openclose.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button1_openclose.Text" xml:space="preserve">
+    <value>打开串口</value>
+  </data>
+  <data name="&gt;&gt;button1_openclose.Name" xml:space="preserve">
+    <value>button1_openclose</value>
+  </data>
+  <data name="&gt;&gt;button1_openclose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1_openclose.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1_openclose.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="checkBox_liucheng.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_liucheng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_liucheng.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 545</value>
+  </data>
+  <data name="checkBox_liucheng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 16</value>
+  </data>
+  <data name="checkBox_liucheng.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="checkBox_liucheng.Text" xml:space="preserve">
+    <value>流程</value>
+  </data>
+  <data name="&gt;&gt;checkBox_liucheng.Name" xml:space="preserve">
+    <value>checkBox_liucheng</value>
+  </data>
+  <data name="&gt;&gt;checkBox_liucheng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_liucheng.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_liucheng.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="checkBox_lujing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_lujing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_lujing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>576, 545</value>
+  </data>
+  <data name="checkBox_lujing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 16</value>
+  </data>
+  <data name="checkBox_lujing.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="checkBox_lujing.Text" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="&gt;&gt;checkBox_lujing.Name" xml:space="preserve">
+    <value>checkBox_lujing</value>
+  </data>
+  <data name="&gt;&gt;checkBox_lujing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_lujing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_lujing.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="checkBox_parment.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_parment.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_parment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>756, 545</value>
+  </data>
+  <data name="checkBox_parment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="checkBox_parment.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBox_parment.Text" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;checkBox_parment.Name" xml:space="preserve">
+    <value>checkBox_parment</value>
+  </data>
+  <data name="&gt;&gt;checkBox_parment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_parment.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_parment.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>165, 17</value>
+  </metadata>
+  <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>309, 17</value>
+  </metadata>
+  <metadata name="imageStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>423, 17</value>
+  </metadata>
+  <data name="imageStrip.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <metadata name="attachment.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="attachment.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="attachment.MinimumWidth" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="attachment.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <metadata name="参数号.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="参数号.HeaderText" xml:space="preserve">
+    <value>参数号</value>
+  </data>
+  <metadata name="参数名.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="参数名.HeaderText" xml:space="preserve">
+    <value>参数名</value>
+  </data>
+  <metadata name="当前值.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="当前值.HeaderText" xml:space="preserve">
+    <value>当前值</value>
+  </data>
+  <metadata name="设定值.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="设定值.HeaderText" xml:space="preserve">
+    <value>设定值</value>
+  </data>
+  <metadata name="描述.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="描述.HeaderText" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>533, 15</value>
+  </metadata>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 446</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>系  统：0</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 446</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>路径数：0</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>496, 446</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>流程数：0</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.5pt</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox1.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>816, 55</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 457</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>822, 75</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>详细描述</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>612, 4</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="linkLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 4</value>
+  </data>
+  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 12</value>
+  </data>
+  <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>http://www.chenghe.info/</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
+    <value>linkLabel1</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 12</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>西安诚合工业自动化设备有限公司</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 574</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>821, 24</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>623, 15</value>
+  </metadata>
+  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>621, 438</value>
+  </data>
+  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
+  </data>
+  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
+    <value>comboBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 444</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>路径数：0</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 444</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>路径数：0</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        E3gOc9yWrBo1AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button2.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>734, 9</value>
+  </data>
+  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button2.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>关 于</value>
+  </data>
+  <data name="button2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button2.Name" xml:space="preserve">
+    <value>button2</value>
+  </data>
+  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="button4_savetopc.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="button4_savetopc.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button4_savetopc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button4_savetopc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 9</value>
+  </data>
+  <data name="button4_savetopc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button4_savetopc.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="button4_savetopc.Text" xml:space="preserve">
+    <value>保存参数到PC</value>
+  </data>
+  <data name="button4_savetopc.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button4_savetopc.Name" xml:space="preserve">
+    <value>button4_savetopc</value>
+  </data>
+  <data name="&gt;&gt;button4_savetopc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button4_savetopc.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button4_savetopc.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="button3_savetoflash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        X/6OcnD4J/3iiOMNtZTAAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button3_savetoflash.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button3_savetoflash.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button3_savetoflash.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 9</value>
+  </data>
+  <data name="button3_savetoflash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button3_savetoflash.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="button3_savetoflash.Text" xml:space="preserve">
+    <value>下载到Flash</value>
+  </data>
+  <data name="button3_savetoflash.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button3_savetoflash.Name" xml:space="preserve">
+    <value>button3_savetoflash</value>
+  </data>
+  <data name="&gt;&gt;button3_savetoflash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button3_savetoflash.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button3_savetoflash.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="button_savemiaoshu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAS9SURBVFhH7ZR9TNR1HMfZWltra63W1tbWgw8hEq0Nay6XDbfSSNNAJVrZdFnqTHGlknqcjqYL
+        p45NjKXrwJaLfIBBiQrI+RAUHMoziIqI8OV4hgMUQeXV9/u7+3nncXBHK/qnz/be7n6/+93r/f58Pt+f
+        33hVXdHpl5QcX8e3Ah7ze84Q/JBVSX12XB6fCp38aEhcyBOiIi0CpbiQJ4W65rjtrMWHigKf3nmef1LP
+        GI4SM2cS5oS3odsINqP2eUfk6+3DOvGIMbNiYWoF2ywCY6HAUCDY/KcgOl+wIU/w5e+CqHOC1WcEq8yC
+        5acFy7IFS04JPjwhWPSbICxDMC9N8E6qYPbOVGLn+lN6dJEdbt0ETRugcTUVSSEYpj1sfWAnnt2Vi+ma
+        jdw+yOmBk91wvBPS2+FYK6RY4ScBpgbYfx321sKey/BtNcRWwJYS2HAB1hTApxn1bH9vqjN5y2YJ/gqu
+        roBKOYr904cbeH63GVNdD9kSfsrmgHfY4b802+FJEv69hCc44HEKXg6GUgkvgigJX2Y6q8Gdyb+G+nVQ
+        9QmUh2OODcT47osMG4Ey8MO1Hg2e2QUZEp7aZocfaoJkCT9QD/uuQfwVCb8E38jkMRIeLZNHFcJy9+TN
+        su11a+zwkvmU7gtm+4JAgqIP4MA666kd2azIrr0/9/Vq7ucFa+Xcv5BzX5kr554jWJol+PikIDLTPvcF
+        6YK5cu5zXGculw2xXrZ8JRRHQFEo5q3+xM6bwlsHCrUFdWCdFbQpadgW+6oHtt22VcLlsl3+DEo/gMLZ
+        lMYHERM6mUnrErTfvxqbMtyA0WhECDlolxoaGuLevXua7t69y507dxgcHNQ0MDDA7du3sZzLJiE8wDnz
+        etny6qUSPB/+mIXZMJG94VOpqSynv79fk2I5sM5yN6DgugEdrhvQ4ddrL2twc8JsCY+R8LVy0ZaAZQHk
+        zaR0d4AGz8/JpKuri1u3bmnyamBMyY8thq4tcOVzKJMtz5Nmzs/AvGWChAdSU1WuwTs6Onwz4Cm5O7zu
+        ao0zeYfcdHW+L0oj+XPg7HSZfAp7FwaSl3Oczs5OTcrAzZs3NY1qQE/uqeVKVeVlJEYEUXYkHNo22o+Y
+        JQzOzITc1+wzl3CVXAcrtbe3ezfQ2NiopXZNruC6AbVA59IOYlolYb17oCISCubJ1G/C6Wkyub/H5Are
+        1tbmm4GRkiu4ml9KdATFx7fLTbkINbIDJ16RyYNHTa7gra2t9PX1afJqwFNyBVfu49+fSGv1IbuBIfn6
+        K/uIsl2TRk2u4C0tLb4ZcE2ug3V4Q/VF1s56gW1xRlqrkilO3yrH8QbfRb7MpcqyYWBXeHNzM729vZpG
+        NeAKd02unFt+PUj0jMc1E/FhE/h542Jyj5govmB5AO6e3GcDDQ0NHpMruHqwtiSfgvRk6iuL6O7u1s63
+        p5a7J1eyWq309PRoGtWAp+QKrj9ss9nuw3UDIyV3hTc1NXk3cOPGDY/JdbArfKTkri3Xwbp8NjDW5Hpq
+        1+QK/rcMKLC35ArsDh8t+ZgNjJR8JLi35D4bcH8T6tJfSq5Sp0WXvrjepP/3iAaysrKwWCz/ujwaSExM
+        /FHdGA8dPnz4pAP7f/3X5ef3F8ksil80BATtAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button_savemiaoshu.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button_savemiaoshu.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_savemiaoshu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>526, 9</value>
+  </data>
+  <data name="button_savemiaoshu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button_savemiaoshu.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="button_savemiaoshu.Text" xml:space="preserve">
+    <value>保存描述文件</value>
+  </data>
+  <data name="button_savemiaoshu.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button_savemiaoshu.Name" xml:space="preserve">
+    <value>button_savemiaoshu</value>
+  </data>
+  <data name="&gt;&gt;button_savemiaoshu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_savemiaoshu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_savemiaoshu.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="button_readmiaoshu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAASTSURBVFhH7ZdbTJtlGMfrpc6RqNmFmVFEnGHxhFC2ARpndEiGmWBYiMZkyeLhYmRkJBvCwNCW
+        glCOwY1Jyua8mLKMhSyo22IWTZyCKIcVOWydYwx6PlHoAVr+vs+7lpSu30fb7MILn+SXlrR5/7/34fue
+        96vkP1czMzNSlUrlbm1tjYmamhp0dHS8HVgm/hobGytUKBRYXFyMGovFAplMhurqak9JSUluQkLCA4Hl
+        Yi8SoN3EWiStVqtJwkESgeVir2gFVlZWVvH7/Vygv78fvb299D7+TkQjEB4eKqDVarlE3J0QEwgP9fl8
+        nOXl5VWB6elpTtydEBIQC48kEHcnQgXWCyWWlpY44QJBYu5EuIBQeDDY6/VyhARi7kSoQDA40o6DwR6P
+        h0MCcrmcvwrBZoUrECNcoQIUPnF9Atsbk9DxQzsfOuHBhNvtht1uv2dABbHZbFhYWIBSqUQgRrhCBWjH
+        kzfGsas9GTtUj3pLT320JpRwuVyc0EAKI5xOJ4eEqahDgZiQ2iR5ZsMWSXIQeVNVcemRQ7hx6zqmtBO4
+        /FsfpF8k8gUOnMnHe+pXMTL5Z9Th8/PzXJgqosCmMsnNzUclk4+X32VXc9psSsVjyGrcgszGZ5Fem4iN
+        ByR8BaffikPdRchqTsLoxLBoaBCHwyEukK5IgNPt4F8QK+3SAL5ZKIEZN9F77TRS5BLniatKwXAKJuja
+        oG5RRRRIlT0EnfUOhtGHQX8vri6fwc9LXbjkPYbvPU3oWVTg7GIlTjsOotW2l1EIzcolXJ46jzTlw/76
+        vnJ+kUUKJuizdQUMVh0u+lrR51HhnEuG71yf4ZSzGJ2Oj9Fufx9N1nzUWnMgN72OKmMGSg3P4SdvB+vG
+        DPKOb0XBSSnGJ8fvCSasViu/TkQFjDYDznqq0O2q4G1WOz/FMceHaLEXos6SC7llJyqNOxgZqDRt41QY
+        0vD1/EHc9mtwpO8D7Gx+EXrz3Jpggp4VRAVepg7YdOh07seJ+f1osxWh0bYHSvNbqDZm46iRBRIstMq0
+        nUPvy5lAm6MIU8sDKOMCL0Bnnl0NDoYTdKGKCDwIne0OVPZ3oLLuQY35DXxuymTB0jWs7p7JHDY8jzPu
+        w9DiD+w+noKCrnRo/tasCTWbzRyTySQu8BITuG3ToontutH6LurNeWiw5KHesptx95X+rjXncIkq9q/4
+        0deC81NqvMIuwroLZTxEKHxdgVTFBujdt+DELGzsorLgH5jY3oyYgh4T0EHDPtHgiqeLtT2V7fkcTo4q
+        +W345S8ywVDCaDRy6DYVFKBB9AQbRJvZECJy2CDaygZRNhtEWapkSGufwiPFEg/dqEO+i/ikOxfZTU9j
+        cHQgqnCDwSAuIDaKR8eGceFKD7bVPYlpjGDft6+h4KtM/D7y67qhhF6v59CAEhYIq9DDiAbL0LW/8GZb
+        EqSqjd6Szn1rdhwqIBSu0+niF6DBMjg0iIyGRLT0NPDFxELDg4m5uTm+EaqYBegQiXTiBQmeA0GC50Eo
+        FC56GIUXCdDTCz0N3c+ih5toBfLpZxZ9+X5D6wZi/q9ASST/AqjPCar7fLNTAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button_readmiaoshu.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button_readmiaoshu.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_readmiaoshu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>630, 9</value>
+  </data>
+  <data name="button_readmiaoshu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button_readmiaoshu.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="button_readmiaoshu.Text" xml:space="preserve">
+    <value>加载描述文件</value>
+  </data>
+  <data name="button_readmiaoshu.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button_readmiaoshu.Name" xml:space="preserve">
+    <value>button_readmiaoshu</value>
+  </data>
+  <data name="&gt;&gt;button_readmiaoshu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_readmiaoshu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_readmiaoshu.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAP0SURBVFhH7Zd/TJR1HMe/pnWukZTAdZPjXB6QK9ASgQSaFQ4RZ2V1ZARBGRsIJjMdpnSK0mWe
+        v+YIKefM/5JyjUW1ykltpedhcOyOk+tOb8LkuC3kuC7geMR3n+/tS7pVU+iBrc3X9tnd873n+bzf3/f3
+        +zzPjo2XPlNDHFWSOJxaXpnPFOZX2be8xJC8GDJY/NEstiZTw9Ri6C9oTEXCJ62VKpx//W6bGJYXMpBD
+        IgGqM/R9bUIkmyV+YmSs1v6uZqjfVAjLW/f7xLC88IhbS8ICPY3PwWFMRGvpfT4SrqKq7zTEY8j9NgYd
+        ZbBuigKZU4jL5MVccFeT91QepMA++C9sxK97E6X2ighp0FkBDFQjeKkc9qpoUEJacYm80GwLOrY/FATq
+        gNEPgZEDwOBuEt8B9G2F5F6Hzh0xoPMMtC9yqB6hihKX/3eo2cKWwhmOEd8HgHSQxOnTvwu9XdW47NLj
+        encZ+r/LxkXjPNg2z+b7xUbVTInUUulEm4lTsYg9S8vgHLCUAkN7SHwnPB2VqE9PxCFtDJzfF2HUVQQ4
+        XgY6VkMyLcOVuliQCT/VR6LN+OGbiu/882tndnV/moVrAzXA7zXw2Lfg2IvpMGnDcC42DPWp8XB+lRsS
+        R/tK9NTHwVKiGKIlKaf0IkS72+eHpoZpdOH8ltemN9m2aaSAaxMwbAyJ93uqaeYLQuI9ybPRuyQSlsce
+        QF28GrZjz+BClRJfPs+ayPjjot34ocfqQorOZH1HDV97GYnvBf4wAD49ei/rsXNR8g0DaZG4mj0HHWlK
+        HIx9EMdztQ2UnEq0mhj20w1zaQbbKMJGMvILPWS8jvfjJM/nmQg6imH9eQN2L18KM8Xfmx4F/0o1htfM
+        g3NZNIxzor2ql95LYeGqaaLdxFHeyxS0FFqqpWSm0JzPbH3fLMeo+01Ym4thSEpCa0I4/KtiEMzT4tob
+        D6MlVYkXluS1sfLPUkQb+aA09vV8shhw5eO6XYcf9z8F/YJE2FKjMEwG3DkafJyegRXHnVAcuOQNmZAj
+        iTHIwPauwwlAZy76G9NgLprhzl2/ZXPlo094zUmRIXH9iTaUnhlFxkkfmNElbxK0FDpXjRq/nViM1uJ7
+        vPSeyOLjswpqU1ZklrZl08xLSHzdWYSKm5A1CTKw2rYxXLKUzAzQw2m9GGah5iTCxbjomIHin2ROggw8
+        Sctwke5z/lqeLoZvwEVIjItycdmToLsigkw8/Y/inKlK4pZMdhK35E4SY9xJYoz/SxK6Rk+yOHOS+Jck
+        8ptHoDzcDTKwR5w5ydyUBBePOXIlSMdf6A59PTn/K/7GTUnwmXNxtmqrRvw6dfA157FP3cxvC8b+BLVm
+        CTqXwqlkAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button1.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>422, 9</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>清空系统参数</value>
+  </data>
+  <data name="button1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="button5_readformflash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="button5_readformflash.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button5_readformflash.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button5_readformflash.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 9</value>
+  </data>
+  <data name="button5_readformflash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button5_readformflash.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="button5_readformflash.Text" xml:space="preserve">
+    <value>读取Flash参数</value>
+  </data>
+  <data name="button5_readformflash.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button5_readformflash.Name" xml:space="preserve">
+    <value>button5_readformflash</value>
+  </data>
+  <data name="&gt;&gt;button5_readformflash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button5_readformflash.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button5_readformflash.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="button2_readformpc.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="button2_readformpc.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="button2_readformpc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button2_readformpc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
+  </data>
+  <data name="button2_readformpc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 58</value>
+  </data>
+  <data name="button2_readformpc.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button2_readformpc.Text" xml:space="preserve">
+    <value>从PC读取参数</value>
+  </data>
+  <data name="button2_readformpc.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;button2_readformpc.Name" xml:space="preserve">
+    <value>button2_readformpc</value>
+  </data>
+  <data name="&gt;&gt;button2_readformpc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button2_readformpc.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button2_readformpc.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>831, 600</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEASEgAAAEAIACIVAAAFgAAACgAAABIAAAAkAAAAAEAIAAAAAAAAFEAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAMeZOQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZ
+        OQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZ
+        OQDHmTkAx5k5AMeZOQDHmTkAx5k5AMeZOQDHmTkAx5k5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAx5k5AMeZOQDHmTkAx5k5AseZORvHmTkvx5k5MceZOTHHmTkxx5k5MceZOTHHmTkxx5k5MceZ
+        OTHHmTkxx5k5MceZOTHHmTkxx5k5MceZOTHHmTkxx5k5MceZOTHHmTkxx5k5MceZOTHHmTkxx5k5MceZ
+        OTHHmTkxx5k5KseZORDHmTkAx5k5AMeZOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADImjkAyJo5AMeZ
+        OQDHmTkhx5k5kseZOdrHmTntx5k57seZOe7HmTnux5k57seZOe7HmTnux5k57seZOe7HmTnux5k57seZ
+        Oe7HmTnux5k57seZOe7HmTnux5k57seZOe7HmTnux5k57seZOe7HmTnux5k57seZOe7HmTnux5k56ceZ
+        OcfHmTlkx5k5CMeZOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYiM8AGIjPABiIzwAYiM8AGIjPABiIzwAYiM8AGIjPABiI
+        zwAYiM8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADImjkAx5k5AMeZOSHHmTnDy5w5/9Gg
+        Ov/ToTr/06E6/9OhOv/ToTr/06E6/9OhOv/ToTr/06E6/9OhOv/ToTr/06E6/9OhOv/ToTr/06E6/9Oh
+        Ov/ToTr/06E6/9OhOv/ToTr/06E6/9OhOv/ToTr/06E6/9OhOv/ToTr/06E6/8+eOv/Jmzn6x5k5gMeZ
+        OQUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAZiM8AGYjPABmIzwAZiM8AGYjPABuJ0QAXh80EGIfNCBiHzQkYh80FIY7ZABmIzwAZiM8AGYjPABmI
+        zwAZiM8AAAAAAAAAAAAAAAAAAAAAAAAAAADImjkAwpY4AsmaOZPQnzr/2aU7/9qmO//apjv/2qY7/9qm
+        O//apjv/2qY7/9qmO//apjv/2qY7/9qmO//apjv/2qY7/9qmO//apjv/2qY7/9qmO//apjv/2qY7/9qm
+        O//apjv/2qY7/9qmO//apjv/2qY7/9qmO//apjv/2qY7/9qmO//WpDv/zJ0678eaOUwAAAAAGonQABqJ
+        0AAaidAAGonQABqJ0AAaidAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaidAAGonQABqJ0AAaidAAG4rRABmH
+        zRIZh848GIjObRiIz5UYiNCvGInQvRiJ0L4YidCyGIjPmhiIznMZh85BGYfNFBuL0wAaidAAGonQABqJ
+        0AAAAAAAAAAAAAAAAADJmjoAx5k6HNCfOtvapjv/2qY8/9qmPP/apjz/2qY8/9qmPP/apjz/2qY8/9qm
+        PP/apjz/2qY8/9qmPP/apjz/2qY8/9qmPP/apjz/2qY8/9qmPP/apjz/2qY8/9qmPP/apjz/2qY8/9qm
+        PP/apjz/2qY8/9qmPP/apjz/2qY8/9qmPP/bpjz/16Q7/8ydOqUAAAAAGojOABqIzgUaiM8qGojODBqJ
+        0AAbitEAG4rRAAAAAAAAAAAAG4rRABuK0QAbitEAG4rRABqGywIaiM8wGYjPghmJ0coZi9TyGI3Y/xiP
+        2/8YkN3/GJHe/xiR3v8YkN3/GI/b/xiO2P8ZjNX1GYrSzhmIz4UaiM4wGYXKARuK0QAci9IAG4rRAAAA
+        AADOnjsAzp07MdikPO7bpzz/26c8/9unPP/bpzz/26c8/9unPP/bpzz/26c8/9unPP/bpzz/26c8/9un
+        PP/bpzz/26c8/9unPP/bpzz/26c8/9unPP/bpzz/26c8/9unPP/bpzz/26c8/9unPP/bpzz/26c8/9un
+        PP/bpzz/26c8/9unPP/bpzz/26c8/9SiO8Yci9IAGorSABqK0kEajNTlGorSmxuIzg0bitEAHIvSAAAA
+        AAAci9IAHIvSAByL0gAckNgAG4nPLxqK0ZcajNXnGY/a/xiS4P8YlOL/GJTj/xiU4/8YlOP/GJTj/xiU
+        4/8YlOP/GJTj/xiU4/8YlOP/GJLg/xmP2/8ajNXnGonRkBqJzyUbi9IAHIvSAByL0gDXpDwA16Q8NNun
+        PfDbpz3/26c9/9unPf/bpz3/26c9/9unPf/bpz3/26c9/9unPf/bpz3/26c9/9unPf/bpz3/26c9/9un
+        Pf/bpz3/26c9/9unPf/bpz3/26c9/9unPf/bpz3/26c9/9unPf/bpz3/26c9/9unPf/bpz3/26c9/9un
+        Pf/bpz3/26c9/9qmPcgbitAAGZPhABqQ3HAZlOL/GpHd/huM04cch8sFHIvRAB2M0wAdjNMAHIzSAByK
+        0BMbitF6G43W4xqR3f8ZlOP/GZXk/xmV5P8ZleT/GZXk/xmV5P8ZleT/GZXk/xmV5P8ZleT/GZXk/xmV
+        5P8ZleT/GZXk/xmV5P8aleP/HJLd/hyN1dkbitFfE4TOBhuL0gDeqDsA3Kg9NNyoPfDcqD3/3Kg9/9yo
+        Pf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yo
+        Pf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yoPf/cqD3/3Kg9/9yo
+        Pcgci9IAGJ7zABqU4YoaluX/Gpbl/xuR3fccjNNqGaH3AB2M0wAdjtUAHIvSNhyN1Lsbkdz+GpXj/xqW
+        5f8aluX/Gpbl/xqW5f8aluX/Gpbl/xqW5f8aluX/Gpbl/xqW5f8aluX/Gpbl/xqW5f8aluX/Gpbl3RqW
+        5ZIemeZdLKHpUS+f4nssl9mqJJHVchuL0hC3o1sA3ak+NN2pPvDdqT7/3ak+/92pPv/dqT7/3ak+/92p
+        Pv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92p
+        Pv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPsgdjdQAI3GlARuV
+        46Mbl+b/G5fm/xuX5f8ckdzsHYzTTyCDxAEdjNNcHI/Y4RuU4f8bl+b/G5fm/xuX5v8bl+b/G5fm/xuX
+        5v8bl+b/G5fm/xuX5v8bl+b/G5fm/xuX5v8bl+b/G5fm/xuX5uobl+aMGpfmJheW5QAdmOYAJp3nAABz
+        zwB/0fUPSaviPCGP1C3//wAA3qk+NN2pPvDdqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92p
+        Pv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92p
+        Pv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPv/dqT7/3ak+/92pPsgej9gAHo3VCByW5LocmOf/HJjn/xyY
+        5/8cl+b/HZHb2h6O1ZcdktzxHJfl/xyY5/8cmOf/HJjn/xyY5/8cmOf/HJjn/xyY5/8cmOf/HJjn/xyY
+        5/8cmOf/HJjn/xyY5/8cmOf5HJjnrRuY5zkdl+YBGpfmABqW5QAaluUAi9n5ALz8/wB2y/EAGorSAC+Y
+        2QL/twAA3qo/NN6qP/Deqj//3qo//96qP//eqj//3qo//96qP//eqj//3qo//96qP//eqj//3qo//96q
+        P//eqj//3qo//96qP//eqj//3qo//96qP//eqj//3qo//96qP//eqj//3qo//96qP//eqj//3qo//96q
+        P//eqj//3qo//96qP//eqj//3qo//96qP8gektsAHpLcEh2Y5s8dmej/HZno/x2Z6P8dmej/HZjl/x6V
+        4f8dmef/HZno/x2Z6P8dmej/HZno/x2Z6P8dmej/HZno/x2Z6P8dmej/HZno/x2Z6P8dmej/HZno/x2Z
+        6NgdmehiHJnoChuY5wAbl+YAG5fmAAAAAAAAAAAAAAAAAAAAAACM2vkAvf3/ACSR1QDbqkIA3qpANN6q
+        QPDeqkD/3qpA/96qQP/eqkD/3qpA/96qQP/eqkD/3qpA/96qQP/eqkD/3qpA/96qQP/eqkD/3qpA/96q
+        QP/eqkD/3qpA/96qQP/eqkD/3qpA/96qQP/eqkD/3qpA/96qQP/eqkD/3qpA/96qQP/eqkD/3qpA/96q
+        QP/eqkD/3qpA/96qQMgelN8AHpTfHx6Z5+Aemun/Hprp/x6a6f8emun/Hprp/x6a6f8emun/Hprp/x6a
+        6f8emun/Hprp/x6a6f8emun/Hprp/x6a6f8emun/Hprp/x6a6f8emun6HprppB2a6SccmegAHJnoAByZ
+        6AAcmOcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfq0AA36tANN+rQPDfq0D/36tA/9+r
+        QP/fq0D/36tA/9+rQP/fq0D/36tA/9+rQP/fq0D/36tA/9+rQP/fq0D/36tA/9+rQP/fq0D/36tA/9+r
+        QP/fq0D/36tA/9+rQP/fq0D/36tA/9+rQP/fq0D/36tA/9+rQP/fq0D/36tA/9+rQP/fq0D/36tA/9+r
+        QMgfl+IAH5biMR+a6e4fm+r/H5vq/x+b6v8fm+r/H5vq/x+b6v8fm+r/H5vq/x+b6v8fm+r/H5vq/x+b
+        6v8fm+r/H5vq/x+b6v8fm+r/H5vq/x+b6ukfm+puHpvqCR2a6QAdl+YAHZnoAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfq0EA36tBNN+rQfDfq0H/36tB/9+rQf/fq0H/36tB/9+r
+        Qf/fq0H/36tB/9+rQf/fq0H/36tB/9+rQf/fq0H/36tB/9+rQf/fq0H/36tB/9+rQf/fq0H/36tB/9+r
+        Qf/fq0H/36tB/9+rQf/fq0H/36tB/9+rQf/fq0H/36tB/9+rQf/fq0H/36tB/9+rQcggmeYAIJjkRSCc
+        6vggnOv/IJzr/yCc6/8gnOv/IJzr/yCc6/8gnOv/IJzr/yCc6/8gnOv/IJzr/yCc6/8gnOv/IJzr/yCc
+        6/8gnOv/IJzr1R+c60cdnOsAHpvqAB6b6gAemukAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADgrEIA4KxCNOCsQvDgrEL/4KxC/+CsQv/grEL/4KxC/+CsQv/grEL/4KxC/+Cs
+        Qv/grEL/4KxC/+CsQv/grEL/4KxC/+CsQv/grEL/4KxC/+CsQv/grEL/4KxC/+CsQv/grEL/4KxC/+Cs
+        Qv/grEL/4KxC/+CsQv/grEL/4KxC/+CsQv/grEL/4KxC/+CsQsghnOkAIZnmXSGd6/4hnez/IZ3s/yGd
+        7P8hnez/IZ3s/yGd7P8hnez/IZ3s/yGd7P8hnez/IZ3s/yGd7P8hnez/IZ3s/yGd7P8hnezFIJ3sLx+c
+        6wAfm+oAH5vqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADhrUIA4a1CNOGtQvDhrUL/4a1C/+GtQv/hrUL/4a1C/+GtQv/hrUL/4a1C/+GtQv/hrUL/4a1C/+Gt
+        Qv/hrUL/4a1C/+GtQv/hrUL/4a1C/+GtQv/hrUL/4a1C/+GtQv/hrUL/4a1C/+GtQv/hrUL/4a1C/+Gt
+        Qv/hrUL/4a1C/+GtQv/hrUL/4a1C/+GtQsgioPAAIpvodiKe7f8inu3/Ip7t/yKe7f8inu3/Ip7t/yKe
+        7f8inu3/Ip7t/yKe7f8inu3/Ip7t/yKe7f8inu3/Ip7t/yKe7cMhnu0mIJ3sACGb6gAgnOsAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADhrUMA4a1DNOGt
+        Q/DhrUP/4a1D/+GtQ//hrUP/4a1D/+GtQ//hrUP/4a1D/+GtQ//hrUP/4a1D/+GtQ//hrUP/4a1D/+Gt
+        Q//hrUP/4a1D/+GtQ//hrUP/4a1D/+GtQ//hrUP/4a1D/+GtQ//hrUP/4a1D/+GtQ//hrUP/4a1D/+Gt
+        Q//hrUP/4a1D/+GtQ8ghrf8AI53qjyOf7v8jn+7/I5/u/yOf7v8jn+7/I5/u/yOf7v8jn+7/I5/u/yOf
+        7v8jn+7/I5/u/yOf7v8jn+7/I5/u0SKf7isinu0AIJ7tACGd7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADirkMA4q5DNOKuQ/DirkP/4q5D/+Ku
+        Q//irkP/4q5D/+KuQ//irkP/4q5D/+KuQ//irkP/4q5D/+KuQ//irkP/4q5D/+KuQ//irkP/4q5D/+Ku
+        Q//irkP/4q5D/+KuQ//irkP/4q5D/+KuQ//irkP/4q5D/+KuQ//irkP/4q5D/+KuQ//irkP/4q5D/+Ku
+        Q8gmiMcDJJ7rpyOg7/8joO//I6Dv/yOg7/8joO//I6Dv/yOg7/8joO//I6Dv/yOg7/8joO//I6Dv/yOg
+        7/8joO/oI6DvQyOg7wAxn+4AIp7tAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADirkQA4q5ENOKuRPDirkT/4q5E/+KuRP/irkT/4q5E/+Ku
+        RP/irkT/4q5E/+KuRP/irkT/4q5E/+KuRP/irkT/4q5E/+KuRP/irkT/4q5E/+KuRP/irkT/4q5E/+Ku
+        RP/irkT/4q5E/+KuRP/irkT/4q5E/+KuRP/irkT/4q5E/+KuRP/irkT/4q5E/+KuRMgml98LJZ/tviSh
+        8P8kofD/JKHw/ySh8P8kofD/JKHw/ySh8P8kofD/JKHw/ySh8P8kofD/JKHw/ySh8P8loO7EJpniESaZ
+        4gAnl98AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADjr0UA469FNOOvRfDjr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+Ov
+        Rf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+Ov
+        Rf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+OvRcgmm+UYJqHv0iWi8f8movH/JqLx/yai
+        8f8movH/JqLx/yai8f8movH/JqLx/yai8f8movH/JqLx/yWi8f8mn+z8J5jgiCeS1wUnl90AKJjfAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADjr0UA469FNOOvRfDjr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+Ov
+        Rf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+OvRf/jr0X/469F/+Ov
+        Rf/jr0X/469F/+OvRf/jr0X/469F/+OvRcgnnekoJ6Lw4iej8v8no/L/J6Py/yej8v8no/L/J6Py/yej
+        8v8no/L/J6Py/yej8v8no/L/J6Py/yej8v8no/L/J57p9yiY32wgwP8AKJjeACiZ4AAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADksEYA5LBGNOSw
+        RvDksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+Sw
+        Rv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+Sw
+        Rv/ksEb/5LBG/+SwRsgnou8lJ6Tz4Cek8/8npPP/J6Tz/yek8/8npPP/J6Tz/yek8/8npPP/J6Tz/yek
+        8/8npPP/J6Tz/yek8/8npPP/J6Ty/yie6O0omN9QKZrjACiY3gApmeAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADksEYA5LBGNOSwRvDksEb/5LBG/+Sw
+        Rv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+Sw
+        Rv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+SwRv/ksEb/5LBG/+Sw
+        RsgopfUFKKX0kSil9P8opfT/KKX0/yil9P8opfT/KKX0/yil9P8opfT/KKX0/yil9P8opfT/KKX0/yil
+        9P8opfT/KKX0/yik8/8onujdKZnfOCma4QAtnOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlsUcA5bFHNOWxR/DlsUf/5bFH/+WxR//lsUf/5bFH/+Wx
+        R//lsUf/5bFH/+WxR//lsUf/5bFH/+WxR//lsUf/5bFH/+WxR//lsUf/5bFH/+WxR//lsUf/5bFH/+Wx
+        R//lsUf/5bFH/+WxR//lsUf/5bFH/+WxR//lsUf/5bFH/+WxR//lsUf/5bFH/+WxR8gppfQAKab1ESmm
+        9XEppvWqKab1uymm9ckppvXWKab14imm9esppvXzKab1+Smm9f0ppvX/Kab1/ymm9f8ppvX/Kab1/ymm
+        9f8ppPL/KZ7oviqY3g4qmuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADmskgA5rJINOaySPDmskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+ay
+        SP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+ay
+        SP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+aySMgppvUAKab1ACmm9QAppvUCKqb1CCqm
+        9Q4qpvUXKqf2ISqn9i0qp/Y6Kqf2Siqn9loqp/ZrKqf2fSqn9o8qp/agKqf2sSqn9sAqp/bOKqTyoCqc
+        5A8qneYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADmskgA5rJINOaySPDmskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+ay
+        SP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+aySP/mskj/5rJI/+ay
+        SP/mskj/5rJI/+aySP/mskj/5rJI/+aySMgppvUAKab1ACmm9QAppvUAKqb1ACqm9QAqpvUAKqf2ACqn
+        9gAqp/YAKqf2ACqn9gAqp/YAKqf2ACqn9gAqqfgBKqf2BCqn9gorp/YQK6r6CCuX3AAqjs0AAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADns0kA57NJNOez
+        SfDns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ez
+        Sf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ez
+        Sf/ns0n/57NJ/+ezScgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAKqf2ACqn9gAqp/YAKqf2ACqn9gArp/YAK6f2ACyn9gAqp/YAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADns0kA57NJNOezSfDns0n/57NJ/+ez
+        Sf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ez
+        Sf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ezSf/ns0n/57NJ/+ez
+        ScgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADotEoA6LRKNOi0SvDotEr/6LRK/+i0Sv/otEr/6LRK/+i0
+        Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0
+        Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0Sv/otEr/6LRK/+i0SsgAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADotEsA6LRLNOi0S/DotEv/6LRL/+i0S//otEv/6LRL/+i0S//otEv/6LRL/+i0
+        S//otEv/6LRL/+i0S//otEv/6LRL/+i0S//otEv/6LRL/+i0S//otEv/6LRL/+i0S//otEv/6LRL/+i0
+        S//otEv/6LRL/+i0S//otEv/6LRL/+i0S//otEv/6LRL/+i0S8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADk5xwA5OccAOTnHADk5xwA5OccAOTnHAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADptUsA6bVLLOm1S+rptUv/6bVL/+m1S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1
+        S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1
+        S//ptUv/6bVL/+m1S//ptUv/6bVL/+m1S8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOTnHADk5
+        xwA5OccAOTnHADk5xwA5OccAOTnHADk5xwA5OccAOTnHADk5xwA5OccAOTnHADk5xwA5OccAOTnHADk5
+        xwA5OcgAOTnHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADptUwA6bVMEem1
+        TMjqtkz/6rZM/+q2TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2
+        TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2TP/qtkz/6rZM/+q2
+        TP/qtkz/6rZM/+m1TIkAAAAAAAAAAAAAAAAAAAAAOTnHADk5xwA5OccAOTnHADk5xwA5OccAOTnHDTk5
+        xyY5OcdEOTnHYTk5x3g5OceIOTnHkTk5x5E5OceIOTnHdzk5x185OcdAOTnHITk5xwk5OccAOTnHADk5
+        xwA5OccAOTnHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADrt0wA6rZNAOq2TGbqtk376rZN/+q2
+        Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2
+        Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2Tf/qtk3/6rZN/+q2Tf/qtk3/6rZM1Oq2
+        TCkAAAAAAAAAADk5xwA5OccAOTnHADk5xwA5OccDOTnHIjk5x1g5OceUOTnHxTk5x+U5Ocj3OTnJ/zk5
+        yv85Ocv/OTnL/zk5y/85Ocv/OTnK/zk5yf45Ocj1OTnH4Tk5x7o5OceAOTnHPjk5xw45OccAOTnHADk5
+        xwA5OccAAAAAAAAAAAAAAAAAAAAAAAAAAADqtkwA6rZNAOq2TQnrt02E67dN8uu3Tf/rt03/67dN/+u3
+        Tf/rt03/67dN/+u3Tf/rt03/67dN/+u3Tf/rt03/67dN/+u3Tf/rt03/67dN/+u3Tf/rt03/67dN/+u3
+        Tf/rt03/67dN/+u3Tf/rt03/67dN/+u3Tf/rt03/67dN/+u3Tf/rt03W6rZNReu3TAA5OccAOTnHADk5
+        xwA5OccAOTnHEzk5x1E5OceiOTnH3zk5yPw5Ocv/OjrP/zo60v87O9X/OzvW/zs71/87O9j/OzvY/zs7
+        2P87O9j/OzvX/zs71v86OtT/OjrR/zo6zv85Ocr/OTnI8jk5x8E5OcdsOTnHHTk5xwA5OccAOTnHADk5
+        xwAAAAAAAAAAAAAAAAAAAAAA6rZNAOq2TQDsuE0E67dNRuu3TpPrt06y67dOs+u3TrPrt06z67dOs+u3
+        TrPrt06z67dOs+u3TrPrt06z67dOs+u3TrPrt06z67dOs+u3TrPrt06z67dOs+u3TrPrt06z67dOs+u3
+        TrPrt06z67dOs+u3TrPrt06067dOq+u3Tnrrt00l6rZNAOu3TQA5OccAOTnHADk5xxo5OcduOTnHyDk5
+        yPk6Osz/OjrR/zs71v87O9j/OzvZ/zs72f87O9n/OzvZ/zs72f87O9n/OzvZ/zs72f87O9n/OzvZ/zs7
+        2f87O9n/OzvZ/zs72f87O9f/OjrU/zo6zv85Ocn/OTnH1Tk5x3M5OccXOTnHADk5xwA5OccAAAAAAAAA
+        AAAAAAAA67dNAOu3TQDrt00A67dNAOu3SgDrt08F67dPBeu3TwXrt08F67dPBeu3TwXrt08F67dPBeu3
+        TwXrt08F67dPBeu3TwXrt08F67dPBeu3TwXrt08F67dPBeu3TwXrt08F67dPBeu3TwXrt08F67dPBeu3
+        TwXrt08F67dPA+u3TQDrt00A67dMAOu3TQA5OccQOTnHaDk5x9E5Ocn+OjrP/zs71f87O9j/OzvZ/zs7
+        2f87O9n/OzvZ/zs72f87O9n/OzvZ/zs72f87O9n/OzvZ/zs72f87O9n/OzvZ/zs72f87O9n/OzvZ/zs7
+        2f87O9n/OzvZ/zs72f87O9b/OjrQ/zk5yv85OcfJOTnHUTk5xwM5OccAOjrJAAAAAAAAAAAAAAAAAAAA
+        AADrt04A67dOAOu3TgDrt04A67dOAOu3TgDrt04A67dOAOu3TgDrt04A67dOAOu3TgDrt04A67dOAOu3
+        TgDrt04A67dOAOu3TgDrt04A67dOAOu3TgDrt04A67dOAOu3TgDrt04A67dOAOu3TgDrt04A67dOAOu3
+        TgDrt04AAAAAAAAAAAA6OsiUOjrK/Ds70f87O9f/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw8
+        2v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw8
+        2v88PNr/PDza/zs71/87O9D/OjrJ8Do6x006OscAOjrJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeH
+        zgAXh84AF4fOABeHzgAXh84AF4fOABeHzgAXh84AF4fOABeHzgAXh84AF4fOAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAA7O9DFPDzX/zw82v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw8
+        2v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw82v88PNr/PDza/zw8
+        2v88PNr/PDzV/zs7zYY7O9MAOjrJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeGzQAXhs0EF4bNIReG
+        zSUXhs0aF4bMEReGzAoXhswEGIHEABeHzwAXh84AF4fOABeHzgAXh84AF4fOABeHzgAXh84AF4fOABeH
+        zgAXh84AF4fOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9PdqNPT3b/z09
+        2/89Pdv/PT3b/z092/89Pdv/PT3b/z092/89Pdv/PT3b/z092/89Pdv/PT3b/z092/89Pdv/PT3b/z09
+        2/89Pdv/PT3b/z092/89Pdv/PT3b/z092/89Pdv/PT3b/z092/89Pdv/PT3b/z092/89Pdv/PT3b+j09
+        2Vg9PdwAOjrLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeI0AAXiNBCF4nR3xeJ0uYXidHaF4jQzheI
+        z8AXh8+wF4fOoBeHzo4Xh858F4fNaheHzVkXhs1JF4bNOheGzSwXhs0hF4bNFheGzAwXiNAAF4fOABeH
+        zgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9PdsqPT3b2j4+2/8+Ptv/Pj7b/z4+
+        2/8+Ptv/Pj7b/z4+2/8+Ptv/Pj7b/z4+2/8+Ptv/Pj7b/z4+2/8+Ptv/Pj7b/z4+2/8+Ptv/Pj7b/z4+
+        2/8+Ptv/Pj7b/z4+2/8+Ptv/Pj7b/z4+2/8+Ptv/Pj7b/z4+2/8+Ptv/PT3bwj093BE9PdsAOzvLAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAABaO2gAWjdktFZDe3xWQ3/8VkN7/FY/d/xWP3P8Wjtv/Fo7a/xaN
+        2f8WjNf/FozW/xaL1f0WitT5ForT8xeJ0usXidHhF4jQ1heIz8MXh85xF4bMCheGzQAXh84AAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9PdwAPj7cej4+3P8+Ptz/Pj7c/z4+3P8+Ptz/Pj7c/z4+
+        3P8+Ptz/Pj7c/z4+3P8+Ptz/Pj7c/z4+3P8+Ptz/Pj7c/z4+3P8+Ptz/Pj7c/z4+3P8+Ptz/Pj7c/z4+
+        3P8+Ptz/Pj7c/z4+3P8+Ptz/Pj7c/z4+3P8+Ptz6Pj7cXT4+3AA8PNoAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAABSY7QAWitQAFZHgVhWR4O8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR
+        4P8VkeD/FZHf/xWQ3/8VkN7/FZDe/xWP3P8WjNb7F4jQZRaK0wAXh80AAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAA+PtwAPz/cHj8/3NQ/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/
+        3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/
+        3f8/P93/Pz/d/z8/3f8/P9zCPj7cET4+3AA+PtwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWR
+        4AAVkeAAFZHgABWR4HEVkeD5FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR
+        4P8VkeD/FZHg/xWR4P8Vkd//Fo3Yqxl8uwMXiM8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABBQd8APz/dAD8/3XA/P93+Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/
+        3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/3f8/P93/Pz/d/z8/
+        3fo/P91dPz/dAD092gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVkeAAFZHgABWR
+        4AYVkeCOFZHg/hWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR
+        4P8VkeD/FZHfpReIzwIWjdkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/P90AQEDeAEBA
+        3hdAQN7MQEDe/0BA3v9AQN7/QEDe/0BA3v9AQN7/QEDe/0BA3v9AQN7/QEDe/0BA3v9AQN7/QEDe/0BA
+        3v9AQN7/QEDe/0BA3v9AQN7/QEDe/0BA3v9AQN7/QEDe/0BA3v9AQN7/QEDe/0BA3r9AQN4PQEDeAD8/
+        3QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFZHgABWR4AAVkeAQFZHgqBWR
+        4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHgjBWR
+        3wAUlOUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPz/WAEFB3gBAQN5lQUHe/EFB
+        3v9BQd7/QUHe/0FB3v9BQd7/QUHe/0FB3v9BQd7/QUHe/0FB3v9BQd7/QUHe/0FB3v9BQd7/QUHe/0FB
+        3v9BQd7/QUHe/0FB3v9BQd7/QUHe/0FB3v9BQd7/QUHe+UBA3ldBQd4AQEDdAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFZDeABaN2AAVj9wAFZDeOhWR4O8VkeD/FZHg/xWR
+        4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHgchWR4AAVkeAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEDeAEFB3wBBQd8SQUHfw0FB3/9BQd//QUHf/0FB
+        3/9BQd//QUHf/0FB3/9BQd//QUHf/0FB3/9BQd//QUHf/0FB3/9BQd//QUHf/0FB3/9BQd//QUHf/0FB
+        3/9BQd//QUHf/0FB3/9BQd//QUHfukFB3w1BQd8AQEDeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAF4fOABeHzQAYg8cJForTnBWQ3v8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR
+        4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD9FZHgWhWR4AAVkeAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFB3wBCQt8AQkLfWkJC3/lCQt//QkLf/0JC3/9CQt//QkLf/0JC
+        3/9CQt//QkLf/0JC3/9CQt//QkLf/0JC3/9CQt//QkLf/0JC3/9CQt//QkLf/0JC3/9CQt//QkLf/0JC
+        3/9CQt/2QkLfUUJC3wBBQd8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAZiM8AGIfOABaCxgMXiM99Fo3Z+xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR4P8VkeD/FZHg/xWR
+        4P8VkeD/FZHg/xWR4P8VkeD2FZHgQhWR4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAEFB3wBCQuAAQkLgDUJC4LpCQuD/QkLg/0JC4P9CQuD/QkLg/0JC4P9CQuD/QkLg/0JC
+        4P9CQuD/QkLg/0JC4P9CQuD/QkLg/0JC4P9CQuD/QkLg/0JC4P9CQuD/QkLg/0JC4P9CQuCzQkLgCkJC
+        4ABBQd8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG4rRABqK0QAaidAAGYTJBBiI
+        z3MXjdj1FpHg/xaS4f8WkuH/FpLh/xaS4f8WkuH/FpLh/xaS4f8WkuH/FpLh/xaS4f8WkuH/FpLh/xaS
+        4f8WkuHsFpLhLhaS4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABCQuAAQ0PhAEND4U9DQ+H2Q0Ph/0ND4f9DQ+H/Q0Ph/0ND4f9DQ+H/Q0Ph/0ND4f9DQ+H/Q0Ph/0ND
+        4f9DQ+H/Q0Ph/0ND4f9DQ+H/Q0Ph/0ND4f9DQ+H/Q0Ph/0ND4fRDQ+FKQ0PhAEJC4AAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdjNMAHIvSAByK0QAaiM0JGonRfxiO2fYXk+L/F5Tj/xeT
+        4v8Xk+L/F5Pi/xeT4v8Xk+L/F5Pi/xeT4v8Xk+L/F5Pi/xeT4v8Xk+L/F5Pi/xeT4v8Xk+LeF5PiHReT
+        4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDQ+AAQ0PhAEND
+        4QlEROGwRETh/0RE4f9EROH/RETh/0RE4f9EROH/RETh/0RE4f9EROH/RETh/0RE4f9EROH/RETh/0RE
+        4f9EROH/RETh/0RE4f9EROH/RETh/0RE4atDQ+EIQ0PhAEND4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAB6N1AAejdQAHYzTAByK0Bgbi9OaGpDb+xmV5P8ZleT/GZXk/xmV5P8ZleT/GZXk/xmV
+        5P8ZleT/GZXk/xmV5P8ZleT/GZXk/xmV5P8ZleT/GZXk/xmV5P8ZleTMGZXkEBmV5AAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ0PhAERE4gBEROJFRETi8kRE
+        4v9EROL/RETi/0RE4v9EROL/RETi/0RE4v9EROL/RETi/0RE4v9EROL/RETi/0RE4v9EROL/RETi/0RE
+        4v9EROL/RETi8ERE4kJEROIAQ0PhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfkNcAH4/WAB+P
+        1gAfkdkAHozTOB2O1r8ck9//G5fm/xuX5v8bl+b/G5fm/xuX5v8bl+b/G5fm/xuX5v8bl+b/G5fm/xuX
+        5v8bl+b/G5fm/xuX5v8bl+b/G5fm/xuX5v8bl+a3G5fmBxuX5gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREThAEVF4gBFReIGRUXjpUVF4/9FReP/RUXj/0VF
+        4/9FReP/RUXj/0VF4/9FReP/RUXj/0VF4/9FReP/RUXj/0VF4/9FReP/RUXj/0VF4/9FReP/RUXjokVF
+        4gVFReIAREThAAAAAAAAAAAAAAAAAAAAAAAAAAAAIZHYACGR2AAhkdgAIJDXAB+O1Awfj9VtHpHa5B2W
+        4/8dmej/HZno/x2Z6P8dmej/HZno/x2Z6P8dmej/HZno/x2Z6P8dmej/HZno/x2Z6P8dmej/HZno/x2Z
+        6P8dmej/HZno/x2Z6P8dmeifG5fmAByZ6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEVF4gBFReMARUXjPEZG4+1GRuP/Rkbj/0ZG4/9GRuP/Rkbj/0ZG
+        4/9GRuP/Rkbj/0ZG4/9GRuP/Rkbj/0ZG4/9GRuP/Rkbj/0ZG4/9GRuPsRUXjOkNN4gBjw+0AAAAPAIza
+        +QAAAAAAAAAAAAAAAAAjktkAKpfeACKS2QAvo/EAIJDWNyCR2bAfleD7H5ro/x6b6v8em+r/Hpvq/x6b
+        6v8em+r/Hpvq/x6b6v8em+r/Hpvq/x6b6v8em+r/Hpvq/x6b6v8em+r9Hpvq/x6b6v8em+r/Hpvq/x6b
+        6v8em+qGH5vqAB+c6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAEVF4wBGRuMARkbjA0ZG5JpGRuT/Rkbk/0ZG5P9GRuT/Rkbk/0ZG5P9GRuT/Rkbk/0ZG
+        5P9GRuT/Rkbk/0ZG5P9GRuT/Rkbk/0ZG5P9GRuSZRzzjAjyp4QZuxvAJIZHZACWV2wAelNsAJJTbACWV
+        3AAklNsAJJTbACKR1xwikdiCIZTd5yCZ5v8gnev/IJ3s/yCd7P8gnez/IJ3s/yCd7P8gnez/IJ3s/yCd
+        7P8gnez/IJ3s/yCd7P8gnez/IJ3s/yCc67sgnOt0IJ3s7CCd7P8gnez/IJ3s/yCd7P8gnextIJ3sACOe
+        7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABGRuMAR0fkAEdH5DNHR+TnR0fk/0dH5P9HR+T/R0fk/0dH5P9HR+T/R0fk/0dH5P9HR+T/R0fk/0dH
+        5P9HR+T/R0fk/0dH5OdHR+QyQVXiACeV2wwolttBJJTbKyST2gUmlt0AJpbdACeZ4QAkk9kVJJPaZiOV
+        3dEimeT/Ip3s/yKf7v8inu3/Ip7t/yKe7f8inu3/Ip7t/yKe7f8inu3/Ip7t/yKe7f8inu3/Ip7t/yKe
+        7f8inu36Ip7tnSGe7RognOsAIp7tcCKe7fginu3/Ip7t/yKe7fwinu1UIp7tAB+b6gAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRuQAR0flAEdH
+        5QFHR+WPR0fl/0dH5f9HR+X/R0fl/0dH5f9HR+X/R0fl/0dH5f9HR+X/R0fl/0dH5f9HR+X/R0fl/0dH
+        5Y5HR+UBR0blACeV2wAjk9oZJZTbfyWV3KclldyEJZXbeSWV3JMllt7NJJrk/CSe7P8koO//JKDv/ySg
+        7/8koO//JKDv/ySg7/8koO//JKDv/ySg7/8koO//JKDv/ySg7/8koO//JKDv/ySg7+EjoO9rI6DvCSGe
+        7QAin+4AI6DvBiOg74wkoO/+JKDv/ySg7/QkoO8+JKDvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR0flAEhI5QBISOUrSEjm4UhI
+        5v9ISOb/SEjm/0hI5v9ISOb/SEjm/0hI5v9ISOb/SEjm/0hI5v9ISOb/SEjm4UhI5SpISOUAR0jlACST
+        2gAklNsAJpTbCiaZ42smnOffJpzo/yae6f8moO7/JqLx/yai8f8movH/JqLx/yai8f8movH/JqLx/yai
+        8f8movH/JqLx/yai8f8movH/JqLx/yai8f8lovH1JaLxpyWh8DEin+4AI5/uACOf7gAjn+4AJKHwACWh
+        8A8lovGoJqLx/yai8eolovEpJaLxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASEjlAEhI5wBLS+QASUnmhElJ5v9JSeb/SUnm/0lJ
+        5v9JSeb/SUnm/0lJ5v9JSeb/SUnm/0lJ5v9JSeb/SUnmg0tL5ABISOcAR0flACWU2wAlldwAJZjgACaM
+        zQAmpPQnJ6Tzjyek8+QnpPP/J6Tz/yek8/8npPP/J6Tz/yek8/8npPP/J6Tz/yek8/8npPP/J6Tz/yek
+        8/8npPP/J6Tz8iek87Qno/JOJ6PyCCWh8AAkofAAJKHwAAAAAAAkoO8AJaHwACaj8gAno/IdJ6TzrSek
+        86cno/INJ6TzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        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
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAExM6QBNTeoATU3qEU1N6rtNTer/TU3q/01N6v9NTeq7TU3qD01N
+        6gBMTOkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAABNTeoATU3rAE1N6y1OTuu4Tk7r7E5O68BNTeszTU3rAE1N6gAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABNTeoATEzrAE1N6wBOTusPTk7rLE5O6xJNTesAU1PqAE1N6gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATk7rAE5O
+        6wBOTusATk7rAE5O6wBOTusATk7rAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////8AAAD//////AAAAAEA
+        AAD/////+AAAAAAAAAD/////8AAAAAAAAAD//8AP8AAAAAAAAAD//gAB8AAAAAAAAACB8AAAcAAAAAAA
+        AACAwAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAAAAAAP8AAAAAAAAAAAAAA/8AAAAAAAAAAAAAB/8AAAAAAA
+        AAAAAAH/8AAAAAAAAAAAAAP/8AAAAAAAAAAAAAf/8AAAAAAAAAAAAA//8AAAAAAAAAAAAB//8AAAAAAA
+        AAAAAA//8AAAAAAAAAAAAAf/8AAAAAAAAAAAAAP/8AAAAAAAAAAAAAP/8AAAAAAAAAAAAAP/8AAAAAAA
+        AAAAAAP/8AAAAAAAAAAAAAP/8AAAAAAAAAD/+AP/8AAAAAAAAAD/////8AAAAAAAAAD/////8AAAAAAA
+        AAD//A//8AAAAAAAAAD+AAA/8AAAAAAAAADwAAAH8AAAAAAAAADAAAAB8AAAAAAAAAAAAAAAeAAAAAAA
+        AAAAAAAAOAAAAAAAAAAAAAAAHgAAAAMAAAAAAAAAH4AH//8AAAAAAAAAH4AAA/8AAAAAAAAAH4AAAf8A
+        AAAAAAAAH4AAAP8AAAAAAAAAP4AAAP8AAAAAAAAAP4AAAP8AAAAAAAAAf8AAAP8AAAAAAAAAf+AAAP8A
+        AACAAAAA/+AAAP8AAACAAAAA/+AAAP8AAADAAAAB/8AAAf8AAADAAAAB/wAAAf8AAADgAAAD/gAAAf8A
+        AADgAAAD/AAAAf8AAADwAAAH8AAAAf8AAADwAAAHwAAAAf8AAAD4AAADgAAAAf8AAAD4AAAAAAAAAf8A
+        AAD8AAAAAAAAAf8AAAD8AAAAAAAAA/8AAAD+AAAAAAAAA/8AAAD+AAAAAAAEA/8AAAD/AABwAAAOA/8A
+        AAD/AAB4AAA/A/8AAAD/gAD/AAD///8AAAD/gAH/4A////8AAAD/wAH///////8AAAD/4AP///////8A
+        AAD/4AP///////8AAAD/8Af///////8AAAD/8Af///////8AAAD/+A////////8AAAD///////////8A
+        AAA=
+</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>参数上位机V3.1</value>
+  </data>
+  <data name="&gt;&gt;Column6.Name" xml:space="preserve">
+    <value>Column6</value>
+  </data>
+  <data name="&gt;&gt;Column6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column2.Name" xml:space="preserve">
+    <value>Column2</value>
+  </data>
+  <data name="&gt;&gt;Column2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column7.Name" xml:space="preserve">
+    <value>Column7</value>
+  </data>
+  <data name="&gt;&gt;Column7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column8.Name" xml:space="preserve">
+    <value>Column8</value>
+  </data>
+  <data name="&gt;&gt;Column8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column9.Name" xml:space="preserve">
+    <value>Column9</value>
+  </data>
+  <data name="&gt;&gt;Column9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column1.Name" xml:space="preserve">
+    <value>Column1</value>
+  </data>
+  <data name="&gt;&gt;Column1.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridColumn, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog1.Name" xml:space="preserve">
+    <value>openFileDialog1</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog1.Name" xml:space="preserve">
+    <value>saveFileDialog1</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;serialPort1.Name" xml:space="preserve">
+    <value>serialPort1</value>
+  </data>
+  <data name="&gt;&gt;serialPort1.Type" xml:space="preserve">
+    <value>System.IO.Ports.SerialPort, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imageStrip.Name" xml:space="preserve">
+    <value>imageStrip</value>
+  </data>
+  <data name="&gt;&gt;imageStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;attachment.Name" xml:space="preserve">
+    <value>attachment</value>
+  </data>
+  <data name="&gt;&gt;attachment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;参数号.Name" xml:space="preserve">
+    <value>参数号</value>
+  </data>
+  <data name="&gt;&gt;参数号.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridColumn, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;参数名.Name" xml:space="preserve">
+    <value>参数名</value>
+  </data>
+  <data name="&gt;&gt;参数名.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridColumn, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;当前值.Name" xml:space="preserve">
+    <value>当前值</value>
+  </data>
+  <data name="&gt;&gt;当前值.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridColumn, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;设定值.Name" xml:space="preserve">
+    <value>设定值</value>
+  </data>
+  <data name="&gt;&gt;设定值.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridColumn, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;描述.Name" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="&gt;&gt;描述.Type" xml:space="preserve">
+    <value>AdvancedDataGridView.TreeGridColumn, ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timer2.Name" xml:space="preserve">
+    <value>timer2</value>
+  </data>
+  <data name="&gt;&gt;timer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AgvParameter</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

@@ -68,6 +68,10 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExpandableGridView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\参数上位机\ExpandableGridView.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -140,6 +144,18 @@
     </Compile>
     <Compile Include="Developer\DbusTestForm.Designer.cs">
       <DependentUpon>DbusTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\AgvParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\AgvParameter.designer.cs">
+      <DependentUpon>AgvParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\Process.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\Process.designer.cs">
+      <DependentUpon>Process.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -264,6 +280,7 @@
     <Compile Include="UserControls\Utils\MathFunc.cs" />
     <EmbeddedResource Include="AGV\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AGV\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
@@ -285,6 +302,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Developer\DbusTestForm.resx">
       <DependentUpon>DbusTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\AgvParameter.resx">
+      <DependentUpon>AgvParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\AgvParameter.zh-CN.resx">
+      <DependentUpon>AgvParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\Process.resx">
+      <DependentUpon>Process.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Button\LBButton.resx">
       <DependentUpon>LBButton.cs</DependentUpon>
@@ -353,6 +379,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\参数上位机\newGroupPostIconStrip.PNG" />
     <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
     <Content Include="UserControls\Knob\Knob.bmp" />
