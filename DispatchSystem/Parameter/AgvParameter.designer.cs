@@ -38,15 +38,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tvTaskList = new AdvancedDataGridView.TreeGridView();
-            this.Column6 = new AdvancedDataGridView.TreeGridColumn();
-            this.Column2 = new AdvancedDataGridView.TreeGridColumn();
-            this.Column7 = new AdvancedDataGridView.TreeGridColumn();
-            this.Column8 = new AdvancedDataGridView.TreeGridColumn();
-            this.Column9 = new AdvancedDataGridView.TreeGridColumn();
+            this.Column1 = new AdvancedDataGridView.TreeGridColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5_LED = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,8 +55,13 @@
             this.comboBox1_PortName = new System.Windows.Forms.ComboBox();
             this.button1_openclose = new System.Windows.Forms.Button();
             this.checkBox_liucheng = new System.Windows.Forms.CheckBox();
+            this.button4_savetopc = new System.Windows.Forms.Button();
+            this.button3_savetoflash = new System.Windows.Forms.Button();
             this.checkBox_lujing = new System.Windows.Forms.CheckBox();
             this.checkBox_parment = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button5_readformflash = new System.Windows.Forms.Button();
+            this.button2_readformpc = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
@@ -70,6 +76,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button_savemiaoshu = new System.Windows.Forms.Button();
+            this.button_readmiaoshu = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -80,15 +89,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4_savetopc = new System.Windows.Forms.Button();
-            this.button3_savetoflash = new System.Windows.Forms.Button();
-            this.button_savemiaoshu = new System.Windows.Forms.Button();
-            this.button_readmiaoshu = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5_readformflash = new System.Windows.Forms.Button();
-            this.button2_readformpc = new System.Windows.Forms.Button();
-            this.Column1 = new AdvancedDataGridView.TreeGridColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tvTaskList)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -124,12 +124,12 @@
             this.tvTaskList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tvTaskList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.tvTaskList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
             this.Column6,
             this.Column2,
             this.Column7,
             this.Column8,
-            this.Column9,
-            this.Column1});
+            this.Column9});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -150,10 +150,23 @@
             this.tvTaskList.CurrentCellChanged += new System.EventHandler(this.tvTaskList_CurrentCellChanged);
             this.tvTaskList.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tvTaskList_Scroll);
             // 
+            // Column1
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column1.DefaultNodeImage = ((System.Drawing.Image)(resources.GetObject("Column1.DefaultNodeImage")));
+            this.Column1.DividerWidth = 1;
+            this.Column1.FillWeight = 51.53443F;
+            resources.ApplyResources(this.Column1, "Column1");
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // Column6
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column6.DividerWidth = 1;
             resources.ApplyResources(this.Column6, "Column6");
             this.Column6.Name = "Column6";
@@ -163,8 +176,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column2.DividerWidth = 1;
             resources.ApplyResources(this.Column2, "Column2");
             this.Column2.Name = "Column2";
@@ -173,8 +186,8 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column7.DividerWidth = 1;
             resources.ApplyResources(this.Column7, "Column7");
             this.Column7.Name = "Column7";
@@ -184,8 +197,8 @@
             // 
             // Column8
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column8.DividerWidth = 1;
             resources.ApplyResources(this.Column8, "Column8");
             this.Column8.Name = "Column8";
@@ -194,8 +207,8 @@
             // 
             // Column9
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column9.DividerWidth = 1;
             resources.ApplyResources(this.Column9, "Column9");
             this.Column9.Name = "Column9";
@@ -259,6 +272,24 @@
             this.checkBox_liucheng.Name = "checkBox_liucheng";
             this.checkBox_liucheng.UseVisualStyleBackColor = true;
             // 
+            // button4_savetopc
+            // 
+            this.button4_savetopc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button4_savetopc.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button4_savetopc, "button4_savetopc");
+            this.button4_savetopc.Name = "button4_savetopc";
+            this.button4_savetopc.UseVisualStyleBackColor = false;
+            this.button4_savetopc.Click += new System.EventHandler(this.button4_savetopc_Click);
+            // 
+            // button3_savetoflash
+            // 
+            this.button3_savetoflash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button3_savetoflash.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button3_savetoflash, "button3_savetoflash");
+            this.button3_savetoflash.Name = "button3_savetoflash";
+            this.button3_savetoflash.UseVisualStyleBackColor = false;
+            this.button3_savetoflash.Click += new System.EventHandler(this.button3_savetoflash_Click);
+            // 
             // checkBox_lujing
             // 
             resources.ApplyResources(this.checkBox_lujing, "checkBox_lujing");
@@ -274,6 +305,33 @@
             this.checkBox_parment.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_parment.Name = "checkBox_parment";
             this.checkBox_parment.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button5_readformflash
+            // 
+            this.button5_readformflash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button5_readformflash.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button5_readformflash, "button5_readformflash");
+            this.button5_readformflash.Name = "button5_readformflash";
+            this.button5_readformflash.UseVisualStyleBackColor = false;
+            this.button5_readformflash.Click += new System.EventHandler(this.button5_readformflash_Click);
+            // 
+            // button2_readformpc
+            // 
+            this.button2_readformpc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2_readformpc.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button2_readformpc, "button2_readformpc");
+            this.button2_readformpc.Name = "button2_readformpc";
+            this.button2_readformpc.UseVisualStyleBackColor = false;
+            this.button2_readformpc.Click += new System.EventHandler(this.button2_readformpc_Click_1);
             // 
             // openFileDialog1
             // 
@@ -357,6 +415,33 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
+            // button_savemiaoshu
+            // 
+            this.button_savemiaoshu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_savemiaoshu.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button_savemiaoshu, "button_savemiaoshu");
+            this.button_savemiaoshu.Name = "button_savemiaoshu";
+            this.button_savemiaoshu.UseVisualStyleBackColor = false;
+            this.button_savemiaoshu.Click += new System.EventHandler(this.button_savemiaoshu_Click);
+            // 
+            // button_readmiaoshu
+            // 
+            this.button_readmiaoshu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_readmiaoshu.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button_readmiaoshu, "button_readmiaoshu");
+            this.button_readmiaoshu.Name = "button_readmiaoshu";
+            this.button_readmiaoshu.UseVisualStyleBackColor = false;
+            this.button_readmiaoshu.Click += new System.EventHandler(this.button_readmiaoshu_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBox1);
@@ -405,6 +490,7 @@
             this.timer2.Enabled = true;
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+
             // 
             // comboBox1
             // 
@@ -424,92 +510,7 @@
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button4_savetopc
-            // 
-            this.button4_savetopc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button4_savetopc.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button4_savetopc, "button4_savetopc");
-            this.button4_savetopc.Name = "button4_savetopc";
-            this.button4_savetopc.UseVisualStyleBackColor = false;
-            this.button4_savetopc.Click += new System.EventHandler(this.button4_savetopc_Click);
-            // 
-            // button3_savetoflash
-            // 
-            this.button3_savetoflash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button3_savetoflash.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button3_savetoflash, "button3_savetoflash");
-            this.button3_savetoflash.Name = "button3_savetoflash";
-            this.button3_savetoflash.UseVisualStyleBackColor = false;
-            this.button3_savetoflash.Click += new System.EventHandler(this.button3_savetoflash_Click);
-            // 
-            // button_savemiaoshu
-            // 
-            this.button_savemiaoshu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button_savemiaoshu.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button_savemiaoshu, "button_savemiaoshu");
-            this.button_savemiaoshu.Name = "button_savemiaoshu";
-            this.button_savemiaoshu.UseVisualStyleBackColor = false;
-            this.button_savemiaoshu.Click += new System.EventHandler(this.button_savemiaoshu_Click);
-            // 
-            // button_readmiaoshu
-            // 
-            this.button_readmiaoshu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button_readmiaoshu.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button_readmiaoshu, "button_readmiaoshu");
-            this.button_readmiaoshu.Name = "button_readmiaoshu";
-            this.button_readmiaoshu.UseVisualStyleBackColor = false;
-            this.button_readmiaoshu.Click += new System.EventHandler(this.button_readmiaoshu_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button5_readformflash
-            // 
-            this.button5_readformflash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button5_readformflash.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button5_readformflash, "button5_readformflash");
-            this.button5_readformflash.Name = "button5_readformflash";
-            this.button5_readformflash.UseVisualStyleBackColor = false;
-            this.button5_readformflash.Click += new System.EventHandler(this.button5_readformflash_Click);
-            // 
-            // button2_readformpc
-            // 
-            this.button2_readformpc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2_readformpc.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button2_readformpc, "button2_readformpc");
-            this.button2_readformpc.Name = "button2_readformpc";
-            this.button2_readformpc.UseVisualStyleBackColor = false;
-            this.button2_readformpc.Click += new System.EventHandler(this.button2_readformpc_Click_1);
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column1.DefaultNodeImage = ((System.Drawing.Image)(resources.GetObject("Column1.DefaultNodeImage")));
-            this.Column1.DividerWidth = 1;
-            this.Column1.FillWeight = 51.53443F;
-            resources.ApplyResources(this.Column1, "Column1");
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // AgvParameter
+            // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -541,7 +542,7 @@
             this.Controls.Add(this.comboBox1_PortName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "AgvParameter";
+            this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -598,11 +599,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private AdvancedDataGridView.TreeGridColumn Column1;
-        private AdvancedDataGridView.TreeGridColumn Column6;
-        private AdvancedDataGridView.TreeGridColumn Column2;
-        private AdvancedDataGridView.TreeGridColumn Column7;
-        private AdvancedDataGridView.TreeGridColumn Column8;
-        private AdvancedDataGridView.TreeGridColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
