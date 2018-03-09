@@ -130,6 +130,7 @@
     <Compile Include="AGV\StateForm.Designer.cs">
       <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="XmlHelper.cs" />
     <Compile Include="Developer\DebugForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +165,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ThirdAppResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThirdAppResource.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Base\LBIndustrialCtrlBase.cs">
       <SubType>UserControl</SubType>
@@ -315,6 +321,10 @@
     <EmbeddedResource Include="Parameter\Process.resx">
       <DependentUpon>Process.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThirdAppResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThirdAppResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Button\LBButton.resx">
       <DependentUpon>LBButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -385,17 +395,19 @@
     <None Include="bin\Debug\参数上位机\newGroupPostIconStrip.PNG" />
     <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
+    <None Include="Resources\NetAssist.exe" />
+    <None Include="Resources\XCOM V2.0.exe" />
+    <None Include="Resources\RFID.exe" />
+    <None Include="Resources\Animal Tag Read-Writer.exe" />
     <Content Include="UserControls\Knob\Knob.bmp" />
     <None Include="Resources\8bit.png" />
     <None Include="Resources\16bit.png" />
-    <Content Include="Resources\NetAssist.exe" />
     <None Include="Resources\RFID.png" />
     <Content Include="Resources\robot.ico" />
     <Content Include="Resources\robot2.ico" />
     <Content Include="Resources\robot3.ico" />
     <Content Include="Resources\编辑.png" />
     <Content Include="Resources\编辑2.png" />
-    <None Include="Resources\串口助手.exe" />
     <None Include="Resources\task.png" />
     <None Include="Resources\location.png" />
     <None Include="Resources\配置.png" />

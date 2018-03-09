@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Root>
+    <Debug>
+      <心跳帧>true</心跳帧>
+      <操作帧>false</操作帧>
+      <响应帧>false</响应帧>
+      <实时帧>false</实时帧>
+      <读单个寄存器>false</读单个寄存器>
+      <写单个寄存器>false</写单个寄存器>
+      <读多个寄存器>false</读多个寄存器>
+      <写多个寄存器>false</写多个寄存器>
+      <无效帧>false</无效帧>
+      <收到数据>false</收到数据>
+      <单包数据有效帧数量>false</单包数据有效帧数量>
+      <发送数据>false</发送数据>
+      <错误>false</错误>
+      <系统消息>false</系统消息>
+      <服务器>false</服务器>
+      <debug>false</debug>
+    </Debug>
+    <Dbus>
+      <端口>30</端口>
+      <设备数量>11</设备数量>
+    </Dbus>
+  </Root>
+</ArrayOfRoot>

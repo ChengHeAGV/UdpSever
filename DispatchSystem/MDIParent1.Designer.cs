@@ -69,9 +69,9 @@
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.网络助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +106,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
-            this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.地标读写ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -347,19 +347,13 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem,
+            this.地标读写ToolStripMenuItem,
             this.串口助手ToolStripMenuItem,
             this.网络助手ToolStripMenuItem,
             this.参数设置ToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(59, 21);
             this.toolsMenu.Text = "工具(&T)";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.optionsToolStripMenuItem.Text = "选项(&O)";
             // 
             // 串口助手ToolStripMenuItem
             // 
@@ -374,6 +368,13 @@
             this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.网络助手ToolStripMenuItem.Text = "网络助手";
             this.网络助手ToolStripMenuItem.Click += new System.EventHandler(this.网络助手ToolStripMenuItem_Click);
+            // 
+            // 参数设置ToolStripMenuItem
+            // 
+            this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.参数设置ToolStripMenuItem.Text = "参数设置";
+            this.参数设置ToolStripMenuItem.Click += new System.EventHandler(this.参数设置ToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -488,14 +489,14 @@
             // 路径规划ToolStripMenuItem
             // 
             this.路径规划ToolStripMenuItem.Name = "路径规划ToolStripMenuItem";
-            this.路径规划ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.路径规划ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.路径规划ToolStripMenuItem.Text = "路径规划";
             this.路径规划ToolStripMenuItem.Click += new System.EventHandler(this.路径规划ToolStripMenuItem_Click);
             // 
             // 流程规划ToolStripMenuItem
             // 
             this.流程规划ToolStripMenuItem.Name = "流程规划ToolStripMenuItem";
-            this.流程规划ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.流程规划ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.流程规划ToolStripMenuItem.Text = "流程规划";
             // 
             // 高级ToolStripMenuItem
@@ -511,21 +512,21 @@
             // DebugToolStripMenuItem
             // 
             this.DebugToolStripMenuItem.Name = "DebugToolStripMenuItem";
-            this.DebugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DebugToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.DebugToolStripMenuItem.Text = "Debug";
             this.DebugToolStripMenuItem.Click += new System.EventHandler(this.DebugToolStripMenuItem_Click);
             // 
             // ListenToolStripMenuItem
             // 
             this.ListenToolStripMenuItem.Name = "ListenToolStripMenuItem";
-            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.ListenToolStripMenuItem.Text = "Listen";
             this.ListenToolStripMenuItem.Click += new System.EventHandler(this.ListenToolStripMenuItem_Click);
             // 
             // dBUSTestToolStripMenuItem
             // 
             this.dBUSTestToolStripMenuItem.Name = "dBUSTestToolStripMenuItem";
-            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.dBUSTestToolStripMenuItem.Text = "DBUS_Test";
             this.dBUSTestToolStripMenuItem.Click += new System.EventHandler(this.dBUSTestToolStripMenuItem_Click);
             // 
@@ -721,12 +722,12 @@
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
             // 
-            // 参数设置ToolStripMenuItem
+            // 地标读写ToolStripMenuItem
             // 
-            this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.参数设置ToolStripMenuItem.Text = "参数设置";
-            this.参数设置ToolStripMenuItem.Click += new System.EventHandler(this.参数设置ToolStripMenuItem_Click);
+            this.地标读写ToolStripMenuItem.Name = "地标读写ToolStripMenuItem";
+            this.地标读写ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.地标读写ToolStripMenuItem.Text = "地标读写";
+            this.地标读写ToolStripMenuItem.Click += new System.EventHandler(this.地标读写ToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -797,7 +798,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolBarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsMenu;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsMenu;
         private System.Windows.Forms.ToolStripMenuItem newWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
@@ -830,6 +830,7 @@
         private System.Windows.Forms.ToolStripMenuItem ListenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dBUSTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 地标读写ToolStripMenuItem;
     }
 }
 

@@ -22,14 +22,14 @@ namespace DispatchSystem {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ThirdApplication {
+    internal class ThirdAppResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ThirdApplication() {
+        internal ThirdAppResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace DispatchSystem {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DispatchSystem.ThirdApplication", typeof(ThirdApplication).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DispatchSystem.ThirdAppResource", typeof(ThirdAppResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,36 @@ namespace DispatchSystem {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Animal_Tag_Read_Writer {
+            get {
+                object obj = ResourceManager.GetObject("Animal_Tag_Read_Writer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] NetAssist {
+            get {
+                object obj = ResourceManager.GetObject("NetAssist", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] XCOM_V2_0 {
+            get {
+                object obj = ResourceManager.GetObject("XCOM_V2_0", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

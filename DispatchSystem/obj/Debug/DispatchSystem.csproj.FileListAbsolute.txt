@@ -118,3 +118,4 @@ D:\github\winform\UdpSever\DispatchSystem\obj\Debug\zh-CN\AGV调度系统.resour
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
+D:\github\winform\UdpSever\DispatchSystem\obj\Debug\DispatchSystem.ThirdAppResource.resources

@@ -1,11 +1,14 @@
 ﻿using DispatchSystem.AGV;
 using DispatchSystem.Developer;
 using System;
+using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace DispatchSystem
 {
@@ -20,6 +23,31 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+
+
+            XmlHelper.Init();
+            //object result = xml.SerializeXml.LoadXml("C:\\x.xml", typeof(List<xml.Root>));
+            //List<xml.Root> dd = result as List<xml.Root>;
+            //foreach (var item in dd)
+            //{
+            //    Console.WriteLine(item.dbus.DeviceNum.ToString());
+            //    Console.WriteLine(item.dbus.Port.ToString());
+            //    Console.WriteLine(item.debug.HeartFrame.ToString());
+            //    Console.WriteLine(item.debug.SendData.ToString());
+            //}
+            //if (File.Exists("C:\\x.xml"))
+            //{
+            //    using (StreamReader reader = new StreamReader("C:\\x.xml"))
+            //    {
+            //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<xml.Root>));
+            //        result = xmlSerializer.Deserialize(reader);
+
+            //    }
+            //}
+
+
+
+
             try
             {
                 if (listenForm.IsDisposed != true)
@@ -512,32 +540,82 @@ namespace DispatchSystem
 
         }
 
-        private void 串口助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        #region 工具
+        private void 地标读写ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (!File.Exists(@"C:\Windows\Temp\Animal_Tag_Read_Writer.exe"))
+            {
+                FileStream str = new FileStream(@"C:\Windows\Temp\Animal_Tag_Read_Writer.exe", FileMode.OpenOrCreate);
+                str.Write(ThirdAppResource.Animal_Tag_Read_Writer, 0, ThirdAppResource.Animal_Tag_Read_Writer.Length);
+                str.Close();
+            }
+            System.Diagnostics.Process.Start(@"C:\Windows\Temp\Animal_Tag_Read_Writer.exe");
         }
 
-        UdpToolForm udpform = new UdpToolForm();
+        private void 串口助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(@"C:\Windows\Temp\XCOM.exe"))
+            {
+                FileStream str = new FileStream(@"C:\Windows\Temp\XCOM.exe", FileMode.OpenOrCreate);
+                str.Write(ThirdAppResource.XCOM_V2_0, 0, ThirdAppResource.XCOM_V2_0.Length);
+                str.Close();
+            }
+            System.Diagnostics.Process.Start(@"C:\Windows\Temp\XCOM.exe");
+        }
+
+        //UdpToolForm udpform = new UdpToolForm();
         private void 网络助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(@"C:\Windows\Temp\NetAssist.exe"))
+            {
+                FileStream str = new FileStream(@"C:\Windows\Temp\NetAssist.exe", FileMode.OpenOrCreate);
+                str.Write(ThirdAppResource.NetAssist, 0, ThirdAppResource.NetAssist.Length);
+                str.Close();
+            }
+            System.Diagnostics.Process.Start(@"C:\Windows\Temp\NetAssist.exe");
+            //try
+            //{
+            //    if (udpform.IsDisposed != true)
+            //    {
+            //        udpform.Show();//弹出这个窗口
+            //        udpform.Focus();//激活显示
+            //    }
+            //    else
+            //    {
+            //        udpform = new UdpToolForm();
+            //        udpform.Show();//弹出这个窗口
+            //        udpform.Focus();//激活显示
+            //    }
+            //}
+            //catch
+            //{
+            //}
+        }
+        AgvParameter agvParameter = new AgvParameter();
+        private void 参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                if (udpform.IsDisposed != true)
+                if (agvParameter.IsDisposed != true)
                 {
-                    udpform.Show();//弹出这个窗口
-                    udpform.Focus();//激活显示
+                    agvParameter.Show();//弹出这个窗口
+                    agvParameter.Focus();//激活显示
                 }
                 else
                 {
-                    udpform = new UdpToolForm();
-                    udpform.Show();//弹出这个窗口
-                    udpform.Focus();//激活显示
+                    agvParameter = new AgvParameter();
+                    agvParameter.Show();//弹出这个窗口
+                    agvParameter.Focus();//激活显示
                 }
             }
             catch
             {
+
             }
         }
+        #endregion
+
+
 
         //调试信息
         DebugForm debugForm = new DebugForm();
@@ -606,29 +684,6 @@ namespace DispatchSystem
                     dbusForm = new DbusTestForm();
                     dbusForm.Show();//弹出这个窗口
                     dbusForm.Focus();//激活显示
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        AgvParameter agvParameter = new AgvParameter();
-        private void 参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (agvParameter.IsDisposed != true)
-                {
-                    agvParameter.Show();//弹出这个窗口
-                    agvParameter.Focus();//激活显示
-                }
-                else
-                {
-                    agvParameter = new AgvParameter();
-                    agvParameter.Show();//弹出这个窗口
-                    agvParameter.Focus();//激活显示
                 }
             }
             catch
