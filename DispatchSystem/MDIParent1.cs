@@ -24,29 +24,47 @@ namespace DispatchSystem
         private void MDIParent1_Load(object sender, EventArgs e)
         {
 
-
+            //初始化系统参数
             XmlHelper.Init();
-            //object result = xml.SerializeXml.LoadXml("C:\\x.xml", typeof(List<xml.Root>));
-            //List<xml.Root> dd = result as List<xml.Root>;
-            //foreach (var item in dd)
-            //{
-            //    Console.WriteLine(item.dbus.DeviceNum.ToString());
-            //    Console.WriteLine(item.dbus.Port.ToString());
-            //    Console.WriteLine(item.debug.HeartFrame.ToString());
-            //    Console.WriteLine(item.debug.SendData.ToString());
-            //}
-            //if (File.Exists("C:\\x.xml"))
-            //{
-            //    using (StreamReader reader = new StreamReader("C:\\x.xml"))
-            //    {
-            //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<xml.Root>));
-            //        result = xmlSerializer.Deserialize(reader);
+            int delay = 50;
+          
+            UdpSever.Shell.WriteNotice(delay, "系统消息", "系统启动...");
+            UdpSever.Shell.WriteNotice(delay, "系统消息", "加载调试信息...");
 
-            //    }
-            //}
+            UdpSever.Shell.WriteNotice(delay, "系统消息", "获取本机IP...");
 
 
+            UdpSever.Shell.WriteNotice(delay, "系统消息", "加载服务器配置...");
 
+            UdpSever.Shell.WriteLine(delay, "[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
+            UdpSever.Shell.WriteLine(delay, "[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
+            UdpSever.Shell.WriteLine(delay, "[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
+            UdpSever.Shell.WriteLine(delay, "[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
+            UdpSever.Shell.WriteLine(delay, "[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
+            UdpSever.Shell.WriteLine(delay, "[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
+            UdpSever.Shell.WriteLine(delay, "[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
+            UdpSever.Shell.WriteLine(delay, "[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
+            UdpSever.Shell.WriteLine(delay, "[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
+
+            #region 获取本机IP，自动开启服务器
+            string name = Dns.GetHostName();
+            IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
+            foreach (IPAddress ipa in ipadrlist)
+            {
+                if (ipa.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    UdpSever.Shell.WriteNotice(delay, "系统消息", "本机IP:[{0}]", ipa.ToString());
+                    UdpSever.ipaddress = ipa;
+                }
+            }
+            //自动启动服务器
+            UdpSever.Resault rs = UdpSever.Start();
+            //更新界面
+            udpConfigForm_MyEvent();
+            #endregion
+
+
+            treeView1.Nodes.Clear();
 
             try
             {
@@ -66,96 +84,6 @@ namespace DispatchSystem
             {
 
             }
-            #region 加载Dbug调试信息配置
-            string strFilePath = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + Application.StartupPath + "\\Database.mdb";
-            string sql = "select * from Debug";
-            //声明一个数据连接
-            OleDbConnection con = new OleDbConnection(strFilePath);
-            OleDbDataAdapter da = new OleDbDataAdapter(sql, con);
-            try
-            {
-                da.Fill(UdpSever.DebugMsg.dt);
-            }
-            catch (Exception ex)
-            {
-                UdpSever.Shell.WriteError("加载配置错误：{0}", ex.ToString());
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-                da.Dispose();
-            }
-            #endregion
-
-            UdpSever.Shell.WriteNotice(100, "系统消息", "系统启动...");
-            UdpSever.Shell.WriteNotice(100, "系统消息", "加载调试信息...");
-
-            UdpSever.Shell.WriteNotice(100, "系统消息", "获取本机IP...");
-
-
-            UdpSever.Shell.WriteNotice(100, "系统消息", "加载服务器配置...");
-
-            UdpSever.Shell.WriteLine(100, "[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
-            UdpSever.Shell.WriteLine(100, "[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
-            UdpSever.Shell.WriteLine(100, "[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
-            UdpSever.Shell.WriteLine(100, "[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
-            UdpSever.Shell.WriteLine(100, "[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
-            UdpSever.Shell.WriteLine(100, "[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
-            UdpSever.Shell.WriteLine(100, "[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
-            UdpSever.Shell.WriteLine(100, "[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
-            UdpSever.Shell.WriteLine(100, "[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
-
-            #region 获取本机IP，自动开启服务器
-            string name = Dns.GetHostName();
-            IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
-            foreach (IPAddress ipa in ipadrlist)
-            {
-                if (ipa.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    UdpSever.Shell.WriteNotice(100, "系统消息", "本机IP:[{0}]", ipa.ToString());
-                    UdpSever.ipaddress = ipa;
-                }
-            }
-            //自动启动服务器
-            UdpSever.Resault rs = UdpSever.Start();
-            //更新界面
-            udpConfigForm_MyEvent();
-            #endregion
-
-
-            treeView1.Nodes.Clear();
-
-
-            //SensorForm sensorForm = new SensorForm(1);
-            //sensorForm.Show();
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    treeView1.Nodes.Add(i.ToString(), "AGV" + i.ToString());
-            //    //传感器
-            //    treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Sensor.Key, AGV.Sensor.Text);
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].ImageIndex = AGV.Sensor.ImageIndex;
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].SelectedImageIndex = AGV.Sensor.SelectedImageIndex;
-            //    //运行状态
-            //    treeView1.Nodes[i.ToString()].Nodes.Add(AGV.State.Key, AGV.State.Text);
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.State.Key].ImageIndex = AGV.State.ImageIndex;
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.State.Key].SelectedImageIndex = AGV.State.SelectedImageIndex;
-            //    //远程操作
-            //    treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Control.Key, AGV.Control.Text);
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Control.Key].ImageIndex = AGV.Control.ImageIndex;
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Control.Key].SelectedImageIndex = AGV.Control.SelectedImageIndex;
-            //    //参数设置
-            //    treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Set.Key, AGV.Set.Text);
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Set.Key].ImageIndex = AGV.Set.ImageIndex;
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Set.Key].SelectedImageIndex = AGV.Set.SelectedImageIndex;
-            //    //寄存器
-            //    treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Register.Key, AGV.Register.Text);
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].ImageIndex = AGV.Register.ImageIndex;
-            //    treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].SelectedImageIndex = AGV.Register.SelectedImageIndex;
-
-            //}
-
         }
 
         private void ShowNewForm(object sender, EventArgs e)

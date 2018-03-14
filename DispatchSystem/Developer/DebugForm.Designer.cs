@@ -33,10 +33,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonCheckAll = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -53,7 +55,12 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.Name = "dataGridView1";
@@ -120,6 +127,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "控制台";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(111, 163);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(83, 41);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "清空控制台";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button_Clear_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button1);
@@ -152,15 +169,15 @@
             this.buttonCheckAll.UseVisualStyleBackColor = true;
             this.buttonCheckAll.Click += new System.EventHandler(this.buttonCheckAll_Click);
             // 
-            // button2
+            // Column1
             // 
-            this.button2.Location = new System.Drawing.Point(111, 163);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 41);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "清空控制台";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button_Clear_Click);
+            this.Column1.HeaderText = "名称";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "状态";
+            this.Column2.Name = "Column2";
             // 
             // DebugForm
             // 
@@ -171,7 +188,6 @@
             this.Name = "DebugForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DebugForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DebugForm_FormClosing);
             this.Load += new System.EventHandler(this.DebugForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -199,5 +215,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonCheckAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
     }
 }

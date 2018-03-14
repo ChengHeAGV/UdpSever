@@ -245,11 +245,6 @@ namespace DispatchSystem
         public static class DebugMsg
         {
             /// <summary>
-            /// 心跳帧
-            /// </summary>
-            public static DataTable dt = new DataTable();
-
-            /// <summary>
             /// 查看关键字对应的选择状态
             /// </summary>
             /// <param name="key"></param>
@@ -257,20 +252,58 @@ namespace DispatchSystem
             public static bool IsChecked(string key)
             {
                 bool reault = true;
-                for (int i = 0; i < dt.Rows.Count; i++)
+                switch (key)
                 {
-                    if (dt.Rows[i][1].ToString() == key)
-                    {
-                        reault = (bool)dt.Rows[i][2];
+                    case "心跳帧":
+                        reault = XmlHelper.Config.debug.HeartFrame;
                         break;
-                    }
-                    else
-                    {
-                        if (i == dt.Rows.Count - 1)
-                        {
-                            reault = false;
-                        }
-                    }
+                    case "操作帧":
+                        reault = XmlHelper.Config.debug.OperationFrame;
+                        break;
+                    case "响应帧":
+                        reault = XmlHelper.Config.debug.ResponseFrame;
+                        break;
+                    case "实时帧":
+                        reault = XmlHelper.Config.debug.RealTimeFrame;
+                        break;
+                    case "读单个寄存器":
+                        reault = XmlHelper.Config.debug.ReadRegister;
+                        break;
+                    case "写单个寄存器":
+                        reault = XmlHelper.Config.debug.WriteRegister;
+                        break;
+                    case "读多个寄存器":
+                        reault = XmlHelper.Config.debug.ReadMuliteRegister;
+                        break;
+                    case "写多个寄存器":
+                        reault = XmlHelper.Config.debug.WriteMuliteRegister;
+                        break;
+                    case "无效帧":
+                        reault = XmlHelper.Config.debug.ValidFrames;
+                        break;
+                    case "收到数据":
+                        reault = XmlHelper.Config.debug.ReciveData;
+                        break;
+                    case "单包数据有效帧数量":
+                        reault = XmlHelper.Config.debug.VaildFramesNum;
+                        break;
+                    case "发送数据":
+                        reault = XmlHelper.Config.debug.SendData;
+                        break;
+                    case "错误":
+                        reault = XmlHelper.Config.debug.Error;
+                        break;
+                    case "系统消息":
+                        reault = XmlHelper.Config.debug.SystemMsg;
+                        break;
+                    case "服务器":
+                        reault = XmlHelper.Config.debug.Sever;
+                        break;
+                    case "debug":
+                        reault = XmlHelper.Config.debug.debug;
+                        break;
+                    default:
+                        break;
                 }
                 return reault;
             }
@@ -436,20 +469,38 @@ namespace DispatchSystem
                 string StringBuf = string.Empty;
                 while (UdpThreadIsClosed == false)
                 {
-                    Thread.Sleep(1);
                     //从缓冲区读取数据
                     byte[] bytes = new byte[3096];
                     int length = socket.ReceiveFrom(bytes, ref endPoint);
                     //更新接收到的数据总长度
                     RxLength += (UInt64)length;
 
-                    Openbox op = new Openbox();
-                    op.bytes = bytes;
-                    op.endPoint = endPoint;
-                    op.length = length;
-                    op.StringBuf = StringBuf;
-                    Thread th = new Thread(new ThreadStart(op.Analyze));
-                    th.Start();
+                    //定义临时数组,将数据转存到临时数组
+                    byte[] Buf = new byte[length];
+                    for (int i = 0; i < length; i++)
+                    {
+                        Buf[i] = bytes[i];
+                    }
+                    //将byte数组转换成字符串
+                    string str = Encoding.ASCII.GetString(Buf);
+                    //清除多余的\0
+                    str = str.Replace("\0", "");
+                    //将收到的数据追加到缓冲池
+                    StringBuf += str;
+                    if (StringBuf.Contains("!"))
+                    {
+                        Openbox op = new Openbox();
+                        op.StringBuf = StringBuf;
+                        op.endPoint = endPoint;
+                        Thread th = new Thread(new ThreadStart(op.Analyze));
+                        th.Start();
+                        Shell.WriteNotice("debug", string.Format("收到数据：{0}", StringBuf));
+                        StringBuf = string.Empty;
+                    }
+                    else
+                    {
+                        Shell.WriteNotice("收到数据", string.Format("收到数据：{0}", str));
+                    }
                 }
             }
             catch (Exception ex)
@@ -459,30 +510,14 @@ namespace DispatchSystem
         }
         class Openbox
         {
-            public int length;
-            public byte[] bytes;
+            //public int length;
+            public byte[] Buf;
             public EndPoint endPoint;
             public string StringBuf;
             public void Analyze()
             {
                 try
                 {
-                    //定义临时数组,将数据转存到临时数组
-                    byte[] Buf = new byte[length];
-                    for (int i = 0; i < length; i++)
-                    {
-                        Buf[i] = bytes[i];
-                    }
-                    #region 数据解析
-                    //将byte数组转换成字符串
-                    string str = Encoding.ASCII.GetString(Buf);
-                    //清除多余的\0
-                    str = str.Replace("\0", "");
-                    Shell.WriteNotice("收到数据", string.Format("收到数据：{0}", str));
-                    //将收到的数据追加到缓冲池
-                    StringBuf += str;
-                    #endregion
-
                     //开始标志
                     int Start = 0;
                     //结束标志
@@ -715,14 +750,13 @@ namespace DispatchSystem
                                                 default:
                                                     ErrorCount++;
                                                     Shell.WriteError("无效误帧", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
-                                                    length = 0;
                                                     break;
                                             }
                                             #endregion
                                             break;
                                         case 2:
                                             #region 响应帧
-                                            Shell.WriteNotice("响应帧", string.Format("[ALL]:", ByteToHexStr(Buf)));
+                                            Shell.WriteNotice("响应帧", string.Format("[ALL]:[{0}]", ByteToHexStr(Buf)));
                                             //添加到响应帧缓冲池
                                             for (int i = 0; i < RESPONSE_MAX_LEN; i++)
                                             {
@@ -813,7 +847,6 @@ namespace DispatchSystem
                                                 default:
                                                     ErrorCount++;
                                                     Shell.WriteError("错误", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
-                                                    length = 0;
                                                     break;
                                             }
                                             #endregion
@@ -840,7 +873,6 @@ namespace DispatchSystem
                         StringBuf = StringBuf.Substring(Stop + 1, StringBuf.Length - Stop - 2);
                     else
                         StringBuf = string.Empty;
-
                 }
                 catch
                 {
@@ -1199,7 +1231,7 @@ namespace DispatchSystem
             //发送数据
             sendToUdp(ep, sendbyte);
         }
-        public static void Post_Multiple_Registers( int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
+        public static void Post_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
         {
             Post_Multiple_Registers(ServerAddress, TargetAddress, RegisterAddress, Num, Data, EndPointArray[TargetAddress]);
         }

@@ -71,6 +71,21 @@ namespace DispatchSystem.Developer
         }
 
         UInt64 rx = 0, tx = 0;
+
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            if (buttonRun.Text=="暂停")
+            {
+                buttonRun.Text = "运行";
+                timer1.Enabled = false;
+            }
+            else
+            {
+                buttonRun.Text = "暂停";
+                timer1.Enabled = true;
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             UInt64 temp1 = (UInt64)(UdpSever.RxLength - rx);
