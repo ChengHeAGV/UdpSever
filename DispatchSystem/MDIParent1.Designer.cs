@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("AGV1");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("AGV2");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("AGV1");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("AGV2");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +69,7 @@
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.地标读写ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.网络助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +107,6 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
-            this.地标读写ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -355,24 +355,31 @@
             this.toolsMenu.Size = new System.Drawing.Size(59, 21);
             this.toolsMenu.Text = "工具(&T)";
             // 
+            // 地标读写ToolStripMenuItem
+            // 
+            this.地标读写ToolStripMenuItem.Name = "地标读写ToolStripMenuItem";
+            this.地标读写ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.地标读写ToolStripMenuItem.Text = "地标读写";
+            this.地标读写ToolStripMenuItem.Click += new System.EventHandler(this.地标读写ToolStripMenuItem_Click);
+            // 
             // 串口助手ToolStripMenuItem
             // 
             this.串口助手ToolStripMenuItem.Name = "串口助手ToolStripMenuItem";
-            this.串口助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.串口助手ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.串口助手ToolStripMenuItem.Text = "串口助手";
             this.串口助手ToolStripMenuItem.Click += new System.EventHandler(this.串口助手ToolStripMenuItem_Click);
             // 
             // 网络助手ToolStripMenuItem
             // 
             this.网络助手ToolStripMenuItem.Name = "网络助手ToolStripMenuItem";
-            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.网络助手ToolStripMenuItem.Text = "网络助手";
             this.网络助手ToolStripMenuItem.Click += new System.EventHandler(this.网络助手ToolStripMenuItem_Click);
             // 
             // 参数设置ToolStripMenuItem
             // 
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
             this.参数设置ToolStripMenuItem.Click += new System.EventHandler(this.参数设置ToolStripMenuItem_Click);
             // 
@@ -512,21 +519,21 @@
             // DebugToolStripMenuItem
             // 
             this.DebugToolStripMenuItem.Name = "DebugToolStripMenuItem";
-            this.DebugToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.DebugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DebugToolStripMenuItem.Text = "Debug";
             this.DebugToolStripMenuItem.Click += new System.EventHandler(this.DebugToolStripMenuItem_Click);
             // 
             // ListenToolStripMenuItem
             // 
             this.ListenToolStripMenuItem.Name = "ListenToolStripMenuItem";
-            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ListenToolStripMenuItem.Text = "Listen";
             this.ListenToolStripMenuItem.Click += new System.EventHandler(this.ListenToolStripMenuItem_Click);
             // 
             // dBUSTestToolStripMenuItem
             // 
             this.dBUSTestToolStripMenuItem.Name = "dBUSTestToolStripMenuItem";
-            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dBUSTestToolStripMenuItem.Text = "DBUS_Test";
             this.dBUSTestToolStripMenuItem.Click += new System.EventHandler(this.dBUSTestToolStripMenuItem_Click);
             // 
@@ -610,39 +617,39 @@
             this.treeView1.ItemHeight = 48;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 1;
-            treeNode1.Name = "0";
-            treeNode1.SelectedImageIndex = 1;
-            treeNode1.Text = "传感器";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "1";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Text = "运行状态";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "节点0";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Text = "远程控制";
-            treeNode4.ImageIndex = 4;
-            treeNode4.Name = "节点1";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "参数设置";
-            treeNode5.ImageIndex = 5;
-            treeNode5.Name = "节点2";
-            treeNode5.SelectedImageIndex = 5;
-            treeNode5.Text = "寄存器";
-            treeNode6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            treeNode6.Name = "0";
-            treeNode6.Text = "AGV0";
-            treeNode7.ForeColor = System.Drawing.Color.Red;
-            treeNode7.Name = "1";
-            treeNode7.Text = "AGV1";
-            treeNode8.ForeColor = System.Drawing.Color.Red;
-            treeNode8.Name = "2";
-            treeNode8.Text = "AGV2";
+            treeNode9.ImageIndex = 1;
+            treeNode9.Name = "0";
+            treeNode9.SelectedImageIndex = 1;
+            treeNode9.Text = "传感器";
+            treeNode10.ImageIndex = 2;
+            treeNode10.Name = "1";
+            treeNode10.SelectedImageIndex = 2;
+            treeNode10.Text = "运行状态";
+            treeNode11.ImageIndex = 3;
+            treeNode11.Name = "节点0";
+            treeNode11.SelectedImageIndex = 3;
+            treeNode11.Text = "远程控制";
+            treeNode12.ImageIndex = 4;
+            treeNode12.Name = "节点1";
+            treeNode12.SelectedImageIndex = 4;
+            treeNode12.Text = "参数设置";
+            treeNode13.ImageIndex = 5;
+            treeNode13.Name = "节点2";
+            treeNode13.SelectedImageIndex = 5;
+            treeNode13.Text = "寄存器";
+            treeNode14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            treeNode14.Name = "0";
+            treeNode14.Text = "AGV0";
+            treeNode15.ForeColor = System.Drawing.Color.Red;
+            treeNode15.Name = "1";
+            treeNode15.Text = "AGV1";
+            treeNode16.ForeColor = System.Drawing.Color.Red;
+            treeNode16.Name = "2";
+            treeNode16.Text = "AGV2";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode14,
+            treeNode15,
+            treeNode16});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(250, 482);
             this.treeView1.TabIndex = 0;
@@ -721,13 +728,6 @@
             this.timerOnlineCheck.Enabled = true;
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
-            // 
-            // 地标读写ToolStripMenuItem
-            // 
-            this.地标读写ToolStripMenuItem.Name = "地标读写ToolStripMenuItem";
-            this.地标读写ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.地标读写ToolStripMenuItem.Text = "地标读写";
-            this.地标读写ToolStripMenuItem.Click += new System.EventHandler(this.地标读写ToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 

@@ -23,11 +23,10 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-
             //初始化系统参数
             XmlHelper.InitDebug();
-            int delay = 50;
-          
+
+            int delay = 30;
             UdpSever.Shell.WriteNotice(delay, "系统消息", "系统启动...");
             UdpSever.Shell.WriteNotice(delay, "系统消息", "加载调试信息...");
 
