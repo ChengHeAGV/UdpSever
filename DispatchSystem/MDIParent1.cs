@@ -25,7 +25,7 @@ namespace DispatchSystem
         {
 
             //初始化系统参数
-            XmlHelper.Init();
+            XmlHelper.InitDebug();
             int delay = 50;
           
             UdpSever.Shell.WriteNotice(delay, "系统消息", "系统启动...");
@@ -460,7 +460,7 @@ namespace DispatchSystem
         private void MDIParent1_FormClosed(object sender, FormClosedEventArgs e)
         {
             //关闭所有界面及线程
-            System.Environment.Exit(0);
+            //System.Environment.Exit(0);
         }
 
         private void 路径规划ToolStripMenuItem_Click(object sender, EventArgs e)

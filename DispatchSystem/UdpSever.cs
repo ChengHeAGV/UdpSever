@@ -251,61 +251,14 @@ namespace DispatchSystem
             /// <returns></returns>
             public static bool IsChecked(string key)
             {
-                bool reault = true;
-                switch (key)
+                foreach (var item in XmlHelper.DebugList)
                 {
-                    case "心跳帧":
-                        reault = XmlHelper.Config.debug.HeartFrame;
-                        break;
-                    case "操作帧":
-                        reault = XmlHelper.Config.debug.OperationFrame;
-                        break;
-                    case "响应帧":
-                        reault = XmlHelper.Config.debug.ResponseFrame;
-                        break;
-                    case "实时帧":
-                        reault = XmlHelper.Config.debug.RealTimeFrame;
-                        break;
-                    case "读单个寄存器":
-                        reault = XmlHelper.Config.debug.ReadRegister;
-                        break;
-                    case "写单个寄存器":
-                        reault = XmlHelper.Config.debug.WriteRegister;
-                        break;
-                    case "读多个寄存器":
-                        reault = XmlHelper.Config.debug.ReadMuliteRegister;
-                        break;
-                    case "写多个寄存器":
-                        reault = XmlHelper.Config.debug.WriteMuliteRegister;
-                        break;
-                    case "无效帧":
-                        reault = XmlHelper.Config.debug.ValidFrames;
-                        break;
-                    case "收到数据":
-                        reault = XmlHelper.Config.debug.ReciveData;
-                        break;
-                    case "单包数据有效帧数量":
-                        reault = XmlHelper.Config.debug.VaildFramesNum;
-                        break;
-                    case "发送数据":
-                        reault = XmlHelper.Config.debug.SendData;
-                        break;
-                    case "错误":
-                        reault = XmlHelper.Config.debug.Error;
-                        break;
-                    case "系统消息":
-                        reault = XmlHelper.Config.debug.SystemMsg;
-                        break;
-                    case "服务器":
-                        reault = XmlHelper.Config.debug.Sever;
-                        break;
-                    case "debug":
-                        reault = XmlHelper.Config.debug.debug;
-                        break;
-                    default:
-                        break;
+                    if (item.Name == key)
+                    {
+                        return item.Value;
+                    }
                 }
-                return reault;
+                return true;
             }
         }
 
