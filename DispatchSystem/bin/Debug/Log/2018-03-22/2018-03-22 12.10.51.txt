@@ -1,0 +1,37 @@
+[2018/3/22 星期四 下午 12:10:51 +08:00]
+[系统消息]系统启动...
+
+[2018/3/22 星期四 下午 12:10:51 +08:00]
+[系统消息]加载调试信息...
+
+[2018/3/22 星期四 下午 12:10:51 +08:00]
+[系统消息]获取本机IP...
+
+[2018/3/22 星期四 下午 12:10:51 +08:00]
+[系统消息]加载服务器配置...
+
+[服务器][服务器地址][ServerAddress][0]
+[服务器][设备数][DeviceNum][20]
+[服务器][寄存器数][RegisterNum][128]
+[服务器][单帧数据长度][FrameLen][2048]
+[服务器][心跳周期][HeartCycle][10]秒
+[服务器][重发次数][RepeatNum][3]
+[服务器][超时时间][ResponseTimeout][3000]
+[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][20]
+[服务器][设备总数][DeviceNum][20]
+
+[2018/3/22 星期四 下午 12:10:51 +08:00]
+[系统消息]本机IP:[192.168.10.106]
+
+[2018/3/22 星期四 下午 12:10:51 +08:00]
+[系统消息]服务已启动!
+
+[2018/3/22 星期四 下午 12:10:53 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 151
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadWriteMultipleRegisters(Byte slaveAddress, UInt16 startReadAddress, UInt16 numberOfPointsToRead, UInt16 startWriteAddress, UInt16[] writeData)
+   在 Modbus.Device.ModbusIpMaster.ReadWriteMultipleRegisters(UInt16 startReadAddress, UInt16 numberOfPointsToRead, UInt16 startWriteAddress, UInt16[] writeData)
+   在 DispatchSystem.User.TaskForm.TaskForm_Load(Object sender, EventArgs e) 位置 D:\github\winform\UdpSever\DispatchSystem\User\TaskForm.cs:行号 38
+

@@ -2,7 +2,7 @@
 <ArrayOfDebug xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Debug>
     <名称>心跳帧</名称>
-    <数值>true</数值>
+    <数值>false</数值>
   </Debug>
   <Debug>
     <名称>操作帧</名称>
@@ -50,7 +50,7 @@
   </Debug>
   <Debug>
     <名称>错误</名称>
-    <数值>false</数值>
+    <数值>true</数值>
   </Debug>
   <Debug>
     <名称>系统消息</名称>
@@ -62,6 +62,6 @@
   </Debug>
   <Debug>
     <名称>debug</名称>
-    <数值>false</数值>
+    <数值>true</数值>
   </Debug>
 </ArrayOfDebug>

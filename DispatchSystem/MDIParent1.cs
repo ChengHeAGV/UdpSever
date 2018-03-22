@@ -1,5 +1,6 @@
 ﻿using DispatchSystem.AGV;
 using DispatchSystem.Developer;
+using DispatchSystem.User;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -611,6 +612,44 @@ namespace DispatchSystem
                     dbusForm = new DbusTestForm();
                     dbusForm.Show();//弹出这个窗口
                     dbusForm.Focus();//激活显示
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        //任务监控界面
+        TaskForm taskForm = new TaskForm();
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (taskForm.IsDisposed != true)
+                {
+                    // 不是顶级窗体，即不是桌面窗口
+                    taskForm.TopLevel = false;
+                    taskForm.Dock = DockStyle.Fill;
+                    taskForm.Parent = splitContainer1.Panel2;
+
+                    taskForm.Show();//弹出这个窗口
+                    taskForm.Focus();//激活显示
+
+                    taskForm.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    taskForm = new TaskForm();  
+                    
+                    // 不是顶级窗体，即不是桌面窗口
+                    taskForm.TopLevel = false;
+                    taskForm.Dock = DockStyle.Fill;
+                    taskForm.Parent = splitContainer1.Panel2;
+
+                    taskForm.Show();//弹出这个窗口
+                    taskForm.Focus();//激活显示
+                    taskForm.WindowState = FormWindowState.Normal;
                 }
             }
             catch

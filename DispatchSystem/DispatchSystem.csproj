@@ -75,6 +75,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\参数上位机\ExpandableGridView.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Modbus, Version=1.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Modbus.dll</HintPath>
@@ -100,6 +104,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
+    <Reference Include="Unme.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=da57c01ae4598fdd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Unme.Common.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
@@ -133,6 +141,12 @@
     </Compile>
     <Compile Include="AGV\StateForm.Designer.cs">
       <DependentUpon>StateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\TaskForm.Designer.cs">
+      <DependentUpon>TaskForm.cs</DependentUpon>
     </Compile>
     <Compile Include="XmlHelper.cs" />
     <Compile Include="Developer\DebugForm.cs">
@@ -378,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SignalLed.resx">
       <DependentUpon>SignalLed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\TaskForm.resx">
+      <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
