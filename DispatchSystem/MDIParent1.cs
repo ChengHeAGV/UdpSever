@@ -640,8 +640,8 @@ namespace DispatchSystem
                 }
                 else
                 {
-                    taskForm = new TaskForm();  
-                    
+                    taskForm = new TaskForm();
+
                     // 不是顶级窗体，即不是桌面窗口
                     taskForm.TopLevel = false;
                     taskForm.Dock = DockStyle.Fill;
@@ -655,6 +655,63 @@ namespace DispatchSystem
             catch
             {
 
+            }
+        }
+
+        //与MES及第三方通信接口设置 
+        ModbusSetForm modbusSetForm = new ModbusSetForm();
+        private void toolStripModbus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (modbusSetForm.IsDisposed != true)
+                {
+                    modbusSetForm.Show();//弹出这个窗口
+                    modbusSetForm.Focus();//激活显示
+                }
+                else
+                {
+                    modbusSetForm = new ModbusSetForm();
+                    modbusSetForm.Show();//弹出这个窗口
+                    modbusSetForm.Focus();//激活显示
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        //AGV运行实时监控
+        MonitorForm monitorForm = new MonitorForm();
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            if (monitorForm.IsDisposed != true)
+            {
+                monitorForm.Show();//弹出这个窗口
+                monitorForm.Focus();//激活显示
+            }
+            else
+            {
+                monitorForm = new MonitorForm();
+                monitorForm.Show();//弹出这个窗口
+                monitorForm.Focus();//激活显示
+            }
+        }
+
+        CanForm canForm = new CanForm();
+        private void cANToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (canForm.IsDisposed != true)
+            {
+                canForm.Show();//弹出这个窗口
+                canForm.Focus();//激活显示
+            }
+            else
+            {
+                canForm = new CanForm();
+                canForm.Show();//弹出这个窗口
+                canForm.Focus();//激活显示
             }
         }
     }

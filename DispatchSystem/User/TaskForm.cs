@@ -20,6 +20,15 @@ namespace DispatchSystem.User
             InitializeComponent();
         }
 
+        /*
+         * 引用DLL
+         * Modbus
+         * log4net
+         * unme.com
+         * 
+         * Modbus Master 是TcpClient，Slave是TcpSever
+         * 
+         */
         private void TaskForm_Load(object sender, EventArgs e)
         {
             TcpClient tcpClient = new TcpClient("192.168.10.106", 502);
