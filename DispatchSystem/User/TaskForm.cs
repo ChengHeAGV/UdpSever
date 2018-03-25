@@ -29,6 +29,22 @@ namespace DispatchSystem.User
          * Modbus Master 是TcpClient，Slave是TcpSever
          * 
          */
+
+        enum Type
+        {
+            Waiting,
+            Runing,
+            Finished
+        }
+
+        struct Task
+        {
+            int Num;
+            int State;
+        }
+
+        //任务列表
+        List<Task> tasks = new List<Task>();
         private void TaskForm_Load(object sender, EventArgs e)
         {
             TcpClient tcpClient = new TcpClient("192.168.10.106", 502);
