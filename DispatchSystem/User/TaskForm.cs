@@ -30,50 +30,56 @@ namespace DispatchSystem.User
          * 
          */
 
-        enum Type
+        /// <summary>
+        /// 任务状态
+        /// </summary>
+        enum State
         {
-            Waiting,
-            Runing,
-            Finished
+            Waiting, //等待
+            Runing,  //运行中
+            Finished //完成
         }
 
+        /// <summary>
+        /// 任务
+        /// </summary>
         struct Task
         {
-            int Num;
-            int State;
+            int SerialNum;//任务编号
+            int State;//任务状态
         }
 
         //任务列表
         List<Task> tasks = new List<Task>();
         private void TaskForm_Load(object sender, EventArgs e)
         {
-            TcpClient tcpClient = new TcpClient("192.168.10.106", 502);
-            ModbusIpMaster master = ModbusIpMaster.CreateIp(tcpClient);
+            //TcpClient tcpClient = new TcpClient("192.168.10.106", 502);
+            //ModbusIpMaster master = ModbusIpMaster.CreateIp(tcpClient);
 
-            master.Transport.WriteTimeout = 100;
-            master.Transport.ReadTimeout = 100;
-            master.Transport.WaitToRetryMilliseconds = 10;
-            master.Transport.Retries = 3;
+            //master.Transport.WriteTimeout = 100;
+            //master.Transport.ReadTimeout = 100;
+            //master.Transport.WaitToRetryMilliseconds = 10;
+            //master.Transport.Retries = 3;
 
-            try
-            {
-                Random rd = new Random();
-                ushort[] write = new ushort[10];
-                for (int i = 0; i < 10; i++)
-                {
-                    write[i] = (ushort)rd.Next(1, 1000);
-                }
-                master.WriteMultipleRegisters(0, write);
-                ushort[] read = new ushort[10];
-                // read = master.ReadWriteMultipleRegisters(0, 10, 0, write);
+            //try
+            //{
+            //    Random rd = new Random();
+            //    ushort[] write = new ushort[10];
+            //    for (int i = 0; i < 10; i++)
+            //    {
+            //        write[i] = (ushort)rd.Next(1, 1000);
+            //    }
+            //    master.WriteMultipleRegisters(0, write);
+            //    ushort[] read = new ushort[10];
+            //    // read = master.ReadWriteMultipleRegisters(0, 10, 0, write);
 
-                read = master.ReadHoldingRegisters(10, 10);
-                UdpSever.Shell.WriteNotice("debug", "{0},{1}", read[0], read[1]);
-            }
-            catch (Exception ex)
-            {
-                UdpSever.Shell.WriteError("debug", ex.ToString());
-            }
+            //    read = master.ReadHoldingRegisters(10, 10);
+            //    UdpSever.Shell.WriteNotice("debug", "{0},{1}", read[0], read[1]);
+            //}
+            //catch (Exception ex)
+            //{
+            //    UdpSever.Shell.WriteError("debug", ex.ToString());
+            //}
 
         }
     }

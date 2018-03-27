@@ -629,9 +629,9 @@ namespace DispatchSystem
                 if (taskForm.IsDisposed != true)
                 {
                     // 不是顶级窗体，即不是桌面窗口
-                    taskForm.TopLevel = false;
-                    taskForm.Dock = DockStyle.Fill;
-                    taskForm.Parent = splitContainer1.Panel2;
+                    //taskForm.TopLevel = false;
+                 //   taskForm.Dock = DockStyle.Fill;
+                  //  taskForm.Parent = splitContainer1.Panel2;
 
                     taskForm.Show();//弹出这个窗口
                     taskForm.Focus();//激活显示
@@ -643,9 +643,9 @@ namespace DispatchSystem
                     taskForm = new TaskForm();
 
                     // 不是顶级窗体，即不是桌面窗口
-                    taskForm.TopLevel = false;
-                    taskForm.Dock = DockStyle.Fill;
-                    taskForm.Parent = splitContainer1.Panel2;
+                    //taskForm.TopLevel = false;
+                    //taskForm.Dock = DockStyle.Fill;
+                    //taskForm.Parent = splitContainer1.Panel2;
 
                     taskForm.Show();//弹出这个窗口
                     taskForm.Focus();//激活显示
