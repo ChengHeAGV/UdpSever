@@ -1,0 +1,40 @@
+[2018/3/28 星期三 上午 11:01:14 +08:00]
+[系统消息]系统启动...
+
+[2018/3/28 星期三 上午 11:01:14 +08:00]
+[系统消息]加载调试信息...
+
+[2018/3/28 星期三 上午 11:01:14 +08:00]
+[系统消息]获取本机IP...
+
+[2018/3/28 星期三 上午 11:01:14 +08:00]
+[系统消息]加载服务器配置...
+
+[服务器][服务器地址][ServerAddress][0]
+[服务器][设备数][DeviceNum][20]
+[服务器][寄存器数][RegisterNum][128]
+[服务器][单帧数据长度][FrameLen][2048]
+[服务器][心跳周期][HeartCycle][10]秒
+[服务器][重发次数][RepeatNum][3]
+[服务器][超时时间][ResponseTimeout][3000]
+[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][20]
+[服务器][设备总数][DeviceNum][20]
+
+[2018/3/28 星期三 上午 11:01:15 +08:00]
+[系统消息]本机IP:[192.168.10.106]
+
+[2018/3/28 星期三 上午 11:01:15 +08:00]
+[系统消息]服务已启动!
+
+[2018/3/28 星期三 上午 11:01:24 +08:00]
+[系统消息]正在关闭服务器，请稍等...!
+
+[2018/3/28 星期三 上午 11:01:24 +08:00]
+[错误]:System.Net.Sockets.SocketException (0x80004005): 一个封锁操作被对 WSACancelBlockingCall 的调用中断。
+   在 System.Net.Sockets.Socket.ReceiveFrom(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, EndPoint& remoteEP)
+   在 System.Net.Sockets.Socket.ReceiveFrom(Byte[] buffer, EndPoint& remoteEP)
+   在 DispatchSystem.UdpSever.UdpFunc() 位置 D:\github\winform\UdpSever\DispatchSystem\UdpSever.cs:行号 427
+
+[2018/3/28 星期三 上午 11:01:24 +08:00]
+[系统消息]服务已停止!
+
