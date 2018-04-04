@@ -77,7 +77,10 @@
       <HintPath>bin\Debug\参数上位机\ExpandableGridView.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Shared.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.Portable.Core.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
@@ -450,6 +453,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="User\说明.txt" />
     <None Include="bin\Debug\参数上位机\newGroupPostIconStrip.PNG" />
     <Content Include="Dbus协议细节.txt" />
     <Content Include="Readme.txt" />
