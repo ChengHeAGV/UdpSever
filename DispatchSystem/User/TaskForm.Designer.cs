@@ -44,24 +44,18 @@
             this.dataGridViewRunning = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewFinished = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridViewWaiting = new System.Windows.Forms.DataGridView();
-            this.dataGridViewFinished = new System.Windows.Forms.DataGridView();
             this.taskDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,12 +65,21 @@
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRunning)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinished)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaiting)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinished)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,6 +161,7 @@
             this.dataGridViewRunning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRunning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column24,
+            this.Column20,
             this.Column13,
             this.Column25,
             this.Column16,
@@ -171,7 +175,7 @@
             this.dataGridViewRunning.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewRunning.Name = "dataGridViewRunning";
             this.dataGridViewRunning.RowTemplate.Height = 23;
-            this.dataGridViewRunning.Size = new System.Drawing.Size(994, 289);
+            this.dataGridViewRunning.Size = new System.Drawing.Size(1114, 289);
             this.dataGridViewRunning.TabIndex = 2;
             // 
             // groupBox1
@@ -179,7 +183,7 @@
             this.groupBox1.Controls.Add(this.dataGridViewRunning);
             this.groupBox1.Location = new System.Drawing.Point(12, 220);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1000, 309);
+            this.groupBox1.Size = new System.Drawing.Size(1120, 309);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "正在执行";
@@ -189,42 +193,17 @@
             this.groupBox2.Controls.Add(this.dataGridViewFinished);
             this.groupBox2.Location = new System.Drawing.Point(12, 535);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1000, 210);
+            this.groupBox2.Size = new System.Drawing.Size(1117, 210);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "已完成";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dataGridViewWaiting);
-            this.groupBox3.Location = new System.Drawing.Point(12, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(997, 211);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "新任务";
-            // 
-            // dataGridViewWaiting
-            // 
-            this.dataGridViewWaiting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewWaiting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.dataGridViewWaiting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewWaiting.Location = new System.Drawing.Point(3, 17);
-            this.dataGridViewWaiting.Name = "dataGridViewWaiting";
-            this.dataGridViewWaiting.RowTemplate.Height = 23;
-            this.dataGridViewWaiting.Size = new System.Drawing.Size(991, 191);
-            this.dataGridViewWaiting.TabIndex = 3;
             // 
             // dataGridViewFinished
             // 
             this.dataGridViewFinished.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFinished.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column28,
+            this.Column21,
             this.dataGridViewTextBoxColumn12,
             this.Column29,
             this.dataGridViewTextBoxColumn15,
@@ -236,59 +215,51 @@
             this.dataGridViewFinished.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewFinished.Name = "dataGridViewFinished";
             this.dataGridViewFinished.RowTemplate.Height = 23;
-            this.dataGridViewFinished.Size = new System.Drawing.Size(994, 190);
+            this.dataGridViewFinished.Size = new System.Drawing.Size(1111, 190);
             this.dataGridViewFinished.TabIndex = 3;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dataGridViewWaiting);
+            this.groupBox3.Location = new System.Drawing.Point(12, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1120, 211);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "新任务";
+            // 
+            // dataGridViewWaiting
+            // 
+            this.dataGridViewWaiting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWaiting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.Column18,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewWaiting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWaiting.Location = new System.Drawing.Point(3, 17);
+            this.dataGridViewWaiting.Name = "dataGridViewWaiting";
+            this.dataGridViewWaiting.RowTemplate.Height = 23;
+            this.dataGridViewWaiting.Size = new System.Drawing.Size(1114, 191);
+            this.dataGridViewWaiting.TabIndex = 3;
             // 
             // taskDataBindingSource
             // 
             this.taskDataBindingSource.DataSource = typeof(DispatchSystem.User.TaskForm.TaskData);
-            // 
-            // Column28
-            // 
-            this.Column28.HeaderText = "序号";
-            this.Column28.Name = "Column28";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "任务编号";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // Column29
-            // 
-            this.Column29.HeaderText = "产线编号";
-            this.Column29.Name = "Column29";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "AGV编号";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "下单时间";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Width = 130;
-            // 
-            // Column30
-            // 
-            this.Column30.HeaderText = "启动时间";
-            this.Column30.Name = "Column30";
-            // 
-            // Column31
-            // 
-            this.Column31.HeaderText = "完成时间";
-            this.Column31.Name = "Column31";
-            // 
-            // Column32
-            // 
-            this.Column32.HeaderText = "执行时间";
-            this.Column32.Name = "Column32";
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "序号";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "订单号";
+            this.Column18.Name = "Column18";
+            this.Column18.Width = 120;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -319,6 +290,12 @@
             this.Column24.HeaderText = "序号";
             this.Column24.Name = "Column24";
             this.Column24.Width = 60;
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "订单号";
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 120;
             // 
             // Column13
             // 
@@ -373,11 +350,58 @@
             this.Column23.HeaderText = "报警信息";
             this.Column23.Name = "Column23";
             // 
+            // Column28
+            // 
+            this.Column28.HeaderText = "序号";
+            this.Column28.Name = "Column28";
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "订单号";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "任务编号";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // Column29
+            // 
+            this.Column29.HeaderText = "产线编号";
+            this.Column29.Name = "Column29";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "AGV编号";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "下单时间";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 130;
+            // 
+            // Column30
+            // 
+            this.Column30.HeaderText = "启动时间";
+            this.Column30.Name = "Column30";
+            // 
+            // Column31
+            // 
+            this.Column31.HeaderText = "完成时间";
+            this.Column31.Name = "Column31";
+            // 
+            // Column32
+            // 
+            this.Column32.HeaderText = "执行时间";
+            this.Column32.Name = "Column32";
+            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 754);
+            this.ClientSize = new System.Drawing.Size(1160, 754);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -388,9 +412,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRunning)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinished)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaiting)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinished)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskDataBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -416,15 +440,8 @@
         private System.Windows.Forms.DataGridView dataGridViewFinished;
         private System.Windows.Forms.DataGridView dataGridViewWaiting;
         private System.Windows.Forms.BindingSource taskDataBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
@@ -434,7 +451,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

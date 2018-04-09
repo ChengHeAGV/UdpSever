@@ -1289,7 +1289,7 @@ namespace DispatchSystem
         /// <returns></returns>
         public static long DateTimeToStamp(DateTime datetime)
         {
-            var start = new DateTime(1970, 1, 1, 0, 0, 0, datetime.Kind);
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, datetime.Kind);
             return Convert.ToInt64((datetime - start).TotalSeconds);
         }
 

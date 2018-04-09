@@ -77,18 +77,18 @@ namespace DispatchSystem.User
 
             #region 任务列表测试
             //增加列
-            dataGridViewRunning.Columns.Add("1", "任务编号");
-            var index = dataGridViewRunning.Columns.Add("2", "MES下发时间");
-            dataGridViewRunning.Columns[index].Width = 130;
-            dataGridViewRunning.Columns.Add("3", "任务状态");
-            dataGridViewRunning.Columns.Add("4", "AGV编号");
-            dataGridViewRunning.Columns.Add("5", "通信状态");
-            dataGridViewRunning.Columns.Add("6", "当前路径");
-            dataGridViewRunning.Columns.Add("7", "当前站点");
-            dataGridViewRunning.Columns.Add("8", "电量%");
-            dataGridViewRunning.Columns.Add("9", "速度");
-            dataGridViewRunning.Columns.Add("10", "运行状态");
-            dataGridViewRunning.Columns.Add("11", "报警信息");
+            //dataGridViewRunning.Columns.Add("1", "任务编号");
+            //var index = dataGridViewRunning.Columns.Add("2", "MES下发时间");
+            //dataGridViewRunning.Columns[index].Width = 130;
+            //dataGridViewRunning.Columns.Add("3", "任务状态");
+            //dataGridViewRunning.Columns.Add("4", "AGV编号");
+            //dataGridViewRunning.Columns.Add("5", "通信状态");
+            //dataGridViewRunning.Columns.Add("6", "当前路径");
+            //dataGridViewRunning.Columns.Add("7", "当前站点");
+            //dataGridViewRunning.Columns.Add("8", "电量%");
+            //dataGridViewRunning.Columns.Add("9", "速度");
+            //dataGridViewRunning.Columns.Add("10", "运行状态");
+            //dataGridViewRunning.Columns.Add("11", "报警信息");
 
             //增加行
             //for (int i = 0; i < 10; i++)
@@ -132,6 +132,7 @@ namespace DispatchSystem.User
         /// </summary>
         public class Task
         {
+            public long OrderNum = 0;//订单号
             public int TaskNum; //任务编号
             public int Level; //任务优先级
             public int LineNum;//产线编号
@@ -149,6 +150,7 @@ namespace DispatchSystem.User
             public int Speed = 0;//速度
             public int AgvState = 0; //Agv状态
             public int Error = 0;//报警信息
+
         }
         /// <summary>
         /// Modbus数据
@@ -283,9 +285,11 @@ namespace DispatchSystem.User
                 {
                     //加入任务队列
                     Task task = new Task();
-                    task.TaskNum = TaskData.Modbus[(int)TaskData.RegBind.taskNum];
-                    task.Level = TaskData.Modbus[(int)TaskData.RegBind.taskLevel];
-                    task.LineNum = TaskData.Modbus[(int)TaskData.RegBind.lineNum];
+
+                    task.OrderNum = GetTimeStamp();//[订单号]毫秒时间戳
+                    task.TaskNum = TaskData.Modbus[(int)TaskData.RegBind.taskNum];//[任务编号]
+                    task.Level = TaskData.Modbus[(int)TaskData.RegBind.taskLevel];//[任务优先级]
+                    task.LineNum = TaskData.Modbus[(int)TaskData.RegBind.lineNum];//[产线编号]
 
                     TaskData.taskWaiting.Add(task);
                     //按优先级排序(降序)
@@ -299,18 +303,20 @@ namespace DispatchSystem.User
                         var index = dataGridViewWaiting.Rows.Add();
                         //序号
                         dataGridViewWaiting.Rows[index].Cells[0].Value = index;
+                        //订单号
+                        dataGridViewWaiting.Rows[index].Cells[1].Value = task.OrderNum;
                         //任务编号
-                        dataGridViewWaiting.Rows[index].Cells[1].Value = task.TaskNum;
+                        dataGridViewWaiting.Rows[index].Cells[2].Value = task.TaskNum;
                         //产线编号
-                        dataGridViewWaiting.Rows[index].Cells[2].Value = task.LineNum;
+                        dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineNum;
                         //下单时间
-                        dataGridViewWaiting.Rows[index].Cells[3].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
+                        dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
                         //任务优先级
-                        dataGridViewWaiting.Rows[index].Cells[4].Value = task.Level;
+                        dataGridViewWaiting.Rows[index].Cells[5].Value = task.Level;
                     }));
 
                     //清除MES任务标志寄存器
-                    modbusMaster.WriteSingleRegister((int)TaskData.RegBind.newTask, 0);
+                    modbusMaster.WriteSingleRegister((int)TaskData.RegBind.newTask, 0); 
                 }
                 #endregion
 
@@ -346,24 +352,26 @@ namespace DispatchSystem.User
                                     var index = dataGridViewRunning.Rows.Add();
                                     //序号
                                     dataGridViewRunning.Rows[index].Cells[0].Value = index;
+                                    //订单编号
+                                    dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.taskWaiting[i].OrderNum;
                                     //任务编号
-                                    dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.taskWaiting[i].TaskNum;
+                                    dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.taskWaiting[i].TaskNum;
                                     //产线编号
-                                    dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.taskWaiting[i].LineNum;
+                                    dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.taskWaiting[i].LineNum;
                                     //AGV编号
-                                    dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.taskWaiting[i].AgvNum;
+                                    dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.taskWaiting[i].AgvNum;
                                     //下单时间
-                                    dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.taskWaiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                    dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.taskWaiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
                                     //启动时间
-                                    dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.taskWaiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                    dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.taskWaiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
                                     //任务优先级
-                                    dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.taskWaiting[i].Level;
+                                    dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.taskWaiting[i].Level;
                                     //当前站点
-                                    dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.taskWaiting[i].StationNow;
+                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.taskWaiting[i].StationNow;
                                     //下一个站点
-                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.taskWaiting[i].StationNext;
+                                    dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.taskWaiting[i].StationNext;
                                     //报警信息
-                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.taskWaiting[i].Error;
+                                    dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.taskWaiting[i].Error;
                                 }));
                                 #endregion
 
@@ -411,24 +419,26 @@ namespace DispatchSystem.User
                                     var index = dataGridViewRunning.Rows.Add();
                                     //序号
                                     dataGridViewRunning.Rows[index].Cells[0].Value = index;
+                                    //订单编号
+                                    dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.taskWaiting[i].OrderNum;
                                     //任务编号
-                                    dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.taskWaiting[i].TaskNum;
+                                    dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.taskWaiting[i].TaskNum;
                                     //产线编号
-                                    dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.taskWaiting[i].LineNum;
+                                    dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.taskWaiting[i].LineNum;
                                     //AGV编号
-                                    dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.taskWaiting[i].AgvNum;
+                                    dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.taskWaiting[i].AgvNum;
                                     //下单时间
-                                    dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.taskWaiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                    dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.taskWaiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
                                     //启动时间
-                                    dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.taskWaiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                    dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.taskWaiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
                                     //任务优先级
-                                    dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.taskWaiting[i].Level;
+                                    dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.taskWaiting[i].Level;
                                     //当前站点
-                                    dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.taskWaiting[i].StationNow;
+                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.taskWaiting[i].StationNow;
                                     //下一个站点
-                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.taskWaiting[i].StationNext;
+                                    dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.taskWaiting[i].StationNext;
                                     //报警信息
-                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.taskWaiting[i].Error;
+                                    dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.taskWaiting[i].Error;
                                 }));
                                 #endregion
 
@@ -469,26 +479,28 @@ namespace DispatchSystem.User
                                 var index = dataGridViewFinished.Rows.Add();
                                 //序号
                                 dataGridViewFinished.Rows[index].Cells[0].Value = index;
+                                //订单编号
+                                dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.taskRuning[i].OrderNum;
                                 //任务编号
-                                dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.taskRuning[i].TaskNum;
+                                dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.taskRuning[i].TaskNum;
                                 //产线编号
-                                dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.taskRuning[i].LineNum;
+                                dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.taskRuning[i].LineNum;
                                 //AGV编号
-                                dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.taskRuning[i].AgvNum;
+                                dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.taskRuning[i].AgvNum;
                                 //下单时间
-                                dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.taskRuning[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.taskRuning[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
                                 //启动时间
-                                dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.taskRuning[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.taskRuning[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
                                 //完成时间
-                                dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.taskRuning[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.taskRuning[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
                                 //执行时间
-                                dataGridViewFinished.Rows[index].Cells[6].Value = (TaskData.taskRuning[i].StopTime-TaskData.taskRuning[i].StartTime).ToString("HH:mm:ss");
+                                dataGridViewFinished.Rows[index].Cells[8].Value = (TaskData.taskRuning[i].StopTime - TaskData.taskRuning[i].StartTime).ToString("HH:mm:ss");
                             }));
                             #endregion
-                            
+
                             //将该任务从正在执行任务列表删除
                             TaskData.taskRuning.RemoveAt(i);
-                           
+
                             #region 更新-正在执行-界面
                             this.Invoke(new MethodInvoker(delegate
                             {
@@ -566,6 +578,14 @@ namespace DispatchSystem.User
                 }
             }
 
+        }
+
+        private long GetTimeStamp()
+        {
+            DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
+            long timeStamp = (long)(DateTime.Now - startTime).TotalMilliseconds; // 相差毫秒数
+            //System.Console.WriteLine(timeStamp);
+            return timeStamp;
         }
 
         private void TaskForm_FormClosing(object sender, FormClosingEventArgs e)
