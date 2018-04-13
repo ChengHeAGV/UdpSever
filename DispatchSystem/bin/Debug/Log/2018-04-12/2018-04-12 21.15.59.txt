@@ -1,0 +1,918 @@
+[2018/4/12 星期四 下午 9:15:59 +08:00]
+[系统消息]系统启动...
+
+[2018/4/12 星期四 下午 9:15:59 +08:00]
+[系统消息]加载调试信息...
+
+[2018/4/12 星期四 下午 9:15:59 +08:00]
+[系统消息]获取本机IP...
+
+[2018/4/12 星期四 下午 9:15:59 +08:00]
+[系统消息]加载服务器配置...
+
+[服务器][服务器地址][ServerAddress][0]
+[服务器][设备数][DeviceNum][20]
+[服务器][寄存器数][RegisterNum][128]
+[服务器][单帧数据长度][FrameLen][2048]
+[服务器][心跳周期][HeartCycle][10]秒
+[服务器][重发次数][RepeatNum][3]
+[服务器][超时时间][ResponseTimeout][3000]
+[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][20]
+[服务器][设备总数][DeviceNum][20]
+
+[2018/4/12 星期四 下午 9:15:59 +08:00]
+[系统消息]本机IP:[192.168.250.101]
+
+[2018/4/12 星期四 下午 9:15:59 +08:00]
+[系统消息]服务已启动!
+
+[2018/4/12 星期四 下午 9:16:01 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:02 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:03 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:03 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:04 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:04 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:05 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:05 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:06 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:06 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:07 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:07 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:08 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:08 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:09 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:09 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:10 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:10 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:11 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:11 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:12 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:12 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:13 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:14 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:14 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:15 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:20 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:39 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:39 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:40 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:40 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:41 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:41 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:42 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:42 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:43 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:43 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:44 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:44 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:45 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:46 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:46 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:47 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:47 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:48 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:48 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:49 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:49 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:50 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:50 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:51 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:51 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:52 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:52 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:53 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:53 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:54 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:54 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:55 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:56 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:56 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:57 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:57 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:58 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:58 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:59 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:16:59 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:00 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:00 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:01 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:01 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:02 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:02 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:03 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:03 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:04 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:04 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:04 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:05 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:05 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:05 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:05 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:06 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:06 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:06 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:06 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:07 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:07 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+
+[2018/4/12 星期四 下午 9:17:07 +08:00]
+[debug]Modbus.SlaveException: 引发类型为“Modbus.SlaveException”的异常。
+Function Code: 131
+Exception Code: 2 - The data address received in the query is not an allowable address for the server (or slave). More specifically, the combination of reference number and transfer length is invalid. For a controller with 100 registers, the PDU addresses the first register as 0, and the last one as 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 4, then this request will successfully operate (address-wise at least) on registers 96, 97, 98, 99. If a request is submitted with a starting register address of 96 and a quantity of registers of 5, then this request will fail with Exception Code 0x02 “Illegal Data Address” since it attempts to operate on registers 96, 97, 98, 99 and 100, and there is no register with address 100.
+   在 Modbus.IO.ModbusTransport.UnicastMessage[T](IModbusMessage message)
+   在 Modbus.Device.ModbusMaster.ReadRegisters(Byte functionCode, Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusMaster.ReadHoldingRegisters(Byte slaveAddress, UInt16 startAddress, UInt16 numberOfPoints)
+   在 Modbus.Device.ModbusIpMaster.ReadHoldingRegisters(UInt16 startAddress, UInt16 numberOfPoints)
+   在 DispatchSystem.User.TaskForm.SyncModbus() 位置 D:\github\UdpSever\DispatchSystem\User\TaskForm.cs:行号 560
+

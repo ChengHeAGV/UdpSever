@@ -714,5 +714,20 @@ namespace DispatchSystem
                 canForm.Focus();//激活显示
             }
         }
+        ModbusTcp modbusTcpForm = new ModbusTcp();
+        private void modbusTcpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (modbusTcpForm.IsDisposed != true)
+            {
+                modbusTcpForm.Show();//弹出这个窗口
+                modbusTcpForm.Focus();//激活显示
+            }
+            else
+            {
+                modbusTcpForm = new ModbusTcp();
+                modbusTcpForm.Show();//弹出这个窗口
+                modbusTcpForm.Focus();//激活显示
+            }
+        }
     }
 }
