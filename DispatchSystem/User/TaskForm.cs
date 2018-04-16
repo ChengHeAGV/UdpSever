@@ -160,13 +160,13 @@ namespace DispatchSystem.User
             public static class Parameter
             {
                 //modbus 寄存器检测个数
-                public static int ModbusCount = 10;
+                public static int ModbusCount = 20;
                 //modbus 检测时间
                 public static int SyncModbusTime = 500;
                 //任务调度 检测时间
                 public static int taskFuncTime = 500;
                 //modbus服务器IP地址
-                public static string ModbusTcpSeverIPAddress = "192.168.250.102";
+                public static string ModbusTcpSeverIPAddress = "192.168.10.106";
                 //modbus服务器端口
                 public static int ModbusTcpSeverPort = 502;
                 //modbus写超时
