@@ -181,3 +181,7 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe.lice
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\zh-CN\AGV调度系统.resources.dll
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
+D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database1.mdf
+D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database1_log.ldf
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CoreCompileInputs.cache
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CopyComplete
