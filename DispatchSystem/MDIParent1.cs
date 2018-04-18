@@ -11,6 +11,7 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
+
 namespace DispatchSystem
 {
     public partial class MDIParent1 : Form
@@ -683,20 +684,25 @@ namespace DispatchSystem
         }
 
         //AGV运行实时监控
-        MonitorForm monitorForm = new MonitorForm();
+       // MonitorForm monitorForm = new MonitorForm();
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            if (monitorForm.IsDisposed != true)
-            {
-                monitorForm.Show();//弹出这个窗口
-                monitorForm.Focus();//激活显示
-            }
-            else
-            {
-                monitorForm = new MonitorForm();
-                monitorForm.Show();//弹出这个窗口
-                monitorForm.Focus();//激活显示
-            }
+
+            //WpfAppTest.MainWindow wpfwindow = new WpfAppTest.MainWindow();
+            //wpfwindow.ShowDialog();
+
+            WpfAppTest.UMessageBox.Show("WPF","感觉如何？");
+            //if (monitorForm.IsDisposed != true)
+            //{
+            //    monitorForm.Show();//弹出这个窗口
+            //    monitorForm.Focus();//激活显示
+            //}
+            //else
+            //{
+            //    monitorForm = new MonitorForm();
+            //    monitorForm.Show();//弹出这个窗口
+            //    monitorForm.Focus();//激活显示
+            //}
         }
 
         CanForm canForm = new CanForm();

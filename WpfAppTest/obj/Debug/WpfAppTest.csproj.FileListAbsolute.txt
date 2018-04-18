@@ -1,0 +1,16 @@
+D:\github\App\Winform-UdpSever\WpfAppTest\bin\Debug\WpfAppTest.exe.config
+D:\github\App\Winform-UdpSever\WpfAppTest\bin\Debug\WpfAppTest.exe
+D:\github\App\Winform-UdpSever\WpfAppTest\bin\Debug\WpfAppTest.pdb
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\MainWindow.g.cs
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\App.g.cs
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest_MarkupCompile.cache
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest_MarkupCompile.lref
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\MainWindow.baml
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest.g.resources
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest.Properties.Resources.resources
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest.csproj.GenerateResource.cache
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest.csproj.CoreCompileInputs.cache
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest.exe
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\WpfAppTest.pdb
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\UMessageBox.baml
+D:\github\App\Winform-UdpSever\WpfAppTest\obj\Debug\UMessageBox.g.cs

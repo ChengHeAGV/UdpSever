@@ -76,13 +76,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\参数上位机\ExpandableGridView.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics4.Shared.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.Portable.Core.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.UltraWinGrid.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\log4net.dll</HintPath>
@@ -371,7 +364,6 @@
     <EmbeddedResource Include="Parameter\Process.resx">
       <DependentUpon>Process.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ThirdAppResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ThirdAppResource.Designer.cs</LastGenOutput>
@@ -454,12 +446,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database1.mdf">
+    <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database1_log.ldf">
+    <Content Include="Database_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
+      <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="User\说明.txt" />
     <None Include="bin\Debug\参数上位机\newGroupPostIconStrip.PNG" />
@@ -495,7 +487,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WpfAppTest\WpfAppTest.csproj">
+      <Project>{5c48576e-e367-4fcd-9dfc-548adc204ef6}</Project>
+      <Name>WpfAppTest</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
