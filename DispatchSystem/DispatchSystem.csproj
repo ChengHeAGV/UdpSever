@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{220F810A-2641-4084-BFF7-35ED5AB1FE6D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DispatchSystem</RootNamespace>
     <AssemblyName>AGV调度系统</AssemblyName>
@@ -151,6 +151,15 @@
     </Compile>
     <Compile Include="Developer\CanForm.designer.cs">
       <DependentUpon>CanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\ConsoleLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Developer\ConsoleLog.Designer.cs">
+      <DependentUpon>ConsoleLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
+      <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
     </Compile>
     <Compile Include="User\ModbusSetForm.cs">
       <SubType>Form</SubType>
@@ -343,6 +352,9 @@
     <EmbeddedResource Include="AGV\StateForm.resx">
       <DependentUpon>StateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Developer\ConsoleLog.resx">
+      <DependentUpon>ConsoleLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Developer\DebugForm.resx">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -492,6 +504,12 @@
       <Project>{5c48576e-e367-4fcd-9dfc-548adc204ef6}</Project>
       <Name>WpfAppTest</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UserControls\WPF\UCTabItemWithClose.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 ﻿AGV调度系统
 
 
-exe
+winexe
 C#
 .cs
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\
@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-1-98425716
+1-264474977
 11248891629
-85-591806694
-38-383242681
-UserControl1.xaml;
+87325463696
+321421656922
+UserControls\WPF\UCTabItemWithClose.xaml;
 
 False
 

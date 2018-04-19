@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DispatchSystem.Developer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.IO.Ports;
@@ -37,8 +39,7 @@ namespace DispatchSystem
             /// <param name="args"></param>
             public static void WriteLine(string format, params object[] args)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine(string.Format(format, args));
+                ConsoleLog.WriteLog(string.Format(format, args), Color.Gray);
                 WriteLog(string.Format(format, args));
             }
 
@@ -50,9 +51,7 @@ namespace DispatchSystem
             /// <param name="args"></param>
             public static void WriteLine(int sleep, string format, params object[] args)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine(string.Format(format, args));
-                WriteLog(string.Format(format, args));
+                ConsoleLog.WriteLog(string.Format(format, args)+"\r\n", Color.Gray);
                 Thread.Sleep(sleep);
             }
 
@@ -63,15 +62,14 @@ namespace DispatchSystem
             /// <param name="color">显示颜色</param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteLine(string type, ConsoleColor color, string format, params object[] args)
+            public static void WriteLine(string type,Color color, string format, params object[] args)
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.White);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = color;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), color);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
@@ -83,15 +81,14 @@ namespace DispatchSystem
             /// <param name="color"></param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteLine(int sleep, string type, ConsoleColor color, string format, params object[] args)
+            public static void WriteLine(int sleep, string type, Color color, string format, params object[] args)
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.White);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = color;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), color);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
@@ -107,11 +104,10 @@ namespace DispatchSystem
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Yellow);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
@@ -126,11 +122,10 @@ namespace DispatchSystem
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Yellow);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
@@ -146,11 +141,10 @@ namespace DispatchSystem
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Gray);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
@@ -165,11 +159,10 @@ namespace DispatchSystem
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Gray);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
@@ -184,11 +177,10 @@ namespace DispatchSystem
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Red);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
@@ -203,11 +195,10 @@ namespace DispatchSystem
             {
                 if (DebugMsg.IsChecked(type))
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("[{0}]", DateTimeOffset.Now);
+                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[{0}]{1}\r\n", type, string.Format(format, args));
+
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Red);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }

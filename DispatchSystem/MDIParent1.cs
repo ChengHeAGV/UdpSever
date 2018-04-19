@@ -25,6 +25,13 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            consoleLog.TopLevel = false;
+            consoleLog.Parent = splitContainer1.Panel2;
+
+            consoleLog.Show();//弹出这个窗口
+            consoleLog.Focus();//激活显示
+
+
             //初始化系统参数
             XmlHelper.InitDebug();
 
@@ -631,8 +638,8 @@ namespace DispatchSystem
                 {
                     // 不是顶级窗体，即不是桌面窗口
                     //taskForm.TopLevel = false;
-                 //   taskForm.Dock = DockStyle.Fill;
-                  //  taskForm.Parent = splitContainer1.Panel2;
+                    //   taskForm.Dock = DockStyle.Fill;
+                    //  taskForm.Parent = splitContainer1.Panel2;
 
                     taskForm.Show();//弹出这个窗口
                     taskForm.Focus();//激活显示
@@ -684,14 +691,14 @@ namespace DispatchSystem
         }
 
         //AGV运行实时监控
-       // MonitorForm monitorForm = new MonitorForm();
+        // MonitorForm monitorForm = new MonitorForm();
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
 
             //WpfAppTest.MainWindow wpfwindow = new WpfAppTest.MainWindow();
             //wpfwindow.ShowDialog();
 
-            WpfAppTest.UMessageBox.Show("WPF","感觉如何？");
+            WpfAppTest.UMessageBox.Show("WPF", "感觉如何？");
             //if (monitorForm.IsDisposed != true)
             //{
             //    monitorForm.Show();//弹出这个窗口
@@ -718,6 +725,24 @@ namespace DispatchSystem
                 canForm = new CanForm();
                 canForm.Show();//弹出这个窗口
                 canForm.Focus();//激活显示
+            }
+        }
+        ConsoleLog consoleLog = new ConsoleLog();
+        private void logToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (consoleLog.IsDisposed != true)
+            {
+                consoleLog.TopLevel = false;
+                consoleLog.Parent = splitContainer1.Panel2;
+
+                consoleLog.Show();//弹出这个窗口
+                consoleLog.Focus();//激活显示
+            }
+            else
+            {
+                consoleLog = new ConsoleLog();
+                consoleLog.Show();//弹出这个窗口
+                consoleLog.Focus();//激活显示
             }
         }
     }

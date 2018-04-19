@@ -18,7 +18,7 @@
     </Window.Triggers>
     <Window.Resources>
     </Window.Resources>
-    <Border Background="#f23A3A3A" Opacity="1" CornerRadius="3">
+    <Border Background="#ff3A3A3A" Opacity="1" CornerRadius="3">
         <Canvas>
             <Border Canvas.Top="0" Height="25" Width="{Binding ElementName=main, Path=Width,UpdateSourceTrigger=PropertyChanged}"   
                     BorderThickness="0,0,0,1" BorderBrush="#FFEFE2E2">
