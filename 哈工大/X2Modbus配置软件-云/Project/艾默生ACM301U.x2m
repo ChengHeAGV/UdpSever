@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="36" AO="20" BI="31" BO="12" EnablePort="1" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0">
+<Driver ID="20771584" Name="ACM03U1" PluginName="EMERSON_ACM03U1" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="20772584" Name="C1" Port="0" Baud="9600" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="3000">
+<Devices>
+<Device StationID="1" IntervalDelay="500" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="8" BitMaxSpan="64" ID="20772664" Name="D1">
+<Tags/>
+<Groups>
+<Group ID="20772792" Name="开关输入状态">
+<Tags>
+<Tag ID="20772872" ItemName="ACM03U1.C1.D1.开关输入状态.高压开关1" ItemID="高压开关1" RegisterID="0" RegisterName="开关输入状态" Address="1" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20773000" ItemName="ACM03U1.C1.D1.开关输入状态.高压开关2" ItemID="高压开关2" RegisterID="0" RegisterName="开关输入状态" Address="2" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="2" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19994968" ItemName="ACM03U1.C1.D1.开关输入状态.低压开关1" ItemID="低压开关1" RegisterID="0" RegisterName="开关输入状态" Address="3" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="3" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19995096" ItemName="ACM03U1.C1.D1.开关输入状态.低压开关2" ItemID="低压开关2" RegisterID="0" RegisterName="开关输入状态" Address="4" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="4" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19995224" ItemName="ACM03U1.C1.D1.开关输入状态.排气温度开关1" ItemID="排气温度开关1" RegisterID="0" RegisterName="开关输入状态" Address="5" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="5" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19995400" ItemName="ACM03U1.C1.D1.开关输入状态.排气温度开关2" ItemID="排气温度开关2" RegisterID="0" RegisterName="开关输入状态" Address="6" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="6" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19995576" ItemName="ACM03U1.C1.D1.开关输入状态.过滤网开关" ItemID="过滤网开关" RegisterID="0" RegisterName="开关输入状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="7" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19995752" ItemName="ACM03U1.C1.D1.开关输入状态.地板溢水开关" ItemID="地板溢水开关" RegisterID="0" RegisterName="开关输入状态" Address="8" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="8" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19995928" ItemName="ACM03U1.C1.D1.开关输入状态.风机过载开关1" ItemID="风机过载开关1" RegisterID="0" RegisterName="开关输入状态" Address="9" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="9" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19996104" ItemName="ACM03U1.C1.D1.开关输入状态.风机过载开关2" ItemID="风机过载开关2" RegisterID="0" RegisterName="开关输入状态" Address="10" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="10" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19996280" ItemName="ACM03U1.C1.D1.开关输入状态.风机过载开关3" ItemID="风机过载开关3" RegisterID="0" RegisterName="开关输入状态" Address="11" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="11" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="19996456" ItemName="ACM03U1.C1.D1.开关输入状态.气流不足开关" ItemID="气流不足开关" RegisterID="0" RegisterName="开关输入状态" Address="12" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="12" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="19996584" Name="系统参数">
+<Tags>
+<Tag ID="19996664" ItemName="ACM03U1.C1.D1.系统参数.回风温度设定点" ItemID="回风温度设定点" RegisterID="3" RegisterName="系统参数" Address="1" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="1" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="19996792" ItemName="ACM03U1.C1.D1.系统参数.湿度设定点" ItemID="湿度设定点" RegisterID="3" RegisterName="系统参数" Address="2" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="2" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="19996920" ItemName="ACM03U1.C1.D1.系统参数.温度偏差" ItemID="温度偏差" RegisterID="3" RegisterName="系统参数" Address="3" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="3" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20100464" ItemName="ACM03U1.C1.D1.系统参数.湿度偏差" ItemID="湿度偏差" RegisterID="3" RegisterName="系统参数" Address="4" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="4" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20100592" ItemName="ACM03U1.C1.D1.系统参数.高温告警设定" ItemID="高温告警设定" RegisterID="3" RegisterName="系统参数" Address="7" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="5" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20100720" ItemName="ACM03U1.C1.D1.系统参数.低温告警告警设定" ItemID="低温告警告警设定" RegisterID="3" RegisterName="系统参数" Address="8" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="6" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20100848" ItemName="ACM03U1.C1.D1.系统参数.高湿告警设定" ItemID="高湿告警设定" RegisterID="3" RegisterName="系统参数" Address="9" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="7" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20100976" ItemName="ACM03U1.C1.D1.系统参数.低湿告警设定" ItemID="低湿告警设定" RegisterID="3" RegisterName="系统参数" Address="10" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="8" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20101104" ItemName="ACM03U1.C1.D1.系统参数.送风高温告警设定" ItemID="送风高温告警设定" RegisterID="3" RegisterName="系统参数" Address="11" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="9" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20101232" ItemName="ACM03U1.C1.D1.系统参数.送风温度设定" ItemID="送风温度设定" RegisterID="3" RegisterName="系统参数" Address="12" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="10" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+</Tags>
+</Group>
+<Group ID="19997048" Name="机组状态">
+<Tags>
+<Tag ID="20101360" ItemName="ACM03U1.C1.D1.机组状态.空调开关机" ItemID="空调开关机" RegisterID="4" RegisterName="机组状态" Address="1" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20101488" ItemName="ACM03U1.C1.D1.机组状态.风机输出开关状态" ItemID="风机输出开关状态" RegisterID="4" RegisterName="机组状态" Address="2" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20101616" ItemName="ACM03U1.C1.D1.机组状态.加湿器输出开关状态" ItemID="加湿器输出开关状态" RegisterID="4" RegisterName="机组状态" Address="3" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20101744" ItemName="ACM03U1.C1.D1.机组状态.压缩机1输出开关状态" ItemID="压缩机1输出开关状态" RegisterID="4" RegisterName="机组状态" Address="4" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20101872" ItemName="ACM03U1.C1.D1.机组状态.压缩机2输出开关状态" ItemID="压缩机2输出开关状态" RegisterID="4" RegisterName="机组状态" Address="5" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102000" ItemName="ACM03U1.C1.D1.机组状态.加热1输出开关状态" ItemID="加热1输出开关状态" RegisterID="4" RegisterName="机组状态" Address="6" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="6" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102128" ItemName="ACM03U1.C1.D1.机组状态.加热2输出开关状态" ItemID="加热2输出开关状态" RegisterID="4" RegisterName="机组状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102256" ItemName="ACM03U1.C1.D1.机组状态.公共报警输出开关状态" ItemID="公共报警输出开关状态" RegisterID="4" RegisterName="机组状态" Address="8" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="8" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102384" ItemName="ACM03U1.C1.D1.机组状态.液路旁通1输出开关状态" ItemID="液路旁通1输出开关状态" RegisterID="4" RegisterName="机组状态" Address="9" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102512" ItemName="ACM03U1.C1.D1.机组状态.液路旁通2输出开关状态" ItemID="液路旁通2输出开关状态" RegisterID="4" RegisterName="机组状态" Address="10" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="10" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102640" ItemName="ACM03U1.C1.D1.机组状态.注水输出开关状态" ItemID="注水输出开关状态" RegisterID="4" RegisterName="机组状态" Address="11" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102768" ItemName="ACM03U1.C1.D1.机组状态.除湿输出开关状态" ItemID="除湿输出开关状态" RegisterID="4" RegisterName="机组状态" Address="12" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="12" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20102896" ItemName="ACM03U1.C1.D1.机组状态.制冷状态" ItemID="制冷状态" RegisterID="4" RegisterName="机组状态" Address="16" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103024" ItemName="ACM03U1.C1.D1.机组状态.加热状态" ItemID="加热状态" RegisterID="4" RegisterName="机组状态" Address="17" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="14" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103152" ItemName="ACM03U1.C1.D1.机组状态.除湿状态" ItemID="除湿状态" RegisterID="4" RegisterName="机组状态" Address="18" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103280" ItemName="ACM03U1.C1.D1.机组状态.加湿状态" ItemID="加湿状态" RegisterID="4" RegisterName="机组状态" Address="19" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="16" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="19997128" Name="报警">
+<Tags>
+<Tag ID="20103408" ItemName="ACM03U1.C1.D1.报警.高压1报警" ItemID="高压1报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="2" EnableSubAddr="1" SubAddress="1" DataType="3" ModbusType="1" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103536" ItemName="ACM03U1.C1.D1.报警.高压2报警" ItemID="高压2报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="2" EnableSubAddr="1" SubAddress="2" DataType="3" ModbusType="1" ModbusAddr="14" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103664" ItemName="ACM03U1.C1.D1.报警.低压1报警" ItemID="低压1报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="2" EnableSubAddr="1" SubAddress="3" DataType="3" ModbusType="1" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103792" ItemName="ACM03U1.C1.D1.报警.低压2报警" ItemID="低压2报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="2" EnableSubAddr="1" SubAddress="4" DataType="3" ModbusType="1" ModbusAddr="16" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20103920" ItemName="ACM03U1.C1.D1.报警.高温报警" ItemID="高温报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="3" EnableSubAddr="1" SubAddress="6" DataType="3" ModbusType="1" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20104048" ItemName="ACM03U1.C1.D1.报警.低温报警" ItemID="低温报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="3" EnableSubAddr="1" SubAddress="7" DataType="3" ModbusType="1" ModbusAddr="18" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20104176" ItemName="ACM03U1.C1.D1.报警.高湿报警" ItemID="高湿报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="4" EnableSubAddr="1" SubAddress="0" DataType="3" ModbusType="1" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20104304" ItemName="ACM03U1.C1.D1.报警.低湿报警" ItemID="低湿报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="4" EnableSubAddr="1" SubAddress="1" DataType="3" ModbusType="1" ModbusAddr="20" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20104432" ItemName="ACM03U1.C1.D1.报警.送风高温报警" ItemID="送风高温报警" RegisterID="5" RegisterName="机组运行状态和报警状态" Address="11" EnableSubAddr="1" SubAddress="3" DataType="3" ModbusType="1" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="19997208" Name="模拟量输入输出">
+<Tags>
+<Tag ID="20104560" ItemName="ACM03U1.C1.D1.模拟量输入输出.水路A" ItemID="水路A" RegisterID="6" RegisterName="模拟量输出" Address="1" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20104688" ItemName="ACM03U1.C1.D1.模拟量输入输出.开关机" ItemID="开关机" RegisterID="1" RegisterName="遥控开关机" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="0" ModbusAddr="1" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20104816" ItemName="ACM03U1.C1.D1.模拟量输入输出.室内温度" ItemID="室内温度" RegisterID="2" RegisterName="模拟量数据" Address="1" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="18" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20104944" ItemName="ACM03U1.C1.D1.模拟量输入输出.水路B" ItemID="水路B" RegisterID="6" RegisterName="模拟量输出" Address="2" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105072" ItemName="ACM03U1.C1.D1.模拟量输入输出.室内湿度" ItemID="室内湿度" RegisterID="2" RegisterName="模拟量数据" Address="2" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="20" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105200" ItemName="ACM03U1.C1.D1.模拟量输入输出.EC-Fan" ItemID="EC-Fan" RegisterID="6" RegisterName="模拟量输出" Address="3" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105328" ItemName="ACM03U1.C1.D1.模拟量输入输出.Ua" ItemID="Ua" RegisterID="2" RegisterName="模拟量数据" Address="3" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="22" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105456" ItemName="ACM03U1.C1.D1.模拟量输入输出.Ub" ItemID="Ub" RegisterID="2" RegisterName="模拟量数据" Address="4" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="23" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105584" ItemName="ACM03U1.C1.D1.模拟量输入输出.Uc" ItemID="Uc" RegisterID="2" RegisterName="模拟量数据" Address="5" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="24" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105712" ItemName="ACM03U1.C1.D1.模拟量输入输出.加湿器电流" ItemID="加湿器电流" RegisterID="2" RegisterName="模拟量数据" Address="6" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="25" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="20105840" ItemName="ACM03U1.C1.D1.模拟量输入输出.电源频率" ItemID="电源频率" RegisterID="2" RegisterName="模拟量数据" Address="7" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="26" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+</Tags>
+</Group>
+</Groups>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="20105968" ItemName="$.ACM03U1.C1.D1.CommStatus" ItemID="$.ACM03U1.C1.D1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="0" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<script language="javascript" type="text/javascript">
+<js>setInterval("MainLoop()", 1000);
+function  MainLoop(){
+
+
+
+
+
+
+}</js>
+</script>
+</X2M>

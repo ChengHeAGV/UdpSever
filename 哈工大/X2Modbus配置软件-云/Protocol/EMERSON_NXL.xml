@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="9600" DataBit="8" StopBit="0" Parity="0" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="模拟量数据" RegID="0" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="开关输入状态" RegID="1" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="告警量输入状态" RegID="2" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="自定义模拟量数据0" RegID="3" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="自定义模拟量数据1" RegID="4" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="自定义模拟量数据2" RegID="5" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="自定义模拟量数据3" RegID="6" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="自定义告警量" RegID="7" Writable="false" IsDigital="true" Description=""/>
+  </Regs>
+</PLC>

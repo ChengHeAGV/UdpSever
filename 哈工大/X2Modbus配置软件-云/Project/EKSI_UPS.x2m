@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="46" BI="11" BO="10" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0">
+<Driver ID="21231200" Name="EKSI_UPS" PluginName="EKSI_UPS" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="21230464" Name="C1" Port="0" Baud="2400" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="3000">
+<Devices>
+<Device StationID="1" IntervalDelay="2000" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="21231528" Name="D1">
+<Tags/>
+<Groups>
+<Group ID="21230544" Name="实时数据">
+<Tags>
+<Tag ID="21231656" ItemName="EKSI_UPS.C1.D1.实时数据.电池电压" ItemID="电池电压" RegisterID="0" RegisterName="实时数据" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="电池电压" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21231784" ItemName="EKSI_UPS.C1.D1.实时数据.电池容量百分比" ItemID="电池容量百分比" RegisterID="0" RegisterName="实时数据" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="2" Writable="0" Digital="0" Description="电池容量百分比" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20549872" ItemName="EKSI_UPS.C1.D1.实时数据.充电电流" ItemID="充电电流" RegisterID="0" RegisterName="实时数据" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="3" Writable="0" Digital="0" Description="充电电流" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20550000" ItemName="EKSI_UPS.C1.D1.实时数据.机内温度" ItemID="机内温度" RegisterID="0" RegisterName="实时数据" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="4" Writable="0" Digital="0" Description="机内温度" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20550176" ItemName="EKSI_UPS.C1.D1.实时数据.输入频率" ItemID="输入频率" RegisterID="0" RegisterName="实时数据" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="5" Writable="0" Digital="0" Description="输入频率" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20550352" ItemName="EKSI_UPS.C1.D1.实时数据.旁路频率" ItemID="旁路频率" RegisterID="0" RegisterName="实时数据" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="6" Writable="0" Digital="0" Description="旁路频率" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20550528" ItemName="EKSI_UPS.C1.D1.实时数据.输出频率" ItemID="输出频率" RegisterID="0" RegisterName="实时数据" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="7" Writable="0" Digital="0" Description="输出频率" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="20550704" Name="状态查询">
+<Tags>
+<Tag ID="20550784" ItemName="EKSI_UPS.C1.D1.状态查询.整流器开启/关闭" ItemID="整流器开启/关闭" RegisterID="1" RegisterName="状态查询" Address="1" EnableSubAddr="1" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="8" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20453720" ItemName="EKSI_UPS.C1.D1.状态查询.限流充电/浮冲" ItemID="限流充电/浮冲" RegisterID="1" RegisterName="状态查询" Address="1" EnableSubAddr="1" SubAddress="1" DataType="2" ModbusType="3" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20453896" ItemName="EKSI_UPS.C1.D1.状态查询.电池放电 " ItemID="电池放电 " RegisterID="1" RegisterName="状态查询" Address="1" EnableSubAddr="1" SubAddress="2" DataType="2" ModbusType="3" ModbusAddr="10" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20454072" ItemName="EKSI_UPS.C1.D1.状态查询.电池低压" ItemID="电池低压" RegisterID="1" RegisterName="状态查询" Address="1" EnableSubAddr="1" SubAddress="3" DataType="2" ModbusType="3" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20454248" ItemName="EKSI_UPS.C1.D1.状态查询.整流器故障/运行正常" ItemID="整流器故障/运行正常" RegisterID="1" RegisterName="状态查询" Address="1" EnableSubAddr="1" SubAddress="5" DataType="2" ModbusType="3" ModbusAddr="12" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20454424" ItemName="EKSI_UPS.C1.D1.状态查询.逆变器开器/关闭" ItemID="逆变器开器/关闭" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20454552" ItemName="EKSI_UPS.C1.D1.状态查询.静态开关在逆变/旁路" ItemID="静态开关在逆变/旁路" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="1" DataType="2" ModbusType="3" ModbusAddr="14" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20559216" ItemName="EKSI_UPS.C1.D1.状态查询.旁路电压异常/正常" ItemID="旁路电压异常/正常" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="2" DataType="2" ModbusType="3" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20559344" ItemName="EKSI_UPS.C1.D1.状态查询.维修旁路合上/断开" ItemID="维修旁路合上/断开" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="3" DataType="2" ModbusType="3" ModbusAddr="16" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20559472" ItemName="EKSI_UPS.C1.D1.状态查询.旁路频率超限/正常" ItemID="旁路频率超限/正常" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="4" DataType="2" ModbusType="3" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20559600" ItemName="EKSI_UPS.C1.D1.状态查询.市电电压异常/正常" ItemID="市电电压异常/正常" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="5" DataType="2" ModbusType="3" ModbusAddr="18" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20559728" ItemName="EKSI_UPS.C1.D1.状态查询.风扇故障/正常" ItemID="风扇故障/正常" RegisterID="1" RegisterName="状态查询" Address="2" EnableSubAddr="1" SubAddress="6" DataType="2" ModbusType="3" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20559856" ItemName="EKSI_UPS.C1.D1.状态查询.逆变器关闭原因" ItemID="逆变器关闭原因" RegisterID="1" RegisterName="状态查询" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="20" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="20787496" Name="三相实时数据">
+<Tags>
+<Tag ID="20559984" ItemName="EKSI_UPS.C1.D1.三相实时数据.市电三相电压A" ItemID="市电三相电压A" RegisterID="2" RegisterName="三相实时数据" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560112" ItemName="EKSI_UPS.C1.D1.三相实时数据.市电三相电压B" ItemID="市电三相电压B" RegisterID="2" RegisterName="三相实时数据" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="22" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560240" ItemName="EKSI_UPS.C1.D1.三相实时数据.市电三相电压C" ItemID="市电三相电压C" RegisterID="2" RegisterName="三相实时数据" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="23" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560368" ItemName="EKSI_UPS.C1.D1.三相实时数据.旁路三相电压A" ItemID="旁路三相电压A" RegisterID="2" RegisterName="三相实时数据" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="24" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560496" ItemName="EKSI_UPS.C1.D1.三相实时数据.旁路三相电压B" ItemID="旁路三相电压B" RegisterID="2" RegisterName="三相实时数据" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="25" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560624" ItemName="EKSI_UPS.C1.D1.三相实时数据.旁路三相电压C" ItemID="旁路三相电压C" RegisterID="2" RegisterName="三相实时数据" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="26" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560752" ItemName="EKSI_UPS.C1.D1.三相实时数据.输出三相电压A" ItemID="输出三相电压A" RegisterID="2" RegisterName="三相实时数据" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="27" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20560880" ItemName="EKSI_UPS.C1.D1.三相实时数据.输出三相电压B" ItemID="输出三相电压B" RegisterID="2" RegisterName="三相实时数据" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="28" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561008" ItemName="EKSI_UPS.C1.D1.三相实时数据.输出三相电压C" ItemID="输出三相电压C" RegisterID="2" RegisterName="三相实时数据" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="29" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561136" ItemName="EKSI_UPS.C1.D1.三相实时数据.三相负载比例A" ItemID="三相负载比例A" RegisterID="2" RegisterName="三相实时数据" Address="10" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="30" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561264" ItemName="EKSI_UPS.C1.D1.三相实时数据.三相负载比例B" ItemID="三相负载比例B" RegisterID="2" RegisterName="三相实时数据" Address="11" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="31" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561392" ItemName="EKSI_UPS.C1.D1.三相实时数据.三相负载比例C" ItemID="三相负载比例C" RegisterID="2" RegisterName="三相实时数据" Address="12" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="32" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="20454680" Name="UPS额定信息">
+<Tags>
+<Tag ID="20561520" ItemName="EKSI_UPS.C1.D1.UPS额定信息.额定电压" ItemID="额定电压" RegisterID="3" RegisterName="额定信息" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="33" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561648" ItemName="EKSI_UPS.C1.D1.UPS额定信息.额定电流" ItemID="额定电流" RegisterID="3" RegisterName="额定信息" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="34" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561776" ItemName="EKSI_UPS.C1.D1.UPS额定信息.额定电池电压" ItemID="额定电池电压" RegisterID="3" RegisterName="额定信息" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="35" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20561904" ItemName="EKSI_UPS.C1.D1.UPS额定信息.额定频率" ItemID="额定频率" RegisterID="3" RegisterName="额定信息" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="36" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+</Groups>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="20562032" ItemName="$.EKSI_UPS.C1.D1.CommStatus" ItemID="$.EKSI_UPS.C1.D1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<script language="javascript" type="text/javascript">
+<js>setInterval("MainLoop()", 1000);
+function  MainLoop(){
+
+
+
+
+
+
+}</js>
+</script>
+</X2M>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.1.100" Port="22222" TimeOuts="1000">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="微波雷达水平" RegID="0" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="激光雷达水平" RegID="1" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="微波雷达垂直" RegID="2" Writable="false" IsDigital="true" Description=""/>
+  </Regs>
+</PLC>

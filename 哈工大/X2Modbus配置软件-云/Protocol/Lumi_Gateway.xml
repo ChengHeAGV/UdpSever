@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.1.88" Port="4321" TimeOuts="1000">
+  <Regs StationID="34ce008bf60e.54E5EBB9AA9A4B84" IntervalDelay="100" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="sensor_ht" RegID="0" Writable="false" IsDigital="false" Description="温湿度传感器"/>
+    <Reg RegName="motion" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="magnet" RegID="2" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="ctrl_neutral1" RegID="3" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="ctrl_neutral2" RegID="4" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="86sw1" RegID="5" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="86sw2" RegID="6" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="plug" RegID="7" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="switch" RegID="8" Writable="true" IsDigital="true" Description=""/>
+  </Regs>
+</PLC>

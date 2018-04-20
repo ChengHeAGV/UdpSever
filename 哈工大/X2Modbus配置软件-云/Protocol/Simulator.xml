@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="127.0.0.1" Port="88" TimeOuts="1000">
+  <Regs StationID="1" IntervalDelay="100" WriteDelay="0" ShowSwap="true" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="Sine" RegID="0" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="Random" RegID="1" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="Ramp" RegID="2" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Const" RegID="3" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

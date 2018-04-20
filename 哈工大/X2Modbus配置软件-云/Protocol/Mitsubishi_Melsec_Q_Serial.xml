@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="19200" DataBit="8" StopBit="0" Parity="1" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="0" IntervalDelay="100" WriteDelay="0" ShowWordSwap="false" AnalaogAdjacent="16" AnalaogMax="64" BinaryAdjacent="64" BinaryMax="128" >
+    <Reg RegName="X" RegID="0" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="Y" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="M" RegID="2" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="SM" RegID="3" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="L" RegID="4" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="F" RegID="5" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="V" RegID="6" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="B" RegID="7" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="TS" RegID="8" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="TC" RegID="9" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="SS" RegID="10" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="SC" RegID="11" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="CS" RegID="12" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="CC" RegID="13" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="SB" RegID="14" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="S" RegID="15" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="DX" RegID="16" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="DY" RegID="17" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="D" RegID="18" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="SD" RegID="19" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="W" RegID="20" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="SW" RegID="21" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="TN" RegID="22" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="SN" RegID="23" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="CN" RegID="24" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="R" RegID="25" Writable="true" IsDigital="false" Description=""/>    
+    <Reg RegName="Z" RegID="26" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="ZR" RegID="27" Writable="true" IsDigital="false" Description=""/>   
+  </Regs>
+</PLC>

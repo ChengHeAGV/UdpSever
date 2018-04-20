@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="52" AO="14" BI="12" BO="11" EnablePort="1" ComPort="0" BaudRate="7" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="1" EnableCloud="0" CloudIP="" CloudPort="0" GatewayName="" GatewayID="0">
+<Driver ID="130814112" Name="BAC" PluginName="BACnetIP" PluginType="1" PollingTime="1000">
+<Channels>
+<Channel ID="130833576" Name="Channel_1" IP="255.255.255.255.0" Port="47808" TimeOut="1000">
+<Devices>
+<Device StationID="10000" IntervalDelay="500" WriteDelay="500" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="35" BitAdjacentSpan="0" BitMaxSpan="2" ID="14536112" Name="特灵2">
+<Tags>
+<Tag ID="130810984" ItemName="BAC.Channel_1.特灵2.Facility Outdoor Air Temperature" ItemID="Facility Outdoor Air Temperature" RegisterID="0" RegisterName="AI(Analog Input)" Address="1" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130811544" ItemName="BAC.Channel_1.特灵2.Facility Outdoor Air Humidity" ItemID="Facility Outdoor Air Humidity" RegisterID="0" RegisterName="AI(Analog Input)" Address="2" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130829680" ItemName="BAC.Channel_1.特灵2.Condenser Approach Temperature Circuit 1|chlr-1" ItemID="Condenser Approach Temperature Circuit 1|chlr-1" RegisterID="0" RegisterName="AI(Analog Input)" Address="3" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130830256" ItemName="BAC.Channel_1.特灵2.Evaporator Approach Temperature Circuit 1|chlr-1" ItemID="Evaporator Approach Temperature Circuit 1|chlr-1" RegisterID="0" RegisterName="AI(Analog Input)" Address="4" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130831032" ItemName="BAC.Channel_1.特灵2.Evaporator Leaving Water Temperature" ItemID="Evaporator Leaving Water Temperature" RegisterID="0" RegisterName="AI(Analog Input)" Address="5" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130831600" ItemName="BAC.Channel_1.特灵2.Evaporator Entering Water Temperature" ItemID="Evaporator Entering Water Temperature" RegisterID="0" RegisterName="AI(Analog Input)" Address="6" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130832168" ItemName="BAC.Channel_1.特灵2.Evaporator Saturated Refrigerant Temperature - Circuit 1" ItemID="Evaporator Saturated Refrigerant Temperature - Circuit 1" RegisterID="0" RegisterName="AI(Analog Input)" Address="8" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130814976" ItemName="BAC.Channel_1.特灵2.Evaporator Shell Refrigerant Pressure - Circuit 1" ItemID="Evaporator Shell Refrigerant Pressure - Circuit 1" RegisterID="0" RegisterName="AI(Analog Input)" Address="9" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130815552" ItemName="BAC.Channel_1.特灵2.Condenser Leaving Water Temperature" ItemID="Condenser Leaving Water Temperature" RegisterID="0" RegisterName="AI(Analog Input)" Address="10" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130816112" ItemName="BAC.Channel_1.特灵2.Condenser Entering Water Temperature" ItemID="Condenser Entering Water Temperature" RegisterID="0" RegisterName="AI(Analog Input)" Address="11" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130816680" ItemName="BAC.Channel_1.特灵2.Condenser Saturated Refrigerant Temperature Circuit 1" ItemID="Condenser Saturated Refrigerant Temperature Circuit 1" RegisterID="0" RegisterName="AI(Analog Input)" Address="12" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130817448" ItemName="BAC.Channel_1.特灵2.Condenser Refrigerant Pressure Circuit 1" ItemID="Condenser Refrigerant Pressure Circuit 1" RegisterID="0" RegisterName="AI(Analog Input)" Address="13" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="23" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130818016" ItemName="BAC.Channel_1.特灵2.Run Time - Compressor 1A" ItemID="Run Time - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="14" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="25" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130818568" ItemName="BAC.Channel_1.特灵2.Phase AB Voltage - Compressor 1A" ItemID="Phase AB Voltage - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="15" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="27" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130819128" ItemName="BAC.Channel_1.特灵2.Phase BC Voltage - Compressor 1A" ItemID="Phase BC Voltage - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="16" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="29" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14543712" ItemName="BAC.Channel_1.特灵2.Phase CA Voltage - Compressor 1A" ItemID="Phase CA Voltage - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="17" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="31" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14544944" ItemName="BAC.Channel_1.特灵2.High Side Oil Pressure - Compressor 1A" ItemID="High Side Oil Pressure - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="18" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="33" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14545432" ItemName="BAC.Channel_1.特灵2.Line 1 Current - Compressor 1A" ItemID="Line 1 Current - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="19" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="35" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14545992" ItemName="BAC.Channel_1.特灵2.Line 2 Current - Compressor 1A" ItemID="Line 2 Current - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="20" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="37" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14546552" ItemName="BAC.Channel_1.特灵2.Line 3 Current - Compressor 1A" ItemID="Line 3 Current - Compressor 1A" RegisterID="0" RegisterName="AI(Analog Input)" Address="21" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="39" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14547112" ItemName="BAC.Channel_1.特灵2.Current Limit Setpoint" ItemID="Current Limit Setpoint" RegisterID="1" RegisterName="AO(Analog Output)" Address="1" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="1" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14547848" ItemName="BAC.Channel_1.特灵2.Chilled Water Setpoint" ItemID="Chilled Water Setpoint" RegisterID="1" RegisterName="AO(Analog Output)" Address="2" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="3" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="14548400" ItemName="BAC.Channel_1.特灵2.Chiller Running State" ItemID="Chiller Running State" RegisterID="3" RegisterName="BI(Binary Input)" Address="1" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130855104" ItemName="BAC.Channel_1.特灵2.Chiller Auto Stop Command BAS" ItemID="Chiller Auto Stop Command BAS" RegisterID="4" RegisterName="BO(Binary Output)" Address="1" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="0" ModbusAddr="1" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="130855664" ItemName="BAC.Channel_1.特灵2.Communication Status|chlr-1" ItemID="Communication Status|chlr-1" RegisterID="6" RegisterName="MI(Multi-state Input)" Address="1" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="41" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="130857608" ItemName="$.BAC.Channel_1.特灵2.CommStatus" ItemID="$.BAC.Channel_1.特灵2.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<script language="javascript" type="text/javascript">
+<js>setInterval("MainLoop()", 1000);
+function  MainLoop(){
+
+
+
+
+
+
+}</js>
+</script>
+</X2M>

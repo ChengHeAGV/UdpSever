@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="19200" DataBit="7" StopBit="2" Parity="2" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="0" IntervalDelay="50" ShowWordSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="CIO_IR_bit" RegID="0" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="AR_bit" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="LR_bit" RegID="2" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="DM_bit" RegID="3" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="HR_bit" RegID="4" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="TIM_bit" RegID="5" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="CNT_bit" RegID="6" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="CIO_IR_word" RegID="7" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="AR_word" RegID="8" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="LR_word" RegID="9" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DM_word" RegID="10" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="HR_word" RegID="11" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="TIM" RegID="12" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="CNT" RegID="13" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

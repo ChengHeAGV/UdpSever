@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用户管理</title>
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/build/css/custom.css" rel="stylesheet">
+    <link href="css/easydialog.css" rel="stylesheet" media="screen" type="text/css" />
+    <style>
+        body
+        {
+            background: #f7f7f7 none repeat scroll 0 0;
+            padding: 0 10px;
+        }
+        /*内嵌页面防止出现滚动条*/html
+        {
+            overflow: hidden;
+        }
+    </style>
+    <meta name="GENERATOR" content="MSHTML 9.00.8112.16476">
+</head>
+<body>
+    <div class="container body invisible">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2 data-i18n="user-admin">
+                            用户管理</h2>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                    <div class="x_content">
+                        <form novalidate="" class="form-horizontal form-label-left" onsubmit="return false;">
+                        <div class="item form-group">
+                            <label for="txt_uname" class="control-label col-md-3 col-sm-3 col-xs-12" data-i18n="username">
+                                用户名
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" name="txt_uname" class="form-control col-md-7 col-xs-12" id="txt_uname">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="txt_pwd" class="control-label col-md-3 col-sm-3 col-xs-12" data-i18n="password">
+                                密码
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control col-md-7 col-xs-12" required="required" name="txt_pwd"
+                                    id="txt_pwd">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="sel_purview" class="control-label col-md-3 col-sm-3 col-xs-12" data-i18n="access">
+                                权限
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="sel_purview" name="sel_purview" class="form-control col-md-7 col-xs-12">
+                                    <option selected="selected" value="0" data-i18n="user-type-normal">普通用户</option>
+                                    <option value="1" data-i18n="user-type-admin">超级用户</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ln_solid">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button class="btn btn-primary" type="submit" id="send" onclick="adduser();" data-i18n="add">
+                                    添加</button>
+                                <button class="btn btn-waring" type="reset" data-i18n="reset">
+                                    重置</button>
+                            </div>
+                        </div>
+                        </form>
+                        <div>
+                            <table id="tb_data" class="table table-striped table-bordered table-hover jambo_table"
+                                align="center">
+                                <!--<thead>
+                            <tr>
+                                <th class="tdhead" width="120">用户名</th>
+                                <th class="tdhead" width="120">密码</th>
+                                <th class="tdhead" width="120">权限</th>
+                                <th class="tdhead" width="100">修改</th>
+                                <th class="tdhead" width="100">保存</th>
+                                <th class="tdhead" width="100">删除</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td class="meisaitd">admin</td>
+                                <td class="meisaitd">admin123456</td>
+                                <td class="meisaitd">超级用户</td>
+                                <td class="meisaitd"><input type="button" value="修改"
+                                                            onclick="updata(this,&#39;admin&#39;);"></td>
+                                <td class="meisaitd"><input type="button" value="保存"
+                                                            onclick="save(this,&#39;admin&#39;);">
+                                </td>
+                                <td class="meisaitd"><input type="button" value="删除" onclick="del(&#39;admin&#39;);">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="meisaitd">test</td>
+                                <td class="meisaitd">555</td>
+                                <td class="meisaitd">普通用户</td>
+                                <td class="meisaitd"><input type="button" value="修改"
+                                                            onclick="updata(this,&#39;test&#39;);">
+                                </td>
+                                <td class="meisaitd"><input type="button" value="保存"
+                                                            onclick="save(this,&#39;test&#39;);">
+                                </td>
+                                <td class="meisaitd"><input type="button" value="删除" onclick="del(&#39;test&#39;);">
+                                </td>
+                            </tr>
+                            </tbody>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script language="javascript" type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+    <script type="text/javascript" language="javascript" src="js/lib/jquery-cookie.js"></script>
+    <script language="javascript" type="text/javascript" src="js/lib/easydialog.js"></script>
+    <script type="text/javascript" language="javascript" src="js/plugin/dialog.js"></script>
+    <script language="javascript" type="text/javascript" src="js/lib/jquery.i18n/jquery.i18n.js"></script>
+    <script language="javascript" type="text/javascript" src="js/lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
+    <script language="javascript" type="text/javascript" src="js/lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+    <script language="javascript" type="text/javascript" src="js/app/i18n.js"></script>
+    <script type="text/javascript" language="javascript">
+    $(window.document).ready(function () {
+        askuser();
+    });
+
+
+    //查询页面
+    function askuser() {
+        var cmpwc = "";
+        $.ajax({
+            type: "POST",
+            url: "soap/GetUserList",
+            data: {'CmpWc': cmpwc},
+            dataType: 'xml',
+            success: function (result) {
+                $("#tb_data").html("");
+                try {
+                    var tbstr = "<thead><tr>" +
+                            "<th class=\"tdhead\" width=\"120\" data-i18n='username'>用户名</th>" +
+                            "<th class=\"tdhead\" width=\"120\"  data-i18n='password'>密码</th>" +
+                            "<th class=\"tdhead\" width=\"120\" data-i18n='access'>权限</th>" +
+                            "<th class=\"tdhead\" width=\"100\" data-i18n='modify'>修改</th>" +
+                            "<th class=\"tdhead\"  width=\"100\" data-i18n='save'>保存</th>" +
+                            "<th class=\"tdhead\" width=\"100\" data-i18n='delete'>删除</th>" +
+                            "</tr></thead>";
+                    $(result).find("USERID").each(function () {
+                        var temp = $(this).find("PURVIEW").text();
+                        var limit;
+                        if (temp == "0") {
+                            limit = $.i18n('user-type-normal');//"普通用户";
+                        }
+                        else {
+                            limit =  $.i18n('user-type-admin');//"超级用户";
+                        }
+                        
+                        var trstr = "<tr><td class=\"meisaitd\">"
+                                + $(this).find("USERNAME").text() + "</td><td class=\"meisaitd\">" + $(this).find("PASSWORD").text() + "</td><td class=\"meisaitd\"" +
+                                "data-i18n='"+limit+"'>"
+                                + limit + "</td>" + "<td class=\"meisaitd\">" +
+                                "<button type=\"button\" class='btn btn-xs btn-success' value=\"修改\" onclick=\"updata(this,'" + $(this).find("USERNAME").text() + "');\"  data-i18n='modify'>"+ $.i18n('modify')+"</button></td>" +
+                                "<td class=\"meisaitd\"><button type=\"button\" class='btn btn-xs btn-primary' " +
+                                "value=\"保存\" onclick=\"save(this,'" + $(this).find("USERNAME").text() + "');\"  data-i18n='save'>"+ $.i18n('save')+"</button> </td>" +
+                                "<td class=\"meisaitd\"><button type=\"button\"  class='btn btn-xs btn-danger' " +
+                                "value=\"删除\" onclick=\"del('" + $(this).find("USERNAME").text() + "');\"  data-i18n='delete'>"+ $.i18n('delete')+"</button></td></tr>";
+                        tbstr += trstr;
+                    });
+                    $("#tb_data").append(tbstr);
+                    $('#tb_data').i18n();
+                    //dialog.alert(tbstr);
+                }
+                catch (e) {
+                    dialog.alert(e);
+                    return;
+                }
+            },
+            error: function (result, status) {
+                if (status == 'error') {
+                    dialog.alert(status);
+                }
+            }
+        });
+
+    }
+
+    //页面变为可编辑
+    function updata(upd, uname) {
+        var td = $(upd).parents('tr').children('td');
+        var pwd = td.eq(1).text();
+        var purview = td.eq(2).text();
+        var cr_date = td.eq(3).text();
+        var cr_time = td.eq(4).text();
+        //td.eq(0).html("<input  type=\"text\" value=\"" + uname + "\"/>")
+        td.eq(1).html("<input type=\"text\" value=\"" + pwd + "\"/>");
+        td.eq(2).html("<select id=\"sel_puw\"><option value=\"0\" data-i18n='user-type-normal' >"+ $.i18n('user-type-normal')+"</option><option value=\"1\" data-i18n='user-type-admin'>"+ $.i18n('user-type-admin')+"</option></select>");
+        $("#sel_puw option[value='" + purview + "']").attr("selected", true);
+        td.eq(5).find("button").attr("disabled", true);
+        td.eq(6).find("button").attr("disabled", false);
+
+    }
+
+    //添加用户
+    function adduser() {
+        var uname = $("#txt_uname").val(); //用户名
+        if (uname == "") {
+            dialog.alert($.i18n('tips-username')|| "用户名不能为空");
+            return;
+        }
+        var upwd = $("#txt_pwd").val(); //用户密码
+        if (upwd == "") {
+            dialog.alert($.i18n('tips-pwd')|| "密码不能为空");
+            return;
+        }
+
+        var purview = $("#sel_purview").val(); //用户权限
+        var today = new Date();
+        var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate(); //登录日期
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(); //登录时间
+        var sql = "insert into userid (USERNAME,PASSWORD,PURVIEW,LOGINDATE,LOGINTIME) values('" + uname + "','" + upwd + "','" + purview + "','" + date + "','" + time + "')";
+
+        $.ajax({
+            type: "POST",
+            contentType: "text/xml; charset=utf-8",
+            url: "soap/AddUser",
+            data: sql,
+            dataType: 'xml',
+            success: function (xml) {
+                // dialog.alert($(xml).find("resultstate").text());
+                var AdduserItem = $(xml).find('AdduserResult');
+                var ExecResult = AdduserItem.attr("Execute");
+                if (ExecResult == "1") {
+                    askuser();
+                    dialog.alert($.i18n('tips-add-success') || "添加用户成功！");
+
+                } else {
+                    dialog.alert($.i18n('tips-add-failure') || "添加用户失败！");
+                }
+
+            }
+        });
+
+
+    }
+    //修改用户
+    function save(tdobj, uname) {
+
+        var td = $(tdobj).parents('tr').children('td');
+        var pwd = td.eq(1).children().val();
+        if (pwd == undefined) {
+            dialog.alert($.i18n('tips-modify-save') || "修改后才能保存");
+            return;
+        }
+
+        if (pwd == "") {
+            dialog.alert($.i18n('tips-pwd') || "密码不能为空");
+            return;
+        }
+
+        var purview = td.eq(2).find("select").val();
+        var sql = "update userid set PASSWORD='" + pwd + "',PURVIEW='" + purview + "' where USERNAME='" + uname + "'";
+        $.ajax({
+            type: "POST",
+            contentType: "text/xml; charset=utf-8",
+            url: "soap/UpdateUser",
+            data: sql,
+            dataType: 'xml',
+            success: function (xml) {
+
+                var UpdateUserItem = $(xml).find('UpdateUserResult');
+                var ExecResult = UpdateUserItem.attr("Execute");
+                if (ExecResult == "1") {
+                    askuser();
+                    dialog.alert($.i18n('tips-modify-success')||"修改用户成功！");
+
+                } else {
+                    dialog.alert($.i18n('tips-modify-failure') || "修改用户失败！");
+                }
+
+
+            }
+        });
+
+    }
+    //删除用户
+    function del(uname) {
+        var sql = "delete from userid where username='" + uname + "'";
+        $.ajax({
+            type: "POST",
+            contentType: "text/xml; charset=utf-8",
+            url: "soap/DeleteUser",
+            data: sql,
+            dataType: 'xml',
+            success: function (xml) {
+                var DeleteUserItem = $(xml).find('DeleteUserResult');
+                var ExecResult = DeleteUserItem.attr("Execute");
+                if (ExecResult == "1") {
+                    askuser();
+                    dialog.alert($.i18n('tips-delete-success') || "删除用户成功！");
+
+                } else {
+                dialog.alert($.i18n('tips-delete-failure') || "删除用户失败！");
+                }
+
+            }
+        });
+    }
+</script>
+</body>
+</html>

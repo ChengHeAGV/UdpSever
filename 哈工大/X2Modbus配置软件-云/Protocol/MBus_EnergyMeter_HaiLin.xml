@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="2400" DataBit="8" StopBit="0" Parity="2" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="12345678001111" IntervalDelay="5000" WriteDelay="0" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="20H-901F" RegID="0" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="21H-901F" RegID="1" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="22H-901F" RegID="2" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="23H-901F" RegID="3" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="24H-901F" RegID="4" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="25H-901F" RegID="5" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="26H-901F" RegID="6" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="27H-901F" RegID="7" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="28H-901F" RegID="8" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="29H-901F" RegID="9" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="20H-1F90" RegID="10" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="21H-1F90" RegID="11" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="22H-1F90" RegID="12" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="23H-1F90" RegID="13" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="24H-1F90" RegID="14" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="25H-1F90" RegID="15" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="26H-1F90" RegID="16" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="27H-1F90" RegID="17" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="28H-1F90" RegID="18" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="29H-1F90" RegID="19" Writable="false" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

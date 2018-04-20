@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="15" AO="17" BI="31" BO="12" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="1" CloudIP="120.26.101.172" CloudPort="80" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="35527440" Name="日立冷机" PluginName="Hitachi_Chiller" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="35527592" Name="C1" Port="0" Baud="2400" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="100" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="36304152" Name="D1">
+<Tags>
+<Tag ID="36304280" ItemName="日立冷机.C1.D1.冷水温度设定" ItemID="冷水温度设定" RegisterID="0" RegisterName="Data" Address="0" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36304456" ItemName="日立冷机.C1.D1.温水温度设定" ItemID="温水温度设定" RegisterID="0" RegisterName="Data" Address="1" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35932856" ItemName="日立冷机.C1.D1.冷水温度设定2" ItemID="冷水温度设定2" RegisterID="0" RegisterName="Data" Address="2" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35932984" ItemName="日立冷机.C1.D1.温水温度设定2" ItemID="温水温度设定2" RegisterID="0" RegisterName="Data" Address="3" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35933160" ItemName="日立冷机.C1.D1.电流限制值" ItemID="电流限制值" RegisterID="0" RegisterName="Data" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35933336" ItemName="日立冷机.C1.D1.电流限制时间" ItemID="电流限制时间" RegisterID="0" RegisterName="Data" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="6" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35933512" ItemName="日立冷机.C1.D1.压缩机启动延时时间" ItemID="压缩机启动延时时间" RegisterID="0" RegisterName="Data" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36435816" ItemName="日立冷机.C1.D1.冷热切换" ItemID="冷热切换" RegisterID="0" RegisterName="Data" Address="10" EnableSubAddr="1" SubAddress="6" DataType="2" ModbusType="0" ModbusAddr="1" Writable="0" Digital="0" Description="0冷1热" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36435992" ItemName="日立冷机.C1.D1.本地远程切换" ItemID="本地远程切换" RegisterID="0" RegisterName="Data" Address="10" EnableSubAddr="1" SubAddress="7" DataType="2" ModbusType="0" ModbusAddr="2" Writable="0" Digital="0" Description="0本地1远程" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36436952" ItemName="日立冷机.C1.D1.压缩机1开关状态" ItemID="压缩机1开关状态" RegisterID="0" RegisterName="Data" Address="11" EnableSubAddr="1" SubAddress="0" DataType="2" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="0关1开" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35632496" ItemName="日立冷机.C1.D1.压缩机2开关状态" ItemID="压缩机2开关状态" RegisterID="0" RegisterName="Data" Address="11" EnableSubAddr="1" SubAddress="1" DataType="2" ModbusType="1" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35632624" ItemName="日立冷机.C1.D1.压缩机3开关状态" ItemID="压缩机3开关状态" RegisterID="0" RegisterName="Data" Address="11" EnableSubAddr="1" SubAddress="2" DataType="2" ModbusType="1" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35632752" ItemName="日立冷机.C1.D1.压缩机4开关状态" ItemID="压缩机4开关状态" RegisterID="0" RegisterName="Data" Address="11" EnableSubAddr="1" SubAddress="3" DataType="2" ModbusType="1" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35632880" ItemName="日立冷机.C1.D1.压缩机5开关状态" ItemID="压缩机5开关状态" RegisterID="0" RegisterName="Data" Address="11" EnableSubAddr="1" SubAddress="4" DataType="2" ModbusType="1" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633008" ItemName="日立冷机.C1.D1.压缩机6开关状态" ItemID="压缩机6开关状态" RegisterID="0" RegisterName="Data" Address="11" EnableSubAddr="1" SubAddress="5" DataType="2" ModbusType="1" ModbusAddr="6" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633136" ItemName="日立冷机.C1.D1.压缩机1运行状态" ItemID="压缩机1运行状态" RegisterID="0" RegisterName="Data" Address="12" EnableSubAddr="1" SubAddress="0" DataType="2" ModbusType="1" ModbusAddr="7" Writable="0" Digital="0" Description="0正常1异常停止" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633264" ItemName="日立冷机.C1.D1.压缩机2运行状态" ItemID="压缩机2运行状态" RegisterID="0" RegisterName="Data" Address="12" EnableSubAddr="1" SubAddress="1" DataType="2" ModbusType="1" ModbusAddr="8" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633392" ItemName="日立冷机.C1.D1.压缩机3运行状态" ItemID="压缩机3运行状态" RegisterID="0" RegisterName="Data" Address="12" EnableSubAddr="1" SubAddress="2" DataType="2" ModbusType="1" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633520" ItemName="日立冷机.C1.D1.压缩机4运行状态" ItemID="压缩机4运行状态" RegisterID="0" RegisterName="Data" Address="12" EnableSubAddr="1" SubAddress="3" DataType="2" ModbusType="1" ModbusAddr="10" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633648" ItemName="日立冷机.C1.D1.压缩机5运行状态" ItemID="压缩机5运行状态" RegisterID="0" RegisterName="Data" Address="12" EnableSubAddr="1" SubAddress="4" DataType="2" ModbusType="1" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633776" ItemName="日立冷机.C1.D1.压缩机6运行状态" ItemID="压缩机6运行状态" RegisterID="0" RegisterName="Data" Address="12" EnableSubAddr="1" SubAddress="5" DataType="2" ModbusType="1" ModbusAddr="12" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35633904" ItemName="日立冷机.C1.D1.机组状态" ItemID="机组状态" RegisterID="0" RegisterName="Data" Address="13" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="1" ModbusAddr="13" Writable="0" Digital="0" Description="0停止1运行" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36436168" ItemName="日立冷机.C1.D1.入口温度" ItemID="入口温度" RegisterID="0" RegisterName="Data" Address="17" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36436344" ItemName="日立冷机.C1.D1.出口温度" ItemID="出口温度" RegisterID="0" RegisterName="Data" Address="18" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36436520" ItemName="日立冷机.C1.D1.外气温度" ItemID="外气温度" RegisterID="0" RegisterName="Data" Address="19" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36436696" ItemName="日立冷机.C1.D1.入口温度2" ItemID="入口温度2" RegisterID="0" RegisterName="Data" Address="20" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="36436824" ItemName="日立冷机.C1.D1.出口温度2" ItemID="出口温度2" RegisterID="0" RegisterName="Data" Address="21" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="2" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634032" ItemName="日立冷机.C1.D1.压缩机运行状态" ItemID="压缩机运行状态" RegisterID="0" RegisterName="Data" Address="25" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="1" ModbusAddr="14" Writable="0" Digital="0" Description="0关1开" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634160" ItemName="日立冷机.C1.D1.风扇1状态" ItemID="风扇1状态" RegisterID="0" RegisterName="Data" Address="26" EnableSubAddr="1" SubAddress="0" DataType="2" ModbusType="1" ModbusAddr="15" Writable="0" Digital="0" Description="0关1开" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634288" ItemName="日立冷机.C1.D1.风扇2状态" ItemID="风扇2状态" RegisterID="0" RegisterName="Data" Address="26" EnableSubAddr="1" SubAddress="1" DataType="2" ModbusType="1" ModbusAddr="16" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634416" ItemName="日立冷机.C1.D1.风扇3状态" ItemID="风扇3状态" RegisterID="0" RegisterName="Data" Address="26" EnableSubAddr="1" SubAddress="2" DataType="2" ModbusType="1" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634544" ItemName="日立冷机.C1.D1.风扇4状态" ItemID="风扇4状态" RegisterID="0" RegisterName="Data" Address="26" EnableSubAddr="1" SubAddress="3" DataType="2" ModbusType="1" ModbusAddr="18" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634672" ItemName="日立冷机.C1.D1.风扇5状态" ItemID="风扇5状态" RegisterID="0" RegisterName="Data" Address="26" EnableSubAddr="1" SubAddress="4" DataType="2" ModbusType="1" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35634800" ItemName="日立冷机.C1.D1.风扇6状态" ItemID="风扇6状态" RegisterID="0" RegisterName="Data" Address="26" EnableSubAddr="1" SubAddress="5" DataType="2" ModbusType="1" ModbusAddr="20" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="35634928" ItemName="$.日立冷机.C1.D1.CommStatus" ItemID="$.日立冷机.C1.D1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<JSs/>
+</X2M>

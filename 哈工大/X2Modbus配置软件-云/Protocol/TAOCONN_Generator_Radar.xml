@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="230.3.50.1" Port="8501" TimeOuts="1000">
+  <Regs StationID="4177.49.0" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="Data" RegID="0" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

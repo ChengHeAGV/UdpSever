@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.0.85" ShowASCII="1" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="14" AO="10" BI="10" BO="14" EnablePort="1" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="0" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="20532544" Name="绿米网关" PluginName="Lumi_Gateway" PluginType="1" PollingTime="1000">
+<Channels>
+<Channel ID="20904328" Name="Channel_1" IP="192.168.0.86" Port="4321" TimeOut="1000">
+<Devices>
+<Device StationID="34ce008bf60e.2x7wsrweok6eteeu" IntervalDelay="1000" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="4" BitMaxSpan="64" ID="20126280" Name="Device_1">
+<Tags>
+<Tag ID="20126408" ItemName="绿米网关.Channel_1.Device_1.Tag_5" ItemID="Tag_5" RegisterID="0" RegisterName="sensor_ht" Address="158d000117fdf0.temperature" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20128864" ItemName="绿米网关.Channel_1.Device_1.Tag_6" ItemID="Tag_6" RegisterID="0" RegisterName="sensor_ht" Address="158d000117fdf0.humidity" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20129040" ItemName="绿米网关.Channel_1.Device_1.Tag_2" ItemID="Tag_2" RegisterID="4" RegisterName="ctrl_neutral2" Address="158d000127a651.channel_0" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="0" ModbusAddr="1" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20129216" ItemName="绿米网关.Channel_1.Device_1.Tag_3" ItemID="Tag_3" RegisterID="4" RegisterName="ctrl_neutral2" Address="158d000127a651.channel_1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="0" ModbusAddr="2" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20129392" ItemName="绿米网关.Channel_1.Device_1.Tag_4" ItemID="Tag_4" RegisterID="4" RegisterName="ctrl_neutral2" Address="158d000127a651.voltage" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="4" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20129568" ItemName="绿米网关.Channel_1.Device_1.Tag_1" ItemID="Tag_1" RegisterID="6" RegisterName="86sw2" Address="158d00012da668.voltage" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="3" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="20129744" ItemName="$.绿米网关.Channel_1.Device_1.CommStatus" ItemID="$.绿米网关.Channel_1.Device_1.CommStatus" DataType="1" Value="" ModbusType="0" ModbusAddr="4" Writable="0" Digital="0" Description=""/>
+</Vars>
+<JSs/>
+</X2M>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.9.201" Port="5050" TimeOuts="1000">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="64" >
+    <Reg RegName="I" RegID="0" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="O" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="F" RegID="2" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="R" RegID="3" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="C" RegID="4" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="T" RegID="5" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

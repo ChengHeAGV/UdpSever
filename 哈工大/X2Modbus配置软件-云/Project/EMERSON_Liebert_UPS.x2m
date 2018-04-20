@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="62" BI="12" BO="10" EnablePort="0" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="1" ResetValue="0" LittleEndian="0" Float2Long="0">
+<Driver ID="24849416" Name="艾默生UPS" PluginName="EMERSON_Liebert_UPS" PluginType="2" PollingTime="1500">
+<Channels>
+<Channel ID="24848152" Name="COM2" Port="0" Baud="4800" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="24848232" Name="告警状态1">
+<Tags/>
+<Groups>
+<Group ID="24848360" Name="Group_1">
+<Tags>
+<Tag ID="24848440" ItemName="艾默生UPS.COM2.告警状态1.Group_1.逆变器" ItemID="逆变器" RegisterID="2" RegisterName="告警量输入状态" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="40" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24848568" ItemName="艾默生UPS.COM2.告警状态1.Group_1.旁路电压" ItemID="旁路电压" RegisterID="2" RegisterName="告警量输入状态" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="41" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25381712" ItemName="艾默生UPS.COM2.告警状态1.Group_1.同步/不同步" ItemID="同步/不同步" RegisterID="2" RegisterName="告警量输入状态" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="42" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25381888" ItemName="艾默生UPS.COM2.告警状态1.Group_1.市电电压" ItemID="市电电压" RegisterID="2" RegisterName="告警量输入状态" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="43" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25382064" ItemName="艾默生UPS.COM2.告警状态1.Group_1.整流器" ItemID="整流器" RegisterID="2" RegisterName="告警量输入状态" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="44" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25619792" ItemName="艾默生UPS.COM2.告警状态1.Group_1.蓄电池总电压" ItemID="蓄电池总电压" RegisterID="2" RegisterName="告警量输入状态" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="45" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25619968" ItemName="艾默生UPS.COM2.告警状态1.Group_1.标示电池数量" ItemID="标示电池数量" RegisterID="2" RegisterName="告警量输入状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="46" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25620144" ItemName="艾默生UPS.COM2.告警状态1.Group_1.充电器故障" ItemID="充电器故障" RegisterID="2" RegisterName="告警量输入状态" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="47" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25620320" ItemName="艾默生UPS.COM2.告警状态1.Group_1.零线/火线接反" ItemID="零线/火线接反" RegisterID="2" RegisterName="告警量输入状态" Address="10" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="48" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25620496" ItemName="艾默生UPS.COM2.告警状态1.Group_1.输出短路" ItemID="输出短路" RegisterID="2" RegisterName="告警量输入状态" Address="11" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="49" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25620672" ItemName="艾默生UPS.COM2.告警状态1.Group_1.输出过载" ItemID="输出过载" RegisterID="2" RegisterName="告警量输入状态" Address="12" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="50" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25620848" ItemName="艾默生UPS.COM2.告警状态1.Group_1.散热器温度过高" ItemID="散热器温度过高" RegisterID="2" RegisterName="告警量输入状态" Address="13" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="51" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25621024" ItemName="艾默生UPS.COM2.告警状态1.Group_1.市电频率" ItemID="市电频率" RegisterID="2" RegisterName="告警量输入状态" Address="14" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="52" Writable="0" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="25621152" Name="Group_2">
+<Tags>
+<Tag ID="25621232" ItemName="艾默生UPS.COM2.告警状态1.Group_2.供电方式" ItemID="供电方式" RegisterID="1" RegisterName="开关输入状态" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="35" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24950128" ItemName="艾默生UPS.COM2.告警状态1.Group_2.电池自检" ItemID="电池自检" RegisterID="1" RegisterName="开关输入状态" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="36" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24950256" ItemName="艾默生UPS.COM2.告警状态1.Group_2.均充/浮充" ItemID="均充/浮充" RegisterID="1" RegisterName="开关输入状态" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="37" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24950384" ItemName="艾默生UPS.COM2.告警状态1.Group_2.开机/关机" ItemID="开机/关机" RegisterID="1" RegisterName="开关输入状态" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="38" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24950512" ItemName="艾默生UPS.COM2.告警状态1.Group_2.UPS 供电" ItemID="UPS 供电" RegisterID="1" RegisterName="开关输入状态" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="39" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="25621360" Name="Group_3">
+<Tags>
+<Tag ID="24950640" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输入线相电压A" ItemID="交流输入线相电压A" RegisterID="0" RegisterName="模拟量数据" Address="1" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24950768" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输入线相电压B" ItemID="交流输入线相电压B" RegisterID="0" RegisterName="模拟量数据" Address="2" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24950896" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输入线相电压C" ItemID="交流输入线相电压C" RegisterID="0" RegisterName="模拟量数据" Address="3" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951024" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输出线相电压A" ItemID="交流输出线相电压A" RegisterID="0" RegisterName="模拟量数据" Address="4" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951152" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输出线相电压B" ItemID="交流输出线相电压B" RegisterID="0" RegisterName="模拟量数据" Address="5" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951280" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输出线相电压C" ItemID="交流输出线相电压C" RegisterID="0" RegisterName="模拟量数据" Address="6" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951408" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输出电流A" ItemID="交流输出电流A" RegisterID="0" RegisterName="模拟量数据" Address="7" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951536" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输出电流B" ItemID="交流输出电流B" RegisterID="0" RegisterName="模拟量数据" Address="8" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951664" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输出电流C" ItemID="交流输出电流C" RegisterID="0" RegisterName="模拟量数据" Address="9" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951792" ItemName="艾默生UPS.COM2.告警状态1.Group_3.直流输入电压" ItemID="直流输入电压" RegisterID="0" RegisterName="模拟量数据" Address="10" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24951920" ItemName="艾默生UPS.COM2.告警状态1.Group_3.输出频率" ItemID="输出频率" RegisterID="0" RegisterName="模拟量数据" Address="11" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24952048" ItemName="艾默生UPS.COM2.告警状态1.Group_3.标示电池数量m" ItemID="标示电池数量m" RegisterID="0" RegisterName="模拟量数据" Address="12" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="23" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24952176" ItemName="艾默生UPS.COM2.告警状态1.Group_3.标示温度数量n" ItemID="标示温度数量n" RegisterID="0" RegisterName="模拟量数据" Address="13" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="25" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24952304" ItemName="艾默生UPS.COM2.告警状态1.Group_3.交流输入频率" ItemID="交流输入频率" RegisterID="0" RegisterName="模拟量数据" Address="15" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="27" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24952432" ItemName="艾默生UPS.COM2.告警状态1.Group_3.负载大小" ItemID="负载大小" RegisterID="0" RegisterName="模拟量数据" Address="16" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="29" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+</Groups>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="24855920" ItemName="$.艾默生UPS.COM2.告警状态1.CommStatus" ItemID="$.艾默生UPS.COM2.告警状态1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<JSs/>
+</X2M>

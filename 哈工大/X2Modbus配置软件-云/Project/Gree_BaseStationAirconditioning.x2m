@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="28" AO="26" BI="11" BO="10" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="25819512" Name="Gree_Airconditioning" PluginName="Gree_BaseStationAirconditioning" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="25819664" Name="C1" Port="0" Baud="4800" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="1000" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="25818680" Name="D1">
+<Tags/>
+<Groups>
+<Group ID="25818808" Name="告警状态">
+<Tags>
+<Tag ID="25819840" ItemName="Gree_Airconditioning.C1.D1.告警状态.主机工作线/相电压AB/A" ItemID="主机工作线/相电压AB/A" RegisterID="1" RegisterName="Error" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25819968" ItemName="Gree_Airconditioning.C1.D1.告警状态.主机工作线/相电压BC/B" ItemID="主机工作线/相电压BC/B" RegisterID="1" RegisterName="Error" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25820144" ItemName="Gree_Airconditioning.C1.D1.告警状态.主机工作线/相电压CA/C" ItemID="主机工作线/相电压CA/C" RegisterID="1" RegisterName="Error" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25820320" ItemName="Gree_Airconditioning.C1.D1.告警状态.主机工作相电流A" ItemID="主机工作相电流A" RegisterID="1" RegisterName="Error" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25820496" ItemName="Gree_Airconditioning.C1.D1.告警状态.主机工作相电流B" ItemID="主机工作相电流B" RegisterID="1" RegisterName="Error" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25137328" ItemName="Gree_Airconditioning.C1.D1.告警状态.主机工作相电流C" ItemID="主机工作相电流C" RegisterID="1" RegisterName="Error" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="6" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25137504" ItemName="Gree_Airconditioning.C1.D1.告警状态.回风温度" ItemID="回风温度" RegisterID="1" RegisterName="Error" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25137680" ItemName="Gree_Airconditioning.C1.D1.告警状态.回风湿度" ItemID="回风湿度" RegisterID="1" RegisterName="Error" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="8" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25137856" ItemName="Gree_Airconditioning.C1.D1.告警状态.过滤器" ItemID="过滤器" RegisterID="1" RegisterName="Error" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25138032" ItemName="Gree_Airconditioning.C1.D1.告警状态.压缩机" ItemID="压缩机" RegisterID="1" RegisterName="Error" Address="10" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="10" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25138208" ItemName="Gree_Airconditioning.C1.D1.告警状态.风机" ItemID="风机" RegisterID="1" RegisterName="Error" Address="11" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25138384" ItemName="Gree_Airconditioning.C1.D1.告警状态.用户自定义告警数量" ItemID="用户自定义告警数量" RegisterID="1" RegisterName="Error" Address="12" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="12" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25041288" ItemName="Gree_Airconditioning.C1.D1.告警状态.系统高压保护（E1）" ItemID="系统高压保护（E1）" RegisterID="1" RegisterName="Error" Address="13" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25861176" ItemName="Gree_Airconditioning.C1.D1.告警状态.系统低压保护（E3）" ItemID="系统低压保护（E3）" RegisterID="1" RegisterName="Error" Address="14" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="14" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25146736" ItemName="Gree_Airconditioning.C1.D1.告警状态.压缩机排气保护（E4）" ItemID="压缩机排气保护（E4）" RegisterID="1" RegisterName="Error" Address="15" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25146864" ItemName="Gree_Airconditioning.C1.D1.告警状态.低电压过流保护（E5）" ItemID="低电压过流保护（E5）" RegisterID="1" RegisterName="Error" Address="16" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="16" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25146992" ItemName="Gree_Airconditioning.C1.D1.告警状态.室内环境感温包开短路（F1）" ItemID="室内环境感温包开短路（F1）" RegisterID="1" RegisterName="Error" Address="17" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25147120" ItemName="Gree_Airconditioning.C1.D1.告警状态.室内蒸发器感温包开短路（F2）" ItemID="室内蒸发器感温包开短路（F2）" RegisterID="1" RegisterName="Error" Address="18" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="2" ModbusAddr="18" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="25861304" Name="开关输入状态">
+<Tags>
+<Tag ID="25147248" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.主从机" ItemID="主从机" RegisterID="0" RegisterName="Error" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25147376" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.模式" ItemID="模式" RegisterID="0" RegisterName="Error" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25147504" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.风速" ItemID="风速" RegisterID="0" RegisterName="Error" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25147632" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.是否屏蔽本地控制" ItemID="是否屏蔽本地控制" RegisterID="0" RegisterName="Error" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="6" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25147760" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.压缩机启停" ItemID="压缩机启停" RegisterID="0" RegisterName="Error" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25147888" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.空调状态" ItemID="空调状态" RegisterID="0" RegisterName="Error" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148016" ItemName="Gree_Airconditioning.C1.D1.开关输入状态.用户自定义状态数量" ItemID="用户自定义状态数量" RegisterID="0" RegisterName="Error" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="25861384" Name="系统参数">
+<Tags>
+<Tag ID="25148144" ItemName="Gree_Airconditioning.C1.D1.系统参数.空调开机温度" ItemID="空调开机温度" RegisterID="2" RegisterName="Error" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="8" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148272" ItemName="Gree_Airconditioning.C1.D1.系统参数.空调关机温度" ItemID="空调关机温度" RegisterID="2" RegisterName="Error" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148400" ItemName="Gree_Airconditioning.C1.D1.系统参数.回风温度上限" ItemID="回风温度上限" RegisterID="2" RegisterName="Error" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="10" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148528" ItemName="Gree_Airconditioning.C1.D1.系统参数.回风温度下限" ItemID="回风温度下限" RegisterID="2" RegisterName="Error" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148656" ItemName="Gree_Airconditioning.C1.D1.系统参数.回风湿度上限" ItemID="回风湿度上限" RegisterID="2" RegisterName="Error" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="12" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148784" ItemName="Gree_Airconditioning.C1.D1.系统参数.回风湿度下限" ItemID="回风湿度下限" RegisterID="2" RegisterName="Error" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25148912" ItemName="Gree_Airconditioning.C1.D1.系统参数.温度设定值" ItemID="温度设定值" RegisterID="2" RegisterName="Error" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="14" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25149040" ItemName="Gree_Airconditioning.C1.D1.系统参数.用户自定义参数数量" ItemID="用户自定义参数数量" RegisterID="2" RegisterName="Error" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="25149168" ItemName="Gree_Airconditioning.C1.D1.系统参数.环境温度" ItemID="环境温度" RegisterID="2" RegisterName="Error" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="16" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+</Groups>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="25149296" ItemName="$.Gree_Airconditioning.C1.D1.CommStatus" ItemID="$.Gree_Airconditioning.C1.D1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<script language="javascript" type="text/javascript">
+<js>setInterval("MainLoop()", 1000);
+function  MainLoop(){
+
+
+
+
+
+
+}</js>
+</script>
+</X2M>

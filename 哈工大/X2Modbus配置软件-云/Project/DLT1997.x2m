@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="26" AO="10" BI="11" BO="10" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0">
+<Driver ID="25425776" Name="1997" PluginName="DLT645-1997Client" PluginType="2" PollingTime="5000">
+<Channels>
+<Channel ID="25425984" Name="Channel_1" Port="2" Baud="1200" DataBits="8" Parity="2" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="999999999999" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="2" WordMaxSpan="4" BitAdjacentSpan="2" BitMaxSpan="4" ID="25426064" Name="Device_1">
+<Tags>
+<Tag ID="24744024" ItemName="1997.Channel_1.Device_1.正向有功总电能" ItemID="正向有功总电能" RegisterID="0" RegisterName="标识编码" Address="9010" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24744152" ItemName="1997.Channel_1.Device_1.Ua" ItemID="Ua" RegisterID="0" RegisterName="标识编码" Address="B611" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24744280" ItemName="1997.Channel_1.Device_1.Ub" ItemID="Ub" RegisterID="0" RegisterName="标识编码" Address="B612" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24744456" ItemName="1997.Channel_1.Device_1.Uc" ItemID="Uc" RegisterID="0" RegisterName="标识编码" Address="B613" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24744632" ItemName="1997.Channel_1.Device_1.Ia" ItemID="Ia" RegisterID="0" RegisterName="标识编码" Address="B621" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24744808" ItemName="1997.Channel_1.Device_1.Ib" ItemID="Ib" RegisterID="0" RegisterName="标识编码" Address="B622" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24744984" ItemName="1997.Channel_1.Device_1.Ic" ItemID="Ic" RegisterID="0" RegisterName="标识编码" Address="B623" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24745160" ItemName="1997.Channel_1.Device_1.P" ItemID="P" RegisterID="0" RegisterName="标识编码" Address="B630" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="24650640" ItemName="$.1997.Channel_1.Device_1.CommStatus" ItemID="$.1997.Channel_1.Device_1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<JSs>
+<script JSName="JS1" Description="" Interval="1000">
+<js>MoveValue('$.1997.Channel_1.Device_1.CommStatus','1997.Channel_1.Device_1.P');
+</js>
+</script>
+</JSs>
+</X2M>

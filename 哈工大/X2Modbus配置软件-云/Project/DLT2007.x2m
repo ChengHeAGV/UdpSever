@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="28" AO="10" BI="11" BO="10" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="24252224" Name="2007" PluginName="DLT645-2007Client" PluginType="2" PollingTime="5000">
+<Channels>
+<Channel ID="24153032" Name="Channel_1" Port="0" Baud="2400" DataBits="8" Parity="2" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="AAAAAAAAAAAA" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="2" WordMaxSpan="4" BitAdjacentSpan="2" BitMaxSpan="4" ID="24153112" Name="Device_1">
+<Tags>
+<Tag ID="24153240" ItemName="2007.Channel_1.Device_1.组合有功总电能" ItemID="组合有功总电能" RegisterID="0" RegisterName="标识编码" Address="00000000" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24255264" ItemName="2007.Channel_1.Device_1.正向有功总电能" ItemID="正向有功总电能" RegisterID="0" RegisterName="标识编码" Address="00010000" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24255440" ItemName="2007.Channel_1.Device_1.Ua" ItemID="Ua" RegisterID="0" RegisterName="标识编码" Address="02010100" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24255616" ItemName="2007.Channel_1.Device_1.Ub" ItemID="Ub" RegisterID="0" RegisterName="标识编码" Address="02010200" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24255792" ItemName="2007.Channel_1.Device_1.Uc" ItemID="Uc" RegisterID="0" RegisterName="标识编码" Address="02010300" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24255968" ItemName="2007.Channel_1.Device_1.Ia" ItemID="Ia" RegisterID="0" RegisterName="标识编码" Address="02020100" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24256144" ItemName="2007.Channel_1.Device_1.Ib" ItemID="Ib" RegisterID="0" RegisterName="标识编码" Address="02020200" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24256320" ItemName="2007.Channel_1.Device_1.Ic" ItemID="Ic" RegisterID="0" RegisterName="标识编码" Address="02020300" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="15" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="24256496" ItemName="2007.Channel_1.Device_1.P" ItemID="P" RegisterID="0" RegisterName="标识编码" Address="02030000" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="2" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="24256704" ItemName="$.2007.Channel_1.Device_1.CommStatus" ItemID="$.2007.Channel_1.Device_1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description=""/>
+</Vars>
+<JSs/>
+</X2M>

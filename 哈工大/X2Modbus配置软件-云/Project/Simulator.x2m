@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.80" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="20" BI="11" BO="10" EnablePort="0" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="1" CloudIP="192.168.1.66" CloudPort="8080" GatewayName="Gateway2" GatewayID="2" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="35199760" Name="11" PluginName="Simulator" PluginType="1" PollingTime="1000">
+<Channels>
+<Channel ID="35605752" Name="Channel_1" IP="127.0.0.1" Port="1" TimeOut="1000">
+<Devices>
+<Device StationID="1" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="4" BitMaxSpan="64" ID="35605824" Name="Device_1">
+<Tags>
+<Tag ID="5883880" ItemName="11.Channel_1.Device_1.Tag_1" ItemID="Tag_1" RegisterID="3" RegisterName="Const" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="3" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="5884056" ItemName="11.Channel_1.Device_1.Tag_2" ItemID="Tag_2" RegisterID="3" RegisterName="Const" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="4" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35976472" ItemName="11.Channel_1.Device_1.Tag_3" ItemID="Tag_3" RegisterID="3" RegisterName="Const" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="5" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35976600" ItemName="11.Channel_1.Device_1.Tag_4" ItemID="Tag_4" RegisterID="3" RegisterName="Const" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="6" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35976728" ItemName="11.Channel_1.Device_1.Tag_5" ItemID="Tag_5" RegisterID="3" RegisterName="Const" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="7" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35202688" ItemName="11.Channel_1.Device_1.Tag_6" ItemID="Tag_6" RegisterID="3" RegisterName="Const" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="8" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35202816" ItemName="11.Channel_1.Device_1.Tag_7" ItemID="Tag_7" RegisterID="3" RegisterName="Const" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="9" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="35202944" ItemName="11.Channel_1.Device_1.Tag_8" ItemID="Tag_8" RegisterID="3" RegisterName="Const" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="10" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="35203120" ItemName="$.11.Channel_1.Device_1.CommStatus" ItemID="$.11.Channel_1.Device_1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<JSs/>
+</X2M>

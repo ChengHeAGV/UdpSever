@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="76" BI="11" BO="10" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="1" Float2Long="0">
+<Driver ID="37281616" Name="北京富士特锅炉" PluginName="BoosterBoiler_NEURON_NXQ" PluginType="2" PollingTime="100">
+<Channels>
+<Channel ID="37275672" Name="Channel_1" Port="0" Baud="9600" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="1000" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="4" BitMaxSpan="64" ID="31094128" Name="Device_1">
+<Tags/>
+<Groups>
+<Group ID="37275752" Name="D">
+<Tags>
+<Tag ID="31094256" ItemName="北京富士特锅炉.Channel_1.Device_1.D.高燃烧" ItemID="高燃烧" RegisterID="0" RegisterName="D" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="17" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31094384" ItemName="北京富士特锅炉.Channel_1.Device_1.D.输入状态" ItemID="输入状态" RegisterID="0" RegisterName="D" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="19" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31094512" ItemName="北京富士特锅炉.Channel_1.Device_1.D.出力状态" ItemID="出力状态" RegisterID="0" RegisterName="D" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="21" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31094640" ItemName="北京富士特锅炉.Channel_1.Device_1.D.Blow Data" ItemID="Blow Data" RegisterID="0" RegisterName="D" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="27" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31094768" ItemName="北京富士特锅炉.Channel_1.Device_1.D.比例压力" ItemID="比例压力" RegisterID="0" RegisterName="D" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="29" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31094896" ItemName="北京富士特锅炉.Channel_1.Device_1.D.伺服马达角度" ItemID="伺服马达角度" RegisterID="0" RegisterName="D" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="31" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="37275832" Name="T">
+<Tags>
+<Tag ID="31095024" ItemName="北京富士特锅炉.Channel_1.Device_1.T.高燃烧时间" ItemID="高燃烧时间" RegisterID="1" RegisterName="T" Address="1" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="33" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31095152" ItemName="北京富士特锅炉.Channel_1.Device_1.T.中燃烧时间" ItemID="中燃烧时间" RegisterID="1" RegisterName="T" Address="3" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="34" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31095280" ItemName="北京富士特锅炉.Channel_1.Device_1.T.低燃烧时间" ItemID="低燃烧时间" RegisterID="1" RegisterName="T" Address="5" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="51" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31095408" ItemName="北京富士特锅炉.Channel_1.Device_1.T.点火次数" ItemID="点火次数" RegisterID="1" RegisterName="T" Address="7" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="52" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31095536" ItemName="北京富士特锅炉.Channel_1.Device_1.T.供水启动时间" ItemID="供水启动时间" RegisterID="1" RegisterName="T" Address="9" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="53" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31095664" ItemName="北京富士特锅炉.Channel_1.Device_1.T.注剂启动次数" ItemID="注剂启动次数" RegisterID="1" RegisterName="T" Address="11" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="54" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31095792" ItemName="北京富士特锅炉.Channel_1.Device_1.T.循环启动时间" ItemID="循环启动时间" RegisterID="1" RegisterName="T" Address="13" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="55" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="37275912" Name="Q">
+<Tags>
+<Tag ID="31095920" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.启动" ItemID="启动" RegisterID="2" RegisterName="Q" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="23" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096048" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.蒸汽压力" ItemID="蒸汽压力" RegisterID="2" RegisterName="Q" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="35" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096176" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.排烟" ItemID="排烟" RegisterID="2" RegisterName="Q" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="37" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096304" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.管体" ItemID="管体" RegisterID="2" RegisterName="Q" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="39" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096432" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.水垢" ItemID="水垢" RegisterID="2" RegisterName="Q" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="41" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096560" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.外界" ItemID="外界" RegisterID="2" RegisterName="Q" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="43" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096688" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.供水" ItemID="供水" RegisterID="2" RegisterName="Q" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="45" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096816" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.供水量累计" ItemID="供水量累计" RegisterID="2" RegisterName="Q" Address="8" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="47" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31096944" ItemName="北京富士特锅炉.Channel_1.Device_1.Q.燃烧量累计" ItemID="燃烧量累计" RegisterID="2" RegisterName="Q" Address="10" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="49" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+<Group ID="37275992" Name="R">
+<Tags>
+<Tag ID="31097072" ItemName="北京富士特锅炉.Channel_1.Device_1.R.开始号数" ItemID="开始号数" RegisterID="3" RegisterName="R" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="56" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097200" ItemName="北京富士特锅炉.Channel_1.Device_1.R.数量" ItemID="数量" RegisterID="3" RegisterName="R" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="57" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097328" ItemName="北京富士特锅炉.Channel_1.Device_1.R.选择锅炉" ItemID="选择锅炉" RegisterID="3" RegisterName="R" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="58" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097456" ItemName="北京富士特锅炉.Channel_1.Device_1.R.阀调节方式" ItemID="阀调节方式" RegisterID="3" RegisterName="R" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="59" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097584" ItemName="北京富士特锅炉.Channel_1.Device_1.R.水位调节方式" ItemID="水位调节方式" RegisterID="3" RegisterName="R" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="60" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097712" ItemName="北京富士特锅炉.Channel_1.Device_1.R.浓缩排污开关ON点" ItemID="浓缩排污开关ON点" RegisterID="3" RegisterName="R" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="61" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097840" ItemName="北京富士特锅炉.Channel_1.Device_1.R.浓缩排污开关OFF 点" ItemID="浓缩排污开关OFF 点" RegisterID="3" RegisterName="R" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="62" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31097968" ItemName="北京富士特锅炉.Channel_1.Device_1.R.注剂泵延迟时间" ItemID="注剂泵延迟时间" RegisterID="3" RegisterName="R" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="63" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31098096" ItemName="北京富士特锅炉.Channel_1.Device_1.R.燃料及点火方式" ItemID="燃料及点火方式" RegisterID="3" RegisterName="R" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="64" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31098224" ItemName="北京富士特锅炉.Channel_1.Device_1.R.复位功能" ItemID="复位功能" RegisterID="3" RegisterName="R" Address="10" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="65" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="31098352" ItemName="北京富士特锅炉.Channel_1.Device_1.R.燃烧转换时间" ItemID="燃烧转换时间" RegisterID="3" RegisterName="R" Address="11" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="66" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+</Group>
+</Groups>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="31098480" ItemName="$.北京富士特锅炉.Channel_1.Device_1.CommStatus" ItemID="$.北京富士特锅炉.Channel_1.Device_1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<JSs/>
+</X2M>

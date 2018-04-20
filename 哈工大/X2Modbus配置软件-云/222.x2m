@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.250.102" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="0" AI="10" AO="10" BI="10" BO="10" EnablePort="0" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="1" ResetValue="0" LittleEndian="0" Float2Long="1" EnableCloud="1" CloudIP="127.0.0.1" CloudPort="80" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Vars/>
+<JSs/>
+</X2M>

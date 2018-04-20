@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <Functions>
+      <Function type="System" method="alert" return="void" description="Show a message dialog">
+        <Param Name="strText" type="In" description="string of message"/>
+      </Function>
+      <Function type="System" method="Sleep" return="void" description="Sleep">
+        <Param Name="nMilliseconds" type="In" description="Milliseconds of Delay"/>
+      </Function>
+      <Function type="Tag" method="WriteToTag" return="bool" description="Write value to tag">
+        <Param Name="strTagName" type="In" description="Tag Name"/>
+        <Param Name="strValue" type="In" description="Tag Value"/>
+      </Function>
+      <Function type="Tag" method="ReadFromTag" return="var" description="Read value from tag">
+        <Param Name="strTagName" type="In" description="Tag Name"/>
+      </Function>
+      <Function type="Tag" method="MoveValue" return="var" description="Move Value">
+        <Param Name="szSrcName" type="In" description="Source Tag Name"/>
+        <Param Name="szDestName" type="In" description="Destination Tag Name"/>
+      </Function>
+      <Function type="Tag" method="GetTagQuality" return="int" description="Get quality from tag">
+        <Param Name="strTagName" type="In" description="Tag Name"/>
+      </Function>
+      <Function type="Tag" method="GetTagBCD" return="int" description="Get BCD from tag">
+        <Param Name="strTagName" type="In" description="Tag Name"/>
+      </Function>
+      <Function type="Tag" method="GetTagBCDR" return="int" description="Get inverse BCD from tag">
+        <Param Name="strTagName" type="In" description="Tag Name"/>
+      </Function>
+    </Functions>
+</Config>

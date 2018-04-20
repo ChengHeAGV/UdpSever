@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.1.100" Port="502" TimeOuts="1000">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="true" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="64" >
+          <Reg RegName="0X(Coil Status)-F5" RegID="0" Writable="true" IsDigital="true" Description=""/>
+          <Reg RegName="1X(Input Status)" RegID="1" Writable="false" IsDigital="true" Description=""/>
+          <Reg RegName="3X(Input Register)" RegID="2" Writable="false" IsDigital="false" Description=""/>
+          <Reg RegName="4X(Holding Register)-F6" RegID="3" Writable="true" IsDigital="false" Description=""/>
+          <Reg RegName="4X(Holding Register)-F16" RegID="4" Writable="true" IsDigital="false" Description=""/>
+          <Reg RegName="4X(Holding Register)-F5"  RegID="5" Writable="true" IsDigital="false" Description=""/>
+          <Reg RegName="0X(Coil Status)-F15"  RegID="6" Writable="true" IsDigital="true" Description=""/>
+	</Regs>
+</PLC>

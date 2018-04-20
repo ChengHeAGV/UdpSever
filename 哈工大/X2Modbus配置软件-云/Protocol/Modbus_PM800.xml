@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="9600" DataBit="8" StopBit="0" Parity="2" FlowCtrl="0" TimeOuts="1500">
+	<Regs StationID="1" IntervalDelay="500" WriteDelay="50" ShowSwap="true" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="64" >
+          <Reg RegName="0X(Coil Status)" RegID="0" Writable="true" IsDigital="true" Description=""/>
+          <Reg RegName="1X(Input Status)" RegID="1" Writable="false" IsDigital="true" Description=""/>
+          <Reg RegName="3X(Input Register)" RegID="2" Writable="false" IsDigital="false" Description=""/>
+          <Reg RegName="4X(Holding Register)" RegID="3" Writable="true" IsDigital="false" Description=""/>
+	</Regs>
+</PLC>

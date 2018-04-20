@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="19200" DataBit="8" StopBit="0" Parity="2" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="64" >
+    <Reg RegName="X" RegID="0" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="Y" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="M" RegID="2" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="T" RegID="3" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="C" RegID="4" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="S" RegID="5" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="TD" RegID="6" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="CD" RegID="7" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="D" RegID="8" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="FD" RegID="9" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

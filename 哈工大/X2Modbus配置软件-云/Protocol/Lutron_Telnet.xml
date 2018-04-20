@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.124.118" Port="23" TimeOuts="1000">
+  <Regs StationID="" IntervalDelay="100" WriteDelay="100" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="Loop" RegID="0" Writable="false" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

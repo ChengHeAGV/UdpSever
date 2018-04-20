@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="19200" DataBit="8" StopBit="0" Parity="0" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="2" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="64" >
+    <Reg RegName="火警110" RegID="0" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="故障111" RegID="1" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="启动112" RegID="2" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="反馈113" RegID="3" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="监管114" RegID="4" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="屏蔽115" RegID="5" Writable="false" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

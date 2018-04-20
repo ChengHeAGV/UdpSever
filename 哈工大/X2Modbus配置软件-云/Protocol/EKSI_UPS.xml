@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="2400" DataBit="8" StopBit="0" Parity="0" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="1" IntervalDelay="1000" WriteDelay="500" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="实时数据" RegID="0" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="状态查询" RegID="1" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="三相实时数据" RegID="2" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="额定信息" RegID="3" Writable="false" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

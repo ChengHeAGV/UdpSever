@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="10.10.71.10" Port="102" TimeOuts="1000">
+  <Regs StationID="" IntervalDelay="50" WriteDelay="25" ShowSwap="true" AnalaogAdjacent="4" AnalaogMax="8" BinaryAdjacent="4" BinaryMax="16" >
+    <Reg RegName="I" RegID="0" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Q" RegID="1" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="M" RegID="2" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB1" RegID="3" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB2" RegID="4" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB3" RegID="5" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB4" RegID="6" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB5" RegID="7" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB6" RegID="8" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB7" RegID="9" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB8" RegID="10" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB9" RegID="11" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DB10" RegID="12" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DBn" RegID="13" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

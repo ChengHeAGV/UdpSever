@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="127.0.0.1" Port="502" TimeOuts="1000">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="25" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="0" BinaryAdjacent="0" BinaryMax="0" >
+    <Reg RegName="9010" RegID="0" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B611" RegID="1" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B612" RegID="2" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B613" RegID="3" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B621" RegID="4" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B622" RegID="5" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B623" RegID="6" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B631" RegID="7" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B632" RegID="8" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B633" RegID="9" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B650" RegID="10" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="D010" RegID="11" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="D012" RegID="12" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="8050" RegID="13" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8051" RegID="14" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8052" RegID="15" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8053" RegID="16" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8054" RegID="17" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8055" RegID="18" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8056" RegID="19" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8057" RegID="20" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8058" RegID="21" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8059" RegID="22" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="805A" RegID="23" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="8220" RegID="24" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8221" RegID="25" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="8240" RegID="26" Writable="false" IsDigital="true" Description=""/>
+  </Regs>
+</PLC>

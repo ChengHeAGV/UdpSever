@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.1.55" Port="2404" TimeOuts="1000">
+  <Regs StationID="1" IntervalDelay="100" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="20" BinaryAdjacent="0" BinaryMax="2" >
+    <Reg RegName="单点遥信" RegID="0" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="短浮点遥测" RegID="1" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="遥脉" RegID="2" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

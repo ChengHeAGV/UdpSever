@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.101" ShowASCII="1" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="28" AO="10" BI="11" BO="10" EnablePort="0" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="21343984" Name="sc" PluginName="SC_212" PluginType="2" PollingTime="100">
+<Channels>
+<Channel ID="6666600" Name="Channel_1" Port="2" Baud="19200" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="0" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="20654192" Name="Device_1">
+<Tags>
+<Tag ID="20654320" ItemName="sc.Channel_1.Device_1.PH值" ItemID="PH值" RegisterID="0" RegisterName="ID" Address="001-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="1" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20650816" ItemName="sc.Channel_1.Device_1.色度" ItemID="色度" RegisterID="0" RegisterName="ID" Address="002-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="3" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6667544" ItemName="sc.Channel_1.Device_1.悬浮物" ItemID="悬浮物" RegisterID="0" RegisterName="ID" Address="003-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="5" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6667672" ItemName="sc.Channel_1.Device_1.生化需氧量（BOD5）" ItemID="生化需氧量（BOD5）" RegisterID="0" RegisterName="ID" Address="010-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="7" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6667232" ItemName="sc.Channel_1.Device_1.化学需氧量（CODcr）" ItemID="化学需氧量（CODcr）" RegisterID="0" RegisterName="ID" Address="011-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="9" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6667360" ItemName="sc.Channel_1.Device_1.总有机碳" ItemID="总有机碳" RegisterID="0" RegisterName="ID" Address="015-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="11" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20858872" ItemName="sc.Channel_1.Device_1.总汞" ItemID="总汞" RegisterID="0" RegisterName="ID" Address="020-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="13" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20859000" ItemName="sc.Channel_1.Device_1.氨氮" ItemID="氨氮" RegisterID="0" RegisterName="ID" Address="060-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="15" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="20859128" ItemName="sc.Channel_1.Device_1.有机氮" ItemID="有机氮" RegisterID="0" RegisterName="ID" Address="061-Rtd" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="2" ModbusAddr="17" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="20650944" ItemName="$.sc.Channel_1.Device_1.CommStatus" ItemID="$.sc.Channel_1.Device_1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description=""/>
+</Vars>
+<JSs/>
+</X2M>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="0" AI="10" AO="10" BI="11" BO="14" EnablePort="0" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="1" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="32242592" Name="KNX" PluginName="KNXnetIP" PluginType="1" PollingTime="1000">
+<Channels>
+<Channel ID="32074112" Name="Channel_1" IP="192.168.1.33" Port="3671" TimeOut="1000">
+<Devices>
+<Device StationID="1" IntervalDelay="100" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="4" BitMaxSpan="64" ID="32242264" Name="Device_1">
+<Tags>
+<Tag ID="32242392" ItemName="KNX.Channel_1.Device_1.Tag_1" ItemID="Tag_1" RegisterID="0" RegisterName="GroupAddress" Address="0/0/1" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="0" ModbusAddr="1" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32073392" ItemName="KNX.Channel_1.Device_1.Tag_2" ItemID="Tag_2" RegisterID="0" RegisterName="GroupAddress" Address="0/0/2" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="0" ModbusAddr="2" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32073520" ItemName="KNX.Channel_1.Device_1.Tag_3" ItemID="Tag_3" RegisterID="0" RegisterName="GroupAddress" Address="0/0/3" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="0" ModbusAddr="3" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32073696" ItemName="KNX.Channel_1.Device_1.Tag_4" ItemID="Tag_4" RegisterID="0" RegisterName="GroupAddress" Address="0/0/4" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="0" ModbusAddr="4" Writable="1" Digital="1" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="32073904" ItemName="$.KNX.Channel_1.Device_1.CommStatus" ItemID="$.KNX.Channel_1.Device_1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description=""/>
+</Vars>
+<JSs/>
+</X2M>

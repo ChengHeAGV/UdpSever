@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="12" BI="11" BO="10" EnablePort="0" ComPort="0" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="5000">
+<Driver ID="37328048" Name="gct" PluginName="GriffithElder_ContainerTilt" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="6355080" Name="Channel_1" Port="0" Baud="9600" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="1000" WriteDelay="0" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="37842264" Name="Device_1">
+<Tags>
+<Tag ID="37632328" ItemName="gct.Channel_1.Device_1.Tag_1" ItemID="Tag_1" RegisterID="0" RegisterName="Data" Address="1" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="重量" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="37235360" ItemName="$.gct.Channel_1.Device_1.CommStatus" ItemID="$.gct.Channel_1.Device_1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description=""/>
+</Vars>
+<JSs/>
+</X2M>

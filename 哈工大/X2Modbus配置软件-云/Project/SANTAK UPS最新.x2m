@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="24" BI="11" BO="18" EnablePort="1" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2" ResetValue="0" LittleEndian="0" Float2Long="0">
+<Driver ID="6171704" Name="SANTAK UPS" PluginName="SANTAK UPS" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="6170464" Name="C1" Port="2" Baud="2400" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="1000" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="6170544" Name="D1">
+<Tags>
+<Tag ID="6170672" ItemName="SANTAK UPS.C1.D1.输入电压值" ItemID="输入电压值" RegisterID="0" RegisterName="Status" Address="1" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6170800" ItemName="SANTAK UPS.C1.D1.I/P fault voltage" ItemID="I/P fault voltage" RegisterID="0" RegisterName="Status" Address="2" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6944704" ItemName="SANTAK UPS.C1.D1.输出电压值" ItemID="输出电压值" RegisterID="0" RegisterName="Status" Address="3" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6944832" ItemName="SANTAK UPS.C1.D1.输出电流值" ItemID="输出电流值" RegisterID="0" RegisterName="Status" Address="4" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6945008" ItemName="SANTAK UPS.C1.D1.输入频率" ItemID="输入频率" RegisterID="0" RegisterName="Status" Address="5" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="9" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6945184" ItemName="SANTAK UPS.C1.D1.电池电压" ItemID="电池电压" RegisterID="0" RegisterName="Status" Address="6" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="11" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6945360" ItemName="SANTAK UPS.C1.D1.温度" ItemID="温度" RegisterID="0" RegisterName="Status" Address="7" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="13" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6945536" ItemName="SANTAK UPS.C1.D1.蜂鸣器打开 " ItemID="蜂鸣器打开 " RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="0" DataType="2" ModbusType="0" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6945712" ItemName="SANTAK UPS.C1.D1.正在关机或处于关机状态" ItemID="正在关机或处于关机状态" RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="1" DataType="2" ModbusType="0" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6945888" ItemName="SANTAK UPS.C1.D1.正在测试 " ItemID="正在测试 " RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="2" DataType="2" ModbusType="0" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6946064" ItemName="SANTAK UPS.C1.D1.UPS类型是离线式 (0是在线式)" ItemID="UPS类型是离线式 (0是在线式)" RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="3" DataType="2" ModbusType="0" ModbusAddr="4" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6946240" ItemName="SANTAK UPS.C1.D1.电池电量低" ItemID="电池电量低" RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="6" DataType="2" ModbusType="0" ModbusAddr="7" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6946416" ItemName="SANTAK UPS.C1.D1. UPS故障（损坏）" ItemID=" UPS故障（损坏）" RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="4" DataType="2" ModbusType="0" ModbusAddr="5" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6946544" ItemName="SANTAK UPS.C1.D1.旁路 / 正在升压或正在降压" ItemID="旁路 / 正在升压或正在降压" RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="5" DataType="2" ModbusType="0" ModbusAddr="6" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="6946672" ItemName="SANTAK UPS.C1.D1.市电失败 (即时) " ItemID="市电失败 (即时) " RegisterID="0" RegisterName="Status" Address="8" EnableSubAddr="1" SubAddress="7" DataType="2" ModbusType="0" ModbusAddr="8" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="6272368" ItemName="$.SANTAK UPS.C1.D1.CommStatus" ItemID="$.SANTAK UPS.C1.D1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<JSs/>
+</X2M>

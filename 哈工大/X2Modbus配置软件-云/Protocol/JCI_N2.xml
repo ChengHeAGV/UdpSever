@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="9600" DataBit="8" StopBit="0" Parity="0" FlowCtrl="0" TimeOuts="1500">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="-1" AnalaogMax="-1" BinaryAdjacent="-1" BinaryMax="-1" >
+    <Reg RegName="Binary Output" RegID="0" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="Binary Input" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="Analog Input" RegID="2" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Analog Output" RegID="3" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Internal Parameter-Byte" RegID="4" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Internal Parameter-Float" RegID="5" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Internal Parameter-Integer" RegID="6" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Override Binary Output" RegID="0" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="Override Binary Input" RegID="0" Writable="true" IsDigital="true" Description=""/>
+  </Regs>
+</PLC>

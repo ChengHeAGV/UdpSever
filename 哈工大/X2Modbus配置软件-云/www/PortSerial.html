@@ -1,0 +1,130 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>System info</title>
+<script language="javascript" type="text/javascript" src="js/lib/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+    GetSerialPortParameter();
+    });
+
+    function GetSerialPortParameter() {
+        var data = "<Parameter>\n<SerialPort>\n";
+        data += "</SerialPort>\n</Parameter>\n"
+
+/*
+<Parameter>
+<SerialPort>
+<Port Name="COM1" Mode="0"/>
+<Port Name="COM2" Mode="0"/>
+</NetWork>
+</SerialPort>
+
+ */
+        $.ajax({
+            type: "POST",
+            contentType: "text/xml; charset=utf-8",
+            url: "/soap/GetParameter",
+            data: data,
+            dataType: "xml",
+            success: function(xml) {
+                $(xml).find("Port").each(function(i) {
+                    //获取id节点
+                    var szName = $(this).attr("Name");
+                    if (szName == "COM1") {
+                        var nMode = $(this).attr("Mode");
+                        $("#PortSelect1").get(0).selectedIndex = nMode;
+                     }
+                    else if (szName == "COM2") {
+                    var nMode = $(this).attr("Mode");
+                    $("#PortSelect2").get(0).selectedIndex = nMode;
+                    }
+
+                });
+            }
+        });
+    }
+
+    function SetSerialPortParameter() {
+
+        //var PortSelect1 = $("#PortSelect1").val();
+        var Port1checkIndex = $("#PortSelect1").get(0).selectedIndex; //获取Select选择的索引值
+
+
+        //var PortSelect2 = $("#PortSelect2").val();
+        var Port2checkIndex = $("#PortSelect2").get(0).selectedIndex; //获取Select选择的索引值
+
+    var data = "<Parameter>\n<SerialPort>\n";
+    var szPort = '<Port Name = \"COM1\" ' + 'Mode="' + Port1checkIndex + '"/>';
+    data += szPort;
+    var szPort = '<Port Name = \"COM2\" ' + 'Mode="' + Port2checkIndex + '"/>';
+    data += szPort;
+    data += "</SerialPort>\n</Parameter>\n"
+
+    $.ajax({
+        type: "POST",
+        contentType: "text/xml; charset=utf-8",
+        url: "/soap/SetParameter",
+        data: data,
+        dataType: "xml",
+        success: function (xml) {
+            // alert($(xml).find("resultstate").text());
+            alert(xml);
+        }
+    });
+
+}
+</script>
+
+    <style type="text/css">
+        .style1
+        {
+            text-align: right;
+        }
+        #PortSelect1
+        {
+            width: 75px;
+        }
+        #PortSelect2
+        {
+            width: 73px;
+        }
+    </style>
+
+</head>
+<body>
+
+<H2 align=center><BR />串口通信方式</H2>
+<table style="BORDER-COLLAPSE: collapse" border=1 borderColor=#111111 cellPadding=0 width="100%">
+        <tr>
+        <td class=style1 width="23%" noWrap>COM1</td>
+        <td class=tablediv2_a width="77%">
+            <select id="PortSelect1">
+                <option>RS232</option>
+                <option>RS485</option>
+                <option>RS422</option>
+            </select>
+        </td>
+        </tr>
+      <tr>
+        <td class=style1 width="23%" noWrap>COM2</td>
+        <td class=tablediv2_a width="77%">
+            <select id="PortSelect2">
+                <option>RS232</option>
+                <option>RS485</option>
+                <option>RS422</option>
+            </select>
+        </td>
+       </tr>
+</table>
+
+  <table border=0 width="85%">
+          <tr><td align="center">
+            <input type=button name=ok value="设置" onclick="SetSerialPortParameter();" 
+                  style="margin-left: 0px"/>
+            <input type=button name=Refresh value="刷新" onclick="window.location.reload();"/>
+          </td></tr>
+  </table>    
+</body>
+</html>

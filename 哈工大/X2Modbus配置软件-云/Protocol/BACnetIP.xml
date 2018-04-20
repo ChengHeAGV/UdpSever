@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="255.255.255.255.0" Port="47808" TimeOuts="1000">
+  <Regs StationID="500" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="0" AnalaogMax="20" BinaryAdjacent="0" BinaryMax="2" >
+    <Reg RegName="AI(Analog Input)" RegID="0" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="AO(Analog Output)" RegID="1" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="AV(Analog Value)" RegID="2" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="BI(Binary Input)" RegID="3" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="BO(Binary Output)" RegID="4" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="BV(Binary Value)" RegID="5" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="MI(Multi-state Input)" RegID="6" Writable="false" IsDigital="false" Description=""/>
+    <Reg RegName="MO(Multi-state Output)" RegID="7" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="MV(Multi-state Value)" RegID="8" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

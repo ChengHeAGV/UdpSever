@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="0" AI="10" AO="14" BI="11" BO="10" EnablePort="0" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="1" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="80" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="5728024" Name="ssd" PluginName="SUMITOMO_SE_D" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="5728240" Name="C1" Port="0" Baud="9600" DataBits="8" Parity="2" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="4" BitMaxSpan="64" ID="5226864" Name="D1">
+<Tags>
+<Tag ID="5226736" ItemName="ssd.C1.D1.S9" ItemID="S9" RegisterID="0" RegisterName="Data" Address="S9" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="1" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="5226480" ItemName="ssd.C1.D1.H5" ItemID="H5" RegisterID="0" RegisterName="Data" Address="H5" EnableSubAddr="0" SubAddress="0" DataType="6" ModbusType="3" ModbusAddr="3" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="5226608" ItemName="$.ssd.C1.D1.CommStatus" ItemID="$.ssd.C1.D1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="1" Description="设备通信状态"/>
+</Vars>
+<JSs/>
+</X2M>

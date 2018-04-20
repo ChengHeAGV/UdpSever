@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M ShowASCII="0" UpdateInterval="0" SaveHistory="1" Port="502" DeviceID="1" AI="10" AO="62" BI="11" BO="10" EnablePort="1" ComPort="3" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="2">
+<Driver ID="25033080" Name="snmp" PluginName="SNMPClient" PluginType="1" PollingTime="5000">
+<Channels>
+<Channel ID="25033264" Name="channel51" IP="192.168.0.51" Port="161" TimeOut="1000">
+<Devices>
+<Device StationID="public" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="100" WordMaxSpan="20" BitAdjacentSpan="0" BitMaxSpan="0" ID="25033336" Name="apc">
+<Tags>
+<Tag ID="25075464" ItemName="snmp.channel51.apc.输入电压1" ItemID="输入电压1" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.3.1.1.1" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="1" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="25033464" ItemName="snmp.channel51.apc.输入电压2" ItemID="输入电压2" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.3.1.1.2" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="3" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="25075264" ItemName="snmp.channel51.apc.输入电压3" ItemID="输入电压3" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.3.1.1.3" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="5" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="25031776" ItemName="snmp.channel51.apc.旁路输入电压1" ItemID="旁路输入电压1" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.3.2.1.1" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="7" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="25031424" ItemName="snmp.channel51.apc.旁路输入电压2" ItemID="旁路输入电压2" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.3.2.1.2" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="9" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="25031552" ItemName="snmp.channel51.apc.旁路输入电压3" ItemID="旁路输入电压3" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.3.2.1.3" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="11" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="7006512" ItemName="snmp.channel51.apc.输出电压1" ItemID="输出电压1" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.3.1.1.1" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="13" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24350112" ItemName="snmp.channel51.apc.输出电压2" ItemID="输出电压2" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.3.1.1.2" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="15" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24350240" ItemName="snmp.channel51.apc.输出电压3" ItemID="输出电压3" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.3.1.1.3" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="17" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24350520" ItemName="snmp.channel51.apc.输入电流1" ItemID="输入电流1" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.6.1.1.1" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="19" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="7006360" ItemName="snmp.channel51.apc.输入电流2" ItemID="输入电流2" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.6.1.1.2" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="21" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="7007248" ItemName="snmp.channel51.apc.输入电流3" ItemID="输入电流3" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.2.3.1.6.1.1.3" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="23" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="7007376" ItemName="snmp.channel51.apc.输出电流1" ItemID="输出电流1" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.4.1.1.1" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="25" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="7007504" ItemName="snmp.channel51.apc.输出电流2" ItemID="输出电流2" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.4.1.1.2" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="27" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24360304" ItemName="snmp.channel51.apc.输出电流3" ItemID="输出电流3" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.4.1.1.3" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="29" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24360432" ItemName="snmp.channel51.apc.输入频率" ItemID="输入频率" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.3.2.4.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="31" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24360560" ItemName="snmp.channel51.apc.输出频率" ItemID="输出频率" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.4.2.2.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="33" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24360688" ItemName="snmp.channel51.apc.视在功率1" ItemID="视在功率1" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.7.1.1.1" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="35" Writable="1" Digital="1" Description="/1000" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24360816" ItemName="snmp.channel51.apc.视在功率2" ItemID="视在功率2" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.7.1.1.2" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="37" Writable="1" Digital="1" Description="/1000" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24360944" ItemName="snmp.channel51.apc.视在功率3" ItemID="视在功率3" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.9.3.3.1.7.1.1.3" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="39" Writable="1" Digital="1" Description="/1000" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24361072" ItemName="snmp.channel51.apc.电池温度" ItemID="电池温度" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.2.3.2.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="41" Writable="1" Digital="1" Description="/10" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24361200" ItemName="snmp.channel51.apc.剩余放电时间" ItemID="剩余放电时间" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.2.2.3.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="43" Writable="1" Digital="1" Description="/100(秒)" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24361328" ItemName="snmp.channel51.apc.电池容量" ItemID="电池容量" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.2.2.1.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="45" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24361456" ItemName="snmp.channel51.apc.电池电压" ItemID="电池电压" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.2.2.8.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="47" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24361584" ItemName="snmp.channel51.apc.电池电流" ItemID="电池电流" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.2.2.9.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="49" Writable="1" Digital="1" Description="" SaveToHistory="1" EnableScaling="0"/>
+<Tag ID="24361712" ItemName="snmp.channel51.apc.电池组状态" ItemID="电池组状态" RegisterID="0" RegisterName="Oid" Address=".1.3.6.1.4.1.318.1.1.1.2.1.1.0" EnableSubAddr="0" SubAddress="0" DataType="5" ModbusType="3" ModbusAddr="51" Writable="1" Digital="1" Description="unknown(1),batteryNormal(2),batteryLow(3),batteryInFaultCondition(4)" SaveToHistory="1" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="24259480" ItemName="$.snmp.channel51.apc.CommStatus" ItemID="$.snmp.channel51.apc.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<script language="javascript" type="text/javascript">
+<js>setInterval("MainLoop()", 1000);
+function  MainLoop(){
+
+
+
+
+
+
+}</js>
+</script>
+</X2M>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="0" AI="10" AO="16" BI="11" BO="10" EnablePort="0" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="1" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="80" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="3986216" Name="三菱电梯" PluginName="Mitsubishi Elevator SMOS-PS2" PluginType="2" PollingTime="100">
+<Channels>
+<Channel ID="33827456" Name="C1" Port="0" Baud="9600" DataBits="8" Parity="2" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="50" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="34434392" Name="D1">
+<Tags>
+<Tag ID="41003016" ItemName="三菱电梯.C1.D1.楼层信号" ItemID="楼层信号" RegisterID="0" RegisterName="Status" Address="0" EnableSubAddr="0" SubAddress="0" DataType="3" ModbusType="3" ModbusAddr="1" Writable="0" Digital="0" Description="正常的楼层显示值为-5~48，少数夹层楼层值为一个负数，特别注意楼层信号值-68和-69分别代表2M和3M两个夹层楼层。" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="41003144" ItemName="三菱电梯.C1.D1.上行信号" ItemID="上行信号" RegisterID="0" RegisterName="Status" Address="1" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="3" ModbusAddr="2" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="41003272" ItemName="三菱电梯.C1.D1.下行信号" ItemID="下行信号" RegisterID="0" RegisterName="Status" Address="2" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="3" ModbusAddr="3" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="41003400" ItemName="三菱电梯.C1.D1.与电梯侧通讯状态" ItemID="与电梯侧通讯状态" RegisterID="0" RegisterName="Status" Address="3" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="3" ModbusAddr="4" Writable="0" Digital="0" Description="1故障  0正常" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33833304" ItemName="三菱电梯.C1.D1.故障报警信号" ItemID="故障报警信号" RegisterID="0" RegisterName="Status" Address="4" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="3" ModbusAddr="5" Writable="0" Digital="0" Description="1报警  0正常" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33833432" ItemName="三菱电梯.C1.D1.该从机的维保信号" ItemID="该从机的维保信号" RegisterID="0" RegisterName="Status" Address="5" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="3" ModbusAddr="6" Writable="0" Digital="0" Description="1维保状态  0正常状态" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="34434264" ItemName="$.三菱电梯.C1.D1.CommStatus" ItemID="$.三菱电梯.C1.D1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="1" Description="设备通信状态"/>
+</Vars>
+<JSs/>
+</X2M>

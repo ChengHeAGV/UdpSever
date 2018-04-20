@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="9600" DataBit="8" StopBit="0" Parity="2" FlowCtrl="0" TimeOuts="1500">
+	<Regs StationID="1-1" IntervalDelay="1000" WriteDelay="50" ShowSwap="true" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="64" >
+          <Reg RegName="Data" RegID="0" Writable="true" IsDigital="false" Description=""/>
+	</Regs>
+</PLC>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M GatewayIP="192.168.1.88" ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="46" BI="12" BO="10" EnablePort="1" ComPort="1" BaudRate="5" DataBits="1" StopBits="0" Paritybits="0" WhichPort="1" ResetValue="0" LittleEndian="0" Float2Long="0" EnableCloud="0" CloudIP="120.26.101.172" CloudPort="0" GatewayName="Gateway1" GatewayID="1" ReadDelay="5000" WriteDelay="1000">
+<Driver ID="33421640" Name="DAIKIN" PluginName="DAIKIN_DRCH-R5" PluginType="2" PollingTime="1000">
+<Channels>
+<Channel ID="33420904" Name="Channel_1" Port="0" Baud="9600" DataBits="8" Parity="0" Stop="0" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="500" WriteDelay="0" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="33421968" Name="DAIKIN_1">
+<Tags>
+<Tag ID="33422096" ItemName="DAIKIN.Channel_1.DAIKIN_1.回风温度" ItemID="回风温度" RegisterID="0" RegisterName="模拟量数据" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="1" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33049096" ItemName="DAIKIN.Channel_1.DAIKIN_1.空调状态(开关机可控)" ItemID="空调状态(开关机可控)" RegisterID="1" RegisterName="开关输入状态" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="2" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33049224" ItemName="DAIKIN.Channel_1.DAIKIN_1.加湿器状态" ItemID="加湿器状态" RegisterID="1" RegisterName="开关输入状态" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="3" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33049352" ItemName="DAIKIN.Channel_1.DAIKIN_1.电加热器状态" ItemID="电加热器状态" RegisterID="1" RegisterName="开关输入状态" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="4" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33049480" ItemName="DAIKIN.Channel_1.DAIKIN_1.风扇状态" ItemID="风扇状态" RegisterID="1" RegisterName="开关输入状态" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="5" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33049656" ItemName="DAIKIN.Channel_1.DAIKIN_1.压缩机状态" ItemID="压缩机状态" RegisterID="1" RegisterName="开关输入状态" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="6" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="33049832" ItemName="DAIKIN.Channel_1.DAIKIN_1.过滤网状态" ItemID="过滤网状态" RegisterID="1" RegisterName="开关输入状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="7" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32643416" ItemName="DAIKIN.Channel_1.DAIKIN_1.注意报状态" ItemID="注意报状态" RegisterID="1" RegisterName="开关输入状态" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="8" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32643544" ItemName="DAIKIN.Channel_1.DAIKIN_1.警报状态" ItemID="警报状态" RegisterID="1" RegisterName="开关输入状态" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="9" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32643720" ItemName="DAIKIN.Channel_1.DAIKIN_1.异常状态" ItemID="异常状态" RegisterID="1" RegisterName="开关输入状态" Address="10" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="10" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32643896" ItemName="DAIKIN.Channel_1.DAIKIN_1.运转状态" ItemID="运转状态" RegisterID="1" RegisterName="开关输入状态" Address="11" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="11" Writable="1" Digital="1" Description="0送风；1制热；2制冷" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32644072" ItemName="DAIKIN.Channel_1.DAIKIN_1.回风温度状态" ItemID="回风温度状态" RegisterID="2" RegisterName="告警状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="12" Writable="0" Digital="1" Description="0正常；1下限以下；2上限以上；240故障" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32644248" ItemName="DAIKIN.Channel_1.DAIKIN_1.空调开机温度" ItemID="空调开机温度" RegisterID="3" RegisterName="参数" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="13" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32644376" ItemName="DAIKIN.Channel_1.DAIKIN_1.空调关机温度" ItemID="空调关机温度" RegisterID="3" RegisterName="参数" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="14" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32748912" ItemName="DAIKIN.Channel_1.DAIKIN_1.回风温度上限" ItemID="回风温度上限" RegisterID="3" RegisterName="参数" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="15" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32749040" ItemName="DAIKIN.Channel_1.DAIKIN_1.回风温度下限" ItemID="回风温度下限" RegisterID="3" RegisterName="参数" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="16" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32749168" ItemName="DAIKIN.Channel_1.DAIKIN_1.回风湿度上限" ItemID="回风湿度上限" RegisterID="3" RegisterName="参数" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="17" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32749296" ItemName="DAIKIN.Channel_1.DAIKIN_1.回风湿度下限" ItemID="回风湿度下限" RegisterID="3" RegisterName="参数" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="18" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+<Device StationID="2" IntervalDelay="500" WriteDelay="0" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="0" WordMaxSpan="0" BitAdjacentSpan="0" BitMaxSpan="0" ID="32749424" Name="DAIKIN_2">
+<Tags>
+<Tag ID="32749552" ItemName="DAIKIN.Channel_1.DAIKIN_2.回风温度" ItemID="回风温度" RegisterID="0" RegisterName="模拟量数据" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="19" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32749680" ItemName="DAIKIN.Channel_1.DAIKIN_2.空调状态" ItemID="空调状态" RegisterID="1" RegisterName="开关输入状态" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="20" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32749808" ItemName="DAIKIN.Channel_1.DAIKIN_2.加湿器状态" ItemID="加湿器状态" RegisterID="1" RegisterName="开关输入状态" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="21" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32749936" ItemName="DAIKIN.Channel_1.DAIKIN_2.电加热器状态" ItemID="电加热器状态" RegisterID="1" RegisterName="开关输入状态" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="22" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750064" ItemName="DAIKIN.Channel_1.DAIKIN_2.风扇状态" ItemID="风扇状态" RegisterID="1" RegisterName="开关输入状态" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="23" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750192" ItemName="DAIKIN.Channel_1.DAIKIN_2.压缩机状态" ItemID="压缩机状态" RegisterID="1" RegisterName="开关输入状态" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="24" Writable="1" Digital="1" Description="0停止；1运转" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750320" ItemName="DAIKIN.Channel_1.DAIKIN_2.过滤网状态" ItemID="过滤网状态" RegisterID="1" RegisterName="开关输入状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="25" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750448" ItemName="DAIKIN.Channel_1.DAIKIN_2.注意报状态" ItemID="注意报状态" RegisterID="1" RegisterName="开关输入状态" Address="8" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="26" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750576" ItemName="DAIKIN.Channel_1.DAIKIN_2.警报状态" ItemID="警报状态" RegisterID="1" RegisterName="开关输入状态" Address="9" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="27" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750704" ItemName="DAIKIN.Channel_1.DAIKIN_2.异常状态" ItemID="异常状态" RegisterID="1" RegisterName="开关输入状态" Address="10" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="28" Writable="1" Digital="1" Description="0:OFF 1:ON" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750832" ItemName="DAIKIN.Channel_1.DAIKIN_2.运转状态" ItemID="运转状态" RegisterID="1" RegisterName="开关输入状态" Address="11" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="29" Writable="1" Digital="1" Description="0送风；1制热；2制冷" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32750960" ItemName="DAIKIN.Channel_1.DAIKIN_2.回风温度状态" ItemID="回风温度状态" RegisterID="2" RegisterName="告警状态" Address="7" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="30" Writable="0" Digital="1" Description="0正常；1下限以下；2上限以上；240故障" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32751088" ItemName="DAIKIN.Channel_1.DAIKIN_2.空调开机温度" ItemID="空调开机温度" RegisterID="3" RegisterName="参数" Address="1" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="31" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32751216" ItemName="DAIKIN.Channel_1.DAIKIN_2.空调关机温度" ItemID="空调关机温度" RegisterID="3" RegisterName="参数" Address="2" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="32" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32751344" ItemName="DAIKIN.Channel_1.DAIKIN_2.回风温度上限" ItemID="回风温度上限" RegisterID="3" RegisterName="参数" Address="3" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="33" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32751472" ItemName="DAIKIN.Channel_1.DAIKIN_2.回风温度下限" ItemID="回风温度下限" RegisterID="3" RegisterName="参数" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="34" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32751600" ItemName="DAIKIN.Channel_1.DAIKIN_2.回风湿度上限" ItemID="回风湿度上限" RegisterID="3" RegisterName="参数" Address="5" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="35" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="32751728" ItemName="DAIKIN.Channel_1.DAIKIN_2.回风湿度下限" ItemID="回风湿度下限" RegisterID="3" RegisterName="参数" Address="6" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="36" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="32751856" ItemName="$.DAIKIN.Channel_1.DAIKIN_1.CommStatus" ItemID="$.DAIKIN.Channel_1.DAIKIN_1.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description=""/>
+<Tag ID="32751984" ItemName="$.DAIKIN.Channel_1.DAIKIN_2.CommStatus" ItemID="$.DAIKIN.Channel_1.DAIKIN_2.CommStatus" DataType="1" Value="" ModbusType="1" ModbusAddr="2" Writable="0" Digital="0" Description=""/>
+</Vars>
+<JSs/>
+</X2M>

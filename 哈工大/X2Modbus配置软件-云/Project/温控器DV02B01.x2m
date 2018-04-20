@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<X2M ShowASCII="0" UpdateInterval="0" SaveHistory="0" Port="502" DeviceID="1" AI="10" AO="28" BI="11" BO="10" EnablePort="0" ComPort="0" BaudRate="7" DataBits="1" StopBits="0" Paritybits="0" WhichPort="0" ResetValue="0" LittleEndian="1">
+<Driver ID="21754880" Name="温控器DV02B01" PluginName="ModbusRTUClient" PluginType="2" PollingTime="100">
+<Channels>
+<Channel ID="2551432" Name="C1" Port="0" Baud="9600" DataBits="8" Parity="0" Stop="2" Flow="0" TimeOut="1500">
+<Devices>
+<Device StationID="1" IntervalDelay="1000" WriteDelay="50" WordSwap="0" DWordSwap="0" FloatSwap="0" WordAdjacentSpan="4" WordMaxSpan="32" BitAdjacentSpan="4" BitMaxSpan="64" ID="2551512" Name="D1">
+<Tags>
+<Tag ID="2551768" ItemName="温控器DV02B01.C1.D1.开关机" ItemID="开关机" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="1.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="1" Writable="1" Digital="0" Description="0:关机，1:开机" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="2552576" ItemName="温控器DV02B01.C1.D1.键盘锁" ItemID="键盘锁" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="1.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="2" Writable="1" Digital="0" Description="0:不锁定，1:锁定" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="2551640" ItemName="温控器DV02B01.C1.D1.风速" ItemID="风速" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="2.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="3" Writable="1" Digital="0" Description="1:低速，2:中速，3:高速" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21072784" ItemName="温控器DV02B01.C1.D1.控制模式" ItemID="控制模式" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="2.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="4" Writable="1" Digital="0" Description="1:通风模式，2:制冷模式，3:制热模式" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21072912" ItemName="温控器DV02B01.C1.D1.设定温度" ItemID="设定温度" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="3.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="5" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21073040" ItemName="温控器DV02B01.C1.D1.室内温度" ItemID="室内温度" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="3.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="6" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21515560" ItemName="温控器DV02B01.C1.D1.温度补偿" ItemID="温度补偿" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="4" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="7" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="1">
+<Conversion Bias="0" MinRawRange="0" MaxRawRange="10" MinEngRange="0" MaxEngRange="1"/>
+</Tag>
+<Tag ID="2551152" ItemName="温控器DV02B01.C1.D1.运行时间" ItemID="运行时间" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="5" EnableSubAddr="0" SubAddress="0" DataType="4" ModbusType="3" ModbusAddr="9" Writable="1" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21073872" ItemName="温控器DV02B01.C1.D1.定时开机参数分钟" ItemID="定时开机参数分钟" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="7.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="11" Writable="1" Digital="0" Description="数值范围0-59" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21074000" ItemName="温控器DV02B01.C1.D1.定时开机参数小时" ItemID="定时开机参数小时" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="7.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="12" Writable="1" Digital="0" Description="数值范围0-23，24小时制，当定时开机使能时，小时数加128" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21074128" ItemName="温控器DV02B01.C1.D1.定时关机参数分钟" ItemID="定时关机参数分钟" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="8.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="13" Writable="1" Digital="0" Description="数值范围0-59" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21074256" ItemName="温控器DV02B01.C1.D1.定时关机参数小时" ItemID="定时关机参数小时" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="8.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="14" Writable="1" Digital="0" Description="数值范围0-23，24小时制，当定时关机使能时，小时数加128" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21074384" ItemName="温控器DV02B01.C1.D1.实时时间分钟" ItemID="实时时间分钟" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="9.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="15" Writable="1" Digital="0" Description="数值范围0-59" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21074512" ItemName="温控器DV02B01.C1.D1.实时时间小时" ItemID="实时时间小时" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="9.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="16" Writable="1" Digital="0" Description="数值范围0-23" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21074640" ItemName="温控器DV02B01.C1.D1.实时时间星期" ItemID="实时时间星期" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="10.Lobyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="17" Writable="1" Digital="0" Description="数值范围1-7，表示星期一到星期天" SaveToHistory="0" EnableScaling="0"/>
+<Tag ID="21030256" ItemName="温控器DV02B01.C1.D1.实时时间秒" ItemID="实时时间秒" RegisterID="3" RegisterName="4X(Holding Register)-F6" Address="10.Hibyte" EnableSubAddr="0" SubAddress="0" DataType="2" ModbusType="3" ModbusAddr="18" Writable="1" Digital="0" Description="数值范围0-59" SaveToHistory="0" EnableScaling="0"/>
+</Tags>
+<Groups/>
+</Device>
+</Devices>
+</Channel>
+</Channels>
+</Driver>
+<Vars>
+<Tag ID="2552808" ItemName="$.温控器DV02B01.C1.D1.CommStatus" ItemID="$.温控器DV02B01.C1.D1.CommStatus" RegisterID="0" RegisterName="" Address="" EnableSubAddr="0" SubAddress="0" DataType="1" ModbusType="1" ModbusAddr="1" Writable="0" Digital="0" Description="" SaveToHistory="0" EnableScaling="0"/>
+</Vars>
+<script language="javascript" type="text/javascript">
+<js>setInterval("MainLoop()", 1000);
+function  MainLoop(){
+
+
+
+
+
+
+}</js>
+</script>
+</X2M>

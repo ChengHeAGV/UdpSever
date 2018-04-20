@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="NetWork" IP="192.168.1.12" Port="9600" TimeOuts="1000">
+  <Regs StationID="0" IntervalDelay="100" WriteDelay="50" ShowSwap="true" AnalaogAdjacent="4" AnalaogMax="32" BinaryAdjacent="4" BinaryMax="32" >
+    <Reg RegName="D" RegID="0" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="W" RegID="1" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="H" RegID="2" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="A" RegID="3" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Timer" RegID="4" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Timer Status" RegID="5" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="Counter" RegID="6" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="Counter Status" RegID="7" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="Task Flag" RegID="8" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="IR" RegID="9" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="DR" RegID="10" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="CIO" RegID="11" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>

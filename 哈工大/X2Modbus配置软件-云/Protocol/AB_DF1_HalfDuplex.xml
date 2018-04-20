@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PLC DriverType="SerialPort" BaudRate="19200" DataBit="8" StopBit="0" Parity="0" FlowCtrl="0" TimeOuts="50">
+  <Regs StationID="1" IntervalDelay="50" WriteDelay="50" ShowSwap="false" AnalaogAdjacent="4" AnalaogMax="16" BinaryAdjacent="4" BinaryMax="16" >
+    <Reg RegName="I1" RegID="0" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="O0" RegID="1" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="B3" RegID="2" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="B10" RegID="3" Writable="false" IsDigital="true" Description=""/>
+    <Reg RegName="B11" RegID="4" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="B12" RegID="5" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="B13" RegID="6" Writable="true" IsDigital="true" Description=""/>
+    <Reg RegName="T4SV" RegID="7" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="T4PV" RegID="8" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="C5SV" RegID="9" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="C5PV" RegID="10" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="F8" RegID="11" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N7" RegID="12" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N9" RegID="13" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N10" RegID="14" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N11" RegID="15" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N12" RegID="16" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N13" RegID="17" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N14" RegID="18" Writable="true" IsDigital="false" Description=""/>
+    <Reg RegName="N15" RegID="19" Writable="true" IsDigital="false" Description=""/>
+  </Regs>
+</PLC>
