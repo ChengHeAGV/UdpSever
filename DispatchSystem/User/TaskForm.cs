@@ -43,31 +43,10 @@ namespace DispatchSystem.User
             Finished //完成
         }
 
-        ModbusIpMaster modbusMaster;
-        Thread modbusThread;
+       
         Thread taskThread;
         private void TaskForm_Load(object sender, EventArgs e)
         {
-            #region 启动ModbusTcp
-            try
-            {
-                TcpClient tcpClient = new TcpClient(TaskData.Parameter.ModbusTcpSeverIPAddress, TaskData.Parameter.ModbusTcpSeverPort);
-                modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
-                modbusMaster.Transport.WriteTimeout = TaskData.Parameter.ModbusWriteTimeout;//写超时
-                modbusMaster.Transport.ReadTimeout = TaskData.Parameter.ModbusReadTimeout;//读超时
-                modbusMaster.Transport.WaitToRetryMilliseconds = TaskData.Parameter.ModbusWaitToRetryTime;//重试等待时间
-                modbusMaster.Transport.Retries = TaskData.Parameter.ModbusRetriesNum;//重试次数
-
-                //启动监听进程
-                modbusThread = new Thread(new ThreadStart(SyncModbus));
-                modbusThread.Start();
-            }
-            catch
-            {
-                MessageBox.Show("连接Modbus设备失败！");
-            }
-            #endregion
-
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
             taskThread.Start();
@@ -544,41 +523,6 @@ namespace DispatchSystem.User
                 Thread.Sleep(TaskData.Parameter.taskFuncTime);
 
             }
-        }
-
-
-        /// <summary>
-        /// 同步Modbus设备数据
-        /// </summary>
-        private void SyncModbus()
-        {
-            while (true)
-            {
-                Thread.Sleep(TaskData.Parameter.SyncModbusTime);
-                try
-                {
-                    //读取Modbus寄存器
-                    TaskData.Modbus = modbusMaster.ReadHoldingRegisters(0, (ushort)TaskData.Modbus.Length);
-
-                    //Random rd = new Random();
-                    //ushort[] write = new ushort[10];
-                    //for (int i = 0; i < 10; i++)
-                    //{
-                    //    write[i] = (ushort)rd.Next(1, 1000);
-                    //}
-                    //modbusMaster.WriteMultipleRegisters(0, write);
-                    //ushort[] read = new ushort[10];
-                    //// read = master.ReadWriteMultipleRegisters(0, 10, 0, write);
-
-                    //read = modbusMaster.ReadHoldingRegisters(10, 10);
-                    //UdpSever.Shell.WriteNotice("debug", "{0},{1}", read[0], read[1]);
-                }
-                catch (Exception ex)
-                {
-                    UdpSever.Shell.WriteError("debug", ex.ToString());
-                }
-            }
-
         }
 
         private long GetTimeStamp()

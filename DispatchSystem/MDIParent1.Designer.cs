@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("AGV1");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("AGV2");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("AGV1");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("AGV2");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,6 +112,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
+            this.dbus服务器配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -504,7 +505,8 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.流程规划ToolStripMenuItem});
+            this.流程规划ToolStripMenuItem,
+            this.dbus服务器配置ToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 21);
             this.toolStripMenuItem1.Text = "系统";
@@ -515,20 +517,20 @@
             this.aGV通信设置ToolStripMenuItem,
             this.mESToolStripMenuItem});
             this.流程规划ToolStripMenuItem.Name = "流程规划ToolStripMenuItem";
-            this.流程规划ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.流程规划ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.流程规划ToolStripMenuItem.Text = "通信设置";
             // 
             // aGV通信设置ToolStripMenuItem
             // 
             this.aGV通信设置ToolStripMenuItem.Name = "aGV通信设置ToolStripMenuItem";
-            this.aGV通信设置ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.aGV通信设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aGV通信设置ToolStripMenuItem.Text = "AGV通信设置";
             this.aGV通信设置ToolStripMenuItem.Click += new System.EventHandler(this.UdpConfig);
             // 
             // mESToolStripMenuItem
             // 
             this.mESToolStripMenuItem.Name = "mESToolStripMenuItem";
-            this.mESToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.mESToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mESToolStripMenuItem.Text = "MES通信设置";
             this.mESToolStripMenuItem.Click += new System.EventHandler(this.toolStripModbus_Click);
             // 
@@ -662,39 +664,39 @@
             this.treeView1.ItemHeight = 48;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode9.ImageIndex = 1;
-            treeNode9.Name = "0";
-            treeNode9.SelectedImageIndex = 1;
-            treeNode9.Text = "传感器";
-            treeNode10.ImageIndex = 2;
-            treeNode10.Name = "1";
-            treeNode10.SelectedImageIndex = 2;
-            treeNode10.Text = "运行状态";
-            treeNode11.ImageIndex = 3;
-            treeNode11.Name = "节点0";
-            treeNode11.SelectedImageIndex = 3;
-            treeNode11.Text = "远程控制";
-            treeNode12.ImageIndex = 4;
-            treeNode12.Name = "节点1";
-            treeNode12.SelectedImageIndex = 4;
-            treeNode12.Text = "参数设置";
-            treeNode13.ImageIndex = 5;
-            treeNode13.Name = "节点2";
-            treeNode13.SelectedImageIndex = 5;
-            treeNode13.Text = "寄存器";
-            treeNode14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            treeNode14.Name = "0";
-            treeNode14.Text = "AGV0";
-            treeNode15.ForeColor = System.Drawing.Color.Red;
-            treeNode15.Name = "1";
-            treeNode15.Text = "AGV1";
-            treeNode16.ForeColor = System.Drawing.Color.Red;
-            treeNode16.Name = "2";
-            treeNode16.Text = "AGV2";
+            treeNode1.ImageIndex = 1;
+            treeNode1.Name = "0";
+            treeNode1.SelectedImageIndex = 1;
+            treeNode1.Text = "传感器";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "1";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "运行状态";
+            treeNode3.ImageIndex = 3;
+            treeNode3.Name = "节点0";
+            treeNode3.SelectedImageIndex = 3;
+            treeNode3.Text = "远程控制";
+            treeNode4.ImageIndex = 4;
+            treeNode4.Name = "节点1";
+            treeNode4.SelectedImageIndex = 4;
+            treeNode4.Text = "参数设置";
+            treeNode5.ImageIndex = 5;
+            treeNode5.Name = "节点2";
+            treeNode5.SelectedImageIndex = 5;
+            treeNode5.Text = "寄存器";
+            treeNode6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            treeNode6.Name = "0";
+            treeNode6.Text = "AGV0";
+            treeNode7.ForeColor = System.Drawing.Color.Red;
+            treeNode7.Name = "1";
+            treeNode7.Text = "AGV1";
+            treeNode8.ForeColor = System.Drawing.Color.Red;
+            treeNode8.Name = "2";
+            treeNode8.Text = "AGV2";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15,
-            treeNode16});
+            treeNode6,
+            treeNode7,
+            treeNode8});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(223, 554);
             this.treeView1.TabIndex = 0;
@@ -785,6 +787,13 @@
             this.timerOnlineCheck.Enabled = true;
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
+            // 
+            // dbus服务器配置ToolStripMenuItem
+            // 
+            this.dbus服务器配置ToolStripMenuItem.Name = "dbus服务器配置ToolStripMenuItem";
+            this.dbus服务器配置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dbus服务器配置ToolStripMenuItem.Text = "Dbus服务器配置";
+            this.dbus服务器配置ToolStripMenuItem.Click += new System.EventHandler(this.dbus服务器配置ToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -897,6 +906,7 @@
         private System.Windows.Forms.ToolStripMenuItem DebugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.ToolStripMenuItem dbus服务器配置ToolStripMenuItem;
     }
 }
 

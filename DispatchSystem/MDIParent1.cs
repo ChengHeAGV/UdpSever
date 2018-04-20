@@ -1,5 +1,6 @@
 ﻿using DispatchSystem.AGV;
 using DispatchSystem.Developer;
+using DispatchSystem.SystemConfig;
 using DispatchSystem.User;
 using System;
 using System.Collections.Generic;
@@ -682,6 +683,22 @@ namespace DispatchSystem
 
             taskForm.WindowState = FormWindowState.Normal;
             taskForm.WindowState = FormWindowState.Maximized;
+        }
+
+        DbusConfig dbusConfig = new DbusConfig();
+        private void dbus服务器配置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dbusConfig.IsDisposed != true)
+            {
+                dbusConfig.Show();//弹出这个窗口
+                dbusConfig.Focus();//激活显示
+            }
+            else
+            {
+                dbusConfig = new DbusConfig();
+                dbusConfig.Show();//弹出这个窗口
+                dbusConfig.Focus();//激活显示
+            }
         }
     }
 }

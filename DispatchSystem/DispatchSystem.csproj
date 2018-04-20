@@ -146,6 +146,11 @@
     <Compile Include="AGV\StateForm.Designer.cs">
       <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Developer\CanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,8 +163,20 @@
     <Compile Include="Developer\ConsoleLog.Designer.cs">
       <DependentUpon>ConsoleLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemConfig\DbusConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfig\DbusConfig.Designer.cs">
+      <DependentUpon>DbusConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
       <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\DataTransmission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\DataTransmission.Designer.cs">
+      <DependentUpon>DataTransmission.cs</DependentUpon>
     </Compile>
     <Compile Include="User\TaskForm.cs">
       <SubType>Form</SubType>
@@ -364,6 +381,9 @@
     <EmbeddedResource Include="Parameter\Process.resx">
       <DependentUpon>Process.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfig\DbusConfig.resx">
+      <DependentUpon>DbusConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThirdAppResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ThirdAppResource.Designer.cs</LastGenOutput>
@@ -418,9 +438,23 @@
     <EmbeddedResource Include="UserControls\SignalLed.resx">
       <DependentUpon>SignalLed.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User\DataTransmission.resx">
+      <DependentUpon>DataTransmission.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DatabaseDataSet.xsc">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet.xss">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -493,6 +527,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
