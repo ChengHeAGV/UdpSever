@@ -17,6 +17,7 @@ namespace DispatchSystem.User
 {
     public partial class TaskForm : Form
     {
+
         public TaskForm()
         {
             InitializeComponent();

@@ -36,6 +36,7 @@
             this.textBoxTargetAddress = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbLedWriteRegister = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.comboBoxWriteRegister = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxWriteRegisterValue = new System.Windows.Forms.TextBox();
@@ -52,7 +53,6 @@
             this.textBoxTargetPort = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.lbLedWriteRegister = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -157,6 +157,24 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "写单个寄存器";
+            // 
+            // lbLedWriteRegister
+            // 
+            this.lbLedWriteRegister.BackColor = System.Drawing.Color.Transparent;
+            this.lbLedWriteRegister.BlinkInterval = 500;
+            this.lbLedWriteRegister.Label = "";
+            this.lbLedWriteRegister.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
+            this.lbLedWriteRegister.LedColor = System.Drawing.Color.GreenYellow;
+            this.lbLedWriteRegister.LedOffColor = System.Drawing.Color.Gray;
+            this.lbLedWriteRegister.LedSize = new System.Drawing.SizeF(30F, 30F);
+            this.lbLedWriteRegister.LedState = LBSoft.IndustrialCtrls.Leds.LBLed.ledState.Off;
+            this.lbLedWriteRegister.Location = new System.Drawing.Point(722, 51);
+            this.lbLedWriteRegister.Name = "lbLedWriteRegister";
+            this.lbLedWriteRegister.Renderer = null;
+            this.lbLedWriteRegister.Size = new System.Drawing.Size(48, 33);
+            this.lbLedWriteRegister.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
+            this.lbLedWriteRegister.TabIndex = 15;
+            this.lbLedWriteRegister.Trigger = false;
             // 
             // comboBoxWriteRegister
             // 
@@ -316,24 +334,6 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "目  标IP:";
             // 
-            // lbLedWriteRegister
-            // 
-            this.lbLedWriteRegister.BackColor = System.Drawing.Color.Transparent;
-            this.lbLedWriteRegister.BlinkInterval = 500;
-            this.lbLedWriteRegister.Label = "";
-            this.lbLedWriteRegister.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
-            this.lbLedWriteRegister.LedColor = System.Drawing.Color.GreenYellow;
-            this.lbLedWriteRegister.LedOffColor = System.Drawing.Color.Gray;
-            this.lbLedWriteRegister.LedSize = new System.Drawing.SizeF(30F, 30F);
-            this.lbLedWriteRegister.LedState = LBSoft.IndustrialCtrls.Leds.LBLed.ledState.Off;
-            this.lbLedWriteRegister.Location = new System.Drawing.Point(722, 51);
-            this.lbLedWriteRegister.Name = "lbLedWriteRegister";
-            this.lbLedWriteRegister.Renderer = null;
-            this.lbLedWriteRegister.Size = new System.Drawing.Size(48, 33);
-            this.lbLedWriteRegister.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
-            this.lbLedWriteRegister.TabIndex = 15;
-            this.lbLedWriteRegister.Trigger = false;
-            // 
             // DbusTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -347,6 +347,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DbusTestForm";
             this.Text = "通信测试界面";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DbusTestForm_FormClosing);
             this.Load += new System.EventHandler(this.DbusTestForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

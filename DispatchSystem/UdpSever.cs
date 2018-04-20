@@ -39,7 +39,7 @@ namespace DispatchSystem
             /// <param name="args"></param>
             public static void WriteLine(string format, params object[] args)
             {
-                ConsoleLog.WriteLog(string.Format(format, args), Color.Gray);
+                ConsoleLog.WriteLog(string.Format(format, args), Color.Black);
                 WriteLog(string.Format(format, args));
             }
 
@@ -51,7 +51,7 @@ namespace DispatchSystem
             /// <param name="args"></param>
             public static void WriteLine(int sleep, string format, params object[] args)
             {
-                ConsoleLog.WriteLog(string.Format(format, args)+"\r\n", Color.Gray);
+                ConsoleLog.WriteLog(string.Format(format, args)+"\r\n", Color.Black);
                 Thread.Sleep(sleep);
             }
 
@@ -144,7 +144,7 @@ namespace DispatchSystem
                     ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
 
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Gray);
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Black);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                 }
             }
@@ -162,7 +162,7 @@ namespace DispatchSystem
                     ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
                     WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
 
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Gray);
+                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Black);
                     WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
                     Thread.Sleep(sleep);
                 }
@@ -279,12 +279,12 @@ namespace DispatchSystem
         //服务器地址
         public static int ServerAddress = 0;
         //设备心跳周期(单位：秒)
-        public static int HeartCycle = 10;
+        public static int HeartCycle = 2;
 
         //错误重发次数
         public static int RepeatNum = 3;
         //响应超时时间，单位ms
-        public static int ResponseTimeout = 3000;
+        public static int ResponseTimeout = 1000;
 
         //响应帧缓冲池大小
         public static int RESPONSE_MAX_LEN = 20;

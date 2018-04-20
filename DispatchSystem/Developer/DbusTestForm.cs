@@ -10,6 +10,10 @@ namespace DispatchSystem.Developer
         int LocalAddress;
         int TargetAddress;
         EndPoint endPoint;
+
+        //心跳
+        Thread th1;
+        Thread th2;
         public DbusTestForm()
         {
             InitializeComponent();
@@ -26,10 +30,10 @@ namespace DispatchSystem.Developer
             endPoint = new IPEndPoint(IPadr, int.Parse(textBoxTargetPort.Text));//传递IPAddress和Port
 
             //心跳
-            Thread th1 = new Thread(Heart);
+            th1 = new Thread(Heart);
             th1.Start();
             //写单个寄存器
-            Thread th2 = new Thread(WriteRegister);
+            th2 = new Thread(WriteRegister);
             th2.Start();
         }
 
@@ -143,5 +147,16 @@ namespace DispatchSystem.Developer
         }
         #endregion
 
+        private void DbusTestForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (th1.ThreadState != ThreadState.Stopped)
+            {
+                th1.Abort();
+            }
+            if (th2.ThreadState != ThreadState.Stopped)
+            {
+                th2.Abort();
+            }
+        }
     }
 }

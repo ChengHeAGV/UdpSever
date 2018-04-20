@@ -161,18 +161,6 @@
     <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
       <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\ModbusSetForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\ModbusSetForm.Designer.cs">
-      <DependentUpon>ModbusSetForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User\MonitorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\MonitorForm.Designer.cs">
-      <DependentUpon>MonitorForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\TaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,12 +417,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SignalLed.resx">
       <DependentUpon>SignalLed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\ModbusSetForm.resx">
-      <DependentUpon>ModbusSetForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\MonitorForm.resx">
-      <DependentUpon>MonitorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>

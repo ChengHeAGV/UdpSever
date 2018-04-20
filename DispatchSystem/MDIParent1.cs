@@ -25,24 +25,22 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            #region 启动消息界面
             consoleLog.TopLevel = false;
-            consoleLog.Parent = splitContainer1.Panel2;
-
+            consoleLog.Parent = splitContainer3.Panel2;
             consoleLog.Show();//弹出这个窗口
             consoleLog.Focus();//激活显示
+            #endregion
 
 
             //初始化系统参数
             XmlHelper.InitDebug();
 
-            int delay = 30;
-            UdpSever.Shell.WriteNotice(delay, "系统消息", "系统启动...");
-            UdpSever.Shell.WriteNotice(delay, "系统消息", "加载调试信息...");
 
-            UdpSever.Shell.WriteNotice(delay, "系统消息", "获取本机IP...");
-
-
-            UdpSever.Shell.WriteNotice(delay, "系统消息", "加载服务器配置...");
+            int delay = 0;
+            ConsoleLog.WriteLog("系统启动...", Color.Black);
+            ConsoleLog.WriteLog("加载调试信息...", Color.Black);
+            ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
 
             UdpSever.Shell.WriteLine(delay, "[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
             UdpSever.Shell.WriteLine(delay, "[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
@@ -71,27 +69,7 @@ namespace DispatchSystem
             udpConfigForm_MyEvent();
             #endregion
 
-
             treeView1.Nodes.Clear();
-
-            try
-            {
-                if (listenForm.IsDisposed != true)
-                {
-                    listenForm.Show();//弹出这个窗口
-                    listenForm.Focus();//激活显示
-                }
-                else
-                {
-                    listenForm = new ListenForm();
-                    listenForm.Show();//弹出这个窗口
-                    listenForm.Focus();//激活显示
-                }
-            }
-            catch
-            {
-
-            }
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -558,23 +536,16 @@ namespace DispatchSystem
         private void DebugToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //启动调试界面
-            try
+            if (debugForm.IsDisposed != true)
             {
-                if (debugForm.IsDisposed != true)
-                {
-                    debugForm.Show();//弹出这个窗口
-                    debugForm.Focus();//激活显示
-                }
-                else
-                {
-                    debugForm = new DebugForm();
-                    debugForm.Show();//弹出这个窗口
-                    debugForm.Focus();//激活显示
-                }
+                debugForm.Show();//弹出这个窗口
+                debugForm.Focus();//激活显示
             }
-            catch
+            else
             {
-
+                debugForm = new DebugForm();
+                debugForm.Show();//弹出这个窗口
+                debugForm.Focus();//激活显示
             }
         }
         /// <summary>
@@ -585,46 +556,32 @@ namespace DispatchSystem
         ListenForm listenForm = new ListenForm();
         private void ListenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            if (listenForm.IsDisposed != true)
             {
-                if (listenForm.IsDisposed != true)
-                {
-                    listenForm.Show();//弹出这个窗口
-                    listenForm.Focus();//激活显示
-                }
-                else
-                {
-                    listenForm = new ListenForm();
-                    listenForm.Show();//弹出这个窗口
-                    listenForm.Focus();//激活显示
-                }
+                listenForm.Show();//弹出这个窗口
+                listenForm.Focus();//激活显示
             }
-            catch
+            else
             {
-
+                listenForm = new ListenForm();
+                listenForm.Show();//弹出这个窗口
+                listenForm.Focus();//激活显示
             }
         }
 
         DbusTestForm dbusForm = new DbusTestForm();
         private void dBUSTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            if (dbusForm.IsDisposed != true)
             {
-                if (dbusForm.IsDisposed != true)
-                {
-                    dbusForm.Show();//弹出这个窗口
-                    dbusForm.Focus();//激活显示
-                }
-                else
-                {
-                    dbusForm = new DbusTestForm();
-                    dbusForm.Show();//弹出这个窗口
-                    dbusForm.Focus();//激活显示
-                }
+                dbusForm.Show();//弹出这个窗口
+                dbusForm.Focus();//激活显示
             }
-            catch
+            else
             {
-
+                dbusForm = new DbusTestForm();
+                dbusForm.Show();//弹出这个窗口
+                dbusForm.Focus();//激活显示
             }
         }
 
@@ -632,62 +589,34 @@ namespace DispatchSystem
         TaskForm taskForm = new TaskForm();
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            try
+            if (taskForm.IsDisposed != true)
             {
-                if (taskForm.IsDisposed != true)
-                {
-                    // 不是顶级窗体，即不是桌面窗口
-                    //taskForm.TopLevel = false;
-                    //   taskForm.Dock = DockStyle.Fill;
-                    //  taskForm.Parent = splitContainer1.Panel2;
-
-                    taskForm.Show();//弹出这个窗口
-                    taskForm.Focus();//激活显示
-
-                    taskForm.WindowState = FormWindowState.Normal;
-                }
-                else
-                {
-                    taskForm = new TaskForm();
-
-                    // 不是顶级窗体，即不是桌面窗口
-                    //taskForm.TopLevel = false;
-                    //taskForm.Dock = DockStyle.Fill;
-                    //taskForm.Parent = splitContainer1.Panel2;
-
-                    taskForm.Show();//弹出这个窗口
-                    taskForm.Focus();//激活显示
-                    taskForm.WindowState = FormWindowState.Normal;
-                }
+                taskForm.TopLevel = false;
+                taskForm.Parent = splitContainer3.Panel1;
+                taskForm.Show();//弹出这个窗口
+                taskForm.Focus();//激活显示
             }
-            catch
+            else
             {
-
+                taskForm = new TaskForm();
+                taskForm.Show();//弹出这个窗口
+                taskForm.Focus();//激活显示
             }
         }
 
-        //与MES及第三方通信接口设置 
-        ModbusSetForm modbusSetForm = new ModbusSetForm();
         private void toolStripModbus_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (modbusSetForm.IsDisposed != true)
-                {
-                    modbusSetForm.Show();//弹出这个窗口
-                    modbusSetForm.Focus();//激活显示
-                }
-                else
-                {
-                    modbusSetForm = new ModbusSetForm();
-                    modbusSetForm.Show();//弹出这个窗口
-                    modbusSetForm.Focus();//激活显示
-                }
-            }
-            catch
-            {
-
-            }
+            //if (modbusSetForm.IsDisposed != true)
+            //{
+            //    modbusSetForm.Show();//弹出这个窗口
+            //    modbusSetForm.Focus();//激活显示
+            //}
+            //else
+            //{
+            //    modbusSetForm = new ModbusForm();
+            //    modbusSetForm.Show();//弹出这个窗口
+            //    modbusSetForm.Focus();//激活显示
+            //}
         }
 
         //AGV运行实时监控
@@ -698,7 +627,7 @@ namespace DispatchSystem
             //WpfAppTest.MainWindow wpfwindow = new WpfAppTest.MainWindow();
             //wpfwindow.ShowDialog();
 
-            WpfAppTest.UMessageBox.Show("WPF", "感觉如何？");
+            //WpfAppTest.UMessageBox.Show("WPF", "感觉如何？");
             //if (monitorForm.IsDisposed != true)
             //{
             //    monitorForm.Show();//弹出这个窗口
@@ -733,7 +662,7 @@ namespace DispatchSystem
             if (consoleLog.IsDisposed != true)
             {
                 consoleLog.TopLevel = false;
-                consoleLog.Parent = splitContainer1.Panel2;
+                consoleLog.Parent = splitContainer3.Panel2;
 
                 consoleLog.Show();//弹出这个窗口
                 consoleLog.Focus();//激活显示
@@ -744,6 +673,15 @@ namespace DispatchSystem
                 consoleLog.Show();//弹出这个窗口
                 consoleLog.Focus();//激活显示
             }
+        }
+
+        private void MDIParent1_SizeChanged(object sender, EventArgs e)
+        {
+            consoleLog.WindowState = FormWindowState.Normal;
+            consoleLog.WindowState = FormWindowState.Maximized;
+
+            taskForm.WindowState = FormWindowState.Normal;
+            taskForm.WindowState = FormWindowState.Maximized;
         }
     }
 }

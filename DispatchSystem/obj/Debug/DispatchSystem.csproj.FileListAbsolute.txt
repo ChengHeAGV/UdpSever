@@ -176,8 +176,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserContr
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Meters.LBDigitalMeter.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.RFID.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.SignalLed.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.ModbusSetForm.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.MonitorForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.TaskForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AgvParameter.zh-CN.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.cache

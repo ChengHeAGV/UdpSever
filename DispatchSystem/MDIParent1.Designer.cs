@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("AGV1");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("AGV2");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("传感器", 1, 1);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("运行状态", 2, 2);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("远程控制", 3, 3);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("参数设置", 4, 4);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("寄存器", 5, 5);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("AGV0", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("AGV1");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("AGV2");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,6 +105,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStripButtonUdpConfig = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -115,11 +116,14 @@
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -549,28 +553,28 @@
             // ListenToolStripMenuItem
             // 
             this.ListenToolStripMenuItem.Name = "ListenToolStripMenuItem";
-            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ListenToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.ListenToolStripMenuItem.Text = "Listen";
             this.ListenToolStripMenuItem.Click += new System.EventHandler(this.ListenToolStripMenuItem_Click);
             // 
             // dBUSTestToolStripMenuItem
             // 
             this.dBUSTestToolStripMenuItem.Name = "dBUSTestToolStripMenuItem";
-            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dBUSTestToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.dBUSTestToolStripMenuItem.Text = "DBUS_Test";
             this.dBUSTestToolStripMenuItem.Click += new System.EventHandler(this.dBUSTestToolStripMenuItem_Click);
             // 
             // cANToolStripMenuItem
             // 
             this.cANToolStripMenuItem.Name = "cANToolStripMenuItem";
-            this.cANToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cANToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.cANToolStripMenuItem.Text = "CAN";
             this.cANToolStripMenuItem.Click += new System.EventHandler(this.cANToolStripMenuItem_Click);
             // 
             // logToolStripMenuItem
             // 
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.logToolStripMenuItem.Text = "Log";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
@@ -610,6 +614,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(1260, 586);
             this.splitContainer1.SplitterDistance = 223;
             this.splitContainer1.TabIndex = 4;
@@ -654,39 +662,39 @@
             this.treeView1.ItemHeight = 48;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 1;
-            treeNode1.Name = "0";
-            treeNode1.SelectedImageIndex = 1;
-            treeNode1.Text = "传感器";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "1";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Text = "运行状态";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "节点0";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Text = "远程控制";
-            treeNode4.ImageIndex = 4;
-            treeNode4.Name = "节点1";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "参数设置";
-            treeNode5.ImageIndex = 5;
-            treeNode5.Name = "节点2";
-            treeNode5.SelectedImageIndex = 5;
-            treeNode5.Text = "寄存器";
-            treeNode6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            treeNode6.Name = "0";
-            treeNode6.Text = "AGV0";
-            treeNode7.ForeColor = System.Drawing.Color.Red;
-            treeNode7.Name = "1";
-            treeNode7.Text = "AGV1";
-            treeNode8.ForeColor = System.Drawing.Color.Red;
-            treeNode8.Name = "2";
-            treeNode8.Text = "AGV2";
+            treeNode9.ImageIndex = 1;
+            treeNode9.Name = "0";
+            treeNode9.SelectedImageIndex = 1;
+            treeNode9.Text = "传感器";
+            treeNode10.ImageIndex = 2;
+            treeNode10.Name = "1";
+            treeNode10.SelectedImageIndex = 2;
+            treeNode10.Text = "运行状态";
+            treeNode11.ImageIndex = 3;
+            treeNode11.Name = "节点0";
+            treeNode11.SelectedImageIndex = 3;
+            treeNode11.Text = "远程控制";
+            treeNode12.ImageIndex = 4;
+            treeNode12.Name = "节点1";
+            treeNode12.SelectedImageIndex = 4;
+            treeNode12.Text = "参数设置";
+            treeNode13.ImageIndex = 5;
+            treeNode13.Name = "节点2";
+            treeNode13.SelectedImageIndex = 5;
+            treeNode13.Text = "寄存器";
+            treeNode14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            treeNode14.Name = "0";
+            treeNode14.Text = "AGV0";
+            treeNode15.ForeColor = System.Drawing.Color.Red;
+            treeNode15.Name = "1";
+            treeNode15.Text = "AGV1";
+            treeNode16.ForeColor = System.Drawing.Color.Red;
+            treeNode16.Name = "2";
+            treeNode16.Text = "AGV2";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode14,
+            treeNode15,
+            treeNode16});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(223, 554);
             this.treeView1.TabIndex = 0;
@@ -703,6 +711,16 @@
             this.imageList1.Images.SetKeyName(3, "control.png");
             this.imageList1.Images.SetKeyName(4, "set.png");
             this.imageList1.Images.SetKeyName(5, "register.png");
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainer3.Size = new System.Drawing.Size(1033, 586);
+            this.splitContainer3.SplitterDistance = 415;
+            this.splitContainer3.TabIndex = 0;
             // 
             // toolStrip
             // 
@@ -786,17 +804,21 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDIParent1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDIParent1_FormClosed);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
+            this.SizeChanged += new System.EventHandler(this.MDIParent1_SizeChanged);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -874,6 +896,7 @@
         private System.Windows.Forms.ToolStripMenuItem cANToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DebugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer3;
     }
 }
 
