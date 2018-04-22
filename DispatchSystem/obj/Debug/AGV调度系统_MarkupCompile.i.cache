@@ -1,19 +1,19 @@
 ﻿AGV调度系统
 
 
-winexe
+exe
 C#
 .cs
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\
+C:\Users\Administrator\Desktop\Winform-UdpSever\DispatchSystem\obj\Debug\
 DispatchSystem
 none
 false
 DEBUG;TRACE
 
 1-264474977
-11248891629
-88-2015119621
-321421656922
+131999744929
+93851006459
+37497192275
 UserControls\WPF\UCTabItemWithClose.xaml;
 
 False

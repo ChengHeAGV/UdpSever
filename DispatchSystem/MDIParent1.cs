@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
@@ -32,6 +33,30 @@ namespace DispatchSystem
             consoleLog.Show();//弹出这个窗口
             consoleLog.Focus();//激活显示
             #endregion
+
+            DatabaseEntities db = new DatabaseEntities();
+            //创建对象实体，注意，这里需要对所有属性进行赋值（除了自动增长主键外），如果不赋值，则会数据库中会被设置为NULL（注意是否可空）
+            var user = new DbusSever
+            {
+                key = "bomo",
+                value = 21,
+                des = "male"
+            };
+            db.DbusSever.Add(user);
+            db.SaveChanges();
+
+
+
+             db = new DatabaseEntities();
+            //选择部分字段
+            var user1 = db.DbusSever.ToList();
+            //只有调用了FirstOrDefault, First, Single, ToList, ToArray等函数才会执行对数据库的查询
+            foreach (var item in user1)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+
 
 
             //初始化系统参数
@@ -676,15 +701,6 @@ namespace DispatchSystem
             }
         }
 
-        private void MDIParent1_SizeChanged(object sender, EventArgs e)
-        {
-            consoleLog.WindowState = FormWindowState.Normal;
-            consoleLog.WindowState = FormWindowState.Maximized;
-
-            taskForm.WindowState = FormWindowState.Normal;
-            taskForm.WindowState = FormWindowState.Maximized;
-        }
-
         DbusConfig dbusConfig = new DbusConfig();
         private void dbus服务器配置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -699,6 +715,15 @@ namespace DispatchSystem
                 dbusConfig.Show();//弹出这个窗口
                 dbusConfig.Focus();//激活显示
             }
+        }
+
+        private void splitContainer3_Panel2_SizeChanged(object sender, EventArgs e)
+        {
+            consoleLog.WindowState = FormWindowState.Normal;
+            consoleLog.WindowState = FormWindowState.Maximized;
+
+            taskForm.WindowState = FormWindowState.Normal;
+            taskForm.WindowState = FormWindowState.Maximized;
         }
     }
 }

@@ -91,6 +91,7 @@
             this.流程规划ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aGV通信设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dbus服务器配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.高级ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +113,6 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
-            this.dbus服务器配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -517,22 +517,29 @@
             this.aGV通信设置ToolStripMenuItem,
             this.mESToolStripMenuItem});
             this.流程规划ToolStripMenuItem.Name = "流程规划ToolStripMenuItem";
-            this.流程规划ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.流程规划ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.流程规划ToolStripMenuItem.Text = "通信设置";
             // 
             // aGV通信设置ToolStripMenuItem
             // 
             this.aGV通信设置ToolStripMenuItem.Name = "aGV通信设置ToolStripMenuItem";
-            this.aGV通信设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aGV通信设置ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.aGV通信设置ToolStripMenuItem.Text = "AGV通信设置";
             this.aGV通信设置ToolStripMenuItem.Click += new System.EventHandler(this.UdpConfig);
             // 
             // mESToolStripMenuItem
             // 
             this.mESToolStripMenuItem.Name = "mESToolStripMenuItem";
-            this.mESToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mESToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.mESToolStripMenuItem.Text = "MES通信设置";
             this.mESToolStripMenuItem.Click += new System.EventHandler(this.toolStripModbus_Click);
+            // 
+            // dbus服务器配置ToolStripMenuItem
+            // 
+            this.dbus服务器配置ToolStripMenuItem.Name = "dbus服务器配置ToolStripMenuItem";
+            this.dbus服务器配置ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.dbus服务器配置ToolStripMenuItem.Text = "Dbus服务器配置";
+            this.dbus服务器配置ToolStripMenuItem.Click += new System.EventHandler(this.dbus服务器配置ToolStripMenuItem_Click);
             // 
             // DebugToolStripMenuItem
             // 
@@ -720,6 +727,10 @@
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.SizeChanged += new System.EventHandler(this.splitContainer3_Panel2_SizeChanged);
             this.splitContainer3.Size = new System.Drawing.Size(1033, 586);
             this.splitContainer3.SplitterDistance = 415;
             this.splitContainer3.TabIndex = 0;
@@ -788,13 +799,6 @@
             this.timerOnlineCheck.Interval = 200;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
             // 
-            // dbus服务器配置ToolStripMenuItem
-            // 
-            this.dbus服务器配置ToolStripMenuItem.Name = "dbus服务器配置ToolStripMenuItem";
-            this.dbus服务器配置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dbus服务器配置ToolStripMenuItem.Text = "Dbus服务器配置";
-            this.dbus服务器配置ToolStripMenuItem.Click += new System.EventHandler(this.dbus服务器配置ToolStripMenuItem_Click);
-            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -813,7 +817,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDIParent1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDIParent1_FormClosed);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
-            this.SizeChanged += new System.EventHandler(this.MDIParent1_SizeChanged);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

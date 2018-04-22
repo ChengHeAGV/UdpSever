@@ -296,7 +296,7 @@ namespace DispatchSystem.User
                     }));
 
                     //清除MES任务标志寄存器
-                    modbusMaster.WriteSingleRegister((int)TaskData.RegBind.newTask, 0); 
+                    //modbusMaster.WriteSingleRegister((int)TaskData.RegBind.newTask, 0); 
                 }
                 #endregion
 
