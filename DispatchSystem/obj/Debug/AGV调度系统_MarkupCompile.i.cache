@@ -4,7 +4,7 @@
 exe
 C#
 .cs
-C:\Users\Administrator\Desktop\Winform-UdpSever\DispatchSystem\obj\Debug\
+E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\
 DispatchSystem
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 1-264474977
 131999744929
 93851006459
-37497192275
+361773151660
 UserControls\WPF\UCTabItemWithClose.xaml;
 
 False

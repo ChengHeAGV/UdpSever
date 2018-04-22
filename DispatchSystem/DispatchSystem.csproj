@@ -561,12 +561,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WpfAppTest\WpfAppTest.csproj">
-      <Project>{5c48576e-e367-4fcd-9dfc-548adc204ef6}</Project>
-      <Name>WpfAppTest</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="UserControls\WPF\UCTabItemWithClose.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
