@@ -1,4 +1,6 @@
-﻿namespace DispatchSystem.SystemConfig
+﻿using DispatchSystem.Database;
+
+namespace DispatchSystem.SystemConfig
 {
     partial class DbusConfig
     {
@@ -30,9 +32,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.databaseDataSet = new DispatchSystem.DatabaseDataSet();
+            this.databaseDataSet = new DispatchSystem.Database.DatabaseDataSet();
             this.dbusSeverBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbusSeverTableAdapter = new DispatchSystem.DatabaseDataSetTableAdapters.DbusSeverTableAdapter();
+            this.dbusSeverTableAdapter = new DispatchSystem.Database.DatabaseDataSetTableAdapters.DbusSeverTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,7 +121,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource dbusSeverBindingSource;
-        private DatabaseDataSetTableAdapters.DbusSeverTableAdapter dbusSeverTableAdapter;
+        private Database.DatabaseDataSetTableAdapters.DbusSeverTableAdapter dbusSeverTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;

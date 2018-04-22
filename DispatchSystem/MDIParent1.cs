@@ -1,17 +1,15 @@
 ﻿using DispatchSystem.AGV;
+using DispatchSystem.Database;
 using DispatchSystem.Developer;
 using DispatchSystem.SystemConfig;
 using DispatchSystem.User;
 using System;
-using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 
 namespace DispatchSystem

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database_log.ldf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/database.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/database_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/model1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/model1.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("user/%e8%af%b4%e6%98%8e.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dbus%e5%8d%8f%e8%ae%ae%e7%bb%86%e8%8a%82.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("readme.txt")]

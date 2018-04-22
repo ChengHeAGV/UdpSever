@@ -299,3 +299,5 @@ E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\zh-CN\AGV调度系统.re
 E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CopyComplete
 E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
+E:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database.mdf
+E:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database_log.ldf
