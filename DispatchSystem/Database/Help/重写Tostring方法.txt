@@ -1,0 +1,7 @@
+﻿//重写ToString方法
+public override string ToString()
+{
+    //String.Format("{0,-10}", str);//这个表示第一个参数str字符串的宽度为10，左对齐
+    //String.Format("{0,10}", str);//这个表示第一个参数str字符串的宽度为10，右对齐
+    return string.Format("ID: {0,-5}Key: {1,-20}Value: {2,-10}Des: {3,-20}", Id,key,value,des);
+}

@@ -1,0 +1,96 @@
+﻿//Entity 增删该查
+
+1、增加对象　　
+	DbEntity db = new DbEntity();
+    //创建对象实体，注意，这里需要对所有属性进行赋值（除了自动增长主键外），如果不赋值，则会数据库中会被设置为NULL（注意是否可空）
+    var user = new User
+        {
+            Name = "bomo",
+            Age = 21,
+            Gender = "male"
+        };
+    db.User.Add(user);
+    db.SaveChanges();
+
+2、删除对象，删除只需要对象的主键
+	DbEntity db = new DbEntity();
+    //删除只需要主键，这里删除主键为5的行
+    var user = new User {Id = 5};
+
+    //将实体附加到对象管理器中
+    db.User.Attach(user);
+    //方法一：
+    db.User.Remove(user);
+    //方法二：把当前实体的状态改为删除
+    //db.Entry(user).State = EntityState.Deleted;
+    db.SaveChanges();
+
+3、修改对象
+　　方法一：
+	DbEntity db = new DbEntity();
+    //修改需要对主键赋值，注意：这里需要对所有字段赋值，没有赋值的字段会用NULL更新到数据库
+    var user = new User
+        {
+            Id = 5,
+            Name = "bomo",
+            Age = 21,
+            Gender = "male"
+        };
+    //将实体附加到对象管理器中
+    db.User.Attach(user);
+    //把当前实体的状态改为Modified
+    db.Entry(user).State = EntityState.Modified;
+    db.SaveChanges();
+
+	方法二：方法一中每次都需要对所有字段进行修改，效率低，而且麻烦，下面介绍修改部分字段
+	DbEntity db = new DbEntity();
+    //修改需要对主键赋值，注意：这里需要对所有字段赋值，没有赋值的字段会用NULL更新到数据库
+    var user = new User
+        {
+            Id = 5,
+            Name = "bomo",
+            Age = 21
+        };
+    //将实体附加到对象管理器中
+    db.User.Attach(user);
+            
+    //获取到user的状态实体，可以修改其状态
+    var setEntry = ((IObjectContextAdapter) db).ObjectContext.ObjectStateManager.GetObjectStateEntry(user);
+    //只修改实体的Name属性和Age属性
+    setEntry.SetModifiedProperty("Name");
+    setEntry.SetModifiedProperty("Age");
+
+    db.SaveChanges();
+
+4、使用事务：使用事务很简单，只要把需要的操作放在 TransactionScope 中，最后提交
+	DbEntity db = new DbEntity();
+    using (var scope = new TransactionScope())
+    {
+        //执行多个操作
+        var user1 = new User
+        {
+            Name = "bomo",
+            Age = 21,
+            Gender = "male"
+        };
+        db.User.Add(user1);
+        db.SaveChanges();
+                
+        var user2 = new User
+        {
+            Name = "toroto",
+            Age = 20,
+            Gender = "female"
+        };
+        db.User.Add(user2);
+        db.SaveChanges();
+
+        //提交事务
+        scope.Complete();
+    }
+
+5、查询：查询通过LinQ查询
+	DbEntity db = new DbEntity();
+    //选择部分字段
+    var user = db.User.Where(u => u.Name == "bomo").Select(u => new {Id = u.Id, Name = u.Name, Age = u.Age}).FirstOrDefault();
+    //只有调用了FirstOrDefault, First, Single, ToList, ToArray等函数才会执行对数据库的查询
