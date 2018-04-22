@@ -519,6 +519,9 @@
       <DependentUpon>Database.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Database\Help\Entity增删改查二.txt" />
+    <Content Include="Database\Help\注意事项.txt" />
+    <Content Include="Database\Help\重写Tostring方法.txt" />
     <Content Include="Database\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -529,6 +532,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Database\Help\Entity增删改查一.txt" />
     <Content Include="User\说明.txt" />
     <None Include="bin\Debug\参数上位机\newGroupPostIconStrip.PNG" />
     <Content Include="Dbus协议细节.txt" />
