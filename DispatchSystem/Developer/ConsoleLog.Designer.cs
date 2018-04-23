@@ -59,6 +59,7 @@
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Column1.HeaderText = "日期";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 54;
             // 
             // Column2
@@ -66,6 +67,7 @@
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Column2.HeaderText = "时间";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 54;
             // 
             // Column3
@@ -73,6 +75,7 @@
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.HeaderText = "事件";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // ConsoleLog
             // 

@@ -513,11 +513,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Database.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Help\Entity增删改查二.txt" />
     <Content Include="Database\Help\注意事项.txt" />

@@ -30,7 +30,7 @@ namespace DispatchSystem.Developer
             var index = 0;
             if (dataGridView1.Rows.Count > 0)
             {
-                index = dataGridView1.Rows.Count-1;
+                index = dataGridView1.Rows.Count - 1;
             }
             else
                 index = dataGridView1.Rows.Add();
@@ -39,8 +39,8 @@ namespace DispatchSystem.Developer
             dataGridView1.Rows[index].Cells[2].Value = msg;
 
             //行样式
-            if (index%2==1)
-                this.dataGridView1.Rows[index].DefaultCellStyle.BackColor =Color.WhiteSmoke; //背景色
+            if (index % 2 == 1)
+                this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.WhiteSmoke; //背景色
             else
                 this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.White; //背景色
 

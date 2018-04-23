@@ -393,8 +393,10 @@ namespace DispatchSystem
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].ImageIndex = AGV.Register.ImageIndex;
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].SelectedImageIndex = AGV.Register.SelectedImageIndex;
                     }
+                    
                 }
             }
+            UdpSever.OnlieDeviceNum = treeView1.GetNodeCount(false);
         }
 
         /// <summary>

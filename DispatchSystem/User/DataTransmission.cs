@@ -1,31 +1,74 @@
-﻿using AdvancedDataGridView;
-using DispatchSystem.Developer;
+﻿using DispatchSystem.Developer;
 using Modbus.Device;
-using Modbus.IO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DispatchSystem.User
 {
     public partial class DataTransmission : Form
     {
-        ModbusIpMaster modbusMaster;
-        Thread modbusThread;
-        Thread dbusThread;
+        static ModbusIpMaster modbusMaster;
+        static Thread modbusThread;
+        static Thread dbusThread;
 
         public DataTransmission()
         {
             InitializeComponent();
         }
+
+        private void DataTransmission_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        public static  void StartListen()
+        {
+            Thread.Sleep(1000);
+            #region 启动ModbusTcp
+            try
+            {
+                TcpClient tcpClient = new TcpClient(Modbus.ModbusTcpSeverIPAddress, Modbus.ModbusTcpSeverPort);
+                modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
+                modbusMaster.Transport.WriteTimeout = Modbus.Timeout;//写超时
+                modbusMaster.Transport.ReadTimeout = Modbus.Timeout;//读超时
+                modbusMaster.Transport.WaitToRetryMilliseconds = Modbus.WaitToRetryTime;//重试等待时间
+                modbusMaster.Transport.Retries = Modbus.RetryNum;//重试次数
+
+                //启动监听进程
+                modbusThread = new Thread(new ThreadStart(SyncModbus));
+                modbusThread.Start();
+                ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
+            }
+            catch
+            {
+                ConsoleLog.WriteLog("监听ModbusTCP失败！", Color.Red, 24);
+            }
+            #endregion
+
+            #region 启动Dbus
+            //启动监听进程
+            dbusThread = new Thread(new ThreadStart(Syncdbus));
+            dbusThread.Start();
+            ConsoleLog.WriteLog("监听Dbus启动", Color.Orange, 24);
+            #endregion
+        }
+
+        public static void StopListen()
+        {
+            if (modbusThread.IsAlive)
+            {
+                modbusMaster.Dispose();
+                modbusThread.Abort();
+            }
+            if (dbusThread.IsAlive)
+            {
+                dbusThread.Abort();
+            }
+        }
+
         /// <summary>
         /// Modbus数据
         /// </summary>
@@ -44,217 +87,229 @@ namespace DispatchSystem.User
             //modbus重试次数
             public static int RetryNum = 3;
             //Profinet空间对应数据
-            public static UInt16[] Profinet = new UInt16[200];
+            public static UInt16[] Register = new UInt16[200];
             //待发送数据临时数组，用于检测数据是否有变化
-            public static UInt16[] ProfinetCompare = new UInt16[200];
-            //消息
-            public static string Msg;
-        }
+            public static UInt16[] RegisterCompare = new UInt16[200];
 
-        private void DataTransmission_Load(object sender, EventArgs e)
-        {
-            #region 启动ModbusTcp
-            try
+            //设置数据
+            public static void SetRegister(int start, int end)
             {
-                TcpClient tcpClient = new TcpClient(Modbus.ModbusTcpSeverIPAddress, Modbus.ModbusTcpSeverPort);
-                modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
-                modbusMaster.Transport.WriteTimeout = Modbus.Timeout;//写超时
-                modbusMaster.Transport.ReadTimeout = Modbus.Timeout;//读超时
-                modbusMaster.Transport.WaitToRetryMilliseconds = Modbus.WaitToRetryTime;//重试等待时间
-                modbusMaster.Transport.Retries = Modbus.RetryNum;//重试次数
-
-                //启动监听进程
-                modbusThread = new Thread(new ThreadStart(SyncModbus));
-                modbusThread.Start();
-            }
-            catch
-            {
-                ConsoleLog.WriteLog("连接Modbus设备失败！", Color.Red, 24);
-            }
-            #endregion
-
-            #region 启动Dbus
-            //启动监听进程
-            dbusThread = new Thread(new ThreadStart(Syncdbus));
-            dbusThread.Start();
-            #endregion
-        }
-
-        private void Syncdbus()
-        {
-
-            while (true)
-            {
-                Thread.Sleep(Modbus.Cycle);
+                ushort[] temp;
+                string Msg = string.Format("设置:{0,-2}-{1,-2}", start, end);
                 try
                 {
-
+                    //检测待写入数据和上次写入是否有变化
+                    for (int i = start; i <= end; i++)
+                    {
+                        if (Register[i] != RegisterCompare[i])
+                        {
+                            temp = new ushort[end - start + 1];
+                            for (int j = start; j <= end; j++)
+                            {
+                                temp[j] = Register[j];
+                            }
+                            modbusMaster.WriteMultipleRegisters((ushort)start, temp);
+                            //发送成功，更新比较数组
+                            for (int j = start; j <= end; j++)
+                            {
+                                RegisterCompare[j] = Register[j];
+                            }
+                            break;
+                        }
+                    }
                 }
-                catch 
+                catch
                 {
-                        
+                    ConsoleLog.WriteLog(string.Format("操作失败!:[{0}]", Msg), Color.Red, 20);
+                }
+
+            }
+
+            //获取数据
+            public static void GetRegister(int start, int end)
+            {
+                ushort[] temp;
+                string Msg = string.Format("获取:{0,-2}-{1,-2}", start, end);
+                try
+                {
+                    temp = modbusMaster.ReadHoldingRegisters((ushort)start, (ushort)(end - start + 1));
+                    foreach (var item in temp)
+                    {
+                        Register[start] = temp[start++];
+                    }
+                }
+                catch
+                {
+                    ConsoleLog.WriteLog(string.Format("操作失败!:[{0}]", Msg), Color.Red, 20);
                 }
             }
         }
 
+        /// <summary>
+        /// Dbus数据
+        /// </summary>
+        private static class Dbus
+        {
+            //modbus 检测时间
+            public static int Cycle = 1000;
+
+            //待发送数据临时数组，用于检测数据是否有变化
+
+            public static UInt16[,] DbusCompare = new UInt16[UdpSever.DeviceNum, UdpSever.RegisterNum];
+
+            //设置多个数据
+            public static void SetRegister(int deviceAddress, int start, int end)
+            {
+                ushort[] temp;
+                string Msg = string.Format("设置:{0,-2}-{1,-2}", start, end);
+                //检测待写入数据和上次写入是否有变化
+                for (int i = start; i <= end; i++)
+                {
+                    if (UdpSever.Register[deviceAddress, i, 0] != DbusCompare[deviceAddress, i])
+                    {
+                        temp = new ushort[end - start + 1];
+                        for (int j = start; j <= end; j++)
+                        {
+                            temp[j] = (ushort)UdpSever.Register[deviceAddress, j, 0];
+                        }
+
+                        UdpSever.ReturnMsg mg = UdpSever.Write_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
+
+                        //发送成功，更新比较数组
+                        if (mg.resault)
+                        {
+                            for (int j = start; j <= end; j++)
+                            {
+                                DbusCompare[deviceAddress, j] = temp[j];
+                            }
+                        }
+                        else
+                            ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+                        break;
+                    }
+                }
+            }
+            //设置单个数据
+            public static void SetRegister(int deviceAddress, int start)
+            {
+                string Msg = string.Format("设置:{0,-2}", start);
+
+                if (UdpSever.Register[deviceAddress, start, 0] != DbusCompare[deviceAddress, start])
+                {
+                    UdpSever.ReturnMsg mg = UdpSever.Write_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
+
+                    //发送成功，更新比较数组
+                    if (mg.resault)
+                    {
+                        DbusCompare[deviceAddress, start] = (ushort)UdpSever.Register[deviceAddress, start, 0];
+                    }
+                    else
+                        ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+                }
+            }
+        }
+
+        //更新Modbus数据到Dbus
+        public static void UpdateModbusToDbus(int deviceNum, int ModbusStart, int DbusStart, int Num)
+        {
+            int j = DbusStart;
+            for (int i = ModbusStart; i < ModbusStart + Num; i++)
+            {
+                UdpSever.Register[deviceNum, j++, 0] = Modbus.Register[i];
+            }
+        }
+
+        //更新Dbus数据到Modbus
+        public static void UpdateDbusToModbus(int deviceNum, int DbusStart, int ModbusStart, int Num)
+        {
+            int j = ModbusStart;
+            for (int i = DbusStart; i < DbusStart + Num; i++)
+            {
+                Modbus.Register[j++] = (ushort)UdpSever.Register[deviceNum, i, 0];
+            }
+        }
+
+        private static void Syncdbus()
+        {
+            while (true)
+            {
+                Thread.Sleep(Dbus.Cycle);
+                int AgbNum;
+
+                #region AGV1
+                AgbNum = 1;
+
+                //Sever => AGV 1
+                Dbus.SetRegister(AgbNum, 1);
+
+                //PLC    => AGV 
+                //56 -60 => 26-30
+                //更新Modbus数据到Dbus
+                UpdateModbusToDbus(AgbNum, 56, 26, 5);
+                //设置到AGV
+                Dbus.SetRegister(AgbNum, 26, 30);
+
+                //AGV    => PLC
+                //20 -25 => 50-55
+                //更新Dbus数据到Modbus
+                UpdateDbusToModbus(AgbNum, 20, 50, 6);
+                //设置到Modbus
+                Modbus.SetRegister(50, 55);
+                #endregion
+
+                #region AGV2
+                //Sever => AGV 1
+                AgbNum = 2;
+                Dbus.SetRegister(AgbNum, 1);
+                //PLC    => AGV 
+                //67 -71 => 37-41
+                //更新Modbus数据到Dbus
+                UpdateModbusToDbus(AgbNum, 67, 37, 5);
+                //设置到AGV
+                Dbus.SetRegister(AgbNum, 37, 41);
+
+                //AGV    => PLC
+                //31 -36 => 61-66
+                //更新Dbus数据到Modbus
+                UpdateDbusToModbus(AgbNum, 31, 61, 6);
+                //设置到Modbus
+                Modbus.SetRegister(61, 66);
+                #endregion
+            }
+        }
 
         /// <summary>
         /// 同步Modbus设备数据
         /// </summary>
-        private void SyncModbus()
+        private static void SyncModbus()
         {
             while (true)
             {
                 Thread.Sleep(Modbus.Cycle);
-                try
-                {
-                    ushort start = 0;
-                    ushort end = 0;
-                    ushort[] temp;
-                    #region MES
-                    #region 读取 0
-                    Modbus.Msg = "读取 0";
-                    start = 0;
-                    end = 0;
-                    temp = modbusMaster.ReadHoldingRegisters(start, (ushort)(end - start + 1));
-                    foreach (var item in temp)
-                    {
-                        Modbus.Profinet[start] = temp[start++];
-                    }
-                    #endregion
-                    #region 读取 20
-                    Modbus.Msg = "读取 20";
-                    start = 20;
-                    end = 20;
-                    temp = modbusMaster.ReadHoldingRegisters(start, (ushort)(end - start + 1));
-                    foreach (var item in temp)
-                    {
-                        Modbus.Profinet[start] = temp[start++];
-                    }
-                    #endregion
-                    #region 写入 1-14
-                    Modbus.Msg = "写入 1-14";
-                    start = 1;
-                    end = 14;
-                    //检测待写入数据和上次写入是否有变化
-                    for (int i = start; i <= end; i++)
-                    {
-                        if (Modbus.Profinet[i] != Modbus.ProfinetCompare[i])
-                        {
-                            temp = new ushort[end - start + 1];
-                            for (int j = start; j <= end; j++)
-                            {
-                                temp[j] = Modbus.Profinet[j];
-                            }
-                            modbusMaster.WriteMultipleRegisters(start, temp);
-                            //发送成功，更新比较数组
-                            for (int j = start; j <= end; j++)
-                            {
-                                Modbus.ProfinetCompare[j] = Modbus.Profinet[j];
-                            }
-                        }
-                    }
-                    #endregion
-                    #region 写入 21-34
-                    Modbus.Msg = "写入 21-34";
-                    start = 21;
-                    end = 34;
-                    //检测待写入数据和上次写入是否有变化
-                    for (int i = start; i <= end; i++)
-                    {
-                        if (Modbus.Profinet[i] != Modbus.ProfinetCompare[i])
-                        {
-                            temp = new ushort[end - start + 1];
-                            for (int j = start; j <= end; j++)
-                            {
-                                temp[j] = Modbus.Profinet[j];
-                            }
-                            modbusMaster.WriteMultipleRegisters(start, temp);
-                            //发送成功，更新比较数组
-                            for (int j = start; j <= end; j++)
-                            {
-                                Modbus.ProfinetCompare[j] = Modbus.Profinet[j];
-                            }
-                        }
-                    }
-                    #endregion
-                    #endregion
+                #region MES
+                //读取 0
+                Modbus.GetRegister(0, 0);
+                //读取 20
+                Modbus.GetRegister(0, 0);
 
-                    #region PLC
-                    #region 读取 56-60
-                    Modbus.Msg = "读取 56-60";
-                    start = 56;
-                    end = 60;
-                    temp = modbusMaster.ReadHoldingRegisters(start, (ushort)(end - start + 1));
-                    foreach (var item in temp)
-                    {
-                        Modbus.Profinet[start] = temp[start++];
-                    }
-                    #endregion
-                    #region 读取 67-71
-                    Modbus.Msg = "读取 67-71";
-                    start = 67;
-                    end = 71;
-                    temp = modbusMaster.ReadHoldingRegisters(start, (ushort)(end - start + 1));
-                    foreach (var item in temp)
-                    {
-                        Modbus.Profinet[start] = temp[start++];
-                    }
-                    #endregion
-                    #region 写入 50-55
-                    Modbus.Msg = "写入 50-55";
-                    start = 50;
-                    end = 55;
-                    //检测待写入数据和上次写入是否有变化
-                    for (int i = start; i <= end; i++)
-                    {
-                        if (Modbus.Profinet[i] != Modbus.ProfinetCompare[i])
-                        {
-                            temp = new ushort[end - start + 1];
-                            for (int j = start; j <= end; j++)
-                            {
-                                temp[j] = Modbus.Profinet[j];
-                            }
-                            modbusMaster.WriteMultipleRegisters(start, temp);
-                            //发送成功，更新比较数组
-                            for (int j = start; j <= end; j++)
-                            {
-                                Modbus.ProfinetCompare[j] = Modbus.Profinet[j];
-                            }
-                        }
-                    }
-                    #endregion
-                    #region 写入 61-66
-                    Modbus.Msg = "写入 61-66";
-                    start = 61;
-                    end = 66;
-                    //检测待写入数据和上次写入是否有变化
-                    for (int i = start; i <= end; i++)
-                    {
-                        if (Modbus.Profinet[i] != Modbus.ProfinetCompare[i])
-                        {
-                            temp = new ushort[end - start + 1];
-                            for (int j = start; j <= end; j++)
-                            {
-                                temp[j] = Modbus.Profinet[j];
-                            }
-                            modbusMaster.WriteMultipleRegisters(start, temp);
-                            //发送成功，更新比较数组
-                            for (int j = start; j <= end; j++)
-                            {
-                                Modbus.ProfinetCompare[j] = Modbus.Profinet[j];
-                            }
-                        }
-                    }
-                    #endregion
-                    #endregion
-                }
-                catch
-                {
-                    ConsoleLog.WriteLog(string.Format("Modbus同步数据:{0}失败!", Modbus.Msg), Color.Red, 20);
-                }
+                //写入 1-14
+                Modbus.SetRegister(1, 14);
+                //写入 21-34
+                Modbus.SetRegister(21, 34);
+                #endregion
+
+                #region PLC
+                //读取 56-60
+                Modbus.GetRegister(56, 60);
+                //读取 67-71
+                Modbus.GetRegister(67, 71);
+
+                //写入 50-55
+                Modbus.SetRegister(50, 55);
+                //写入 61-66
+                Modbus.SetRegister(61, 66);
+                #endregion
             }
-
         }
     }
 }

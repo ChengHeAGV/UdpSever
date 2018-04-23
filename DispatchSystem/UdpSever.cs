@@ -253,6 +253,12 @@ namespace DispatchSystem
             }
         }
 
+   
+            
+       
+
+
+
         //服务器IP
         public static IPAddress ipaddress;
         //服务器端口
@@ -297,6 +303,8 @@ namespace DispatchSystem
         //帧ID
         public static int FrameID = 0;
 
+        //在线设备数
+        public static int OnlieDeviceNum;
         public struct ReturnMsg
         {
             public bool resault;
