@@ -66,6 +66,11 @@ namespace DispatchSystem
             #endregion
 
             treeView1.Nodes.Clear();
+
+            taskForm.TopLevel = false;
+            taskForm.Parent = splitContainer3.Panel1;
+            taskForm.Show();//弹出这个窗口
+            taskForm.Focus();//激活显示
         }
 
         private void ShowNewForm(object sender, EventArgs e)

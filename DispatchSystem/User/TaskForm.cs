@@ -228,24 +228,6 @@ namespace DispatchSystem.User
         /// </summary>
         private void taskFunc()
         {
-            //Thread.Sleep(2000);
-            //if (UdpSever.EndPointArray[1] != null)
-            //{
-            //    UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(1, 2, 8);
-            //    for (int i = 0; i < rm.DataBuf.Length; i++)
-            //    {
-            //        UdpSever.Register[1, 2 + i, 0] = rm.DataBuf[i];
-            //    }
-            //}
-
-            //if (UdpSever.EndPointArray[2] != null)
-            //{
-            //    UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(2, 2, 8);
-            //    for (int i = 0; i < rm.DataBuf.Length; i++)
-            //    {
-            //        UdpSever.Register[2, 2 + i, 0] = rm.DataBuf[i];
-            //    }
-            //}
             while (true)
             {
                 if (DataTransmission.ListenState.ModbusTcp == false)
@@ -297,6 +279,12 @@ namespace DispatchSystem.User
                         DataTransmission.Profinet.Clear1 = true;
 
                         //等待AGV收到任务
+                        while (UdpSever.Register[task.AgvNum, 2,0]==0)
+                        {
+                            Thread.Sleep(100);
+                        }
+                        //清除AGV任务标志
+                        UdpSever.Register[task.AgvNum, 1, 0] = 0;
                     }
                     //PE线
                     if (DataTransmission.Profinet.Register[21] > 0 && (DataTransmission.Profinet.Clear21 == false))
@@ -339,6 +327,13 @@ namespace DispatchSystem.User
 
                         //清除MES任务标志寄存器
                         DataTransmission.Profinet.Clear21 = true;
+                         //等待AGV收到任务
+                        while (UdpSever.Register[task.AgvNum, 2,0]==0)
+                        {
+                            Thread.Sleep(100);
+                        }
+                        //清除AGV任务标志
+                        UdpSever.Register[task.AgvNum, 1, 0] = 0;
                     }
                     #endregion
 
@@ -640,11 +635,11 @@ namespace DispatchSystem.User
                     DataTransmission.Profinet.Register[15] = (ushort)UdpSever.Register[1, 8, 0];
 
                     //上一个位置
-                    DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[33, 5, 0];
+                    DataTransmission.Profinet.Register[33] = (ushort)UdpSever.Register[1, 5, 0];
                     //当前位置
-                    DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[34, 6, 0];
+                    DataTransmission.Profinet.Register[34] = (ushort)UdpSever.Register[1, 6, 0];
                     //运行状态
-                    DataTransmission.Profinet.Register[15] = (ushort)UdpSever.Register[35, 8, 0];
+                    DataTransmission.Profinet.Register[35] = (ushort)UdpSever.Register[1, 8, 0];
                     #endregion
                 }
                 Thread.Sleep(TaskData.Parameter.taskFuncTime);

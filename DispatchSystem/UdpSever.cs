@@ -966,24 +966,31 @@ namespace DispatchSystem
         /// <param name="str">byte[]</param>
         public static void sendToUdp(EndPoint EndPort, byte[] str)
         {
-            if (str != null && EndPort != null)
+            try
             {
-                byte[] buf = new byte[str.Length * 2 + 2];
-                buf[0] = (byte)('$');
-                string sting = ByteToHexStr(str);
-                for (int i = 0; i < str.Length * 2; i++)
+                if (str != null && EndPort != null)
                 {
-                    buf[i + 1] = (byte)(sting[i]);
+                    byte[] buf = new byte[str.Length * 2 + 2];
+                    buf[0] = (byte)('$');
+                    string sting = ByteToHexStr(str);
+                    for (int i = 0; i < str.Length * 2; i++)
+                    {
+                        buf[i + 1] = (byte)(sting[i]);
+                    }
+                    buf[buf.Length - 1] = (byte)('!');
+                    TxLength += (UInt64)buf.Length;
+
+                    Socket socket1 = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                    socket1.Bind(new IPEndPoint(ipEndPoint.Address, 18665));
+
+                    socket1.SendTo(buf, EndPort);
+                    socket1.Dispose();
+                    Log("发送数据", string.Format("[{0}]", System.Text.Encoding.ASCII.GetString(buf)));
                 }
-                buf[buf.Length - 1] = (byte)('!');
-                TxLength += (UInt64)buf.Length;
+            }
+            catch
+            {
 
-                Socket socket1 = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                socket1.Bind(new IPEndPoint(ipEndPoint.Address, 18665));
-
-                socket1.SendTo(buf, EndPort);
-                socket1.Dispose();
-                Log("发送数据", string.Format("[{0}]", System.Text.Encoding.ASCII.GetString(buf)));
             }
         }
 
