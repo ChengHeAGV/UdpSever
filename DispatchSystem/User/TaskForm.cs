@@ -228,7 +228,24 @@ namespace DispatchSystem.User
         /// </summary>
         private void taskFunc()
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(2000);
+            //if (UdpSever.EndPointArray[1] != null)
+            //{
+            //    UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(1, 2, 8);
+            //    for (int i = 0; i < rm.DataBuf.Length; i++)
+            //    {
+            //        UdpSever.Register[1, 2 + i, 0] = rm.DataBuf[i];
+            //    }
+            //}
+
+            //if (UdpSever.EndPointArray[2] != null)
+            //{
+            //    UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(2, 2, 8);
+            //    for (int i = 0; i < rm.DataBuf.Length; i++)
+            //    {
+            //        UdpSever.Register[2, 2 + i, 0] = rm.DataBuf[i];
+            //    }
+            //}
             while (true)
             {
                 if (DataTransmission.ListenState.ModbusTcp == false)
@@ -237,7 +254,6 @@ namespace DispatchSystem.User
                 }
                 else
                 {
-
                     #region 判断MES是否有新任务
                     //扩散线
                     if (DataTransmission.Profinet.Register[1] > 0 && (DataTransmission.Profinet.Clear1 == false))
@@ -279,6 +295,8 @@ namespace DispatchSystem.User
                         }));
                         //清除MES任务标志寄存器
                         DataTransmission.Profinet.Clear1 = true;
+
+                        //等待AGV收到任务
                     }
                     //PE线
                     if (DataTransmission.Profinet.Register[21] > 0 && (DataTransmission.Profinet.Clear21 == false))
@@ -363,11 +381,11 @@ namespace DispatchSystem.User
                                         //启动时间
                                         dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //当前站点
-                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NowPosition;
+                                        dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.Waiting[i].NowPosition;
                                         //下一个站点
-                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].NextPosition;
+                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NextPosition;
                                         //报警信息
-                                        dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.Waiting[i].Error;
+                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].Error;
                                     }));
                                     #endregion
 
@@ -410,7 +428,7 @@ namespace DispatchSystem.User
                                         dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.Waiting[i].OrderNum;
                                         //任务编号
                                         dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.Waiting[i].TaskNum;
-                                        //产线编号
+                                        //产线名称
                                         dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.Waiting[i].LineName;
                                         //AGV编号
                                         dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.Waiting[i].AgvNum;
@@ -419,11 +437,11 @@ namespace DispatchSystem.User
                                         //启动时间
                                         dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //当前站点
-                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NowPosition;
+                                        dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.Waiting[i].NowPosition;
                                         //下一个站点
-                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].NextPosition;
+                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NextPosition;
                                         //报警信息
-                                        dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.Waiting[i].Error;
+                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].Error;
                                     }));
                                     #endregion
 
@@ -613,9 +631,22 @@ namespace DispatchSystem.User
                             }
                         }
                     }
+
+                    //上一个位置
+                    DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[1, 5, 0]; 
+                    //当前位置
+                    DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[1, 6, 0]; 
+                    //运行状态
+                    DataTransmission.Profinet.Register[15] = (ushort)UdpSever.Register[1, 8, 0];
+
+                    //上一个位置
+                    DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[33, 5, 0];
+                    //当前位置
+                    DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[34, 6, 0];
+                    //运行状态
+                    DataTransmission.Profinet.Register[15] = (ushort)UdpSever.Register[35, 8, 0];
                     #endregion
                 }
-
                 Thread.Sleep(TaskData.Parameter.taskFuncTime);
             }
         }
@@ -624,7 +655,7 @@ namespace DispatchSystem.User
         {
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
             long timeStamp = (long)(DateTime.Now - startTime).TotalMilliseconds; // 相差毫秒数
-            //System.Console.WriteLine(timeStamp);
+                                                                                 //System.Console.WriteLine(timeStamp);
             return timeStamp;
         }
 

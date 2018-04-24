@@ -1081,11 +1081,11 @@ namespace DispatchSystem
         /// <param name="timestamp">时间戳</param>
         /// <param name="format">输出格式，DateTimeFormatInfo</param>
         /// <returns></returns>
-        public static string StampToString(long timestamp)
+        public static string StampToString(long timestamp,string format= "yyyy-MM-dd HH:mm:ss")
         {
             var datetime = new DateTime();
             var start = new DateTime(1970, 1, 1, 0, 0, 0, datetime.Kind);
-            return start.AddSeconds(timestamp).ToString("yyyy-MM-dd HH:mm:ss");
+            return start.AddSeconds(timestamp).ToString(format);
         }
 
         #region 字符串和Byte之间的转化

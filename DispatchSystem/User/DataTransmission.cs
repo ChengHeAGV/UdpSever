@@ -123,24 +123,32 @@ namespace DispatchSystem.User
                 try
                 {
                     //检测待写入数据和上次写入是否有变化
-                    for (int i = start; i <= end; i++)
+                    //for (int i = start; i <= end; i++)
+                    //{
+                    //    if (Register[i] != RegisterCompare[i])
+                    //    {
+                    //        temp = new ushort[end - start + 1];
+                    //        for (int j = start; j <= end; j++)
+                    //        {
+                    //            temp[j - start] = Register[j];
+                    //        }
+                    //        modbusMaster.WriteMultipleRegisters((ushort)start, temp);
+                    //        //发送成功，更新比较数组
+                    //        for (int j = start; j <= end; j++)
+                    //        {
+                    //            RegisterCompare[j] = Register[j];
+                    //        }
+                    //        return true;
+                    //    }
+                    //}
+
+
+                    temp = new ushort[end - start + 1];
+                    for (int j = start; j <= end; j++)
                     {
-                        if (Register[i] != RegisterCompare[i])
-                        {
-                            temp = new ushort[end - start + 1];
-                            for (int j = start; j <= end; j++)
-                            {
-                                temp[j - start] = Register[j];
-                            }
-                            modbusMaster.WriteMultipleRegisters((ushort)start, temp);
-                            //发送成功，更新比较数组
-                            for (int j = start; j <= end; j++)
-                            {
-                                RegisterCompare[j] = Register[j];
-                            }
-                            return true;
-                        }
+                        temp[j - start] = Register[j];
                     }
+                    modbusMaster.WriteMultipleRegisters((ushort)start, temp);
                     return true;
                 }
                 catch
@@ -189,50 +197,67 @@ namespace DispatchSystem.User
             {
                 ushort[] temp;
                 string Msg = string.Format("设置:{0,-2}-{1,-2}", start, end);
+                ////检测待写入数据和上次写入是否有变化
+                //for (int i = start; i <= end; i++)
+                //{
+                //    if (UdpSever.Register[deviceAddress, i, 0] != DbusCompare[deviceAddress, i])
+                //    {
+                //        temp = new ushort[end - start + 1];
+                //        for (int j = start; j <= end; j++)
+                //        {
+                //            temp[j - start] = (ushort)UdpSever.Register[deviceAddress, j, 0];
+                //        }
+
+                //        UdpSever.ReturnMsg mg = UdpSever.Write_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
+
+                //        //发送成功，更新比较数组
+                //        if (mg.resault)
+                //        {
+                //            for (int j = start; j <= end; j++)
+                //            {
+                //                DbusCompare[deviceAddress, j] = temp[j];
+                //            }
+                //        }
+                //        else
+                //            ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+                //        break;
+                //    }
+                //}
+
                 //检测待写入数据和上次写入是否有变化
-                for (int i = start; i <= end; i++)
+                temp = new ushort[end - start + 1];
+                for (int j = start; j <= end; j++)
                 {
-                    if (UdpSever.Register[deviceAddress, i, 0] != DbusCompare[deviceAddress, i])
-                    {
-                        temp = new ushort[end - start + 1];
-                        for (int j = start; j <= end; j++)
-                        {
-                            temp[j - start] = (ushort)UdpSever.Register[deviceAddress, j, 0];
-                        }
-
-                        UdpSever.ReturnMsg mg = UdpSever.Write_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
-
-                        //发送成功，更新比较数组
-                        if (mg.resault)
-                        {
-                            for (int j = start; j <= end; j++)
-                            {
-                                DbusCompare[deviceAddress, j] = temp[j];
-                            }
-                        }
-                        else
-                            ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
-                        break;
-                    }
+                    temp[j - start] = (ushort)UdpSever.Register[deviceAddress, j, 0];
                 }
+
+                UdpSever.ReturnMsg mg = UdpSever.Write_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
+
+                if (mg.resault == false)
+                    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
             }
             //设置单个数据
             public static void SetRegister(int deviceAddress, int start)
             {
                 string Msg = string.Format("设置:{0,-2}", start);
 
-                if (UdpSever.Register[deviceAddress, start, 0] != DbusCompare[deviceAddress, start])
-                {
-                    UdpSever.ReturnMsg mg = UdpSever.Write_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
 
-                    //发送成功，更新比较数组
-                    if (mg.resault)
-                    {
-                        DbusCompare[deviceAddress, start] = (ushort)UdpSever.Register[deviceAddress, start, 0];
-                    }
-                    else
-                        ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
-                }
+                UdpSever.ReturnMsg mg = UdpSever.Write_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
+                if (mg.resault == false)
+                    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+
+                //if (UdpSever.Register[deviceAddress, start, 0] != DbusCompare[deviceAddress, start])
+                //{
+                //    UdpSever.ReturnMsg mg = UdpSever.Write_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
+
+                //    //发送成功，更新比较数组
+                //    if (mg.resault)
+                //    {
+                //        DbusCompare[deviceAddress, start] = (ushort)UdpSever.Register[deviceAddress, start, 0];
+                //    }
+                //    else
+                //        ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+                //}
             }
         }
 
@@ -261,46 +286,51 @@ namespace DispatchSystem.User
             while (true)
             {
                 Thread.Sleep(Dbus.Cycle);
-                int AgbNum;
+                int AgvNum;
 
                 #region AGV1
-                AgbNum = 1;
+                AgvNum = 1;
+                if (UdpSever.EndPointArray[AgvNum] != null)
+                {
+                    //Sever => AGV 1
+                    Dbus.SetRegister(AgvNum, 1);
 
-                //Sever => AGV 1
-                Dbus.SetRegister(AgbNum, 1);
+                    //PLC    => AGV 
+                    //56 -60 => 26-30
+                    //更新Modbus数据到Dbus
+                    UpdateModbusToDbus(AgvNum, 56, 26, 5);
+                    //设置到AGV
+                    Dbus.SetRegister(AgvNum, 26, 30);
 
-                //PLC    => AGV 
-                //56 -60 => 26-30
-                //更新Modbus数据到Dbus
-                UpdateModbusToDbus(AgbNum, 56, 26, 5);
-                //设置到AGV
-                Dbus.SetRegister(AgbNum, 26, 30);
-
-                //AGV    => PLC
-                //20 -25 => 50-55
-                //更新Dbus数据到Modbus
-                UpdateDbusToModbus(AgbNum, 20, 50, 6);
-                //设置到Modbus
-                Profinet.SetRegister(50, 55);
+                    //AGV    => PLC
+                    //20 -25 => 50-55
+                    //更新Dbus数据到Modbus
+                    UpdateDbusToModbus(AgvNum, 20, 50, 6);
+                    //设置到Modbus
+                    Profinet.SetRegister(50, 55);
+                }
                 #endregion
 
                 #region AGV2
                 //Sever => AGV 1
-                AgbNum = 2;
-                Dbus.SetRegister(AgbNum, 1);
-                //PLC    => AGV 
-                //67 -71 => 37-41
-                //更新Modbus数据到Dbus
-                UpdateModbusToDbus(AgbNum, 67, 37, 5);
-                //设置到AGV
-                Dbus.SetRegister(AgbNum, 37, 41);
+                AgvNum = 2;
+                if (UdpSever.EndPointArray[AgvNum] != null)
+                {
+                    Dbus.SetRegister(AgvNum, 1);
+                    //PLC    => AGV 
+                    //67 -71 => 37-41
+                    //更新Modbus数据到Dbus
+                    UpdateModbusToDbus(AgvNum, 67, 37, 5);
+                    //设置到AGV
+                    Dbus.SetRegister(AgvNum, 37, 41);
 
-                //AGV    => PLC
-                //31 -36 => 61-66
-                //更新Dbus数据到Modbus
-                UpdateDbusToModbus(AgbNum, 31, 61, 6);
-                //设置到Modbus
-                Profinet.SetRegister(61, 66);
+                    //AGV    => PLC
+                    //31 -36 => 61-66
+                    //更新Dbus数据到Modbus
+                    UpdateDbusToModbus(AgvNum, 31, 61, 6);
+                    //设置到Modbus
+                    Profinet.SetRegister(61, 66);
+                }
                 #endregion
             }
         }
@@ -339,7 +369,7 @@ namespace DispatchSystem.User
                     Profinet.Register[num] = 0;
                     if (Profinet.SetRegister(num, num))
                     {
-                        Profinet.Clear1 = false;
+                        Profinet.Clear21 = false;
                     }
                 }
                 else
