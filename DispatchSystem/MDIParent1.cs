@@ -1,7 +1,6 @@
 ﻿using DispatchSystem.AGV;
 using DispatchSystem.Database;
 using DispatchSystem.Developer;
-using DispatchSystem.SystemConfig;
 using DispatchSystem.User;
 using System;
 using System.Drawing;
@@ -32,48 +31,22 @@ namespace DispatchSystem
             consoleLog.Focus();//激活显示
             #endregion
 
-            DatabaseEntities db = new DatabaseEntities();
-            //创建对象实体，注意，这里需要对所有属性进行赋值（除了自动增长主键外），如果不赋值，则会数据库中会被设置为NULL（注意是否可空）
-            var user = new DbusSever
-            {
-                key = "bomo",
-                value = 21,
-                des = "male"
-            };
-            db.DbusSever.Add(user);
-            db.SaveChanges();
-
-
-
-            db = new DatabaseEntities();
-            //选择部分字段
-            var user1 = db.DbusSever.ToList();
-            //只有调用了FirstOrDefault, First, Single, ToList, ToArray等函数才会执行对数据库的查询
-            foreach (var item in user1)
-            {
-                Console.WriteLine(item.ToString());
-            }
-
-
-
             //初始化系统参数
             XmlHelper.InitDebug();
 
-
-            int delay = 0;
             ConsoleLog.WriteLog("系统启动...", Color.Black);
             ConsoleLog.WriteLog("加载调试信息...", Color.Black);
             ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
 
-            UdpSever.Shell.WriteLine(delay, "[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
-            UdpSever.Shell.WriteLine(delay, "[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
-            UdpSever.Shell.WriteLine(delay, "[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
-            UdpSever.Shell.WriteLine(delay, "[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
-            UdpSever.Shell.WriteLine(delay, "[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
-            UdpSever.Shell.WriteLine(delay, "[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
-            UdpSever.Shell.WriteLine(delay, "[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
-            UdpSever.Shell.WriteLine(delay, "[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
-            UdpSever.Shell.WriteLine(delay, "[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
+            ConsoleLog.WriteLog("[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
+            ConsoleLog.WriteLog("[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
+            ConsoleLog.WriteLog("[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
+            ConsoleLog.WriteLog("[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
+            ConsoleLog.WriteLog("[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
+            ConsoleLog.WriteLog("[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
+            ConsoleLog.WriteLog("[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
+            ConsoleLog.WriteLog("[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
+            ConsoleLog.WriteLog("[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
 
             #region 获取本机IP，自动开启服务器
             string name = Dns.GetHostName();
@@ -82,7 +55,7 @@ namespace DispatchSystem
             {
                 if (ipa.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    UdpSever.Shell.WriteNotice(delay, "系统消息", "本机IP:[{0}]", ipa.ToString());
+                    ConsoleLog.WriteLog( "系统消息", "本机IP:[{0}]", ipa.ToString());
                     UdpSever.ipaddress = ipa;
                 }
             }
@@ -700,20 +673,9 @@ namespace DispatchSystem
             }
         }
 
-        DbusConfig dbusConfig = new DbusConfig();
         private void dbus服务器配置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dbusConfig.IsDisposed != true)
-            {
-                dbusConfig.Show();//弹出这个窗口
-                dbusConfig.Focus();//激活显示
-            }
-            else
-            {
-                dbusConfig = new DbusConfig();
-                dbusConfig.Show();//弹出这个窗口
-                dbusConfig.Focus();//激活显示
-            }
+
         }
 
         private void splitContainer3_Panel2_SizeChanged(object sender, EventArgs e)

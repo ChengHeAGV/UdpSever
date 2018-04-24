@@ -1,19 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="DbusSever">
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DbusConfig" EntityType="DatabaseModel.DbusConfig" />
+    <EntitySet Name="DbusLog" EntityType="DatabaseModel.DbusLog" />
+    <EntitySet Name="ModbusConfig" EntityType="DatabaseModel.ModbusConfig" />
+  </EntityContainer>
+  <EntityType Name="DbusConfig">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="key" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="key" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="value" Type="Int32" Nullable="false" />
     <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="DbusSever" EntityType="Self.DbusSever" />
-    <EntitySet Name="Table" EntityType="DatabaseModel.Table" />
-  </EntityContainer>
-  <EntityType Name="Table">
+  <EntityType Name="DbusLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="key" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="value" Type="Int32" Nullable="false" />
+    <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ModbusConfig">
     <Key>
       <PropertyRef Name="Id" />
     </Key>

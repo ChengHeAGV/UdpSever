@@ -18,25 +18,15 @@ namespace DispatchSystem.AGV
             this.Text = string.Format("AGV{0}-远程操作", deviceNum);
         }
 
-        //private async void DoSomething(Button bb)
-        //{
-        //    await Task.Run(() =>
-        //    {
-               
-
-        //    });
-        //    bb.Enabled = true;
-        //}
-
         //读多个寄存器
         private void button1_Click(object sender, EventArgs e)
         {
-            UdpSever.Shell.WriteNotice("debug", "开始执行{0}", DateTime.Now.ToLocalTime());
+            //UdpSever.Log("debug", "开始执行{0}", DateTime.Now.ToLocalTime());
             var bb = sender as Button;
             bb.Enabled = false;
             UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, 128);
             bb.Enabled = true;
-            UdpSever.Shell.WriteNotice("debug", "结束{0}", DateTime.Now.ToLocalTime());
+            //UdpSever.Log("debug", "结束{0}", DateTime.Now.ToLocalTime());
         }
 
         //写多个寄存器
@@ -49,7 +39,7 @@ namespace DispatchSystem.AGV
                 data[i] = (ushort)(rd.Next(1, 1000));
             }
             UdpSever.ReturnMsg rm = UdpSever.Write_Multiple_Registers( deviceNum, 0, 128, data);
-            Console.WriteLine("写入结果:\r\n{0}", rm.ToString());
+            //Console.WriteLine("写入结果:\r\n{0}", rm.ToString());
         }
 
 
@@ -60,7 +50,7 @@ namespace DispatchSystem.AGV
             {
                 UdpSever.Write_Register(deviceNum, reg, data);
             });
-            UdpSever.Shell.WriteNotice("debug", str);
+            //UdpSever.Log("debug", str);
             bb.Enabled = true;
         }
         //滚筒左转
@@ -68,21 +58,21 @@ namespace DispatchSystem.AGV
         {
             var bb = sender as Button;
             bb.Enabled = false;
-            WriteRegister(bb,1,1,string.Format("滚筒左转[{0}][{1}]", deviceNum, 1));
+            //WriteRegister(bb,1,1,string.Format("滚筒左转[{0}][{1}]", deviceNum, 1));
         }
         //滚筒右转
         private void buttonGunTongRight_Click(object sender, EventArgs e)
         {
             var bb = sender as Button;
             bb.Enabled = false;
-            WriteRegister(bb, 2, 1, string.Format("滚筒右转[{0}][{1}]", deviceNum, 2));
+            //WriteRegister(bb, 2, 1, string.Format("滚筒右转[{0}][{1}]", deviceNum, 2));
         }
         //滚筒停止
         private void button_GunTongStop_Click(object sender, EventArgs e)
         {
             var bb = sender as Button;
             bb.Enabled = false;
-            WriteRegister(bb, 3, 1, string.Format("滚筒停止[{0}][{1}]", deviceNum, 3));
+            //WriteRegister(bb, 3, 1, string.Format("滚筒停止[{0}][{1}]", deviceNum, 3));
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿	DatabaseEntities db = new DatabaseEntities();
+    //创建对象实体，注意，这里需要对所有属性进行赋值（除了自动增长主键外），如果不赋值，则会数据库中会被设置为NULL（注意是否可空）
+    var user = new DbusSever
+    {
+        key = "bomo",
+        value = 21,
+        des = "male"
+    };
+    db.DbusSever.Add(user);
+    db.SaveChanges();
+
+
+
+    db = new DatabaseEntities();
+    //选择部分字段
+    var user1 = db.DbusSever.ToList();
+    //只有调用了FirstOrDefault, First, Single, ToList, ToArray等函数才会执行对数据库的查询
+    foreach (var item in user1)
+    {
+        Console.WriteLine(item.ToString());
+    }

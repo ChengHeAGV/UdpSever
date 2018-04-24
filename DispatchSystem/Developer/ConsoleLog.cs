@@ -25,6 +25,14 @@ namespace DispatchSystem.Developer
             UpdateControl(new ConsoleLog(), new EventArgs(), msg, color, fontSize);
         }
 
+        public static void WriteLog(string msg)  //假设这个是静态的回调方法
+        {
+            UpdateControl(new ConsoleLog(), new EventArgs(), msg, Color.Black, 14);
+        }
+        public static void WriteLog(string format, params object[] args)  //假设这个是静态的回调方法
+        {
+            UpdateControl(new ConsoleLog(), new EventArgs(), string.Format(format, args), Color.Black, 14);
+        }
         private void WriteLogFunc(string msg, Color color, int fontSize)
         {
             try

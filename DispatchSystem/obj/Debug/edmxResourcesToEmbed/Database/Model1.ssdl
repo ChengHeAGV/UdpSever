@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="DbusSever">
+  <EntityType Name="DbusConfig">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -9,7 +9,16 @@
     <Property Name="value" Type="int" Nullable="false" />
     <Property Name="des" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="Table">
+  <EntityType Name="DbusLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="key" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="value" Type="int" Nullable="false" />
+    <Property Name="des" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ModbusConfig">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -19,7 +28,8 @@
     <Property Name="des" Type="nvarchar(max)" />
   </EntityType>
   <EntityContainer Name="DatabaseModelStoreContainer">
-    <EntitySet Name="DbusSever" EntityType="Self.DbusSever" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DbusConfig" EntityType="Self.DbusConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DbusLog" EntityType="Self.DbusLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ModbusConfig" EntityType="Self.ModbusConfig" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

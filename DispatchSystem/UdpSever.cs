@@ -24,240 +24,10 @@ namespace DispatchSystem
     public delegate void UdpReciveDelegate(string str);
     class UdpSever
     {
-        [DllImport("kernel32.dll")]
-        public static extern Boolean AllocConsole();
-        [DllImport("kernel32.dll")]
-        public static extern Boolean FreeConsole();
-
-        public static class Shell
+        public static void Log(string format, params object[] args)
         {
-            /// <summary>
-            /// 系统默认
-            /// </summary>
-            /// <param name="color"></param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteLine(string format, params object[] args)
-            {
-                ConsoleLog.WriteLog(string.Format(format, args), Color.Black);
-                WriteLog(string.Format(format, args));
-            }
-
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="sleep">打印完后延时，单位ms</param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteLine(int sleep, string format, params object[] args)
-            {
-                ConsoleLog.WriteLog(string.Format(format, args) + "\r\n", Color.Black);
-                Thread.Sleep(sleep);
-            }
-
-            /// <summary>
-            /// 输出自定义颜色信息
-            /// </summary>
-            /// <param name="type">消息类型</param>
-            /// <param name="color">显示颜色</param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteLine(string type, Color color, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.White);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), color);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                }
-            }
-            /// <summary>
-            /// 输出自定义颜色信息
-            /// </summary>
-            /// <param name="sleep">打印完后延时，单位ms</param>
-            /// <param name="type"></param>
-            /// <param name="color"></param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteLine(int sleep, string type, Color color, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.White);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), color);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                    Thread.Sleep(sleep);
-                }
-            }
-
-            /// <summary>
-            /// 警告信息
-            /// </summary>
-            /// <param name="type">消息类型</param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteWarning(string type, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Yellow);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                }
-            }
-            /// <summary>
-            /// 警告信息
-            /// </summary>
-            /// <param name="sleep">打印完后延时，单位ms</param>
-            /// <param name="type"></param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteWarning(int sleep, string type, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Yellow);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                    Thread.Sleep(sleep);
-                }
-            }
-
-            /// <summary>
-            /// 提示信息
-            /// </summary>
-            /// <param name="type">消息类型</param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteNotice(string type, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Black);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                }
-            }
-            /// <summary>
-            /// 提示信息
-            /// </summary>
-            /// <param name="sleep">打印完后延时，单位ms</param>
-            /// <param name="type"></param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteNotice(int sleep, string type, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Black);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                    Thread.Sleep(sleep);
-                }
-            }
-            /// <summary>
-            /// 错误信息
-            /// </summary>
-            /// <param name="type">消息类型</param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteError(string type, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Red);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                }
-            }
-            /// <summary>
-            /// 错误信息
-            /// </summary>
-            /// <param name="sleep">打印完后延时，单位ms</param>
-            /// <param name="type"></param>
-            /// <param name="format"></param>
-            /// <param name="args"></param>
-            public static void WriteError(int sleep, string type, string format, params object[] args)
-            {
-                if (DebugMsg.IsChecked(type))
-                {
-                    ConsoleLog.WriteLog(string.Format("[{0}]\r\n", DateTimeOffset.Now), Color.Magenta);
-                    WriteLog(string.Format("[{0}]", DateTimeOffset.Now));
-
-                    ConsoleLog.WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)), Color.Red);
-                    WriteLog(string.Format("[{0}]{1}\r\n", type, string.Format(format, args)));
-                    Thread.Sleep(sleep);
-                }
-            }
-
-            #region 写log
-            static string filePath = AppDomain.CurrentDomain.BaseDirectory + "Log";
-            static string fileDayPath = AppDomain.CurrentDomain.BaseDirectory + "Log\\" + DateTime.Now.ToString("yyyy-MM-dd");
-            static string logPath = fileDayPath + "\\" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss") + ".txt";
-            public static void WriteLog(string msg)
-            {
-                try
-                {
-                    if (!Directory.Exists(filePath))
-                    {
-                        Directory.CreateDirectory(filePath);
-                    }
-                    if (!Directory.Exists(fileDayPath))
-                    {
-                        Directory.CreateDirectory(fileDayPath);
-                    }
-                    File.AppendAllText(logPath, msg + "\r\n");
-                }
-                catch
-                {
-
-                }
-            }
-            #endregion
+            //ConsoleLog.WriteLog(format, args);
         }
-
-        /// <summary>
-        /// 调试信息打印配置
-        /// </summary>
-        public static class DebugMsg
-        {
-            /// <summary>
-            /// 查看关键字对应的选择状态
-            /// </summary>
-            /// <param name="key"></param>
-            /// <returns></returns>
-            public static bool IsChecked(string key)
-            {
-                foreach (var item in XmlHelper.DebugList)
-                {
-                    if (item.Name == key)
-                    {
-                        return item.Value;
-                    }
-                }
-                return true;
-            }
-        }
-
-
-
-
-
-
 
         //服务器IP
         public static IPAddress ipaddress;
@@ -363,7 +133,7 @@ namespace DispatchSystem
                 //启动检测连接进程
                 State = true;//更新服务器状态
 
-                Shell.WriteNotice("系统消息", "服务已启动!");
+                ConsoleLog.WriteLog("系统消息", "服务已启动!");
                 return rs;
             }
             catch (Exception ex)
@@ -384,7 +154,7 @@ namespace DispatchSystem
             {
                 //退出线程
                 UdpThreadIsClosed = true;
-                Shell.WriteWarning("系统消息", "正在关闭服务器，请稍等...!");
+                Log("系统消息", "正在关闭服务器，请稍等...!");
                 socket.Close();
                 //等待线程退出
                 while (UdpThread.ThreadState != System.Threading.ThreadState.Stopped)
@@ -399,7 +169,7 @@ namespace DispatchSystem
                 rs.Reault = true;
                 rs.Message = "停止成功";
 
-                Shell.WriteNotice("系统消息", "服务已停止!");
+                Log("系统消息", "服务已停止!");
                 return rs;
             }
             catch (Exception ex)
@@ -447,18 +217,18 @@ namespace DispatchSystem
                         op.endPoint = endPoint;
                         Thread th = new Thread(new ThreadStart(op.Analyze));
                         th.Start();
-                        Shell.WriteNotice("debug", string.Format("收到数据：{0}", StringBuf));
+                        Log("debug", string.Format("收到数据：{0}", StringBuf));
                         StringBuf = string.Empty;
                     }
                     else
                     {
-                        Shell.WriteNotice("收到数据", string.Format("收到数据：{0}", str));
+                        Log("收到数据", string.Format("收到数据：{0}", str));
                     }
                 }
             }
             catch (Exception ex)
             {
-                Shell.WriteError("错误", string.Format(":{0}", ex.ToString()));
+                Log("错误", string.Format(":{0}", ex.ToString()));
             }
         }
         class Openbox
@@ -527,7 +297,7 @@ namespace DispatchSystem
                                     {
                                         case 0:
                                             #region 心跳帧
-                                            Shell.WriteNotice("心跳帧", string.Format("[设备ID:{0}]", DeviceAddress));
+                                            Log("心跳帧", string.Format("[设备ID:{0}]", DeviceAddress));
                                             //存储设备端口信息到EndPointArray
                                             EndPointArray[DeviceAddress] = endPoint;
                                             //更新设备响应时间
@@ -536,12 +306,12 @@ namespace DispatchSystem
                                             break;
                                         case 1:
                                             #region 操作帧
-                                            Shell.WriteNotice("操作帧", string.Format("[ALL][{0}]", ByteToHexStr(Buf)));
+                                            Log("操作帧", string.Format("[ALL][{0}]", ByteToHexStr(Buf)));
                                             switch (Buf[7])//功能码
                                             {
                                                 case 1:
                                                     #region 读单个寄存器
-                                                    Shell.WriteNotice("读单个寄存器", string.Format("[{0}]", ByteToHexStr(Buf)));
+                                                    Log("读单个寄存器", string.Format("[{0}]", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -569,13 +339,13 @@ namespace DispatchSystem
                                                     }
                                                     else
                                                     {
-                                                        Shell.WriteError("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
+                                                        Log("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
                                                     }
                                                     #endregion
                                                     break;
                                                 case 2:
                                                     #region 写单个寄存器
-                                                    Shell.WriteNotice("写单个寄存器", string.Format("[写单个寄存器][{0}]", ByteToHexStr(Buf)));
+                                                    Log("写单个寄存器", string.Format("[写单个寄存器][{0}]", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -611,13 +381,13 @@ namespace DispatchSystem
                                                     }
                                                     else
                                                     {
-                                                        Shell.WriteError("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
+                                                        Log("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
                                                     }
                                                     #endregion
                                                     break;
                                                 case 3:
                                                     #region 读多个寄存器
-                                                    Shell.WriteNotice("读多个寄存器", string.Format("[读多个寄存器][{0}]", ByteToHexStr(Buf)));
+                                                    Log("读多个寄存器", string.Format("[读多个寄存器][{0}]", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -651,13 +421,13 @@ namespace DispatchSystem
                                                     }
                                                     else
                                                     {
-                                                        Shell.WriteError("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
+                                                        Log("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
                                                     }
                                                     #endregion
                                                     break;
                                                 case 4://
                                                     #region 写多个寄存器
-                                                    Shell.WriteNotice("写多个寄存器", string.Format("操作帧[写多个寄存器][{0}]", ByteToHexStr(Buf)));
+                                                    Log("写多个寄存器", string.Format("操作帧[写多个寄存器][{0}]", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -696,20 +466,20 @@ namespace DispatchSystem
                                                     }
                                                     else
                                                     {
-                                                        Shell.WriteError("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
+                                                        Log("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
                                                     }
                                                     #endregion
                                                     break;
                                                 default:
                                                     ErrorCount++;
-                                                    Shell.WriteError("无效误帧", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
+                                                    Log("无效误帧", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
                                                     break;
                                             }
                                             #endregion
                                             break;
                                         case 2:
                                             #region 响应帧
-                                            Shell.WriteNotice("响应帧", string.Format("[ALL]:[{0}]", ByteToHexStr(Buf)));
+                                            Log("响应帧", string.Format("[ALL]:[{0}]", ByteToHexStr(Buf)));
                                             //添加到响应帧缓冲池
                                             for (int i = 0; i < RESPONSE_MAX_LEN; i++)
                                             {
@@ -740,12 +510,12 @@ namespace DispatchSystem
                                             break;
                                         case 0x10:
                                             #region 实时帧（无响应）
-                                            Shell.WriteNotice("实时帧", string.Format("[ALL][{0}]", ByteToHexStr(Buf)));
+                                            Log("实时帧", string.Format("[ALL][{0}]", ByteToHexStr(Buf)));
                                             switch (Buf[7])//功能码
                                             {
                                                 case 2:
                                                     #region 发送单个寄存器
-                                                    Shell.WriteNotice("写单个寄存器", string.Format("[发送单个寄存器][{0}]", ByteToHexStr(Buf)));
+                                                    Log("写单个寄存器", string.Format("[发送单个寄存器][{0}]", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -759,18 +529,18 @@ namespace DispatchSystem
                                                         }
                                                         else
                                                         {
-                                                            Shell.WriteError("错误", string.Format("[目标寄存器地址超出索引][{0}]", RegAddress));
+                                                            Log("错误", string.Format("[目标寄存器地址超出索引][{0}]", RegAddress));
                                                         }
                                                     }
                                                     else
                                                     {
-                                                        Shell.WriteError("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
+                                                        Log("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
                                                     }
                                                     #endregion
                                                     break;
                                                 case 4://
                                                     #region 写多个寄存器
-                                                    Shell.WriteNotice("发送多个寄存器", string.Format("[发送多个寄存器][{0}]", ByteToHexStr(Buf)));
+                                                    Log("发送多个寄存器", string.Format("[发送多个寄存器][{0}]", ByteToHexStr(Buf)));
                                                     //判断目标地址是否在线
                                                     if (EndPointArray[DeviceAddress] != null)
                                                     {
@@ -788,18 +558,18 @@ namespace DispatchSystem
                                                         }
                                                         else
                                                         {
-                                                            Shell.WriteError("错误", string.Format("[目标寄存器地址超出索引][{0}]", RegStartAddress + Num));
+                                                            Log("错误", string.Format("[目标寄存器地址超出索引][{0}]", RegStartAddress + Num));
                                                         }
                                                     }
                                                     else
                                                     {
-                                                        Shell.WriteError("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
+                                                        Log("错误", string.Format("[目标设备不在线][设备ID:{0}]", DeviceAddress));
                                                     }
                                                     #endregion
                                                     break;
                                                 default:
                                                     ErrorCount++;
-                                                    Shell.WriteError("错误", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
+                                                    Log("错误", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
                                                     break;
                                             }
                                             #endregion
@@ -808,7 +578,7 @@ namespace DispatchSystem
                                             //出错次数加一
                                             ErrorCount++;
                                             //打印消息
-                                            Shell.WriteError("无效误帧", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
+                                            Log("无效误帧", string.Format("[无效误帧][Count:{0}][{1}]", ErrorCount, ByteToHexStr(Buf)));
                                             break;
                                     }
                                     #endregion
@@ -820,7 +590,7 @@ namespace DispatchSystem
                             //退出循环
                             break;
                         }
-                        Shell.WriteNotice("单包数据有效帧数量", string.Format("[{0}]", count));
+                        Log("单包数据有效帧数量", string.Format("[{0}]", count));
                     }
                     if (Stop < StringBuf.Length - 1)
                         StringBuf = StringBuf.Substring(Stop + 1, StringBuf.Length - Stop - 2);
@@ -1213,7 +983,7 @@ namespace DispatchSystem
 
                 socket1.SendTo(buf, EndPort);
                 socket1.Dispose();
-                Shell.WriteNotice("发送数据", string.Format("[{0}]", System.Text.Encoding.ASCII.GetString(buf)));
+                Log("发送数据", string.Format("[{0}]", System.Text.Encoding.ASCII.GetString(buf)));
             }
         }
 

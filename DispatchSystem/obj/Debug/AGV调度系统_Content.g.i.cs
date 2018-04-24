@@ -12,6 +12,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/database_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/help/entity%e5%a2%9e%e5%88%a0%e6%94%b9%e6%9f%a5%e4%ba%8c.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/help/%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/help/%e7%ac%94%e8%ae%b0.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/help/%e9%87%8d%e5%86%99tostring%e6%96%b9%e6%b3%95.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/model1.tt")]

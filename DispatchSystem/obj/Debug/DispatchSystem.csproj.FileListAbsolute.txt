@@ -179,7 +179,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\zh-CN\AGV调度系统.re
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CopyComplete
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.SystemConfig.DbusConfig.resources
 C:\Users\Administrator\Desktop\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Winform-UdpSever\DispatchSystem\obj\Debug\UserControls\WPF\UCTabItemWithClose.baml
 C:\Users\Administrator\Desktop\Winform-UdpSever\DispatchSystem\obj\Debug\UserControls\WPF\UCTabItemWithClose.g.cs

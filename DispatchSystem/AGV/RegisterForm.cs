@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DispatchSystem.Developer;
+using System;
 using System.Drawing;
 using System.Text;
 using System.Threading;
@@ -49,7 +50,8 @@ namespace DispatchSystem
             }
             else
             {
-                UdpSever.Shell.WriteError("错误信息","读取失败！");
+                //ConsoleLog.WriteLog("错误信息", "读取失败！");
+                //UdpSever.Log("错误信息","读取失败！");
             }
             //加载数据
             for (int i = 0; i < UdpSever.RegisterNum; i++)
