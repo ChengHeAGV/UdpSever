@@ -45,7 +45,7 @@ namespace DispatchSystem
 
 
 
-             db = new DatabaseEntities();
+            db = new DatabaseEntities();
             //选择部分字段
             var user1 = db.DbusSever.ToList();
             //只有调用了FirstOrDefault, First, Single, ToList, ToArray等函数才会执行对数据库的查询
@@ -53,7 +53,6 @@ namespace DispatchSystem
             {
                 Console.WriteLine(item.ToString());
             }
-
 
 
 
@@ -366,6 +365,7 @@ namespace DispatchSystem
                     {
                         treeView1.Nodes[i.ToString()].Remove();
                     }
+                    UdpSever.EndPointArray[i] = null;
                 }
                 else
                 {
@@ -393,7 +393,6 @@ namespace DispatchSystem
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].ImageIndex = AGV.Register.ImageIndex;
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].SelectedImageIndex = AGV.Register.SelectedImageIndex;
                     }
-                    
                 }
             }
             UdpSever.OnlieDeviceNum = treeView1.GetNodeCount(false);

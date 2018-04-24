@@ -41,6 +41,18 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRunning = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewFinished = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewWaiting = new System.Windows.Forms.DataGridView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,13 +60,9 @@
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewFinished = new System.Windows.Forms.DataGridView();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,16 +72,6 @@
             this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewWaiting = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRunning)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -165,6 +163,7 @@
             // 
             // dataGridViewRunning
             // 
+            this.dataGridViewRunning.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewRunning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRunning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column24,
@@ -174,81 +173,15 @@
             this.Column16,
             this.Column14,
             this.Column26,
-            this.Column15,
             this.Column19,
             this.Column17,
-            this.Column23});
+            this.Column15});
             this.dataGridViewRunning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRunning.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewRunning.Name = "dataGridViewRunning";
             this.dataGridViewRunning.RowTemplate.Height = 23;
-            this.dataGridViewRunning.Size = new System.Drawing.Size(1154, 267);
+            this.dataGridViewRunning.Size = new System.Drawing.Size(1154, 187);
             this.dataGridViewRunning.TabIndex = 2;
-            // 
-            // Column24
-            // 
-            this.Column24.HeaderText = "序号";
-            this.Column24.Name = "Column24";
-            this.Column24.Width = 60;
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "订单号";
-            this.Column20.Name = "Column20";
-            this.Column20.Width = 120;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "任务编号";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 80;
-            // 
-            // Column25
-            // 
-            this.Column25.HeaderText = "产线编号";
-            this.Column25.Name = "Column25";
-            this.Column25.Width = 80;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "AGV编号";
-            this.Column16.Name = "Column16";
-            this.Column16.Width = 80;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "下单时间";
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 160;
-            // 
-            // Column26
-            // 
-            this.Column26.HeaderText = "启动时间";
-            this.Column26.Name = "Column26";
-            this.Column26.Width = 160;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "优先级";
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 70;
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "当前站点";
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 80;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "目标站点";
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 80;
-            // 
-            // Column23
-            // 
-            this.Column23.HeaderText = "报警信息";
-            this.Column23.Name = "Column23";
             // 
             // groupBox1
             // 
@@ -256,7 +189,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1160, 287);
+            this.groupBox1.Size = new System.Drawing.Size(1160, 207);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "正在进行任务";
@@ -267,13 +200,14 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1160, 168);
+            this.groupBox2.Size = new System.Drawing.Size(1160, 321);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "已完成任务";
             // 
             // dataGridViewFinished
             // 
+            this.dataGridViewFinished.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewFinished.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFinished.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column28,
@@ -289,55 +223,8 @@
             this.dataGridViewFinished.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewFinished.Name = "dataGridViewFinished";
             this.dataGridViewFinished.RowTemplate.Height = 23;
-            this.dataGridViewFinished.Size = new System.Drawing.Size(1154, 148);
+            this.dataGridViewFinished.Size = new System.Drawing.Size(1154, 301);
             this.dataGridViewFinished.TabIndex = 3;
-            // 
-            // Column28
-            // 
-            this.Column28.HeaderText = "序号";
-            this.Column28.Name = "Column28";
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "订单号";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "任务编号";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // Column29
-            // 
-            this.Column29.HeaderText = "产线编号";
-            this.Column29.Name = "Column29";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "AGV编号";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "下单时间";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Width = 130;
-            // 
-            // Column30
-            // 
-            this.Column30.HeaderText = "启动时间";
-            this.Column30.Name = "Column30";
-            // 
-            // Column31
-            // 
-            this.Column31.HeaderText = "完成时间";
-            this.Column31.Name = "Column31";
-            // 
-            // Column32
-            // 
-            this.Column32.HeaderText = "执行时间";
-            this.Column32.Name = "Column32";
             // 
             // groupBox3
             // 
@@ -345,27 +232,63 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1160, 291);
+            this.groupBox3.Size = new System.Drawing.Size(1160, 218);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "待完成任务";
             // 
             // dataGridViewWaiting
             // 
+            this.dataGridViewWaiting.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewWaiting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaiting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column18,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewTextBoxColumn4});
             this.dataGridViewWaiting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewWaiting.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewWaiting.Name = "dataGridViewWaiting";
             this.dataGridViewWaiting.RowTemplate.Height = 23;
-            this.dataGridViewWaiting.Size = new System.Drawing.Size(1154, 271);
+            this.dataGridViewWaiting.Size = new System.Drawing.Size(1154, 198);
             this.dataGridViewWaiting.TabIndex = 3;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Size = new System.Drawing.Size(1160, 754);
+            this.splitContainer1.SplitterDistance = 429;
+            this.splitContainer1.TabIndex = 6;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer2.Size = new System.Drawing.Size(1160, 429);
+            this.splitContainer2.SplitterDistance = 218;
+            this.splitContainer2.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -387,57 +310,125 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "产线编号";
+            this.dataGridViewTextBoxColumn3.HeaderText = "产线名称";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 80;
             // 
             // dataGridViewTextBoxColumn4
             // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn4.HeaderText = "下单时间";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 160;
             // 
-            // dataGridViewTextBoxColumn5
+            // Column24
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "优先级";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 80;
+            this.Column24.HeaderText = "序号";
+            this.Column24.Name = "Column24";
+            this.Column24.Width = 60;
             // 
-            // splitContainer1
+            // Column20
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.Column20.HeaderText = "订单号";
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 120;
             // 
-            // splitContainer1.Panel1
+            // Column13
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            this.Column13.HeaderText = "任务编号";
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 80;
             // 
-            // splitContainer1.Panel2
+            // Column25
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1160, 754);
-            this.splitContainer1.SplitterDistance = 582;
-            this.splitContainer1.TabIndex = 6;
+            this.Column25.HeaderText = "产线名称";
+            this.Column25.Name = "Column25";
+            this.Column25.Width = 80;
             // 
-            // splitContainer2
+            // Column16
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.Column16.HeaderText = "AGV编号";
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 80;
             // 
-            // splitContainer2.Panel1
+            // Column14
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
+            this.Column14.HeaderText = "下单时间";
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 160;
             // 
-            // splitContainer2.Panel2
+            // Column26
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(1160, 582);
-            this.splitContainer2.SplitterDistance = 291;
-            this.splitContainer2.TabIndex = 0;
+            this.Column26.HeaderText = "启动时间";
+            this.Column26.Name = "Column26";
+            this.Column26.Width = 160;
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "当前位置";
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 80;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "目标位置";
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 80;
+            // 
+            // Column15
+            // 
+            this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column15.HeaderText = "运行状态";
+            this.Column15.Name = "Column15";
+            // 
+            // Column28
+            // 
+            this.Column28.HeaderText = "序号";
+            this.Column28.Name = "Column28";
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "订单号";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "任务编号";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // Column29
+            // 
+            this.Column29.HeaderText = "产线名称";
+            this.Column29.Name = "Column29";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "AGV编号";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "下单时间";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 160;
+            // 
+            // Column30
+            // 
+            this.Column30.HeaderText = "启动时间";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 160;
+            // 
+            // Column31
+            // 
+            this.Column31.HeaderText = "完成时间";
+            this.Column31.Name = "Column31";
+            this.Column31.Width = 160;
+            // 
+            // Column32
+            // 
+            this.Column32.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column32.HeaderText = "执行时间";
+            this.Column32.Name = "Column32";
             // 
             // TaskForm
             // 
@@ -489,6 +480,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewFinished;
         private System.Windows.Forms.DataGridView dataGridViewWaiting;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
@@ -496,10 +489,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
@@ -514,8 +506,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

@@ -27,29 +27,36 @@ namespace DispatchSystem.Developer
 
         private void WriteLogFunc(string msg, Color color, int fontSize)
         {
-            var index = 0;
-            if (dataGridView1.Rows.Count > 0)
+            try
             {
-                index = dataGridView1.Rows.Count - 1;
+                var index = 0;
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    index = dataGridView1.Rows.Count - 1;
+                }
+                else
+                    index = dataGridView1.Rows.Add();
+                dataGridView1.Rows[index].Cells[0].Value = DateTime.Now.ToString("yyyy-MM-dd");
+                dataGridView1.Rows[index].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss");
+                dataGridView1.Rows[index].Cells[2].Value = msg;
+
+                //行样式
+                if (index % 2 == 1)
+                    this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.WhiteSmoke; //背景色
+                else
+                    this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.White; //背景色
+
+                this.dataGridView1.Rows[index].DefaultCellStyle.ForeColor = color; //字体颜色
+                this.dataGridView1.Rows[index].DefaultCellStyle.Font = new Font("新宋体", fontSize, FontStyle.Regular); //字体颜色
+                                                                                                                     //this.dataGridView1.Rows[index].Cells[2].Style.Font = new Font("新宋体", 20, FontStyle.Regular); //字体颜色
+                dataGridView1.Rows.Add();
+                //滚动到最后一行
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
             }
-            else
-                index = dataGridView1.Rows.Add();
-            dataGridView1.Rows[index].Cells[0].Value = DateTime.Now.ToString("yyyy-MM-dd");
-            dataGridView1.Rows[index].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss");
-            dataGridView1.Rows[index].Cells[2].Value = msg;
+            catch
+            {
 
-            //行样式
-            if (index % 2 == 1)
-                this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.WhiteSmoke; //背景色
-            else
-                this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.White; //背景色
-
-            this.dataGridView1.Rows[index].DefaultCellStyle.ForeColor = color; //字体颜色
-            this.dataGridView1.Rows[index].DefaultCellStyle.Font = new Font("新宋体", fontSize, FontStyle.Regular); //字体颜色
-                                                                                                                 //this.dataGridView1.Rows[index].Cells[2].Style.Font = new Font("新宋体", 20, FontStyle.Regular); //字体颜色
-            dataGridView1.Rows.Add();
-            //滚动到最后一行
-            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+            }
 
         }
 
@@ -68,6 +75,12 @@ namespace DispatchSystem.Developer
             {
                 WriteLogFunc(msg, color, fontSize);
             }
+        }
+
+        private void ConsoleLog_SizeChanged(object sender, EventArgs e)
+        {
+            //滚动到最后一行
+            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
         }
     }
 }

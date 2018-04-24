@@ -13,7 +13,7 @@ namespace DispatchSystem.User
         static ModbusIpMaster modbusMaster;
         static Thread modbusThread;
         static Thread dbusThread;
-
+        static Thread MainThread;
         public DataTransmission()
         {
             InitializeComponent();
@@ -21,39 +21,60 @@ namespace DispatchSystem.User
 
         private void DataTransmission_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        public static  void StartListen()
+        public static void StartListen()
         {
-            Thread.Sleep(1000);
-            #region 启动ModbusTcp
-            try
-            {
-                TcpClient tcpClient = new TcpClient(Modbus.ModbusTcpSeverIPAddress, Modbus.ModbusTcpSeverPort);
-                modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
-                modbusMaster.Transport.WriteTimeout = Modbus.Timeout;//写超时
-                modbusMaster.Transport.ReadTimeout = Modbus.Timeout;//读超时
-                modbusMaster.Transport.WaitToRetryMilliseconds = Modbus.WaitToRetryTime;//重试等待时间
-                modbusMaster.Transport.Retries = Modbus.RetryNum;//重试次数
+            MainThread = new Thread(new ThreadStart(Start));
+            MainThread.Start();
+        }
+        public static class ListenState
+        {
+            public static bool ModbusTcp = false;
+            public static bool Dbus = false;
+        }
 
-                //启动监听进程
-                modbusThread = new Thread(new ThreadStart(SyncModbus));
-                modbusThread.Start();
-                ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
-            }
-            catch
-            {
-                ConsoleLog.WriteLog("监听ModbusTCP失败！", Color.Red, 24);
-            }
-            #endregion
+        private static void Start()
+        {
 
             #region 启动Dbus
             //启动监听进程
-            dbusThread = new Thread(new ThreadStart(Syncdbus));
-            dbusThread.Start();
-            ConsoleLog.WriteLog("监听Dbus启动", Color.Orange, 24);
+            if (ListenState.Dbus == false)
+            {
+                dbusThread = new Thread(new ThreadStart(Syncdbus));
+                dbusThread.Start();
+                ConsoleLog.WriteLog("监听Dbus启动成功！", Color.Green, 24);
+                ListenState.Dbus = true;
+            }
             #endregion
+
+            #region 启动ModbusTcp
+            if (ListenState.ModbusTcp == false)
+            {
+                try
+                {
+                    TcpClient tcpClient = new TcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort);
+                    modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
+                    modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
+                    modbusMaster.Transport.ReadTimeout = Profinet.Timeout;//读超时
+                    modbusMaster.Transport.WaitToRetryMilliseconds = Profinet.WaitToRetryTime;//重试等待时间
+                    modbusMaster.Transport.Retries = Profinet.RetryNum;//重试次数
+
+                    //启动监听进程
+                    modbusThread = new Thread(new ThreadStart(SyncModbus));
+                    modbusThread.Start();
+                    ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
+                    ListenState.ModbusTcp = true;
+                }
+                catch
+                {
+                    ConsoleLog.WriteLog("监听ModbusTCP失败！", Color.Red, 24);
+                }
+            }
+
+            #endregion
+
         }
 
         public static void StopListen()
@@ -72,7 +93,7 @@ namespace DispatchSystem.User
         /// <summary>
         /// Modbus数据
         /// </summary>
-        private static class Modbus
+        public static class Profinet
         {
             //modbus 检测时间
             public static int Cycle = 1000;
@@ -148,7 +169,7 @@ namespace DispatchSystem.User
         /// <summary>
         /// Dbus数据
         /// </summary>
-        private static class Dbus
+        public static class Dbus
         {
             //modbus 检测时间
             public static int Cycle = 1000;
@@ -215,7 +236,7 @@ namespace DispatchSystem.User
             int j = DbusStart;
             for (int i = ModbusStart; i < ModbusStart + Num; i++)
             {
-                UdpSever.Register[deviceNum, j++, 0] = Modbus.Register[i];
+                UdpSever.Register[deviceNum, j++, 0] = Profinet.Register[i];
             }
         }
 
@@ -225,7 +246,7 @@ namespace DispatchSystem.User
             int j = ModbusStart;
             for (int i = DbusStart; i < DbusStart + Num; i++)
             {
-                Modbus.Register[j++] = (ushort)UdpSever.Register[deviceNum, i, 0];
+                Profinet.Register[j++] = (ushort)UdpSever.Register[deviceNum, i, 0];
             }
         }
 
@@ -254,7 +275,7 @@ namespace DispatchSystem.User
                 //更新Dbus数据到Modbus
                 UpdateDbusToModbus(AgbNum, 20, 50, 6);
                 //设置到Modbus
-                Modbus.SetRegister(50, 55);
+                Profinet.SetRegister(50, 55);
                 #endregion
 
                 #region AGV2
@@ -273,7 +294,7 @@ namespace DispatchSystem.User
                 //更新Dbus数据到Modbus
                 UpdateDbusToModbus(AgbNum, 31, 61, 6);
                 //设置到Modbus
-                Modbus.SetRegister(61, 66);
+                Profinet.SetRegister(61, 66);
                 #endregion
             }
         }
@@ -285,29 +306,29 @@ namespace DispatchSystem.User
         {
             while (true)
             {
-                Thread.Sleep(Modbus.Cycle);
+                Thread.Sleep(Profinet.Cycle);
                 #region MES
                 //读取 0
-                Modbus.GetRegister(0, 0);
+                Profinet.GetRegister(0, 0);
                 //读取 20
-                Modbus.GetRegister(0, 0);
+                Profinet.GetRegister(0, 0);
 
                 //写入 1-14
-                Modbus.SetRegister(1, 14);
+                Profinet.SetRegister(1, 14);
                 //写入 21-34
-                Modbus.SetRegister(21, 34);
+                Profinet.SetRegister(21, 34);
                 #endregion
 
                 #region PLC
                 //读取 56-60
-                Modbus.GetRegister(56, 60);
+                Profinet.GetRegister(56, 60);
                 //读取 67-71
-                Modbus.GetRegister(67, 71);
+                Profinet.GetRegister(67, 71);
 
                 //写入 50-55
-                Modbus.SetRegister(50, 55);
+                Profinet.SetRegister(50, 55);
                 //写入 61-66
-                Modbus.SetRegister(61, 66);
+                Profinet.SetRegister(61, 66);
                 #endregion
             }
         }

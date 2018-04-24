@@ -92,6 +92,7 @@
             this.Text = "ConsoleLog";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ConsoleLog_Load);
+            this.SizeChanged += new System.EventHandler(this.ConsoleLog_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

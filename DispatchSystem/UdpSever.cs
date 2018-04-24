@@ -51,7 +51,7 @@ namespace DispatchSystem
             /// <param name="args"></param>
             public static void WriteLine(int sleep, string format, params object[] args)
             {
-                ConsoleLog.WriteLog(string.Format(format, args)+"\r\n", Color.Black);
+                ConsoleLog.WriteLog(string.Format(format, args) + "\r\n", Color.Black);
                 Thread.Sleep(sleep);
             }
 
@@ -62,7 +62,7 @@ namespace DispatchSystem
             /// <param name="color">显示颜色</param>
             /// <param name="format"></param>
             /// <param name="args"></param>
-            public static void WriteLine(string type,Color color, string format, params object[] args)
+            public static void WriteLine(string type, Color color, string format, params object[] args)
             {
                 if (DebugMsg.IsChecked(type))
                 {
@@ -253,9 +253,9 @@ namespace DispatchSystem
             }
         }
 
-   
-            
-       
+
+
+
 
 
 
@@ -280,6 +280,7 @@ namespace DispatchSystem
         public static Int64[,,] Register = new Int64[DeviceNum, RegisterNum, 2];
         //设备端口及IP
         public static EndPoint[] EndPointArray = new EndPoint[DeviceNum];
+
         //设备更新时间(最后一次收到数据时间)
         public static DateTime[] UpdateTime = new DateTime[DeviceNum];
         //服务器地址
