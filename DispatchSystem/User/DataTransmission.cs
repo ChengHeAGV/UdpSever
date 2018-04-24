@@ -37,7 +37,6 @@ namespace DispatchSystem.User
 
         private static void Start()
         {
-
             #region 启动Dbus
             //启动监听进程
             if (ListenState.Dbus == false)
@@ -98,7 +97,7 @@ namespace DispatchSystem.User
             //modbus 检测时间
             public static int Cycle = 1000;
             //modbus服务器IP地址
-            public static string ModbusTcpSeverIPAddress = "192.168.10.106";
+            public static string ModbusTcpSeverIPAddress = "192.168.127.225";
             //modbus服务器端口
             public static int ModbusTcpSeverPort = 502;
             //modbus超时
@@ -112,8 +111,12 @@ namespace DispatchSystem.User
             //待发送数据临时数组，用于检测数据是否有变化
             public static UInt16[] RegisterCompare = new UInt16[200];
 
+            //清除任务标志
+            public static bool Clear1 = false;
+            public static bool Clear21 = false;
+
             //设置数据
-            public static void SetRegister(int start, int end)
+            public static bool SetRegister(int start, int end)
             {
                 ushort[] temp;
                 string Msg = string.Format("设置:{0,-2}-{1,-2}", start, end);
@@ -127,7 +130,7 @@ namespace DispatchSystem.User
                             temp = new ushort[end - start + 1];
                             for (int j = start; j <= end; j++)
                             {
-                                temp[j] = Register[j];
+                                temp[j - start] = Register[j];
                             }
                             modbusMaster.WriteMultipleRegisters((ushort)start, temp);
                             //发送成功，更新比较数组
@@ -135,13 +138,15 @@ namespace DispatchSystem.User
                             {
                                 RegisterCompare[j] = Register[j];
                             }
-                            break;
+                            return true;
                         }
                     }
+                    return true;
                 }
                 catch
                 {
-                    ConsoleLog.WriteLog(string.Format("操作失败!:[{0}]", Msg), Color.Red, 20);
+                    ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
+                    return false;
                 }
 
             }
@@ -150,18 +155,19 @@ namespace DispatchSystem.User
             public static void GetRegister(int start, int end)
             {
                 ushort[] temp;
+                int i = 0;
                 string Msg = string.Format("获取:{0,-2}-{1,-2}", start, end);
                 try
                 {
                     temp = modbusMaster.ReadHoldingRegisters((ushort)start, (ushort)(end - start + 1));
                     foreach (var item in temp)
                     {
-                        Register[start] = temp[start++];
+                        Register[start++] = temp[i++];
                     }
                 }
                 catch
                 {
-                    ConsoleLog.WriteLog(string.Format("操作失败!:[{0}]", Msg), Color.Red, 20);
+                    ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
                 }
             }
         }
@@ -191,7 +197,7 @@ namespace DispatchSystem.User
                         temp = new ushort[end - start + 1];
                         for (int j = start; j <= end; j++)
                         {
-                            temp[j] = (ushort)UdpSever.Register[deviceAddress, j, 0];
+                            temp[j - start] = (ushort)UdpSever.Register[deviceAddress, j, 0];
                         }
 
                         UdpSever.ReturnMsg mg = UdpSever.Write_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
@@ -308,15 +314,44 @@ namespace DispatchSystem.User
             {
                 Thread.Sleep(Profinet.Cycle);
                 #region MES
-                //读取 0
-                Profinet.GetRegister(0, 0);
-                //读取 20
-                Profinet.GetRegister(0, 0);
 
-                //写入 1-14
-                Profinet.SetRegister(1, 14);
-                //写入 21-34
-                Profinet.SetRegister(21, 34);
+                int num;
+                //读取 1
+                num = 1;
+                if (Profinet.Clear1)
+                {
+                    Profinet.Register[num] = 0;
+                    if (Profinet.SetRegister(num, num))
+                    {
+                        Profinet.Clear1 = false;
+                    }
+                }
+                else
+                {
+                    Profinet.GetRegister(num, num);
+                    Profinet.RegisterCompare[num] = Profinet.Register[num];
+                }
+
+                //读取 21
+                num = 21;
+                if (Profinet.Clear21)
+                {
+                    Profinet.Register[num] = 0;
+                    if (Profinet.SetRegister(num, num))
+                    {
+                        Profinet.Clear1 = false;
+                    }
+                }
+                else
+                {
+                    Profinet.GetRegister(num, num);
+                    Profinet.RegisterCompare[num] = Profinet.Register[num];
+                }
+
+                //写入 2-15
+                Profinet.SetRegister(2, 15);
+                //写入 22-35
+                Profinet.SetRegister(22, 35);
                 #endregion
 
                 #region PLC

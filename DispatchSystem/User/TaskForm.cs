@@ -228,6 +228,7 @@ namespace DispatchSystem.User
         /// </summary>
         private void taskFunc()
         {
+            Thread.Sleep(1000);
             while (true)
             {
                 if (DataTransmission.ListenState.ModbusTcp == false)
@@ -239,14 +240,14 @@ namespace DispatchSystem.User
 
                     #region 判断MES是否有新任务
                     //扩散线
-                    if (DataTransmission.Profinet.Register[0] > 0)
+                    if (DataTransmission.Profinet.Register[1] > 0 && (DataTransmission.Profinet.Clear1 == false))
                     {
                         //创建任务
                         Task task = new Task();
                         //[订单号]毫秒时间戳
                         task.OrderNum = GetTimeStamp();
                         //[任务编号]
-                        task.TaskNum = DataTransmission.Profinet.Register[0];
+                        task.TaskNum = DataTransmission.Profinet.Register[1];
                         //[产线名称]
                         task.LineName = "扩散线";
                         //AGV编号
@@ -265,30 +266,29 @@ namespace DispatchSystem.User
                         this.Invoke(new MethodInvoker(delegate
                         {
                             var index = dataGridViewWaiting.Rows.Add();
-                        //序号
-                        dataGridViewWaiting.Rows[index].Cells[0].Value = index;
-                        //订单号
-                        dataGridViewWaiting.Rows[index].Cells[1].Value = task.OrderNum;
-                        //任务编号
-                        dataGridViewWaiting.Rows[index].Cells[2].Value = task.TaskNum;
-                        //产线名称
-                        dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
-                        //下单时间
-                        dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
+                            //序号
+                            dataGridViewWaiting.Rows[index].Cells[0].Value = index;
+                            //订单号
+                            dataGridViewWaiting.Rows[index].Cells[1].Value = task.OrderNum;
+                            //任务编号
+                            dataGridViewWaiting.Rows[index].Cells[2].Value = task.TaskNum;
+                            //产线名称
+                            dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
+                            //下单时间
+                            dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
                         }));
                         //清除MES任务标志寄存器
-                        //DataTransmission.Profinet.Register[0] = 0;
-                        //modbusMaster.WriteSingleRegister((int)TaskData.RegBind.newTask, 0); 
+                        DataTransmission.Profinet.Clear1 = true;
                     }
                     //PE线
-                    if (DataTransmission.Profinet.Register[20] > 0)
+                    if (DataTransmission.Profinet.Register[21] > 0 && (DataTransmission.Profinet.Clear21 == false))
                     {
                         //创建任务
                         Task task = new Task();
                         //[订单号]毫秒时间戳
                         task.OrderNum = GetTimeStamp();
                         //[任务编号]
-                        task.TaskNum = DataTransmission.Profinet.Register[0];
+                        task.TaskNum = DataTransmission.Profinet.Register[21];
                         //[产线名称]
                         task.LineName = "PE线";
                         //AGV编号
@@ -307,21 +307,20 @@ namespace DispatchSystem.User
                         this.Invoke(new MethodInvoker(delegate
                         {
                             var index = dataGridViewWaiting.Rows.Add();
-                        //序号
-                        dataGridViewWaiting.Rows[index].Cells[0].Value = index;
-                        //订单号
-                        dataGridViewWaiting.Rows[index].Cells[1].Value = task.OrderNum;
-                        //任务编号
-                        dataGridViewWaiting.Rows[index].Cells[2].Value = task.TaskNum;
-                        //产线名称
-                        dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
-                        //下单时间
-                        dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
+                            //序号
+                            dataGridViewWaiting.Rows[index].Cells[0].Value = index;
+                            //订单号
+                            dataGridViewWaiting.Rows[index].Cells[1].Value = task.OrderNum;
+                            //任务编号
+                            dataGridViewWaiting.Rows[index].Cells[2].Value = task.TaskNum;
+                            //产线名称
+                            dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
+                            //下单时间
+                            dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
                         }));
 
                         //清除MES任务标志寄存器
-                        //DataTransmission.Profinet.Register[0] = 0;
-                        //modbusMaster.WriteSingleRegister((int)TaskData.RegBind.newTask, 0); 
+                        DataTransmission.Profinet.Clear21 = true;
                     }
                     #endregion
 
@@ -349,26 +348,26 @@ namespace DispatchSystem.User
                                     this.Invoke(new MethodInvoker(delegate
                                     {
                                         var index = dataGridViewRunning.Rows.Add();
-                                    //序号
-                                    dataGridViewRunning.Rows[index].Cells[0].Value = index;
-                                    //订单编号
-                                    dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.Waiting[i].OrderNum;
-                                    //任务编号
-                                    dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.Waiting[i].TaskNum;
-                                    //产线编号
-                                    dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.Waiting[i].LineName;
-                                    //AGV编号
-                                    dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.Waiting[i].AgvNum;
-                                    //下单时间
-                                    dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.Waiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //启动时间
-                                    dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //当前站点
-                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NowPosition;
-                                    //下一个站点
-                                    dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].NextPosition;
-                                    //报警信息
-                                    dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.Waiting[i].Error;
+                                        //序号
+                                        dataGridViewRunning.Rows[index].Cells[0].Value = index;
+                                        //订单编号
+                                        dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.Waiting[i].OrderNum;
+                                        //任务编号
+                                        dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.Waiting[i].TaskNum;
+                                        //产线编号
+                                        dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.Waiting[i].LineName;
+                                        //AGV编号
+                                        dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.Waiting[i].AgvNum;
+                                        //下单时间
+                                        dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.Waiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //启动时间
+                                        dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //当前站点
+                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NowPosition;
+                                        //下一个站点
+                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].NextPosition;
+                                        //报警信息
+                                        dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.Waiting[i].Error;
                                     }));
                                     #endregion
 
@@ -405,26 +404,26 @@ namespace DispatchSystem.User
                                     this.Invoke(new MethodInvoker(delegate
                                     {
                                         var index = dataGridViewRunning.Rows.Add();
-                                    //序号
-                                    dataGridViewRunning.Rows[index].Cells[0].Value = index;
-                                    //订单编号
-                                    dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.Waiting[i].OrderNum;
-                                    //任务编号
-                                    dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.Waiting[i].TaskNum;
-                                    //产线编号
-                                    dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.Waiting[i].LineName;
-                                    //AGV编号
-                                    dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.Waiting[i].AgvNum;
-                                    //下单时间
-                                    dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.Waiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //启动时间
-                                    dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //当前站点
-                                    dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NowPosition;
-                                    //下一个站点
-                                    dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].NextPosition;
-                                    //报警信息
-                                    dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.Waiting[i].Error;
+                                        //序号
+                                        dataGridViewRunning.Rows[index].Cells[0].Value = index;
+                                        //订单编号
+                                        dataGridViewRunning.Rows[index].Cells[1].Value = TaskData.Waiting[i].OrderNum;
+                                        //任务编号
+                                        dataGridViewRunning.Rows[index].Cells[2].Value = TaskData.Waiting[i].TaskNum;
+                                        //产线编号
+                                        dataGridViewRunning.Rows[index].Cells[3].Value = TaskData.Waiting[i].LineName;
+                                        //AGV编号
+                                        dataGridViewRunning.Rows[index].Cells[4].Value = TaskData.Waiting[i].AgvNum;
+                                        //下单时间
+                                        dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.Waiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //启动时间
+                                        dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //当前站点
+                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NowPosition;
+                                        //下一个站点
+                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].NextPosition;
+                                        //报警信息
+                                        dataGridViewRunning.Rows[index].Cells[10].Value = TaskData.Waiting[i].Error;
                                     }));
                                     #endregion
 
@@ -464,24 +463,24 @@ namespace DispatchSystem.User
                                     this.Invoke(new MethodInvoker(delegate
                                     {
                                         var index = dataGridViewFinished.Rows.Add();
-                                    //序号
-                                    dataGridViewFinished.Rows[index].Cells[0].Value = index;
-                                    //订单编号
-                                    dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.Runing[i].OrderNum;
-                                    //任务编号
-                                    dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.Runing[i].TaskNum;
-                                    //产线名称
-                                    dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.Runing[i].LineName;
-                                    //AGV编号
-                                    dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.Runing[i].AgvNum;
-                                    //下单时间
-                                    dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.Runing[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //启动时间
-                                    dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.Runing[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //完成时间
-                                    dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //执行时间
-                                    dataGridViewFinished.Rows[index].Cells[8].Value = (TaskData.Runing[i].StopTime - TaskData.Runing[i].StartTime).ToString("HH:mm:ss");
+                                        //序号
+                                        dataGridViewFinished.Rows[index].Cells[0].Value = index;
+                                        //订单编号
+                                        dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.Runing[i].OrderNum;
+                                        //任务编号
+                                        dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.Runing[i].TaskNum;
+                                        //产线名称
+                                        dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.Runing[i].LineName;
+                                        //AGV编号
+                                        dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.Runing[i].AgvNum;
+                                        //下单时间
+                                        dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.Runing[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //启动时间
+                                        dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.Runing[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //完成时间
+                                        dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //执行时间
+                                        dataGridViewFinished.Rows[index].Cells[8].Value = (TaskData.Runing[i].StopTime - TaskData.Runing[i].StartTime).ToString("HH:mm:ss");
                                     }));
                                     #endregion
 
@@ -566,13 +565,13 @@ namespace DispatchSystem.User
                             if (item.LineName == "扩散线")
                             {
                                 //正在执行任务
-                                DataTransmission.Profinet.Register[1] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[2] = (ushort)item.TaskNum;
                             }
                             else
                             if (item.LineName == "PE线")
                             {
                                 //正在执行任务
-                                DataTransmission.Profinet.Register[21] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[22] = (ushort)item.TaskNum;
                             }
                         }
                     }
@@ -585,13 +584,13 @@ namespace DispatchSystem.User
                             if (item.LineName == "扩散线" && waiting[0] < 5)
                             {
                                 //待执行任务
-                                DataTransmission.Profinet.Register[2 + waiting[0]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[3 + waiting[0]++] = (ushort)item.TaskNum;
                             }
                             else
                             if (item.LineName == "PE线" && waiting[1] < 5)
                             {
                                 //待执行任务
-                                DataTransmission.Profinet.Register[22 + waiting[1]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[23 + waiting[1]++] = (ushort)item.TaskNum;
                             }
                         }
                     }
@@ -604,18 +603,17 @@ namespace DispatchSystem.User
                             if (item.LineName == "扩散线" && finished[0] < 5)
                             {
                                 //已完成任务
-                                DataTransmission.Profinet.Register[7 + finished[0]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[8 + finished[0]++] = (ushort)item.TaskNum;
                             }
                             else
                             if (item.LineName == "PE线" && finished[1] < 5)
                             {
                                 //已完成任务
-                                DataTransmission.Profinet.Register[27 + finished[1]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[28 + finished[1]++] = (ushort)item.TaskNum;
                             }
                         }
                     }
                     #endregion
-
                 }
 
                 Thread.Sleep(TaskData.Parameter.taskFuncTime);
