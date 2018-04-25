@@ -693,5 +693,16 @@ namespace DispatchSystem
             taskForm.WindowState = FormWindowState.Normal;
             taskForm.WindowState = FormWindowState.Maximized;
         }
+
+        //ModbusTcp配置
+        private void mESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        //数据中继配置
+        private void 数据中继ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

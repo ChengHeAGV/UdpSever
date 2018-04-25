@@ -78,22 +78,8 @@ namespace DispatchSystem.User
 
         }
 
-        public static void StopListen()
-        {
-            modbusMaster.Dispose();
-            if (modbusThread.IsAlive)
-            {
-               
-                modbusThread.Abort();
-            }
-            if (dbusThread.IsAlive)
-            {
-                dbusThread.Abort();
-            }
-        }
-
         /// <summary>
-        /// Modbus数据
+        /// Modbus配置
         /// </summary>
         public static class Profinet
         {
@@ -184,7 +170,7 @@ namespace DispatchSystem.User
         }
 
         /// <summary>
-        /// Dbus数据
+        /// Dbus配置
         /// </summary>
         public static class Dbus
         {

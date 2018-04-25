@@ -641,25 +641,6 @@ namespace DispatchSystem.User
                                                                                  //System.Console.WriteLine(timeStamp);
             return timeStamp;
         }
-
-        private void TaskForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //DataTransmission.StopListen();
-        }
-
-        private void dataGridViewWaiting_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
-        }
-
-        private void dataGridViewRunning_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
-        }
-
-        private void dataGridViewFinished_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
-        }
+        
     }
 }

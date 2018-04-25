@@ -40,7 +40,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewRunning = new System.Windows.Forms.DataGridView();
+            this.dataGridViewRunning = new UserControls.UDataGridView();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +53,7 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewFinished = new System.Windows.Forms.DataGridView();
+            this.dataGridViewFinished = new UserControls.UDataGridView();
             this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +64,7 @@
             this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewWaiting = new System.Windows.Forms.DataGridView();
+            this.dataGridViewWaiting = new UserControls.UDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -184,7 +184,6 @@
             this.dataGridViewRunning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRunning.Size = new System.Drawing.Size(1154, 187);
             this.dataGridViewRunning.TabIndex = 2;
-            this.dataGridViewRunning.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewRunning_RowStateChanged);
             // 
             // Column24
             // 
@@ -290,7 +289,6 @@
             this.dataGridViewFinished.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFinished.Size = new System.Drawing.Size(1154, 301);
             this.dataGridViewFinished.TabIndex = 3;
-            this.dataGridViewFinished.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewFinished_RowStateChanged);
             // 
             // Column28
             // 
@@ -372,7 +370,6 @@
             this.dataGridViewWaiting.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewWaiting.Size = new System.Drawing.Size(1154, 198);
             this.dataGridViewWaiting.TabIndex = 3;
-            this.dataGridViewWaiting.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewWaiting_RowStateChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -451,7 +448,6 @@
             this.Name = "TaskForm";
             this.Text = "任务调度";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskForm_FormClosing);
             this.Load += new System.EventHandler(this.TaskForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRunning)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -484,12 +480,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridView dataGridViewRunning;
+        private UserControls.UDataGridView dataGridViewRunning;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridViewFinished;
-        private System.Windows.Forms.DataGridView dataGridViewWaiting;
+        private UserControls.UDataGridView dataGridViewFinished;
+        private UserControls.UDataGridView dataGridViewWaiting;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;

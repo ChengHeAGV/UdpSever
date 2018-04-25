@@ -16,14 +16,17 @@ namespace DispatchSystem.UserControls
         {
             InitializeComponent();
             //设置间隔色
-            this.RowsDefaultCellStyle.BackColor = Color.Bisque;
-            this.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+            this.RowsDefaultCellStyle.BackColor = Color.Bisque;//Color.WhiteSmoke; //背景色
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;//Color.White;
+
             //设置选中行的颜色
             this.DefaultCellStyle.SelectionBackColor = Color.Silver;
             this.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             this.RowHeadersWidth = 60;
-            this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //空白部分背景色
+            this.BackgroundColor = Color.White;
 
             //事件
             this.RowLeave += UDataGridView_RowLeave; ;
@@ -60,11 +63,9 @@ namespace DispatchSystem.UserControls
             {
                 colorTmp = Rows[e.RowIndex].DefaultCellStyle.BackColor;
                 Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Silver;
-                if (e.ColumnIndex == 1)//改变第二列鼠标形状  
-                {
-                    cursorTmp = this.Cursor;
-                    this.Cursor = Cursors.Hand;
-                }
+
+                cursorTmp = this.Cursor;
+                this.Cursor = Cursors.Hand;
             }
         }
 
@@ -73,10 +74,7 @@ namespace DispatchSystem.UserControls
             if (e.RowIndex >= 0)
             {
                 Rows[e.RowIndex].DefaultCellStyle.BackColor = colorTmp;
-                if (e.ColumnIndex == 1)
-                {
-                    this.Cursor = cursorTmp;
-                }
+                this.Cursor = cursorTmp;
             }
         }
 
@@ -92,12 +90,12 @@ namespace DispatchSystem.UserControls
 
         private void UDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (this.Rows.Count>0)
-            {
-               // Rows.Add();
-                //滚动到最后一行
-                FirstDisplayedScrollingRowIndex = RowCount - 1;
-            }
+            //if (this.Rows.Count>0)
+            //{
+            //  //  Rows.Add();
+            //    //滚动到最后一行
+            //    FirstDisplayedScrollingRowIndex = RowCount - 1;
+            //}
         }
     }
 }

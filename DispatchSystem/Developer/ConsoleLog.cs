@@ -51,12 +51,6 @@ namespace DispatchSystem.Developer
                 dataGridView1.Rows[index].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss");
                 dataGridView1.Rows[index].Cells[2].Value = msg;
 
-                //行样式
-                if (index % 2 == 1)
-                    this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.WhiteSmoke; //背景色
-                else
-                    this.dataGridView1.Rows[index].DefaultCellStyle.BackColor = Color.White; //背景色
-
                 this.dataGridView1.Rows[index].DefaultCellStyle.ForeColor = color; //字体颜色
                 this.dataGridView1.Rows[index].DefaultCellStyle.Font = new Font("新宋体", fontSize, FontStyle.Regular); //字体颜色
                                                                                                                      //this.dataGridView1.Rows[index].Cells[2].Style.Font = new Font("新宋体", 20, FontStyle.Regular); //字体颜色
