@@ -2,7 +2,7 @@
 <ArrayOfDebug xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Debug>
     <名称>心跳帧</名称>
-    <数值>false</数值>
+    <数值>true</数值>
   </Debug>
   <Debug>
     <名称>操作帧</名称>
@@ -38,7 +38,7 @@
   </Debug>
   <Debug>
     <名称>收到数据</名称>
-    <数值>true</数值>
+    <数值>false</数值>
   </Debug>
   <Debug>
     <名称>单包数据有效帧数量</名称>

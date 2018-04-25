@@ -17,6 +17,9 @@ namespace DispatchSystem.Developer
 
         private void ConsoleLog_Load(object sender, EventArgs e)
         {
+            //dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Silver;
+            //dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+
             UpdateControl += new UpdateControlEventHandler(this.Test);  //订阅UpdateControl事件，指定Test方法为事件处理函数
         }
 
@@ -83,12 +86,6 @@ namespace DispatchSystem.Developer
             {
                 WriteLogFunc(msg, color, fontSize);
             }
-        }
-
-        private void ConsoleLog_SizeChanged(object sender, EventArgs e)
-        {
-            //滚动到最后一行
-            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
         }
     }
 }

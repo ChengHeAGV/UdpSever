@@ -1,16 +1,6 @@
-﻿using AdvancedDataGridView;
-using Modbus.Device;
-using Modbus.IO;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DispatchSystem.User
@@ -41,11 +31,9 @@ namespace DispatchSystem.User
             TaskData.AGV[0] = new Agv();
             TaskData.AGV[1] = new Agv();
 
-            //启动数据监听
-            DataTransmission.StartListen();
-
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
+            taskThread.IsBackground = true;
             taskThread.Start();
             #endregion
 
@@ -656,8 +644,22 @@ namespace DispatchSystem.User
 
         private void TaskForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            taskThread.Abort();
-            DataTransmission.StopListen();
+            //DataTransmission.StopListen();
+        }
+
+        private void dataGridViewWaiting_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
+        }
+
+        private void dataGridViewRunning_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
+        }
+
+        private void dataGridViewFinished_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
         }
     }
 }

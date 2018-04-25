@@ -55,7 +55,7 @@ namespace DispatchSystem
             {
                 if (ipa.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    ConsoleLog.WriteLog( "系统消息", "本机IP:[{0}]", ipa.ToString());
+                    ConsoleLog.WriteLog("系统消息", "本机IP:[{0}]", ipa.ToString());
                     UdpSever.ipaddress = ipa;
                 }
             }
@@ -67,10 +67,12 @@ namespace DispatchSystem
 
             treeView1.Nodes.Clear();
 
+            #region 启动任务界面
             taskForm.TopLevel = false;
             taskForm.Parent = splitContainer3.Panel1;
             taskForm.Show();//弹出这个窗口
             taskForm.Focus();//激活显示
+            #endregion
         }
 
         private void ShowNewForm(object sender, EventArgs e)

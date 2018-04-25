@@ -199,6 +199,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\UDataGridView.Designer.cs">
+      <DependentUpon>UDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
       <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
     </Compile>
@@ -464,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SignalLed.resx">
       <DependentUpon>SignalLed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UDataGridView.resx">
+      <DependentUpon>UDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\DataTransmission.resx">
       <DependentUpon>DataTransmission.cs</DependentUpon>

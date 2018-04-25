@@ -21,12 +21,12 @@ namespace DispatchSystem.User
 
         private void DataTransmission_Load(object sender, EventArgs e)
         {
-
         }
 
         public static void StartListen()
         {
             MainThread = new Thread(new ThreadStart(Start));
+            MainThread.IsBackground = true;
             MainThread.Start();
         }
         public static class ListenState
@@ -42,6 +42,7 @@ namespace DispatchSystem.User
             if (ListenState.Dbus == false)
             {
                 dbusThread = new Thread(new ThreadStart(Syncdbus));
+                dbusThread.IsBackground = true;
                 dbusThread.Start();
                 ConsoleLog.WriteLog("监听Dbus启动成功！", Color.Green, 24);
                 ListenState.Dbus = true;
@@ -62,6 +63,7 @@ namespace DispatchSystem.User
 
                     //启动监听进程
                     modbusThread = new Thread(new ThreadStart(SyncModbus));
+                    modbusThread.IsBackground = true;
                     modbusThread.Start();
                     ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
                     ListenState.ModbusTcp = true;
@@ -78,9 +80,10 @@ namespace DispatchSystem.User
 
         public static void StopListen()
         {
+            modbusMaster.Dispose();
             if (modbusThread.IsAlive)
             {
-                modbusMaster.Dispose();
+               
                 modbusThread.Abort();
             }
             if (dbusThread.IsAlive)
@@ -97,7 +100,7 @@ namespace DispatchSystem.User
             //modbus 检测时间
             public static int Cycle = 1000;
             //modbus服务器IP地址
-            public static string ModbusTcpSeverIPAddress = "192.168.127.225";
+            public static string ModbusTcpSeverIPAddress = "192.168.250.102";
             //modbus服务器端口
             public static int ModbusTcpSeverPort = 502;
             //modbus超时
