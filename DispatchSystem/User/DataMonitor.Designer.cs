@@ -71,6 +71,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Bisque;
             this.uDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.uDataGridView1.RowTemplate.Height = 23;
+            this.uDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.uDataGridView1.Size = new System.Drawing.Size(939, 701);
             this.uDataGridView1.TabIndex = 0;
             // 
@@ -118,6 +119,7 @@
             this.Controls.Add(this.uDataGridView1);
             this.Name = "DataMonitor";
             this.Text = "DataMonitor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataMonitor_FormClosing);
             this.Load += new System.EventHandler(this.DataMonitor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uDataGridView1)).EndInit();
             this.ResumeLayout(false);

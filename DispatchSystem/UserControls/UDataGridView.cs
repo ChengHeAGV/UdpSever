@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace DispatchSystem.UserControls
 {
@@ -15,6 +16,12 @@ namespace DispatchSystem.UserControls
         public UDataGridView()
         {
             InitializeComponent();
+            //利用反射设置DataGridView的双缓冲
+            Type dgvType = this.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(this, true, null);
+
             //设置为整行被选中
             this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //设置间隔色
@@ -66,8 +73,8 @@ namespace DispatchSystem.UserControls
                 colorTmp = Rows[e.RowIndex].DefaultCellStyle.BackColor;
                 Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Silver;
 
-                cursorTmp = this.Cursor;
-                this.Cursor = Cursors.Hand;
+                //cursorTmp = this.Cursor;
+                //this.Cursor = Cursors.Hand;
             }
         }
 
@@ -76,7 +83,7 @@ namespace DispatchSystem.UserControls
             if (e.RowIndex >= 0)
             {
                 Rows[e.RowIndex].DefaultCellStyle.BackColor = colorTmp;
-                this.Cursor = cursorTmp;
+                //this.Cursor = cursorTmp;
             }
         }
 
