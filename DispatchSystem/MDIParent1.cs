@@ -75,19 +75,6 @@ namespace DispatchSystem
             #endregion
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "窗口 " + childFormNumber++;
-            childForm.Show();
-
-            UdpConfigForm udpConfig = new UdpConfigForm();
-            udpConfig.MdiParent = this;
-            udpConfig.Text = "网络配置界面";
-            udpConfig.Show();
-        }
-
         /// <summary>
         /// 网络配置窗口
         /// </summary>
@@ -624,15 +611,10 @@ namespace DispatchSystem
             //}
         }
 
-        //AGV运行实时监控
-        // MonitorForm monitorForm = new MonitorForm();
+        //数据交换监控
+         //DataMonitor monitorForm = new DataMonitor();
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-
-            //WpfAppTest.MainWindow wpfwindow = new WpfAppTest.MainWindow();
-            //wpfwindow.ShowDialog();
-
-            //WpfAppTest.UMessageBox.Show("WPF", "感觉如何？");
             //if (monitorForm.IsDisposed != true)
             //{
             //    monitorForm.Show();//弹出这个窗口
@@ -640,7 +622,7 @@ namespace DispatchSystem
             //}
             //else
             //{
-            //    monitorForm = new MonitorForm();
+            //    monitorForm = new DataMonitor();
             //    monitorForm.Show();//弹出这个窗口
             //    monitorForm.Focus();//激活显示
             //}

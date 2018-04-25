@@ -199,6 +199,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -207,6 +212,12 @@
     </Compile>
     <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
       <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\DataMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\DataMonitor.Designer.cs">
+      <DependentUpon>DataMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="User\DataTransmission.cs">
       <SubType>Form</SubType>
@@ -250,11 +261,6 @@
     </Compile>
     <Compile Include="Parameter\Process.designer.cs">
       <DependentUpon>Process.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ThirdAppResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -474,6 +480,9 @@
     <EmbeddedResource Include="UserControls\UDataGridView.resx">
       <DependentUpon>UDataGridView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User\DataMonitor.resx">
+      <DependentUpon>DataMonitor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\DataTransmission.resx">
       <DependentUpon>DataTransmission.cs</DependentUpon>
     </EmbeddedResource>
@@ -540,6 +549,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Database\Help\Entity增删改查一.txt" />
+    <None Include="Resources\data.png" />
     <Content Include="User\说明.txt" />
     <None Include="bin\Debug\参数上位机\newGroupPostIconStrip.PNG" />
     <Content Include="Dbus协议细节.txt" />

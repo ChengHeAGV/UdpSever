@@ -48,7 +48,7 @@ namespace DispatchSystem.Developer
                 else
                     index = dataGridView1.Rows.Add();
                 dataGridView1.Rows[index].Cells[0].Value = DateTime.Now.ToString("yyyy-MM-dd");
-                dataGridView1.Rows[index].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss");
+                dataGridView1.Rows[index].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss fff");
                 dataGridView1.Rows[index].Cells[2].Value = msg;
 
                 this.dataGridView1.Rows[index].DefaultCellStyle.ForeColor = color; //字体颜色

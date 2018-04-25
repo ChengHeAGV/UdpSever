@@ -88,6 +88,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.路径规划ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据中继ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.高级ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,14 +105,12 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.timerState = new System.Windows.Forms.Timer(this.components);
+            this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStripButtonUdpConfig = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.timerState = new System.Windows.Forms.Timer(this.components);
-            this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
-            this.mESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据中继ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -174,7 +174,6 @@
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.newToolStripMenuItem.Text = "新建(&N)";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // openToolStripMenuItem
             // 
@@ -410,7 +409,6 @@
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
             this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.newWindowToolStripMenuItem.Text = "新建窗口(&N)";
-            this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // cascadeToolStripMenuItem
             // 
@@ -508,6 +506,20 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 21);
             this.toolStripMenuItem1.Text = "设置";
+            // 
+            // mESToolStripMenuItem
+            // 
+            this.mESToolStripMenuItem.Name = "mESToolStripMenuItem";
+            this.mESToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.mESToolStripMenuItem.Text = "ModbusTcp";
+            this.mESToolStripMenuItem.Click += new System.EventHandler(this.mESToolStripMenuItem_Click);
+            // 
+            // 数据中继ToolStripMenuItem
+            // 
+            this.数据中继ToolStripMenuItem.Name = "数据中继ToolStripMenuItem";
+            this.数据中继ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.数据中继ToolStripMenuItem.Text = "数据中继";
+            this.数据中继ToolStripMenuItem.Click += new System.EventHandler(this.数据中继ToolStripMenuItem_Click);
             // 
             // DebugToolStripMenuItem
             // 
@@ -703,6 +715,18 @@
             this.splitContainer3.SplitterDistance = 415;
             this.splitContainer3.TabIndex = 0;
             // 
+            // timerState
+            // 
+            this.timerState.Enabled = true;
+            this.timerState.Interval = 500;
+            this.timerState.Tick += new System.EventHandler(this.timerState_Tick);
+            // 
+            // timerOnlineCheck
+            // 
+            this.timerOnlineCheck.Enabled = true;
+            this.timerOnlineCheck.Interval = 200;
+            this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
+            // 
             // toolStrip
             // 
             this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -745,7 +769,7 @@
             // 
             // toolStripButton2
             // 
-            this.toolStripButton2.Image = global::DispatchSystem.Properties.Resources.location;
+            this.toolStripButton2.Image = global::DispatchSystem.Properties.Resources.data;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.toolStripButton2.Name = "toolStripButton2";
@@ -754,32 +778,6 @@
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // timerState
-            // 
-            this.timerState.Enabled = true;
-            this.timerState.Interval = 500;
-            this.timerState.Tick += new System.EventHandler(this.timerState_Tick);
-            // 
-            // timerOnlineCheck
-            // 
-            this.timerOnlineCheck.Enabled = true;
-            this.timerOnlineCheck.Interval = 200;
-            this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
-            // 
-            // mESToolStripMenuItem
-            // 
-            this.mESToolStripMenuItem.Name = "mESToolStripMenuItem";
-            this.mESToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mESToolStripMenuItem.Text = "ModbusTcp";
-            this.mESToolStripMenuItem.Click += new System.EventHandler(this.mESToolStripMenuItem_Click);
-            // 
-            // 数据中继ToolStripMenuItem
-            // 
-            this.数据中继ToolStripMenuItem.Name = "数据中继ToolStripMenuItem";
-            this.数据中继ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.数据中继ToolStripMenuItem.Text = "数据中继";
-            this.数据中继ToolStripMenuItem.Click += new System.EventHandler(this.数据中继ToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -865,8 +863,6 @@
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStripButton ToolStripButtonUdpConfig;
-        private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button button1;
@@ -874,8 +870,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timerState;
         private System.Windows.Forms.Timer timerOnlineCheck;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripMenuItem 串口助手ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 网络助手ToolStripMenuItem;
@@ -891,6 +885,10 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.ToolStripMenuItem mESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据中继ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton ToolStripButtonUdpConfig;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStrip toolStrip;
     }
 }
 
