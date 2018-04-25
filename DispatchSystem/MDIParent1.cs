@@ -612,20 +612,20 @@ namespace DispatchSystem
         }
 
         //数据交换监控
-         //DataMonitor monitorForm = new DataMonitor();
+        DataMonitor monitorForm = new DataMonitor();
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            //if (monitorForm.IsDisposed != true)
-            //{
-            //    monitorForm.Show();//弹出这个窗口
-            //    monitorForm.Focus();//激活显示
-            //}
-            //else
-            //{
-            //    monitorForm = new DataMonitor();
-            //    monitorForm.Show();//弹出这个窗口
-            //    monitorForm.Focus();//激活显示
-            //}
+            if (monitorForm.IsDisposed != true)
+            {
+                monitorForm.Show();//弹出这个窗口
+                monitorForm.Focus();//激活显示
+            }
+            else
+            {
+                monitorForm = new DataMonitor();
+                monitorForm.Show();//弹出这个窗口
+                monitorForm.Focus();//激活显示
+            }
         }
 
         CanForm canForm = new CanForm();

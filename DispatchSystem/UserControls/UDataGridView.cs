@@ -15,6 +15,8 @@ namespace DispatchSystem.UserControls
         public UDataGridView()
         {
             InitializeComponent();
+            //设置为整行被选中
+            this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //设置间隔色
             this.RowsDefaultCellStyle.BackColor = Color.Bisque;//Color.WhiteSmoke; //背景色
             this.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;//Color.White;

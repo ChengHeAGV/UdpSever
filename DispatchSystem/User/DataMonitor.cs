@@ -34,25 +34,28 @@ namespace DispatchSystem.User
         {
             while (true)
             {
-                for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+                if (this.Created)
                 {
-                    //更新数据
-                    var index = uDataGridView1.Rows.Add();
-
-                    //日期
-                    uDataGridView1.Rows[index].Cells[0].Value = DateTime.Now.ToString("yyyy-MM-dd");
-                    //时间
-                    uDataGridView1.Rows[index].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss fff");
-                    //寄存器类型
-                    uDataGridView1.Rows[index].Cells[2].Value = "[Word/U16]";
-                    //寄存器地址
-                    uDataGridView1.Rows[index].Cells[3].Value = i.ToString();
-                    //值
-                    uDataGridView1.Rows[index].Cells[4].Value = DataTransmission.Profinet.Register[i];
-                    //更新次数
-                    uDataGridView1.Rows[index].Cells[5].Value = "";
-                    //描述
-                    uDataGridView1.Rows[index].Cells[6].Value = "";
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+                        {
+                            //日期
+                            uDataGridView1.Rows[i].Cells[0].Value = DateTime.Now.ToString("yyyy-MM-dd");
+                            //时间
+                            uDataGridView1.Rows[i].Cells[1].Value = DateTime.Now.ToString("HH:mm:ss fff");
+                            //寄存器类型
+                            uDataGridView1.Rows[i].Cells[2].Value = "[Word/U16]";
+                            //寄存器地址
+                            uDataGridView1.Rows[i].Cells[3].Value = i.ToString();
+                            //值
+                            uDataGridView1.Rows[i].Cells[4].Value = DataTransmission.Profinet.Register[i];
+                            //更新次数
+                            uDataGridView1.Rows[i].Cells[5].Value = "";
+                            //描述
+                            uDataGridView1.Rows[i].Cells[6].Value = "";
+                        }
+                    }));
                 }
                 Thread.Sleep(1000);
             }
