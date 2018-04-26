@@ -226,14 +226,14 @@ namespace DispatchSystem.User
                 {
                     #region 判断MES是否有新任务
                     //扩散线
-                    if (DataTransmission.Profinet.Register[1] > 0 && (DataTransmission.Profinet.Clear1 == false))
+                    if (DataTransmission.Profinet.Register[0] > 0 && (DataTransmission.Profinet.Clear0 == false))
                     {
                         //创建任务
                         Task task = new Task();
                         //[订单号]毫秒时间戳
                         task.OrderNum = GetTimeStamp();
                         //[任务编号]
-                        task.TaskNum = DataTransmission.Profinet.Register[1];
+                        task.TaskNum = DataTransmission.Profinet.Register[0];
                         //[产线名称]
                         task.LineName = "扩散线";
                         //AGV编号
@@ -264,25 +264,17 @@ namespace DispatchSystem.User
                             dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
                         }));
                         //清除MES任务标志寄存器
-                        DataTransmission.Profinet.Clear1 = true;
-
-                        //等待AGV收到任务
-                        while (UdpSever.Register[task.AgvNum, 2,0]==0)
-                        {
-                            Thread.Sleep(100);
-                        }
-                        //清除AGV任务标志
-                        UdpSever.Register[task.AgvNum, 1, 0] = 0;
+                        DataTransmission.Profinet.Clear0 = true;
                     }
                     //PE线
-                    if (DataTransmission.Profinet.Register[21] > 0 && (DataTransmission.Profinet.Clear21 == false))
+                    if (DataTransmission.Profinet.Register[20] > 0 && (DataTransmission.Profinet.Clear20 == false))
                     {
                         //创建任务
                         Task task = new Task();
                         //[订单号]毫秒时间戳
                         task.OrderNum = GetTimeStamp();
                         //[任务编号]
-                        task.TaskNum = DataTransmission.Profinet.Register[21];
+                        task.TaskNum = DataTransmission.Profinet.Register[20];
                         //[产线名称]
                         task.LineName = "PE线";
                         //AGV编号
@@ -314,7 +306,7 @@ namespace DispatchSystem.User
                         }));
 
                         //清除MES任务标志寄存器
-                        DataTransmission.Profinet.Clear21 = true;
+                        DataTransmission.Profinet.Clear20 = true;
                          //等待AGV收到任务
                         while (UdpSever.Register[task.AgvNum, 2,0]==0)
                         {
@@ -452,7 +444,60 @@ namespace DispatchSystem.User
                             //判断任务是否执行完成
                             if (TaskData.Runing[i].LineName == "扩散线")
                             {
-                                if (UdpSever.Register[TaskData.Runing[i].AgvNum, 8, 0] == 2)
+                                if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 1)
+                                {
+                                    //执行完成
+                                    TaskData.Runing[i].TaskState = (int)TaskRunState.Finished;
+                                    TaskData.Runing[i].StopTime = DateTime.Now;
+
+                                    //将该任务转至执行完成任务列表
+                                    TaskData.Finished.Add(TaskData.Runing[i]);
+                                    #region 更新-完成任务-到界面
+                                    this.Invoke(new MethodInvoker(delegate
+                                    {
+                                        var index = dataGridViewFinished.Rows.Add();
+                                        //序号
+                                        dataGridViewFinished.Rows[index].Cells[0].Value = index;
+                                        //订单编号
+                                        dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.Runing[i].OrderNum;
+                                        //任务编号
+                                        dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.Runing[i].TaskNum;
+                                        //产线名称
+                                        dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.Runing[i].LineName;
+                                        //AGV编号
+                                        dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.Runing[i].AgvNum;
+                                        //下单时间
+                                        dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.Runing[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //启动时间
+                                        dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.Runing[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //完成时间
+                                        dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
+                                    }));
+                                    #endregion
+
+                                    //将该任务从正在执行任务列表删除
+                                    TaskData.Runing.RemoveAt(i);
+
+                                    #region 更新-正在执行-界面
+                                    this.Invoke(new MethodInvoker(delegate
+                                    {
+                                        dataGridViewRunning.Rows.RemoveAt(i);
+                                    }));
+                                    //清除AGV任务
+                                    UdpSever.Register[TaskData.Waiting[i].AgvNum, 1, 0] = 0;
+                                    #endregion
+                                }
+                                else if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 0)
+                                {
+                                    //正在执行
+                                    TaskData.Runing[i].TaskState = (int)TaskRunState.Runing;
+                                }
+                            }
+                            else
+                            //判断任务是否执行完成
+                            if (TaskData.Runing[i].LineName == "PE线")
+                            {
+                                if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 1)
                                 {
                                     //执行完成
                                     TaskData.Runing[i].TaskState = (int)TaskRunState.Finished;
@@ -481,7 +526,7 @@ namespace DispatchSystem.User
                                         //完成时间
                                         dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //执行时间
-                                        dataGridViewFinished.Rows[index].Cells[8].Value = (TaskData.Runing[i].StopTime - TaskData.Runing[i].StartTime).ToString("HH:mm:ss");
+                                        dataGridViewFinished.Rows[index].Cells[8].Value = TaskData.Runing[i].StopTime - TaskData.Runing[i].StartTime;
                                     }));
                                     #endregion
 
@@ -493,9 +538,11 @@ namespace DispatchSystem.User
                                     {
                                         dataGridViewRunning.Rows.RemoveAt(i);
                                     }));
+                                    //清除AGV任务
+                                    UdpSever.Register[TaskData.Waiting[i].AgvNum, 1, 0] = 0;
                                     #endregion
                                 }
-                                else if (UdpSever.Register[TaskData.Runing[i].AgvNum, 8, 0] == 1)
+                                else if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 0)
                                 {
                                     //正在执行
                                     TaskData.Runing[i].TaskState = (int)TaskRunState.Runing;
@@ -566,13 +613,13 @@ namespace DispatchSystem.User
                             if (item.LineName == "扩散线")
                             {
                                 //正在执行任务
-                                DataTransmission.Profinet.Register[2] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[1] = (ushort)item.TaskNum;
                             }
                             else
                             if (item.LineName == "PE线")
                             {
                                 //正在执行任务
-                                DataTransmission.Profinet.Register[22] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[21] = (ushort)item.TaskNum;
                             }
                         }
                     }
@@ -585,13 +632,13 @@ namespace DispatchSystem.User
                             if (item.LineName == "扩散线" && waiting[0] < 5)
                             {
                                 //待执行任务
-                                DataTransmission.Profinet.Register[3 + waiting[0]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[2 + waiting[0]++] = (ushort)item.TaskNum;
                             }
                             else
                             if (item.LineName == "PE线" && waiting[1] < 5)
                             {
                                 //待执行任务
-                                DataTransmission.Profinet.Register[23 + waiting[1]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[22 + waiting[1]++] = (ushort)item.TaskNum;
                             }
                         }
                     }
@@ -604,30 +651,30 @@ namespace DispatchSystem.User
                             if (item.LineName == "扩散线" && finished[0] < 5)
                             {
                                 //已完成任务
-                                DataTransmission.Profinet.Register[8 + finished[0]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[7 + finished[0]++] = (ushort)item.TaskNum;
                             }
                             else
                             if (item.LineName == "PE线" && finished[1] < 5)
                             {
                                 //已完成任务
-                                DataTransmission.Profinet.Register[28 + finished[1]++] = (ushort)item.TaskNum;
+                                DataTransmission.Profinet.Register[27 + finished[1]++] = (ushort)item.TaskNum;
                             }
                         }
                     }
 
                     //上一个位置
-                    DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[1, 5, 0]; 
+                    DataTransmission.Profinet.Register[12] = (ushort)UdpSever.Register[1, 5, 0]; 
                     //当前位置
-                    DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[1, 6, 0]; 
+                    DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[1, 6, 0]; 
                     //运行状态
-                    DataTransmission.Profinet.Register[15] = (ushort)UdpSever.Register[1, 8, 0];
+                    DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[1, 8, 0];
 
                     //上一个位置
-                    DataTransmission.Profinet.Register[33] = (ushort)UdpSever.Register[1, 5, 0];
+                    DataTransmission.Profinet.Register[32] = (ushort)UdpSever.Register[1, 5, 0];
                     //当前位置
-                    DataTransmission.Profinet.Register[34] = (ushort)UdpSever.Register[1, 6, 0];
+                    DataTransmission.Profinet.Register[33] = (ushort)UdpSever.Register[1, 6, 0];
                     //运行状态
-                    DataTransmission.Profinet.Register[35] = (ushort)UdpSever.Register[1, 8, 0];
+                    DataTransmission.Profinet.Register[34] = (ushort)UdpSever.Register[1, 8, 0];
                     #endregion
                 }
                 Thread.Sleep(TaskData.Parameter.taskFuncTime);

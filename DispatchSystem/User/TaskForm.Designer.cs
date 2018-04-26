@@ -28,6 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +49,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewRunning = new UserControls.UDataGridView();
+            this.dataGridViewRunning = new DispatchSystem.UserControls.UDataGridView();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +62,16 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewFinished = new UserControls.UDataGridView();
+            this.dataGridViewFinished = new DispatchSystem.UserControls.UDataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewWaiting = new DispatchSystem.UserControls.UDataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,16 +80,6 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewWaiting = new UserControls.UDataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRunning)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -163,6 +171,8 @@
             // 
             // dataGridViewRunning
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
+            this.dataGridViewRunning.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRunning.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewRunning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRunning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -176,10 +186,20 @@
             this.Column19,
             this.Column17,
             this.Column15});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewRunning.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewRunning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRunning.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewRunning.Name = "dataGridViewRunning";
             this.dataGridViewRunning.RowHeadersWidth = 60;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Bisque;
+            this.dataGridViewRunning.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewRunning.RowTemplate.Height = 23;
             this.dataGridViewRunning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRunning.Size = new System.Drawing.Size(1154, 187);
@@ -269,6 +289,8 @@
             // 
             // dataGridViewFinished
             // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Beige;
+            this.dataGridViewFinished.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewFinished.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewFinished.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFinished.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -279,66 +301,25 @@
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn13,
             this.Column30,
-            this.Column31,
-            this.Column32});
+            this.Column31});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewFinished.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewFinished.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewFinished.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewFinished.Name = "dataGridViewFinished";
             this.dataGridViewFinished.RowHeadersWidth = 60;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Bisque;
+            this.dataGridViewFinished.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewFinished.RowTemplate.Height = 23;
             this.dataGridViewFinished.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFinished.Size = new System.Drawing.Size(1154, 301);
             this.dataGridViewFinished.TabIndex = 3;
-            // 
-            // Column28
-            // 
-            this.Column28.HeaderText = "序号";
-            this.Column28.Name = "Column28";
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "订单号";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "任务编号";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // Column29
-            // 
-            this.Column29.HeaderText = "产线名称";
-            this.Column29.Name = "Column29";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "AGV编号";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "下单时间";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Width = 160;
-            // 
-            // Column30
-            // 
-            this.Column30.HeaderText = "启动时间";
-            this.Column30.Name = "Column30";
-            this.Column30.Width = 160;
-            // 
-            // Column31
-            // 
-            this.Column31.HeaderText = "完成时间";
-            this.Column31.Name = "Column31";
-            this.Column31.Width = 160;
-            // 
-            // Column32
-            // 
-            this.Column32.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column32.HeaderText = "执行时间";
-            this.Column32.Name = "Column32";
             // 
             // groupBox3
             // 
@@ -353,6 +334,8 @@
             // 
             // dataGridViewWaiting
             // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Beige;
+            this.dataGridViewWaiting.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewWaiting.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewWaiting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaiting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -361,10 +344,20 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewWaiting.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewWaiting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewWaiting.Location = new System.Drawing.Point(3, 17);
             this.dataGridViewWaiting.Name = "dataGridViewWaiting";
             this.dataGridViewWaiting.RowHeadersWidth = 60;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Bisque;
+            this.dataGridViewWaiting.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewWaiting.RowTemplate.Height = 23;
             this.dataGridViewWaiting.RowTemplate.ReadOnly = true;
             this.dataGridViewWaiting.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -437,6 +430,50 @@
             this.splitContainer2.SplitterDistance = 218;
             this.splitContainer2.TabIndex = 0;
             // 
+            // Column28
+            // 
+            this.Column28.HeaderText = "序号";
+            this.Column28.Name = "Column28";
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "订单号";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "任务编号";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // Column29
+            // 
+            this.Column29.HeaderText = "产线名称";
+            this.Column29.Name = "Column29";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "AGV编号";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "下单时间";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 160;
+            // 
+            // Column30
+            // 
+            this.Column30.HeaderText = "启动时间";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 160;
+            // 
+            // Column31
+            // 
+            this.Column31.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column31.HeaderText = "完成时间";
+            this.Column31.Name = "Column31";
+            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -498,6 +535,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
@@ -506,11 +548,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

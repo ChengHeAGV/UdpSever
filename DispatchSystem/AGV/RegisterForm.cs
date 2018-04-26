@@ -9,6 +9,7 @@ namespace DispatchSystem
     public partial class RegisterForm : Form
     {
         Thread th;
+
         //public static int selectDataNum = 0;
         //int outdeviceNum = 0;
         int deviceNum = 0;
@@ -38,7 +39,7 @@ namespace DispatchSystem
 
         private void DataForm_Load(object sender, EventArgs e)
         {
-            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers( deviceNum, 0, UdpSever.RegisterNum);
+            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, UdpSever.RegisterNum);
             if (rm.resault)
             {
                 for (int i = 0; i < rm.DataBuf.Length; i++)
@@ -69,7 +70,8 @@ namespace DispatchSystem
                 doubleBufferListView1.Items.Add(item);
             }
             //启动自动更新进程
-            th = new Thread(fun);
+            th = new Thread(new ThreadStart(fun));
+            th.IsBackground = true;
             th.Start();
         }
 
@@ -77,8 +79,9 @@ namespace DispatchSystem
         {
             while (true)
             {
-                Thread.Sleep(50);
-                this.Invoke(new MethodInvoker(delegate
+                if (!formcloseing && this.Created)
+                {
+                    this.Invoke(new MethodInvoker(delegate
                 {
                     //更新数据
                     for (int i = 0; i < UdpSever.RegisterNum; i++)
@@ -97,12 +100,27 @@ namespace DispatchSystem
                             doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
                     }
                 }));
+                }
+
+                for (int i = 0; i < 100; i++)
+                {
+                    if (formcloseing)
+                    {
+                        formcloseing = false;
+                    }
+                    Thread.Sleep(10);
+                }
             }
         }
 
+        bool formcloseing = false;
         private void DataForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            th.Abort();
+            formcloseing = true;
+            while (formcloseing)
+            {
+                Thread.Sleep(10);
+            }
         }
 
         DisplayForm[] displayform;

@@ -101,8 +101,8 @@ namespace DispatchSystem.User
             public static UInt16[] RegisterCompare = new UInt16[200];
 
             //清除任务标志
-            public static bool Clear1 = false;
-            public static bool Clear21 = false;
+            public static bool Clear0 = false;
+            public static bool Clear20 = false;
 
             //设置数据
             public static bool SetRegister(int start, int end)
@@ -220,10 +220,10 @@ namespace DispatchSystem.User
                     temp[j - start] = (ushort)UdpSever.Register[deviceAddress, j, 0];
                 }
 
-                UdpSever.ReturnMsg mg = UdpSever.Write_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
+               UdpSever.Post_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
 
-                if (mg.resault == false)
-                    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+                //if (mg.resault == false)
+                //    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
             }
             //设置单个数据
             public static void SetRegister(int deviceAddress, int start)
@@ -231,9 +231,9 @@ namespace DispatchSystem.User
                 string Msg = string.Format("设置:{0,-2}", start);
 
 
-                UdpSever.ReturnMsg mg = UdpSever.Write_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
-                if (mg.resault == false)
-                    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
+                 UdpSever.Post_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
+                //if (mg.resault == false)
+                //    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
 
                 //if (UdpSever.Register[deviceAddress, start, 0] != DbusCompare[deviceAddress, start])
                 //{
@@ -335,14 +335,14 @@ namespace DispatchSystem.User
                 #region MES
 
                 int num;
-                //读取 1
-                num = 1;
-                if (Profinet.Clear1)
+                //读取 0
+                num = 0;
+                if (Profinet.Clear0)
                 {
                     Profinet.Register[num] = 0;
                     if (Profinet.SetRegister(num, num))
                     {
-                        Profinet.Clear1 = false;
+                        Profinet.Clear0 = false;
                     }
                 }
                 else
@@ -351,14 +351,14 @@ namespace DispatchSystem.User
                     Profinet.RegisterCompare[num] = Profinet.Register[num];
                 }
 
-                //读取 21
-                num = 21;
-                if (Profinet.Clear21)
+                //读取 20
+                num = 20;
+                if (Profinet.Clear20)
                 {
                     Profinet.Register[num] = 0;
                     if (Profinet.SetRegister(num, num))
                     {
-                        Profinet.Clear21 = false;
+                        Profinet.Clear20 = false;
                     }
                 }
                 else
@@ -367,10 +367,10 @@ namespace DispatchSystem.User
                     Profinet.RegisterCompare[num] = Profinet.Register[num];
                 }
 
-                //写入 2-15
-                Profinet.SetRegister(2, 15);
-                //写入 22-35
-                Profinet.SetRegister(22, 35);
+                //写入 1-14
+                Profinet.SetRegister(1, 14);
+                //写入 21-34
+                Profinet.SetRegister(21, 34);
                 #endregion
 
                 #region PLC
