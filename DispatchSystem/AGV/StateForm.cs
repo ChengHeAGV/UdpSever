@@ -67,7 +67,7 @@ namespace DispatchSystem.AGV
                         dataGridView1.Rows[num].Cells[0].Value = UdpSever.StampToString(UdpSever.Register[deviceNum, reg, 1], "yyyy - MM - dd");
                         dataGridView1.Rows[num].Cells[1].Value = UdpSever.StampToString(UdpSever.Register[deviceNum, reg, 1], "HH: mm:ss");
                         dataGridView1.Rows[num].Cells[2].Value = "电压";
-                        dataGridView1.Rows[num].Cells[3].Value = string.Format("{0}V", UdpSever.Register[deviceNum, reg, 0]);
+                        dataGridView1.Rows[num].Cells[3].Value = string.Format("{0}mV", UdpSever.Register[deviceNum, reg, 0]);
                         comparebuf[reg] = UdpSever.Register[deviceNum, reg, 0];
                     }
 

@@ -28,9 +28,10 @@ namespace DispatchSystem.User
         Thread taskThread;
         private void TaskForm_Load(object sender, EventArgs e)
         {
-            TaskData.AGV[0] = new Agv();
-            TaskData.AGV[1] = new Agv();
-            TaskData.AGV[2] = new Agv();
+            //TaskData.AGV[0] = new Agv();
+            //TaskData.AGV[1] = new Agv();
+            //TaskData.AGV[2] = new Agv();
+
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
             taskThread.IsBackground = true;
@@ -140,8 +141,10 @@ namespace DispatchSystem.User
             public static List<Task> Finished = new List<Task>();
 
             //定义两台AGV
-            public static Agv[] AGV = new Agv[3];
+            //public static Agv[] AGV = new Agv[3];
 
+            public static bool AGVRuning_1 = false;
+            public static bool AGVRuning_2 = false;
         }
 
         /// <summary>
@@ -266,6 +269,9 @@ namespace DispatchSystem.User
                             dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
                             //下单时间
                             dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
+
+                            //滚动到最后一行
+                            dataGridViewWaiting.FirstDisplayedScrollingRowIndex = dataGridViewWaiting.RowCount - 1;
                         }));
                         //清除MES任务标志寄存器
                         DataTransmission.Profinet.Clear0 = true;
@@ -309,6 +315,9 @@ namespace DispatchSystem.User
                             dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
                             //下单时间
                             dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
+
+                            //滚动到最后一行
+                            dataGridViewWaiting.FirstDisplayedScrollingRowIndex = dataGridViewWaiting.RowCount - 1;
                         }));
 
                         //清除MES任务标志寄存器
@@ -321,7 +330,7 @@ namespace DispatchSystem.User
                     if (TaskData.Waiting.Count > 0)
                     {
                         //1号产线有就绪的AGV
-                        if (UdpSever.Register[1, 8, 0] == 2 && TaskData.AGV[0].Running == false)
+                        if (UdpSever.Register[1, 8, 0] == 2 && TaskData.AGVRuning_1 == false)
                         {
                             for (int i = 0; i < TaskData.Waiting.Count; i++)
                             {
@@ -330,7 +339,7 @@ namespace DispatchSystem.User
                                     //下发任务到AGV
                                     UdpSever.Register[TaskData.Waiting[i].AgvNum, 1, 0] = TaskData.Waiting[i].TaskNum;
 
-                                    TaskData.AGV[0].Running = true;
+                                    TaskData.AGVRuning_1 = true;
 
                                     //更新任务状态
                                     TaskData.Waiting[i].StartTime = DateTime.Now;//任务启动时间
@@ -362,6 +371,9 @@ namespace DispatchSystem.User
                                         dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NextPosition;
                                         //报警信息
                                         dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].Error;
+
+                                        //滚动到最后一行
+                                        dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
                                     }));
                                     #endregion
 
@@ -386,7 +398,7 @@ namespace DispatchSystem.User
                         }
 
                         //2号产线有空闲的AGV
-                        if (UdpSever.Register[2, 8, 0] == 2 && TaskData.AGV[0].Running == false)
+                        if (UdpSever.Register[2, 8, 0] == 2 && TaskData.AGVRuning_2 == false)
                         {
                             for (int i = 0; i < TaskData.Waiting.Count; i++)
                             {
@@ -395,7 +407,7 @@ namespace DispatchSystem.User
                                     //下发任务到AGV
                                     UdpSever.Register[TaskData.Waiting[i].AgvNum, 1, 0] = TaskData.Waiting[i].TaskNum;
 
-                                    TaskData.AGV[0].Running = true;
+                                    TaskData.AGVRuning_2 = true;
 
                                     //更新任务状态
                                     TaskData.Waiting[i].StartTime = DateTime.Now;//任务启动时间
@@ -427,6 +439,9 @@ namespace DispatchSystem.User
                                         dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NextPosition;
                                         //报警信息
                                         dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].Error;
+
+                                        //滚动到最后一行
+                                        dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
                                     }));
                                     #endregion
 
@@ -462,13 +477,13 @@ namespace DispatchSystem.User
                             //判断任务是否执行完成
                             if (TaskData.Runing[i].LineName == "扩散线")
                             {
-                                if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 1)
+                                if (UdpSever.Register[1, 4, 0] == 1)
                                 {
                                     //执行完成
                                     TaskData.Runing[i].TaskState = (int)TaskRunState.Finished;
                                     TaskData.Runing[i].StopTime = DateTime.Now;
 
-                                    TaskData.AGV[0].Running = false;
+                                    TaskData.AGVRuning_1 = false;
 
                                     //将该任务转至执行完成任务列表
                                     TaskData.Finished.Add(TaskData.Runing[i]);
@@ -492,6 +507,9 @@ namespace DispatchSystem.User
                                         dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.Runing[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //完成时间
                                         dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                        //滚动到最后一行
+                                        dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
                                     }));
                                     #endregion
 
@@ -505,17 +523,16 @@ namespace DispatchSystem.User
                                     TaskData.Runing.RemoveAt(i);
                                     #endregion
                                 }
-                                else if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 0)
+                                else if (UdpSever.Register[1, 4, 0] == 0)
                                 {
                                     //正在执行
-                                    TaskData.Runing[i].TaskState = (int)TaskRunState.Runing;
                                     #region 更新正在执行界面
                                     this.Invoke(new MethodInvoker(delegate
                                     {
                                         //当前站点
-                                        dataGridViewRunning.Rows[i].Cells[7].Value = TaskData.AGV[1].LastPostion;
+                                        dataGridViewRunning.Rows[i].Cells[7].Value = (ushort)UdpSever.Register[1, 5, 0];
                                         //下一个站点
-                                        dataGridViewRunning.Rows[i].Cells[8].Value = TaskData.AGV[1].NowPostion;
+                                        dataGridViewRunning.Rows[i].Cells[8].Value = (ushort)UdpSever.Register[1, 7, 0];
                                         //报警信息
                                         switch (UdpSever.Register[1, 9, 0])
                                         {
@@ -548,13 +565,13 @@ namespace DispatchSystem.User
                             //判断任务是否执行完成
                             if (TaskData.Runing[i].LineName == "PE线")
                             {
-                                if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 1)
+                                if (UdpSever.Register[2, 4, 0] == 1)
                                 {
                                     //执行完成
                                     TaskData.Runing[i].TaskState = (int)TaskRunState.Finished;
                                     TaskData.Runing[i].StopTime = DateTime.Now;
 
-                                    TaskData.AGV[0].Running = false;
+                                    TaskData.AGVRuning_2 = false;
 
                                     //将该任务转至执行完成任务列表
                                     TaskData.Finished.Add(TaskData.Runing[i]);
@@ -580,6 +597,9 @@ namespace DispatchSystem.User
                                         dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //执行时间
                                         dataGridViewFinished.Rows[index].Cells[8].Value = TaskData.Runing[i].StopTime - TaskData.Runing[i].StartTime;
+
+                                        //滚动到最后一行
+                                        dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
                                     }));
                                     #endregion
 
@@ -593,7 +613,7 @@ namespace DispatchSystem.User
                                     TaskData.Runing.RemoveAt(i);
                                     #endregion
                                 }
-                                else if (UdpSever.Register[TaskData.Runing[i].AgvNum, 4, 0] == 0)
+                                else if (UdpSever.Register[2, 4, 0] == 0)
                                 {
                                     //正在执行
                                     TaskData.Runing[i].TaskState = (int)TaskRunState.Runing;
@@ -601,9 +621,9 @@ namespace DispatchSystem.User
                                     this.Invoke(new MethodInvoker(delegate
                                     {
                                         //当前站点
-                                        dataGridViewRunning.Rows[i].Cells[7].Value = TaskData.AGV[2].LastPostion;
+                                        dataGridViewRunning.Rows[i].Cells[7].Value = (ushort)UdpSever.Register[2, 5, 0]; ;
                                         //下一个站点
-                                        dataGridViewRunning.Rows[i].Cells[8].Value = TaskData.AGV[2].NowPostion;
+                                        dataGridViewRunning.Rows[i].Cells[8].Value = (ushort)UdpSever.Register[2, 7, 0]; ;
                                         //报警信息
                                         switch (UdpSever.Register[2, 9, 0])
                                         {
@@ -632,58 +652,6 @@ namespace DispatchSystem.User
                                     #endregion
                                 }
                             }
-                        }
-                    }
-                    #endregion
-
-                    #region 更新AGV状态
-                    for (int i = 1; i < 3; i++)
-                    {
-                        //连接状态
-                        // TaskData.AGV[i].Connect = UdpSever.EndPointArray[i] == null ? "离线" : "正常";
-                        //运行状态
-                        switch (UdpSever.Register[i, 0, 0])
-                        {
-                            case 0:
-                                TaskData.AGV[i].RunState = "未就绪";
-                                break;
-                            case 1:
-                                TaskData.AGV[i].RunState = "执行任务";
-                                break;
-                            case 2:
-                                TaskData.AGV[i].RunState = "待命";
-                                break;
-                            case 3:
-                                TaskData.AGV[i].RunState = "充电";
-                                break;
-                            default:
-                                break;
-                        }
-                        //当前路径
-                        TaskData.AGV[i - 1].Route = (ushort)UdpSever.Register[i, 1, 0];
-                        //上一个位置
-                        TaskData.AGV[i].LastPostion = (ushort)UdpSever.Register[i, 5, 0];
-                        //当前位置
-                        TaskData.AGV[i].LastPostion = (ushort)UdpSever.Register[i, 6, 0];
-                        //下一个位置
-                        TaskData.AGV[i].LastPostion = (ushort)UdpSever.Register[i, 7, 0];
-                        //电量
-                        TaskData.AGV[i].Power = (ushort)UdpSever.Register[i, 51, 0];
-                        //档位
-                        switch (UdpSever.Register[i, 55, 0])
-                        {
-                            case 0:
-                                TaskData.AGV[i].Speed = "高速";
-                                break;
-                            case 1:
-                                TaskData.AGV[i].Speed = "中速";
-                                break;
-                            case 2:
-                                TaskData.AGV[i].Speed = "低速";
-                                break;
-                            case 3:
-                                TaskData.AGV[i].Speed = "对接速度";
-                                break;
                         }
                     }
                     #endregion
