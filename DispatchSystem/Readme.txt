@@ -1,4 +1,14 @@
-﻿2018.4.25
+﻿2018.4.26
+1.TaskForm 增加滚动到底              
+ dataGridView1.Rows.Add();
+ //滚动到最后一行
+ dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+2.新增任务信号清除，会出现两次
+3.datagridview增加自动到最后一行
+4.会给一台车下两个任务
+5.当前任务状态没有跟新
+
+2018.4.25
 1.修复Console的bug
 2.优化DataMonitor
 
