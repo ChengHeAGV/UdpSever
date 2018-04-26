@@ -24,11 +24,6 @@ namespace DispatchSystem.AGV
             for (int i = 0; i < 16; i++)
             {
                 dataGridView1.Rows.Add();
-                //行样式
-                if (i % 2 == 1)
-                    this.dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.WhiteSmoke; //背景色
-                else
-                    this.dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.White; //背景色
             }
 
             for (int i = 0; i < UdpSever.RegisterNum; i++)
@@ -36,17 +31,16 @@ namespace DispatchSystem.AGV
                 dataGridView1.Rows.Add();
             }
             threaMain = new Thread(new ThreadStart(func));
+            threaMain.IsBackground = false;
             threaMain.Start();
 
         }
 
         private void func()
         {
-            while (true)
+            while (!formcloseing)
             {
-                if (!formcloseing && this.Created)
-                {
-                    this.Invoke(new MethodInvoker(delegate
+                this.Invoke(new MethodInvoker(delegate
                 {
                     var num = 0;
                     var reg = 51;
@@ -276,21 +270,13 @@ namespace DispatchSystem.AGV
                     }
 
                 }));
-                }
-
-                for (int i = 0; i < 100; i++)
-                {
-                    if (formcloseing)
-                    {
-                        formcloseing = false;
-                    }
-                    Thread.Sleep(10);
-                }
+                Thread.Sleep(1000);
             }
+            formcloseing = false;
         }
 
         bool formcloseing = false;
-        private void StateForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void StateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             formcloseing = true;
             while (formcloseing)

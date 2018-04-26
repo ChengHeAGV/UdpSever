@@ -28,9 +28,6 @@ namespace DispatchSystem.User
         Thread taskThread;
         private void TaskForm_Load(object sender, EventArgs e)
         {
-            //TaskData.AGV[0] = new Agv();
-            //TaskData.AGV[1] = new Agv();
-            //TaskData.AGV[2] = new Agv();
 
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
@@ -148,77 +145,6 @@ namespace DispatchSystem.User
         }
 
         /// <summary>
-        /// AGV类型
-        /// </summary>
-        public class Agv
-        {
-            /// <summary>
-            /// AGV正在执行任务
-            /// </summary>
-            public bool Running = false;
-            /// <summary>
-            /// AGV运行状态
-            /// </summary>
-            public string RunState = "";
-            /// <summary>
-            /// AGV编号
-            /// </summary>
-            public int AgvNum = 0;
-            /// <summary>
-            /// 通信状态
-            /// </summary>
-            public string Connect;
-            /// <summary>
-            /// 当前路径
-            /// </summary>
-            public int Route = 0;
-            /// <summary>
-            /// 上一个位置
-            /// </summary>
-            public int LastPostion = 0;
-            /// <summary>
-            /// 当前位置
-            /// </summary>
-            public int NowPostion = 0;
-            /// <summary>
-            /// 下一个位置
-            /// </summary>
-            public int NextPostion = 0;
-            /// <summary>
-            /// 电量
-            /// </summary>
-            public int Power = 0;
-            /// <summary>
-            /// 速度
-            /// </summary>
-            public string Speed = "";
-            /// <summary>
-            /// 机械碰撞
-            /// </summary>
-            public bool MechanicalError = true;
-            /// <summary>
-            /// 出轨
-            /// </summary>
-            public bool OutLine = true;
-            /// <summary>
-            /// 红外避障
-            /// </summary>
-            public bool Infrared = true;
-            /// <summary>
-            /// 电量低
-            /// </summary>
-            public bool LowPower = true;
-            /// <summary>
-            /// 电机故障
-            /// </summary>
-            public bool MotorError = true;
-            /// <summary>
-            /// 急停
-            /// </summary>
-            public bool Emergency = true;
-        }
-
-        /// <summary>
         /// 任务方法
         /// </summary>
         private void taskFunc()
@@ -248,12 +174,6 @@ namespace DispatchSystem.User
 
                         //添加任务到待执行列表
                         TaskData.Waiting.Add(task);
-
-                        //按优先级排序(降序)
-                        // TaskData.taskWaiting = TaskData.taskWaiting.OrderByDescending(s => s.Level).ToList();
-                        //按下单时间排序(升序)
-                        //TaskData.taskWaiting = TaskData.taskWaiting.OrderBy(s => s.Level).ToList();  
-
 
                         //更新到界面
                         this.Invoke(new MethodInvoker(delegate

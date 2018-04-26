@@ -22,6 +22,8 @@ namespace DispatchSystem.UserControls
                 BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this, true, null);
 
+            this.ReadOnly = true;
+
             //设置为整行被选中
             this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //设置间隔色

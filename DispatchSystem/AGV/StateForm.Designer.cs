@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new UserControls.UDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,7 +96,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "StateForm";
             this.Text = "AGV - 运行状态";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StateForm_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StateForm_FormClosing);
             this.Load += new System.EventHandler(this.StateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -105,7 +105,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private UserControls.UDataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
