@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -81,7 +80,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRunning)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -173,7 +171,6 @@
             // 
             // dataGridViewRunning
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
             this.dataGridViewRunning.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRunning.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewRunning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -201,7 +198,6 @@
             this.dataGridViewRunning.Name = "dataGridViewRunning";
             this.dataGridViewRunning.ReadOnly = true;
             this.dataGridViewRunning.RowHeadersWidth = 60;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Bisque;
             this.dataGridViewRunning.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewRunning.RowTemplate.Height = 23;
             this.dataGridViewRunning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -302,7 +298,6 @@
             // 
             // dataGridViewFinished
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Beige;
             this.dataGridViewFinished.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewFinished.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewFinished.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -328,7 +323,6 @@
             this.dataGridViewFinished.Name = "dataGridViewFinished";
             this.dataGridViewFinished.ReadOnly = true;
             this.dataGridViewFinished.RowHeadersWidth = 60;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Bisque;
             this.dataGridViewFinished.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewFinished.RowTemplate.Height = 23;
             this.dataGridViewFinished.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -400,7 +394,6 @@
             // 
             // dataGridViewWaiting
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Beige;
             this.dataGridViewWaiting.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewWaiting.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewWaiting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -423,7 +416,6 @@
             this.dataGridViewWaiting.Name = "dataGridViewWaiting";
             this.dataGridViewWaiting.ReadOnly = true;
             this.dataGridViewWaiting.RowHeadersWidth = 60;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Bisque;
             this.dataGridViewWaiting.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewWaiting.RowTemplate.Height = 23;
             this.dataGridViewWaiting.RowTemplate.ReadOnly = true;
@@ -503,11 +495,6 @@
             this.splitContainer2.SplitterDistance = 218;
             this.splitContainer2.TabIndex = 0;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -582,6 +569,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

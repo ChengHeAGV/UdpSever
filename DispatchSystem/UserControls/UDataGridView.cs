@@ -13,6 +13,29 @@ namespace DispatchSystem.UserControls
 {
     public partial class UDataGridView : DataGridView
     {
+        #region 属性变量
+        private bool onSizeChangeScroll = true;//当Size变化时自动滚动到最后一行
+        #endregion
+        #region 属性
+        [
+             Category("Author:孙毅明"),
+             Description("当Size变化时自动滚动到最后一行!")
+        ]
+        public bool OnSizeChangeScroll
+        {
+            get
+            { return onSizeChangeScroll; }
+            set
+            {
+                if (onSizeChangeScroll != value)
+                {
+                    onSizeChangeScroll = value;
+                }
+            }
+        }
+        #endregion
+
+
         public UDataGridView()
         {
             InitializeComponent();
@@ -27,8 +50,8 @@ namespace DispatchSystem.UserControls
             //设置为整行被选中
             this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //设置间隔色
-            this.RowsDefaultCellStyle.BackColor = Color.Bisque;//Color.WhiteSmoke; //背景色
-            this.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;//Color.White;
+            this.RowsDefaultCellStyle.BackColor = Color.Orange;//Color.WhiteSmoke; //背景色
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.Silver;//Color.White;
 
             //设置选中行的颜色
             this.DefaultCellStyle.SelectionBackColor = Color.Silver;
@@ -92,9 +115,12 @@ namespace DispatchSystem.UserControls
         private void UDataGridView_SizeChanged(object sender, EventArgs e)
         {
             //滚动到最后一行
-            if (RowCount > 0)
+            if (onSizeChangeScroll)
             {
-                FirstDisplayedScrollingRowIndex = RowCount - 1;
+                if (RowCount > 0)
+                {
+                    FirstDisplayedScrollingRowIndex = RowCount - 1;
+                }
             }
         }
 

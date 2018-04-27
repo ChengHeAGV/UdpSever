@@ -44,7 +44,6 @@
             // 
             // uDataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
             this.uDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.uDataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.uDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -67,8 +66,9 @@
             this.uDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uDataGridView1.Location = new System.Drawing.Point(0, 0);
             this.uDataGridView1.Name = "uDataGridView1";
+            this.uDataGridView1.OnSizeChangeScroll = false;
+            this.uDataGridView1.ReadOnly = true;
             this.uDataGridView1.RowHeadersWidth = 60;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Bisque;
             this.uDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.uDataGridView1.RowTemplate.Height = 23;
             this.uDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -79,37 +79,44 @@
             // 
             this.Column3.HeaderText = "日期";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "时间";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "寄存器类型";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "寄存器地址";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "值";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "更新次数";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column6.HeaderText = "描述";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // DataMonitor
             // 

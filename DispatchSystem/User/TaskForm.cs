@@ -16,11 +16,18 @@ namespace DispatchSystem.User
         Thread taskThread;
         private void TaskForm_Load(object sender, EventArgs e)
         {
+            #region 创建等待任务列表右键菜单
+            //等待任务列表右键菜单
+            ContextMenuStrip contextWaiting = new ContextMenuStrip();
+
+            #endregion
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
             taskThread.IsBackground = true;
             taskThread.Start();
             #endregion
+
+
         }
 
 
@@ -76,11 +83,11 @@ namespace DispatchSystem.User
         /// </summary>
         private void taskFunc()
         {
-            while (true)
+            while (this.IsHandleCreated && this.IsDisposed == false)
             {
                 if (DataTransmission.ListenState.ModbusTcp == false)
                 {
-                    DataTransmission.StartListen();
+                    //DataTransmission.StartListen();
                 }
                 else
                 {
@@ -569,16 +576,15 @@ namespace DispatchSystem.User
             return timeStamp;
         }
 
-        //等待任务列表右键菜单
         private void dataGridViewWaiting_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //&& e.ColumnIndex > -1 && e.RowIndex > -1
             if (e.Button == MouseButtons.Right)  //点击的是鼠标右键，并且不是表头
             {
                 //右键选中单元格
-                contextMenuStrip1.Items.Add("1");
-                //dataGridViewWaiting.Rows[e.RowIndex].Selected = true;
-                this.contextMenuStrip1.Show(MousePosition.X, MousePosition.Y); //MousePosition.X, MousePosition.Y 是为了让菜单在所选行的位置显示
+                //contextWaiting.Items.Add("1");
+                ////dataGridViewWaiting.Rows[e.RowIndex].Selected = true;
+                //this.contextWaiting.Show(MousePosition.X, MousePosition.Y); //MousePosition.X, MousePosition.Y 是为了让菜单在所选行的位置显示
 
             }
         }

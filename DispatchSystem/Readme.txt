@@ -1,4 +1,14 @@
-﻿2018.4.26
+﻿
+2018.4.27
+1.dataGridView间隔色失效 
+2.dataGridView 增加size变化自动滚动到最后一行选择项  ok
+3.寄存器列表不能停靠
+4.AGV状态默认不加载数据                               ok
+5.优化包含进程的界面退出不了问题   ok
+while (this.IsHandleCreated && this.IsDisposed == false)
+
+
+2018.4.26
 1.TaskForm 增加滚动到底 ok              
  dataGridView1.Rows.Add();
  //滚动到最后一行

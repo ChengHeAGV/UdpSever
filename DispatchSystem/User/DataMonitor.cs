@@ -28,28 +28,18 @@ namespace DispatchSystem.User
         }
         private void func()
         {
-            while (true)
+            while (!formcloseing)
             {
-                if (!formcloseing && this.Created)
-                {
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
-                        {
-                            update(true);
-                        }
-                    }));
-                }
-
-                for (int i = 0; i < 100; i++)
-                {
-                    if (formcloseing)
-                    {
-                        formcloseing = false;
-                    }
-                    Thread.Sleep(10);
-                }
+                this.Invoke(new MethodInvoker(delegate
+                 {
+                     for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+                     {
+                         update(true);
+                     }
+                 }));
+                Thread.Sleep(1000);
             }
+            formcloseing = false;
         }
 
         /// <summary>
