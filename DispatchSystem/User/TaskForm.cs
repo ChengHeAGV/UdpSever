@@ -23,22 +23,27 @@ namespace DispatchSystem.User
             //等待任务列表右键菜单
             contextWaiting = new ContextMenuStrip();
             contextWaiting.Items.Add("创建任务");
+            contextWaiting.Items.Add("取消任务");
 
             //添加点击事件
             contextWaiting.Items[0].Click += contextWaiting_AddTask_Click;
+            contextWaiting.Items[1].Click += contextWaiting_DeleteTask_Click;
 
-            //添加单机点击事件
-            dataGridViewRunning.CellMouseClick += DataGridViewRunning_CellMouseClick;
-
+            //添加单元格点击事件
+            dataGridViewWaiting.CellMouseClick += DataGridViewWaiting_CellMouseClick;
+            //添加任意位置点击事件
+            dataGridViewWaiting.MouseClick += DataGridViewWaiting_MouseClick;
             #endregion
 
             #region 创建正在进行任务列表右键菜单
             //等待任务列表右键菜单
             contextRunning = new ContextMenuStrip();
             contextRunning.Items.Add("任务重发");
+            contextRunning.Items.Add("取消任务");
 
             //添加点击事件
             contextRunning.Items[0].Click += contextRunning_Repeat_Click;
+            contextRunning.Items[1].Click += contextRunning_Delete_Click;
 
             //添加单机点击事件
             dataGridViewRunning.CellMouseClick += DataGridViewRunning_CellMouseClick;
@@ -56,11 +61,107 @@ namespace DispatchSystem.User
             #endregion
         }
 
-        private void contextWaiting_AddTask_Click(object sender, EventArgs e)
+        #region 等待任务事件
+        /// <summary>
+        /// 等待列表单元格右击事件 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewWaiting_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.Button == MouseButtons.Right && e.ColumnIndex > -1 && e.RowIndex > -1)  //点击的是鼠标右键，并且不是表头
+            {
+                contextWaiting.Items[1].Enabled = true;
+                dataGridViewWaiting.ClearSelection();
+                dataGridViewWaiting.Rows[e.RowIndex].Selected = true;
+                contextWaiting.Show(MousePosition.X, MousePosition.Y);
+            }
         }
 
+        /// <summary>
+        /// 等待列表右击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewWaiting_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)  //点击的是鼠标右键，并且不是表头
+            {
+                contextWaiting.Items[1].Enabled = false;
+                contextWaiting.Show(MousePosition.X, MousePosition.Y);
+            }
+        }
+
+        /// <summary>
+        /// 新增任务事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextWaiting_AddTask_Click(object sender, EventArgs e)
+        {
+
+            AddTask addtask = new AddTask();
+            addtask.ShowDialog();
+            if (addtask.DialogResult == DialogResult.OK)
+            {
+                //添加任务到列表
+                //创建任务
+                TaskInfo task = new TaskInfo();
+                //[订单号]毫秒时间戳
+                task.OrderNum = GetTimeStamp();
+                //[任务编号]
+                task.TaskNum = addtask.TaskNum;
+                //[产线名称]
+                task.LineName = addtask.LinekName;
+
+                //添加任务到待执行列表
+                TaskData.Waiting.Add(task);
+
+                //更新到界面
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    var index = dataGridViewWaiting.Rows.Add();
+                    //序号
+                    dataGridViewWaiting.Rows[index].Cells[0].Value = index;
+                    //订单号
+                    dataGridViewWaiting.Rows[index].Cells[1].Value = task.OrderNum;
+                    //任务编号
+                    dataGridViewWaiting.Rows[index].Cells[2].Value = task.TaskNum;
+                    //产线名称
+                    dataGridViewWaiting.Rows[index].Cells[3].Value = task.LineName;
+                    //下单时间
+                    dataGridViewWaiting.Rows[index].Cells[4].Value = task.CreatTime.ToString("yyyy-MM-dd HH:mm:ss fff");
+
+                    //滚动到最后一行
+                    dataGridViewWaiting.FirstDisplayedScrollingRowIndex = dataGridViewWaiting.RowCount - 1;
+                }));
+            }
+        }
+
+        /// <summary>
+        /// 删除任务事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextWaiting_DeleteTask_Click(object sender, EventArgs e)
+        {
+            //获取待删除任务索引
+            int index = (int)dataGridViewWaiting.SelectedRows[0].Index;
+            if (dataGridViewWaiting.Rows[index].Cells[1].Value != null)
+            {
+                TaskData.Waiting.RemoveAt(index);
+                //从界面删除
+                dataGridViewWaiting.Rows.Remove(dataGridViewWaiting.SelectedRows[0]);
+            }
+            else
+            {
+                MessageBox.Show("没有可删除的任务！");
+            }
+        }
+
+        #endregion
+
+        #region 进行中任务事件
         /// <summary>
         /// 任务重发
         /// </summary>
@@ -69,20 +170,56 @@ namespace DispatchSystem.User
         private void contextRunning_Repeat_Click(object sender, EventArgs e)
         {
             //获取需要重发任务的AGV编号
-            int num = (int)dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows.Count].Cells[4].Value;
-            //重新发送任务到AGV
-            AssignTaskToAGV(num);
+            int num = (int)(dataGridViewRunning.SelectedRows[0].Cells[4].Value);
+            if (UdpSever.Register[num, 8, 0] != 2)//判断AGV是否就绪
+            {
+                MessageBox.Show("AGV处于异常状态，请在AGV就绪后重试!");
+            }
+            else
+            {
+                //重新发送任务到AGV
+                AssignTaskToAGV(num);
+            }
+        }
+       
+        /// <summary>
+        /// 取消任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextRunning_Delete_Click(object sender, EventArgs e)
+        {
+            //获取待删除任务索引
+            int index = (int)dataGridViewRunning.SelectedRows[0].Index;
+            if (dataGridViewRunning.Rows[index].Cells[1].Value != null)
+            {
+                //从任务列表删除
+                TaskData.Waiting.RemoveAt(index);
+                //从界面删除
+                dataGridViewRunning.Rows.Remove(dataGridViewRunning.SelectedRows[0]);
+            }
+            else
+            {
+                MessageBox.Show("没有可删除的任务！");
+            }
         }
 
+        /// <summary>
+        /// 正在执行列表右击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewRunning_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //&& e.ColumnIndex > -1 && e.RowIndex > -1
-            if (e.Button == MouseButtons.Right)  //点击的是鼠标右键，并且不是表头
+            if (e.Button == MouseButtons.Right && e.ColumnIndex > -1 && e.RowIndex > -1)  //点击的是鼠标右键，并且不是表头
             {
+                dataGridViewRunning.ClearSelection();
                 dataGridViewRunning.Rows[e.RowIndex].Selected = true;
                 contextRunning.Show(MousePosition.X, MousePosition.Y);
             }
         }
+        #endregion
+
 
         /// <summary>
         /// 分配任务到AGV
@@ -105,9 +242,8 @@ namespace DispatchSystem.User
             });
         }
 
-
         /// <summary>
-        /// 任务队列
+        /// 任务信息
         /// </summary>
         public class TaskInfo
         {
@@ -178,8 +314,6 @@ namespace DispatchSystem.User
                         task.TaskNum = DataTransmission.Profinet.Register[0];
                         //[产线名称]
                         task.LineName = "扩散线";
-                        //AGV编号
-                        task.AgvNum = 1;
 
                         //添加任务到待执行列表
                         TaskData.Waiting.Add(task);
@@ -204,8 +338,6 @@ namespace DispatchSystem.User
                         }));
                         //清除MES任务标志寄存器
                         DataTransmission.Profinet.Clear0 = true;
-
-
                     }
                     //PE线
                     if (DataTransmission.Profinet.Register[20] > 0 && (DataTransmission.Profinet.Clear20 == false))
@@ -218,8 +350,6 @@ namespace DispatchSystem.User
                         task.TaskNum = DataTransmission.Profinet.Register[20];
                         //[产线名称]
                         task.LineName = "PE线";
-                        //AGV编号
-                        task.AgvNum = 2;
 
                         //添加任务到待执行列表
                         TaskData.Waiting.Add(task);
@@ -267,6 +397,8 @@ namespace DispatchSystem.User
                                 {
                                     //发送任务到AGV
                                     AssignTaskToAGV(1);
+
+                                    TaskData.Waiting[i].AgvNum = 1;
 
                                     TaskData.AGVRuning_1 = true;
 
@@ -321,6 +453,8 @@ namespace DispatchSystem.User
                                 {
                                     //发送任务到AGV
                                     AssignTaskToAGV(2);
+
+                                    TaskData.Waiting[i].AgvNum = 2;
 
                                     TaskData.AGVRuning_2 = true;
 
@@ -634,19 +768,6 @@ namespace DispatchSystem.User
             long timeStamp = (long)(DateTime.Now - startTime).TotalMilliseconds; // 相差毫秒数
                                                                                  //System.Console.WriteLine(timeStamp);
             return timeStamp;
-        }
-
-        private void dataGridViewWaiting_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //&& e.ColumnIndex > -1 && e.RowIndex > -1
-            if (e.Button == MouseButtons.Right)  //点击的是鼠标右键，并且不是表头
-            {
-                //右键选中单元格
-                //contextWaiting.Items.Add("1");
-                ////dataGridViewWaiting.Rows[e.RowIndex].Selected = true;
-                //this.contextWaiting.Show(MousePosition.X, MousePosition.Y); //MousePosition.X, MousePosition.Y 是为了让菜单在所选行的位置显示
-
-            }
         }
     }
 }

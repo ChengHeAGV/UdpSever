@@ -56,7 +56,7 @@ namespace DispatchSystem
         //服务器地址
         public static int ServerAddress = 0;
         //设备心跳周期(单位：秒)
-        public static int HeartCycle = 2;
+        public static int HeartCycle = 3;
 
         //错误重发次数
         public static int RepeatNum = 3;

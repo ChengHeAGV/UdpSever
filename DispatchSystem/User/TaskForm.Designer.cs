@@ -422,7 +422,6 @@
             this.dataGridViewWaiting.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewWaiting.Size = new System.Drawing.Size(1154, 198);
             this.dataGridViewWaiting.TabIndex = 3;
-            this.dataGridViewWaiting.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewWaiting_CellMouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
