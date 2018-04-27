@@ -569,5 +569,64 @@ namespace DispatchSystem.User
             return timeStamp;
         }
 
+        //等待任务列表右键菜单
+        private void dataGridViewWaiting_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //&& e.ColumnIndex > -1 && e.RowIndex > -1
+            if (e.Button == MouseButtons.Right)  //点击的是鼠标右键，并且不是表头
+            {
+                //右键选中单元格
+                contextMenuStrip1.Items.Add("1");
+                //dataGridViewWaiting.Rows[e.RowIndex].Selected = true;
+                this.contextMenuStrip1.Show(MousePosition.X, MousePosition.Y); //MousePosition.X, MousePosition.Y 是为了让菜单在所选行的位置显示
+
+            }
+        }
     }
 }
+
+
+//private void control_MouseDown(object sender, MouseEventArgs e)
+//{
+//    if (e.Button == MouseButtons.Right)
+//    {
+//        ContextMenu menu = new rightClickMenu();   //初始化menu
+//        menu.MenuItems.Add("c1");   //添加菜单项c1
+//        menu.MenuItems.Add("c2");   //添加菜单项c2
+//        menu.Show(control, new Point(e.X, e.Y));   //在点(e.X, e.Y)处显示menu
+//    }
+//}
+// 2、添加右键菜单
+
+//class rightClickMenu : ContextMenuStrip
+//{
+//    //右键菜单
+//    public rightClickMenu()
+//    {
+//        Items.Add("发送消息");   //添加菜单项1
+//        Items.Add("发送文件");   //添加菜单项2
+//        Items.Add("断开连接");   //添加菜单项3
+
+//        Items[0].Click += new EventHandler(sendMsg);     //定义菜单项1上的Click事件处理函数
+//        Items[1].Click += new EventHandler(sendFile);     //定义菜单项2上的Click事件处理函数
+//        Items[2].Click += new EventHandler(cutCon);     //定义菜单项3上的Click事件处理函数
+//    }
+
+//    //发送消息
+//    private void sendMsg(object sender, EventArgs e)
+//    {
+
+//    }
+
+//    //发送文件
+//    private void sendFile(object sender, EventArgs e)
+//    {
+
+//    }
+
+//    //断开连接
+//    private void cutCon(object sender, EventArgs e)
+//    {
+
+//    }
+//}
