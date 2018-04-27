@@ -1,12 +1,14 @@
-﻿using System;
+﻿using DispatchSystem.Developer;
+using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace DispatchSystem.User
 {
     public partial class TaskForm : Form
     {
+        ContextMenuStrip contextRunning;
 
         public TaskForm()
         {
@@ -19,22 +21,87 @@ namespace DispatchSystem.User
             #region 创建等待任务列表右键菜单
             //等待任务列表右键菜单
             ContextMenuStrip contextWaiting = new ContextMenuStrip();
-
             #endregion
+
+            #region 创建正在进行任务列表右键菜单
+            //等待任务列表右键菜单
+
+            contextRunning = new ContextMenuStrip();
+            contextRunning.Items.Add("任务重发");
+
+            //添加点击事件
+            contextRunning.Items[0].Click += contextRunning_Repeat_Click;
+
+            //添加单机点击事件
+            dataGridViewRunning.CellMouseClick += DataGridViewRunning_CellMouseClick;
+            #endregion
+
+            #region 创建已完成任务列表右键菜单
+            //等待任务列表右键菜单
+            ContextMenuStrip contextFinished = new ContextMenuStrip();
+            #endregion
+
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
             taskThread.IsBackground = true;
             taskThread.Start();
             #endregion
+        }
+
+        /// <summary>
+        /// 任务重发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextRunning_Repeat_Click(object sender, EventArgs e)
+        {
+            //获取需要重发任务的AGV编号
+            int num = (int)dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows.Count].Cells[4].Value;
+            //重新发送任务到AGV
+
+            //下发任务到AGV
+            
+
+        }
 
 
+
+        private void DataGridViewRunning_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //&& e.ColumnIndex > -1 && e.RowIndex > -1
+            if (e.Button == MouseButtons.Right)  //点击的是鼠标右键，并且不是表头
+            {
+                dataGridViewRunning.Rows[e.RowIndex].Selected = true;
+                contextRunning.Show(MousePosition.X, MousePosition.Y);
+            }
+        }
+
+        /// <summary>
+        /// 分配任务到AGV
+        /// </summary>
+        /// <param name="AgvNum"></param>
+        private async void AssignTaskToAGV(int AgvNum)
+        {
+            await Task.Run(() =>
+            {
+                UdpSever.Register[AgvNum, 1, 0] = (int)dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows.Count].Cells[2].Value;
+
+                //等待收到任务
+                while (UdpSever.Register[AgvNum, 2, 0] == 0)
+                {
+                    Thread.Sleep(10);
+                }
+                //清除AGV任务标志
+                UdpSever.Register[AgvNum, 1, 0] = 0;
+                ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}",AgvNum));
+            });
         }
 
 
         /// <summary>
         /// 任务队列
         /// </summary>
-        public class Task
+        public class TaskInfo
         {
             public long OrderNum = 0;//订单号
             public int TaskNum; //任务编号
@@ -59,17 +126,17 @@ namespace DispatchSystem.User
             /// <summary>
             /// 等待任务队列
             /// </summary>
-            public static List<Task> Waiting = new List<Task>();
+            public static List<TaskInfo> Waiting = new List<TaskInfo>();
 
             /// <summary>
             /// 进行中任务队列
             /// </summary>
-            public static List<Task> Runing = new List<Task>();
+            public static List<TaskInfo> Runing = new List<TaskInfo>();
 
             /// <summary>
             ///已完成任务队列
             /// </summary>
-            public static List<Task> Finished = new List<Task>();
+            public static List<TaskInfo> Finished = new List<TaskInfo>();
 
             //定义两台AGV
             //public static Agv[] AGV = new Agv[3];
@@ -87,7 +154,7 @@ namespace DispatchSystem.User
             {
                 if (DataTransmission.ListenState.ModbusTcp == false)
                 {
-                    //DataTransmission.StartListen();
+                    // DataTransmission.StartListen();
                 }
                 else
                 {
@@ -96,7 +163,7 @@ namespace DispatchSystem.User
                     if (DataTransmission.Profinet.Register[0] > 0 && (DataTransmission.Profinet.Clear0 == false))
                     {
                         //创建任务
-                        Task task = new Task();
+                        TaskInfo task = new TaskInfo();
                         //[订单号]毫秒时间戳
                         task.OrderNum = GetTimeStamp();
                         //[任务编号]
@@ -136,7 +203,7 @@ namespace DispatchSystem.User
                     if (DataTransmission.Profinet.Register[20] > 0 && (DataTransmission.Profinet.Clear20 == false))
                     {
                         //创建任务
-                        Task task = new Task();
+                        TaskInfo task = new TaskInfo();
                         //[订单号]毫秒时间戳
                         task.OrderNum = GetTimeStamp();
                         //[任务编号]
