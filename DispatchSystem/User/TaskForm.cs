@@ -13,76 +13,13 @@ namespace DispatchSystem.User
             InitializeComponent();
         }
 
-
-        /// <summary>
-        /// 任务状态
-        /// </summary>
-        public enum TaskRunState
-        {
-            Waiting, //等待
-            Runing,  //运行中
-            Finished //完成
-        }
-
-
         Thread taskThread;
         private void TaskForm_Load(object sender, EventArgs e)
         {
-
             #region 启动任务调度
             taskThread = new Thread(new ThreadStart(taskFunc));
             taskThread.IsBackground = true;
             taskThread.Start();
-            #endregion
-
-            #region 任务列表测试
-            //增加列
-            //dataGridViewRunning.Columns.Add("1", "任务编号");
-            //var index = dataGridViewRunning.Columns.Add("2", "MES下发时间");
-            //dataGridViewRunning.Columns[index].Width = 130;
-            //dataGridViewRunning.Columns.Add("3", "任务状态");
-            //dataGridViewRunning.Columns.Add("4", "AGV编号");
-            //dataGridViewRunning.Columns.Add("5", "通信状态");
-            //dataGridViewRunning.Columns.Add("6", "当前路径");
-            //dataGridViewRunning.Columns.Add("7", "当前站点");
-            //dataGridViewRunning.Columns.Add("8", "电量%");
-            //dataGridViewRunning.Columns.Add("9", "速度");
-            //dataGridViewRunning.Columns.Add("10", "运行状态");
-            //dataGridViewRunning.Columns.Add("11", "报警信息");
-
-            //增加行
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Task task = new Task();
-            //    task.TaskNum = i;
-            //    task.CmdTime = DateTime.Now;
-            //    task.TaskState = (int)TaskRunState.Runing;
-            //    task.AgvNum = 1;
-            //    task.Connect = true;
-            //    task.Route = 2;
-            //    task.Station = 2;
-            //    task.Power = 2;
-            //    task.Speed = 2;
-            //    task.AgvState = 2;
-            //    task.Error = 2;
-            //    TaskData.taskWaiting.Add(task);
-            //}
-
-            //foreach (var item in TaskData.taskWaiting)
-            //{
-            //    index = this.dataGridView1.Rows.Add();
-            //    this.dataGridView1.Rows[index].Cells[0].Value = item.TaskNum;
-            //    this.dataGridView1.Rows[index].Cells[1].Value = item.CmdTime.ToString("yyyy-MM-dd HH:mm:ss");
-            //    this.dataGridView1.Rows[index].Cells[2].Value = item.TaskState;
-            //    this.dataGridView1.Rows[index].Cells[3].Value = item.AgvNum;
-            //    this.dataGridView1.Rows[index].Cells[4].Value = item.Connect;
-            //    this.dataGridView1.Rows[index].Cells[5].Value = item.Route;
-            //    this.dataGridView1.Rows[index].Cells[6].Value = item.Station;
-            //    this.dataGridView1.Rows[index].Cells[7].Value = item.Power;
-            //    this.dataGridView1.Rows[index].Cells[8].Value = item.Speed;
-            //    this.dataGridView1.Rows[index].Cells[9].Value = item.AgvState;
-            //    this.dataGridView1.Rows[index].Cells[10].Value = item.Error;
-            //}
             #endregion
         }
 
@@ -95,21 +32,11 @@ namespace DispatchSystem.User
             public long OrderNum = 0;//订单号
             public int TaskNum; //任务编号
             public string LineName;//产线名称
-            public int TaskState = (int)TaskRunState.Waiting; //任务状态
             public DateTime CreatTime = DateTime.Now;//任务下发时间
             public DateTime StartTime;//任务开始时间
             public DateTime StopTime;//任务结束时间
 
             public int AgvNum = 0; //AGV编号
-            public bool Connect = true; //通信状态
-            public int Route = 0;//当前路径
-            public int LastPosition = 0;//当前站点
-            public int NowPosition = 0;//当前站点
-            public int NextPosition = 0;//下一个站点
-            public int Power = 0;//电量
-            public int Speed = 0;//速度
-            public int State = 0; //Agv状态
-            public int Error = 0;//报警信息
         }
 
         public static class TaskData
@@ -285,13 +212,6 @@ namespace DispatchSystem.User
                                         dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.Waiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //启动时间
                                         dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //当前站点
-                                        dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.Waiting[i].NowPosition;
-                                        //下一个站点
-                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NextPosition;
-                                        //报警信息
-                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].Error;
-
                                         //滚动到最后一行
                                         dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
                                     }));
@@ -353,12 +273,6 @@ namespace DispatchSystem.User
                                         dataGridViewRunning.Rows[index].Cells[5].Value = TaskData.Waiting[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
                                         //启动时间
                                         dataGridViewRunning.Rows[index].Cells[6].Value = TaskData.Waiting[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //当前站点
-                                        dataGridViewRunning.Rows[index].Cells[7].Value = TaskData.Waiting[i].NowPosition;
-                                        //下一个站点
-                                        dataGridViewRunning.Rows[index].Cells[8].Value = TaskData.Waiting[i].NextPosition;
-                                        //报警信息
-                                        dataGridViewRunning.Rows[index].Cells[9].Value = TaskData.Waiting[i].Error;
 
                                         //滚动到最后一行
                                         dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
@@ -399,8 +313,6 @@ namespace DispatchSystem.User
                             {
                                 if (UdpSever.Register[1, 4, 0] == 1)
                                 {
-                                    //执行完成
-                                    TaskData.Runing[i].TaskState = (int)TaskRunState.Finished;
                                     TaskData.Runing[i].StopTime = DateTime.Now;
 
                                     TaskData.AGVRuning_1 = false;
@@ -487,8 +399,6 @@ namespace DispatchSystem.User
                             {
                                 if (UdpSever.Register[2, 4, 0] == 1)
                                 {
-                                    //执行完成
-                                    TaskData.Runing[i].TaskState = (int)TaskRunState.Finished;
                                     TaskData.Runing[i].StopTime = DateTime.Now;
 
                                     TaskData.AGVRuning_2 = false;
@@ -535,8 +445,6 @@ namespace DispatchSystem.User
                                 }
                                 else if (UdpSever.Register[2, 4, 0] == 0)
                                 {
-                                    //正在执行
-                                    TaskData.Runing[i].TaskState = (int)TaskRunState.Runing;
                                     #region 更新正在执行界面
                                     this.Invoke(new MethodInvoker(delegate
                                     {
