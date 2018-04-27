@@ -48,7 +48,6 @@
             this.buttonEnter.Size = new System.Drawing.Size(85, 33);
             this.buttonEnter.TabIndex = 0;
             this.buttonEnter.Text = "确定";
-            this.buttonEnter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonEnter.UseVisualStyleBackColor = true;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
@@ -60,12 +59,12 @@
             this.buttonCancel.Size = new System.Drawing.Size(85, 33);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "取消";
-            this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // comboBoxNum
             // 
+            this.comboBoxNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNum.FormattingEnabled = true;
             this.comboBoxNum.Items.AddRange(new object[] {
             "1号炉",
@@ -80,6 +79,7 @@
             // 
             // comboBoxAction
             // 
+            this.comboBoxAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAction.FormattingEnabled = true;
             this.comboBoxAction.Items.AddRange(new object[] {
             "放舟",
@@ -124,7 +124,6 @@
             this.groupBox1.Size = new System.Drawing.Size(319, 225);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "添加任务";
             // 
             // label3
             // 
@@ -137,6 +136,7 @@
             // 
             // comboBoxLine
             // 
+            this.comboBoxLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLine.FormattingEnabled = true;
             this.comboBoxLine.Items.AddRange(new object[] {
             "扩散线",

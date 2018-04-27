@@ -16,7 +16,7 @@ namespace DispatchSystem.Database
     {
         public int Id { get; set; }
         public string key { get; set; }
-        public int value { get; set; }
+        public string value { get; set; }
         public string des { get; set; }
     }
 }

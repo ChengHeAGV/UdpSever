@@ -55,6 +55,7 @@ namespace DispatchSystem.User
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             taskNum = 0;
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

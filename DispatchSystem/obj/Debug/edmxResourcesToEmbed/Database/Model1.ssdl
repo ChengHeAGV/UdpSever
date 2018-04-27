@@ -23,9 +23,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="key" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="value" Type="int" Nullable="false" />
-    <Property Name="des" Type="nvarchar(max)" />
+    <Property Name="key" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="value" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="des" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="DatabaseModelStoreContainer">
     <EntitySet Name="DbusConfig" EntityType="Self.DbusConfig" Schema="dbo" store:Type="Tables" />

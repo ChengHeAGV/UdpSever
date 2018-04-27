@@ -1,6 +1,7 @@
 ﻿using DispatchSystem.AGV;
 using DispatchSystem.Database;
 using DispatchSystem.Developer;
+using DispatchSystem.Set;
 using DispatchSystem.User;
 using System;
 using System.Drawing;
@@ -219,32 +220,32 @@ namespace DispatchSystem
                 //远程操作
                 else if (node.Index == (int.Parse(AGV.Control.Key) - 1))
                 {
-                    try
-                    {
-                        controlForm[parent].WindowState = FormWindowState.Normal;
-                        controlForm[parent].Show();//弹出这个窗口
-                        controlForm[parent].Activate();//激活显示
-                    }
-                    catch (Exception)
-                    {
-                        controlForm[parent] = new ControlForm(int.Parse(node.Parent.Name));
-                        controlForm[parent].Show();//弹出这个窗口
-                    }
+                    //try
+                    //{
+                    //    controlForm[parent].WindowState = FormWindowState.Normal;
+                    //    controlForm[parent].Show();//弹出这个窗口
+                    //    controlForm[parent].Activate();//激活显示
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    controlForm[parent] = new ControlForm(int.Parse(node.Parent.Name));
+                    //    controlForm[parent].Show();//弹出这个窗口
+                    //}
                 }
                 //参数设置
                 else if (node.Index == (int.Parse(AGV.Set.Key) - 1))
                 {
-                    try
-                    {
-                        setForm[parent].WindowState = FormWindowState.Normal;
-                        setForm[parent].Show();//弹出这个窗口
-                        setForm[parent].Activate();//激活显示
-                    }
-                    catch (Exception)
-                    {
-                        setForm[parent] = new SetForm(int.Parse(node.Parent.Name));
-                        setForm[parent].Show();//弹出这个窗口
-                    }
+                    //try
+                    //{
+                    //    setForm[parent].WindowState = FormWindowState.Normal;
+                    //    setForm[parent].Show();//弹出这个窗口
+                    //    setForm[parent].Activate();//激活显示
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    setForm[parent] = new SetForm(int.Parse(node.Parent.Name));
+                    //    setForm[parent].Show();//弹出这个窗口
+                    //}
                 }
                 //寄存器
                 else if (node.Index == (int.Parse(AGV.Register.Key) - 1))
@@ -679,7 +680,8 @@ namespace DispatchSystem
         //ModbusTcp配置
         private void mESToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ModbusTcpConfigForm modbusConfig = new ModbusTcpConfigForm();
+            modbusConfig.ShowDialog();
         }
         //数据中继配置
         private void 数据中继ToolStripMenuItem_Click(object sender, EventArgs e)
