@@ -41,7 +41,7 @@ namespace DispatchSystem.User
         {
             //十位是动作，个位是位置,放舟Put 1,接舟Get2
             //炉号
-            int temp1 = comboBoxNum.SelectedIndex;
+            int temp1 = comboBoxNum.SelectedIndex+1;
             //动作
             int temp2 = comboBoxAction.SelectedIndex + 1;
 

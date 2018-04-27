@@ -15,27 +15,21 @@ namespace DispatchSystem
         private void SensorForm_Load(object sender, EventArgs e)
         {
             this.Text = string.Format("AGV{0}-传感器", deviceNum);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //读取寄存器值
-            UdpSever.ReturnMsg rm = UdpSever.Read_Register(deviceNum, 1);
-            Console.WriteLine("读取结果:{0},{1}", rm.resault, rm.Data.ToString("X2"));
-        }
-
-        private void SensorForm_SizeChanged(object sender, EventArgs e)
-        {
-
+            Updata();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            rfid1.Value = (int)UdpSever.Register[deviceNum, 0, 0];
-            magneticGuide8Bit1.Value = (int)UdpSever.Register[deviceNum, 1, 0];
-            magneticGuide8Bit2.Value = (int)UdpSever.Register[deviceNum, 2, 0];
-            magneticGuide8Bit3.Value = (int)UdpSever.Register[deviceNum, 3, 0];
-            magneticGuide8Bit4.Value = (int)UdpSever.Register[deviceNum, 4, 0];
+            Updata();
+        }
+
+        private void Updata()
+        {
+            rfid1.Value = (int)UdpSever.Register[deviceNum, 66, 0];
+            magneticGuide16Bit1.Value = (int)UdpSever.Register[deviceNum, 59, 0];
+            magneticGuide16Bit2.Value = (int)UdpSever.Register[deviceNum, 60, 0];
+            magneticGuide16Bit3.Value = (int)UdpSever.Register[deviceNum, 61, 0];
+            magneticGuide16Bit4.Value = (int)UdpSever.Register[deviceNum, 62, 0];
         }
     }
 }

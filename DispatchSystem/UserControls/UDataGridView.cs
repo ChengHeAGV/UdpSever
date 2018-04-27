@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace DispatchSystem.UserControls
 {
@@ -48,10 +43,17 @@ namespace DispatchSystem.UserControls
             this.ReadOnly = true;
 
             //设置为整行被选中
-            this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            UDataGridView uDataGridView = this;
+            uDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             //设置间隔色
-            this.RowsDefaultCellStyle.BackColor = Color.Orange;//Color.WhiteSmoke; //背景色
-            this.AlternatingRowsDefaultCellStyle.BackColor = Color.Silver;//Color.White;
+            this.RowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+            //自动列宽
+            this.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //自动行高
+            this.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             //设置选中行的颜色
             this.DefaultCellStyle.SelectionBackColor = Color.Silver;

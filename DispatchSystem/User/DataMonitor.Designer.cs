@@ -126,7 +126,6 @@
             this.Controls.Add(this.uDataGridView1);
             this.Name = "DataMonitor";
             this.Text = "DataMonitor";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataMonitor_FormClosing);
             this.Load += new System.EventHandler(this.DataMonitor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uDataGridView1)).EndInit();
             this.ResumeLayout(false);

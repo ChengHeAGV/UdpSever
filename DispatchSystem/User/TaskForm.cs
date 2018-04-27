@@ -137,16 +137,23 @@ namespace DispatchSystem.User
         /// <param name="e"></param>
         private void contextRunning_Repeat_Click(object sender, EventArgs e)
         {
-            //获取需要重发任务的AGV编号
-            int num = (int)(dataGridViewRunning.SelectedRows[0].Cells[4].Value);
-            if (UdpSever.Register[num, 8, 0] != 2)//判断AGV是否就绪
+            if (dataGridViewRunning.SelectedRows[0].Cells[0].Value != null)
             {
-                MessageBox.Show("AGV处于异常状态，请在AGV就绪后重试!");
+                //获取需要重发任务的AGV编号
+                int num = (int)(dataGridViewRunning.SelectedRows[0].Cells[4].Value);
+                if (UdpSever.Register[num, 8, 0] != 2)//判断AGV是否就绪
+                {
+                    MessageBox.Show("AGV处于异常状态，请在AGV就绪后重试!");
+                }
+                else
+                {
+                    //重新发送任务到AGV
+                    AssignTaskToAGV(num, true, (int)dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows[0].Index].Cells[2].Value);
+                }
             }
             else
             {
-                //重新发送任务到AGV
-                AssignTaskToAGV(num, true, (int)dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows[0].Index].Cells[2].Value);
+                MessageBox.Show("任务不能为空,请重新操作!");
             }
         }
 
@@ -187,57 +194,17 @@ namespace DispatchSystem.User
         #endregion
 
         /// <summary>
-        /// 任务信息
+        /// 系统参数
         /// </summary>
-        //public class TaskInfo
-        //{
-        //    public long OrderNum = 0;//订单号
-        //    public int TaskNum; //任务编号
-        //    public string LineName;//产线名称
-        //    public DateTime CreatTime = DateTime.Now;//任务下发时间
-        //    public DateTime StartTime;//任务开始时间
-        //    public DateTime StopTime;//任务结束时间
-
-        //    public int AgvNum = 0; //AGV编号
-        //}
-
-        public static class TaskData
+        public static class Parameter
         {
-            public static class Parameter
-            {
-                //modbus 检测时间
-                public static int SyncModbusTime = 500;
-                //任务调度 检测时间
-                public static int taskFuncTime = 1000;
-            }
-
-            ///// <summary>
-            ///// 等待任务队列
-            ///// </summary>
-            //public static List<TaskInfo> Waiting = new List<TaskInfo>();
-
-            ///// <summary>
-            ///// 进行中任务队列
-            ///// </summary>
-            //public static List<TaskInfo> Runing = new List<TaskInfo>();
-
-            ///// <summary>
-            /////已完成任务队列
-            ///// </summary>
-            //public static List<TaskInfo> Finished = new List<TaskInfo>();
-
-            //定义两台AGV
-            //public static Agv[] AGV = new Agv[3];
-
-            public static bool AGVRuning_1 = false;
-            public static bool AGVRuning_2 = false;
+            //任务调度 检测时间
+            public static int taskFuncTime = 1000;
 
             public static bool[] AgvRuning = new bool[UdpSever.DeviceNum];
         }
 
-
         #region 方法
-
         /// <summary>
         /// 新任务
         /// </summary>
@@ -281,7 +248,7 @@ namespace DispatchSystem.User
             }
             //MES下单
             else
-            if (taskReg > 0 && DataTransmission.Profinet.Clear[taskReg] == false)
+            if (DataTransmission.Profinet.Register[taskReg] > 0 && DataTransmission.Profinet.Clear[taskReg] == false)
             {
                 //创建任务
                 this.Invoke(new MethodInvoker(delegate
@@ -349,63 +316,61 @@ namespace DispatchSystem.User
                 if (dataGridViewWaiting.Rows.Count > 0)
                 {
                     //AGV就绪
-                    if (UdpSever.Register[AgvNum, 8, 0] == 2 && TaskData.AgvRuning[AgvNum] == false)
+                    if (UdpSever.Register[AgvNum, 8, 0] == 2 && Parameter.AgvRuning[AgvNum] == false)
                     {
                         for (int i = 0; i < dataGridViewWaiting.Rows.Count; i++)
                         {
-                            if (dataGridViewWaiting.Rows[i].Cells[0].Value == null)
+                            if (dataGridViewWaiting.Rows[i].Cells[0].Value != null)
                             {
-                                continue;
-                            }
-                            else
-                            if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == lineName)
-                            {
-                                #region 更新
-                                int index = 0;
-                                this.Invoke(new MethodInvoker(delegate
+                                if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == lineName)
                                 {
-                                    //添加到正在执行
-                                    index = dataGridViewRunning.Rows.Add();
-                                    //序号
-                                    dataGridViewRunning.Rows[index].Cells[0].Value = index;
-                                    //订单编号
-                                    dataGridViewRunning.Rows[index].Cells[1].Value = dataGridViewWaiting.Rows[i].Cells["订单号"].Value;
-                                    //任务编号
-                                    dataGridViewRunning.Rows[index].Cells[2].Value = dataGridViewWaiting.Rows[i].Cells["任务编号"].Value;
-                                    //产线名称
-                                    dataGridViewRunning.Rows[index].Cells[3].Value = lineName;
-                                    //AGV编号
-                                    dataGridViewRunning.Rows[index].Cells[4].Value = AgvNum;
-                                    //下单时间
-                                    dataGridViewRunning.Rows[index].Cells[5].Value = dataGridViewWaiting.Rows[i].Cells["下单时间"].Value.ToString();
-                                    //启动时间
-                                    dataGridViewRunning.Rows[index].Cells[6].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                                    //滚动到最后一行
-                                    dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
-
-                                    //从等待执行任务列表删除
-                                    dataGridViewWaiting.Rows.RemoveAt(i);
-                                }));
-
-                                //发送任务到AGV
-                                await Task.Run(() =>
-                                {
-                                    UdpSever.Register[AgvNum, 1, 0] = (int)dataGridViewRunning.Rows[index].Cells["任务编号"].Value;
-
-                                    //等待收到任务
-                                    while (UdpSever.Register[AgvNum, 2, 0] == 0)
+                                    #region 更新
+                                    int index = 0;
+                                    this.Invoke(new MethodInvoker(delegate
                                     {
-                                        Thread.Sleep(10);
-                                    }
-                                    //清除AGV任务标志
-                                    UdpSever.Register[AgvNum, 1, 0] = 0;
-                                    ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}", AgvNum));
-                                });
-                                //设置AGV忙状态
-                                TaskData.AgvRuning[AgvNum] = true;
-                                #endregion
+                                        //添加到正在执行
+                                        index = dataGridViewRunning.Rows.Add();
+                                        //序号
+                                        dataGridViewRunning.Rows[index].Cells[0].Value = index;
+                                        //订单编号
+                                        dataGridViewRunning.Rows[index].Cells[1].Value = dataGridViewWaiting.Rows[i].Cells[1].Value;
+                                        //任务编号
+                                        dataGridViewRunning.Rows[index].Cells[2].Value = dataGridViewWaiting.Rows[i].Cells[2].Value;
+                                        //产线名称
+                                        dataGridViewRunning.Rows[index].Cells[3].Value = lineName;
+                                        //AGV编号
+                                        dataGridViewRunning.Rows[index].Cells[4].Value = AgvNum;
+                                        //下单时间
+                                        dataGridViewRunning.Rows[index].Cells[5].Value = dataGridViewWaiting.Rows[i].Cells[4].Value.ToString();
+                                        //启动时间
+                                        dataGridViewRunning.Rows[index].Cells[6].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                        //滚动到最后一行
+                                        dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
 
-                                break;
+                                        //从等待执行任务列表删除
+                                        dataGridViewWaiting.Rows.RemoveAt(i);
+                                    }));
+
+                                    //发送任务到AGV
+                                    await Task.Run(() =>
+                                    {
+                                        UdpSever.Register[AgvNum, 1, 0] = (int)dataGridViewRunning.Rows[index].Cells[2].Value;
+
+                                        //等待收到任务
+                                        while (UdpSever.Register[AgvNum, 2, 0] == 0)
+                                        {
+                                            Thread.Sleep(10);
+                                        }
+                                        //清除AGV任务标志
+                                        UdpSever.Register[AgvNum, 1, 0] = 0;
+                                        ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}", AgvNum));
+                                    });
+                                    //设置AGV忙状态
+                                    Parameter.AgvRuning[AgvNum] = true;
+                                    #endregion
+
+                                    break;
+                                }
                             }
                         }
                     }
@@ -413,8 +378,180 @@ namespace DispatchSystem.User
             }
         }
 
-        #endregion
+        /// <summary>
+        /// 更新任务执行状态
+        /// </summary>
+        private void UpdateTaskState()
+        {
+            int agvNum;
+            //是否有正在执行的任务
+            if (dataGridViewRunning.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewRunning.Rows.Count; i++)
+                {
+                    if (dataGridViewRunning.Rows[i].Cells[0].Value != null)
+                    {
+                        agvNum = (int)dataGridViewRunning.Rows[i].Cells[4].Value;
+                        //判断是否执行完成
+                        if (UdpSever.Register[agvNum, 4, 0] == 1)//执行完成
+                        {
+                            //清除AGV忙状态
+                            Parameter.AgvRuning[agvNum] = false;
 
+                            //将该任务转至执行完成任务列表
+                            #region 更新-完成任务-到界面
+                            this.Invoke(new MethodInvoker(delegate
+                            {
+                                var index = dataGridViewFinished.Rows.Add();
+                                //序号
+                                dataGridViewFinished.Rows[index].Cells[0].Value = index;
+                                //订单编号
+                                dataGridViewFinished.Rows[index].Cells[1].Value = dataGridViewRunning.Rows[i].Cells[1].Value;
+                                //任务编号
+                                dataGridViewFinished.Rows[index].Cells[2].Value = dataGridViewRunning.Rows[i].Cells[2].Value;
+                                //产线名称
+                                dataGridViewFinished.Rows[index].Cells[3].Value = dataGridViewRunning.Rows[i].Cells[3].Value;
+                                //AGV编号
+                                dataGridViewFinished.Rows[index].Cells[4].Value = agvNum;
+                                //下单时间
+                                dataGridViewFinished.Rows[index].Cells[5].Value = dataGridViewRunning.Rows[i].Cells[5].Value;
+                                //启动时间
+                                dataGridViewFinished.Rows[index].Cells[6].Value = dataGridViewRunning.Rows[i].Cells[6].Value;
+                                //完成时间
+                                dataGridViewFinished.Rows[index].Cells[7].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                //滚动到最后一行
+                                dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
+
+                                //从正在执行列表删除
+                                dataGridViewRunning.Rows.RemoveAt(i);
+                            }));
+                            #endregion
+                        }
+                        else if (UdpSever.Register[agvNum, 4, 0] == 0)//未完成
+                        {
+                            #region 更新正在执行界面
+                            this.Invoke(new MethodInvoker(delegate
+                            {
+                                //当前站点
+                                dataGridViewRunning.Rows[i].Cells[7].Value = (ushort)UdpSever.Register[agvNum, 5, 0];
+                                //下一个站点
+                                dataGridViewRunning.Rows[i].Cells[8].Value = (ushort)UdpSever.Register[agvNum, 7, 0];
+                                //报警信息
+                                switch (UdpSever.Register[agvNum, 9, 0])
+                                {
+                                    case 0:
+                                        dataGridViewRunning.Rows[i].Cells[9].Value = "正常";
+                                        break;
+                                    case 1:
+                                        dataGridViewRunning.Rows[i].Cells[9].Value = "机械碰撞";
+                                        break;
+                                    case 2:
+                                        dataGridViewRunning.Rows[i].Cells[9].Value = "出轨";
+                                        break;
+                                    case 3:
+                                        dataGridViewRunning.Rows[i].Cells[9].Value = "红外避障";
+                                        break;
+                                    case 4:
+                                        dataGridViewRunning.Rows[i].Cells[9].Value = "电量低";
+                                        break;
+                                    case 5:
+                                        dataGridViewRunning.Rows[i].Cells[9].Value = "驱动断电";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }));
+                            #endregion
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 更新MES状态
+        /// </summary>
+        private void UpdateMES()
+        {
+            //正在执行
+            if (dataGridViewRunning.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewRunning.Rows.Count; i++)
+                {
+                    if (dataGridViewRunning.Rows[i].Cells[0].Value != null)
+                    {
+                        if (dataGridViewRunning.Rows[i].Cells[3].Value.ToString() == "扩散线")
+                        {
+                            //正在执行任务
+                            DataTransmission.Profinet.Register[1] = ushort.Parse(dataGridViewRunning.Rows[i].Cells[2].Value.ToString());
+                        }
+                        else if (dataGridViewRunning.Rows[i].Cells[3].Value.ToString() == "PE线")
+                        {
+                            //正在执行任务
+                            DataTransmission.Profinet.Register[21] = ushort.Parse(dataGridViewRunning.Rows[i].Cells[2].Value.ToString());
+                        }
+                    }
+                }
+            }
+            //待执行
+            int[] waiting = new int[2];
+            if (dataGridViewWaiting.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewWaiting.Rows.Count; i++)
+                {
+                    if (dataGridViewWaiting.Rows[i].Cells[0].Value != null)
+                    {
+                        if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == "扩散线" && waiting[0] < 5)
+                        {
+                            //待执行任务
+                            DataTransmission.Profinet.Register[2 + waiting[0]++] = ushort.Parse(dataGridViewWaiting.Rows[i].Cells[2].Value.ToString());
+                        }
+                        else if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == "PE线" && waiting[1] < 5)
+                        {
+                            //待执行任务
+                            DataTransmission.Profinet.Register[22 + waiting[1]++] = ushort.Parse(dataGridViewWaiting.Rows[i].Cells[2].Value.ToString());
+                        }
+                    }
+                }
+            }
+            //已完成
+            int[] finished = new int[2];
+            if (dataGridViewFinished.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewFinished.Rows.Count; i++)
+                {
+                    if (dataGridViewFinished.Rows[i].Cells[0].Value != null)
+                    {
+                        if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "扩散线" && finished[0] < 5)
+                        {
+                            //待执行任务
+                            DataTransmission.Profinet.Register[7 + finished[0]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
+                        }
+                        else if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "PE线" && finished[1] < 5)
+                        {
+                            //待执行任务
+                            DataTransmission.Profinet.Register[27 + finished[1]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
+                        }
+                    }
+                }
+            }
+
+            //上一个位置
+            DataTransmission.Profinet.Register[12] = (ushort)UdpSever.Register[1, 5, 0];
+            //当前位置
+            DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[1, 6, 0];
+            //运行状态
+            DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[1, 8, 0];
+
+            //上一个位置
+            DataTransmission.Profinet.Register[32] = (ushort)UdpSever.Register[2, 5, 0];
+            //当前位置
+            DataTransmission.Profinet.Register[33] = (ushort)UdpSever.Register[2, 6, 0];
+            //运行状态
+            DataTransmission.Profinet.Register[34] = (ushort)UdpSever.Register[2, 8, 0];
+        }
+        #endregion
 
         /// <summary>
         /// 任务方法
@@ -426,7 +563,7 @@ namespace DispatchSystem.User
                 //网络连接判断
                 if (DataTransmission.ListenState.ModbusTcp == false)
                 {
-                    // DataTransmission.StartListen();
+                    DataTransmission.StartListen();
                 }
                 else
                 {
@@ -434,274 +571,25 @@ namespace DispatchSystem.User
                     NewTask("扩散线");
                     NewTask("PE线");
 
-                    #region 派发任务到AGV
+                    //派发任务到AGV
+                    AssignTaskToAGV(1);
+                    AssignTaskToAGV(2);
 
-                    #endregion
+                    //更新任务执行状态
+                    UpdateTaskState();
 
-                    #region 更新任务执行状态
-                    //是否有正在执行的任务
-                    if (TaskData.Runing.Count > 0)
-                    {
-                        for (int i = 0; i < TaskData.Runing.Count; i++)
-                        {
-                            //判断任务是否执行完成
-                            if (TaskData.Runing[i].LineName == "扩散线")
-                            {
-                                if (UdpSever.Register[1, 4, 0] == 1)
-                                {
-                                    TaskData.Runing[i].StopTime = DateTime.Now;
-
-                                    TaskData.AGVRuning_1 = false;
-
-                                    //将该任务转至执行完成任务列表
-                                    TaskData.Finished.Add(TaskData.Runing[i]);
-                                    #region 更新-完成任务-到界面
-                                    this.Invoke(new MethodInvoker(delegate
-                                    {
-                                        var index = dataGridViewFinished.Rows.Add();
-                                        //序号
-                                        dataGridViewFinished.Rows[index].Cells[0].Value = index;
-                                        //订单编号
-                                        dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.Runing[i].OrderNum;
-                                        //任务编号
-                                        dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.Runing[i].TaskNum;
-                                        //产线名称
-                                        dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.Runing[i].LineName;
-                                        //AGV编号
-                                        dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.Runing[i].AgvNum;
-                                        //下单时间
-                                        dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.Runing[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //启动时间
-                                        dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.Runing[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //完成时间
-                                        dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
-
-                                        //滚动到最后一行
-                                        dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
-                                    }));
-                                    #endregion
-
-                                    #region 更新-正在执行-界面
-                                    this.Invoke(new MethodInvoker(delegate
-                                    {
-                                        dataGridViewRunning.Rows.RemoveAt(i);
-                                    }));
-
-                                    //将该任务从正在执行任务列表删除
-                                    TaskData.Runing.RemoveAt(i);
-                                    #endregion
-                                }
-                                else if (UdpSever.Register[1, 4, 0] == 0)
-                                {
-                                    //正在执行
-                                    #region 更新正在执行界面
-                                    this.Invoke(new MethodInvoker(delegate
-                                    {
-                                        //当前站点
-                                        dataGridViewRunning.Rows[i].Cells[7].Value = (ushort)UdpSever.Register[1, 5, 0];
-                                        //下一个站点
-                                        dataGridViewRunning.Rows[i].Cells[8].Value = (ushort)UdpSever.Register[1, 7, 0];
-                                        //报警信息
-                                        switch (UdpSever.Register[1, 9, 0])
-                                        {
-                                            case 0:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "正常";
-                                                break;
-                                            case 1:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "机械碰撞";
-                                                break;
-                                            case 2:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "出轨";
-                                                break;
-                                            case 3:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "红外避障";
-                                                break;
-                                            case 4:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "电量低";
-                                                break;
-                                            case 5:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "驱动断电";
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    }));
-                                    #endregion
-                                }
-                            }
-                            else
-                            //判断任务是否执行完成
-                            if (TaskData.Runing[i].LineName == "PE线")
-                            {
-                                if (UdpSever.Register[2, 4, 0] == 1)
-                                {
-                                    TaskData.Runing[i].StopTime = DateTime.Now;
-
-                                    TaskData.AGVRuning_2 = false;
-
-                                    //将该任务转至执行完成任务列表
-                                    TaskData.Finished.Add(TaskData.Runing[i]);
-                                    #region 更新-完成任务-到界面
-                                    this.Invoke(new MethodInvoker(delegate
-                                    {
-                                        var index = dataGridViewFinished.Rows.Add();
-                                        //序号
-                                        dataGridViewFinished.Rows[index].Cells[0].Value = index;
-                                        //订单编号
-                                        dataGridViewFinished.Rows[index].Cells[1].Value = TaskData.Runing[i].OrderNum;
-                                        //任务编号
-                                        dataGridViewFinished.Rows[index].Cells[2].Value = TaskData.Runing[i].TaskNum;
-                                        //产线名称
-                                        dataGridViewFinished.Rows[index].Cells[3].Value = TaskData.Runing[i].LineName;
-                                        //AGV编号
-                                        dataGridViewFinished.Rows[index].Cells[4].Value = TaskData.Runing[i].AgvNum;
-                                        //下单时间
-                                        dataGridViewFinished.Rows[index].Cells[5].Value = TaskData.Runing[i].CreatTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //启动时间
-                                        dataGridViewFinished.Rows[index].Cells[6].Value = TaskData.Runing[i].StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //完成时间
-                                        dataGridViewFinished.Rows[index].Cells[7].Value = TaskData.Runing[i].StopTime.ToString("yyyy-MM-dd HH:mm:ss");
-                                        //执行时间
-                                        dataGridViewFinished.Rows[index].Cells[8].Value = TaskData.Runing[i].StopTime - TaskData.Runing[i].StartTime;
-
-                                        //滚动到最后一行
-                                        dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
-                                    }));
-                                    #endregion
-
-                                    #region 更新-正在执行-界面
-                                    this.Invoke(new MethodInvoker(delegate
-                                    {
-                                        dataGridViewRunning.Rows.RemoveAt(i);
-                                    }));
-
-                                    //将该任务从正在执行任务列表删除
-                                    TaskData.Runing.RemoveAt(i);
-                                    #endregion
-                                }
-                                else if (UdpSever.Register[2, 4, 0] == 0)
-                                {
-                                    #region 更新正在执行界面
-                                    this.Invoke(new MethodInvoker(delegate
-                                    {
-                                        //当前站点
-                                        dataGridViewRunning.Rows[i].Cells[7].Value = (ushort)UdpSever.Register[2, 5, 0]; ;
-                                        //下一个站点
-                                        dataGridViewRunning.Rows[i].Cells[8].Value = (ushort)UdpSever.Register[2, 7, 0]; ;
-                                        //报警信息
-                                        switch (UdpSever.Register[2, 9, 0])
-                                        {
-                                            case 0:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "正常";
-                                                break;
-                                            case 1:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "机械碰撞";
-                                                break;
-                                            case 2:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "出轨";
-                                                break;
-                                            case 3:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "红外避障";
-                                                break;
-                                            case 4:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "电量低";
-                                                break;
-                                            case 5:
-                                                dataGridViewRunning.Rows[i].Cells[9].Value = "驱动断电";
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    }));
-                                    #endregion
-                                }
-                            }
-                        }
-                    }
-                    #endregion
-
-                    #region 更新MES状态
-                    //正在执行
-                    if (TaskData.Runing.Count > 0)
-                    {
-                        foreach (var item in TaskData.Runing)
-                        {
-                            if (item.LineName == "扩散线")
-                            {
-                                //正在执行任务
-                                DataTransmission.Profinet.Register[1] = (ushort)item.TaskNum;
-                            }
-                            else
-                            if (item.LineName == "PE线")
-                            {
-                                //正在执行任务
-                                DataTransmission.Profinet.Register[21] = (ushort)item.TaskNum;
-                            }
-                        }
-                    }
-                    //待执行
-                    int[] waiting = new int[2];
-                    if (TaskData.Waiting.Count > 0)
-                    {
-                        foreach (var item in TaskData.Waiting)
-                        {
-                            if (item.LineName == "扩散线" && waiting[0] < 5)
-                            {
-                                //待执行任务
-                                DataTransmission.Profinet.Register[2 + waiting[0]++] = (ushort)item.TaskNum;
-                            }
-                            else
-                            if (item.LineName == "PE线" && waiting[1] < 5)
-                            {
-                                //待执行任务
-                                DataTransmission.Profinet.Register[22 + waiting[1]++] = (ushort)item.TaskNum;
-                            }
-                        }
-                    }
-                    //已完成
-                    int[] finished = new int[2];
-                    if (TaskData.Finished.Count > 0)
-                    {
-                        foreach (var item in TaskData.Finished)
-                        {
-                            if (item.LineName == "扩散线" && finished[0] < 5)
-                            {
-                                //已完成任务
-                                DataTransmission.Profinet.Register[7 + finished[0]++] = (ushort)item.TaskNum;
-                            }
-                            else
-                            if (item.LineName == "PE线" && finished[1] < 5)
-                            {
-                                //已完成任务
-                                DataTransmission.Profinet.Register[27 + finished[1]++] = (ushort)item.TaskNum;
-                            }
-                        }
-                    }
-
-                    //上一个位置
-                    DataTransmission.Profinet.Register[12] = (ushort)UdpSever.Register[1, 5, 0];
-                    //当前位置
-                    DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[1, 6, 0];
-                    //运行状态
-                    DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[1, 8, 0];
-
-                    //上一个位置
-                    DataTransmission.Profinet.Register[32] = (ushort)UdpSever.Register[1, 5, 0];
-                    //当前位置
-                    DataTransmission.Profinet.Register[33] = (ushort)UdpSever.Register[1, 6, 0];
-                    //运行状态
-                    DataTransmission.Profinet.Register[34] = (ushort)UdpSever.Register[1, 8, 0];
-                    #endregion
+                    //更新MES状态
+                    UpdateMES();
                 }
-                Thread.Sleep(TaskData.Parameter.taskFuncTime);
+                Thread.Sleep(Parameter.taskFuncTime);
             }
         }
 
+        //获取毫米级时间戳
         private long GetTimeStamp()
         {
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
             long timeStamp = (long)(DateTime.Now - startTime).TotalMilliseconds; // 相差毫秒数
-                                                                                 //System.Console.WriteLine(timeStamp);
             return timeStamp;
         }
     }

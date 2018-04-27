@@ -15,9 +15,9 @@ namespace DispatchSystem.UserControls
     {
         #region 属性变量
         private int value = 0x5555;//磁导航数据
-        private Color borderColor = Color.DarkGray; //有效颜色
-        private Color colorOn = Color.Yellow; //有效颜色      
-        private Color colorOff = Color.Red; //无效颜色    
+        private Color borderColor = Color.Silver; //边框色
+        private Color colorOn = Color.Orange; //有效颜色      
+        private Color colorOff = Color.LightGray; //无效颜色    
         #endregion
 
         #region 属性

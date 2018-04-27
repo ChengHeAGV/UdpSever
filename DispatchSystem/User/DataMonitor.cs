@@ -28,7 +28,7 @@ namespace DispatchSystem.User
         }
         private void func()
         {
-            while (!formcloseing)
+            while (this.IsHandleCreated && this.IsDisposed == false)
             {
                 this.Invoke(new MethodInvoker(delegate
                  {
@@ -39,7 +39,6 @@ namespace DispatchSystem.User
                  }));
                 Thread.Sleep(1000);
             }
-            formcloseing = false;
         }
 
         /// <summary>
@@ -73,16 +72,6 @@ namespace DispatchSystem.User
                     //更新对比缓存
                     DataCompare[i] = DataTransmission.Profinet.Register[i];
                 }
-            }
-        }
-
-        bool formcloseing = false;
-        private void DataMonitor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            formcloseing = true;
-            while (formcloseing)
-            {
-                Thread.Sleep(10);
             }
         }
     }

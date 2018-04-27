@@ -81,7 +81,6 @@ namespace DispatchSystem
             public bool resault;
             public UInt16 Data;
             public UInt16[] DataBuf;
-
             public override string ToString()
             {
                 string str = String.Empty;
@@ -918,6 +917,12 @@ namespace DispatchSystem
             sendbyte[13] = (byte)(crcRes);
             //发送数据
             sendToUdp(ep, sendbyte);
+
+            //更新寄存器
+            UdpSever.Register[TargetAddress, RegisterAddress, 0] = Data;
+            //更新时间戳
+            UdpSever.Register[TargetAddress, RegisterAddress, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
+
         }
         public static void Post_Register(int TargetAddress, int RegisterAddress, int Data)
         {
@@ -953,6 +958,15 @@ namespace DispatchSystem
             sendbyte[12 + Num * 2] = (byte)(crcRes);
             //发送数据
             sendToUdp(ep, sendbyte);
+
+            for (int t = 0; t < Num; t++)
+            {
+                //更新寄存器
+                UdpSever.Register[TargetAddress, RegisterAddress + t, 0] = Data[t];
+                //更新时间戳
+                UdpSever.Register[TargetAddress, RegisterAddress + t, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
+            }
+
         }
         public static void Post_Multiple_Registers(int TargetAddress, int RegisterAddress, int Num, UInt16[] Data)
         {
