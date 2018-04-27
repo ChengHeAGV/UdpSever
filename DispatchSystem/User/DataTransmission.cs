@@ -101,8 +101,7 @@ namespace DispatchSystem.User
             public static UInt16[] RegisterCompare = new UInt16[200];
 
             //清除任务标志
-            public static bool Clear0 = false;
-            public static bool Clear20 = false;
+            public static bool[] Clear = new bool[200];
 
             //设置数据
             public static bool SetRegister(int start, int end)
@@ -337,12 +336,12 @@ namespace DispatchSystem.User
                 int num;
                 //读取 0
                 num = 0;
-                if (Profinet.Clear0)
+                if (Profinet.Clear[num])
                 {
                     Profinet.Register[num] = 0;
                     if (Profinet.SetRegister(num, num))
                     {
-                        Profinet.Clear0 = false;
+                        Profinet.Clear[num] = false;
                     }
                 }
                 else
@@ -353,12 +352,12 @@ namespace DispatchSystem.User
 
                 //读取 20
                 num = 20;
-                if (Profinet.Clear20)
+                if (Profinet.Clear[num])
                 {
                     Profinet.Register[num] = 0;
                     if (Profinet.SetRegister(num, num))
                     {
-                        Profinet.Clear20 = false;
+                        Profinet.Clear[num] = false;
                     }
                 }
                 else
