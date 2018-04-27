@@ -8,6 +8,7 @@ namespace DispatchSystem.User
 {
     public partial class TaskForm : Form
     {
+        ContextMenuStrip contextWaiting;
         ContextMenuStrip contextRunning;
 
         public TaskForm()
@@ -20,12 +21,19 @@ namespace DispatchSystem.User
         {
             #region 创建等待任务列表右键菜单
             //等待任务列表右键菜单
-            ContextMenuStrip contextWaiting = new ContextMenuStrip();
+            contextWaiting = new ContextMenuStrip();
+            contextWaiting.Items.Add("创建任务");
+
+            //添加点击事件
+            contextWaiting.Items[0].Click += contextWaiting_AddTask_Click;
+
+            //添加单机点击事件
+            dataGridViewRunning.CellMouseClick += DataGridViewRunning_CellMouseClick;
+
             #endregion
 
             #region 创建正在进行任务列表右键菜单
             //等待任务列表右键菜单
-
             contextRunning = new ContextMenuStrip();
             contextRunning.Items.Add("任务重发");
 
@@ -46,6 +54,11 @@ namespace DispatchSystem.User
             taskThread.IsBackground = true;
             taskThread.Start();
             #endregion
+        }
+
+        private void contextWaiting_AddTask_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
