@@ -273,6 +273,11 @@ namespace DispatchSystem.User
                 }));
                 //清除MES任务标志寄存器
                 DataTransmission.Profinet.Clear[taskReg] = true;
+                //等待收到清零
+                while (DataTransmission.Profinet.Clear[taskReg] == true)
+                {
+                    Thread.Sleep(100);
+                }
             }
         }
 
@@ -325,7 +330,7 @@ namespace DispatchSystem.User
                         {
                             if (dataGridViewWaiting.Rows[i].Cells[0].Value != null)
                             {
-                               // var name = dataGridViewWaiting.Rows[i].Cells[3].Value.ToString();
+                                // var name = dataGridViewWaiting.Rows[i].Cells[3].Value.ToString();
                                 if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == lineName)
                                 {
                                     #region 更新
@@ -507,7 +512,7 @@ namespace DispatchSystem.User
                 DataTransmission.Profinet.Register[2 + i] = 0;
                 DataTransmission.Profinet.Register[22 + i] = 0;
             }
-            
+
             if (dataGridViewWaiting.Rows.Count > 0)
             {
                 for (int i = 0; i < dataGridViewWaiting.Rows.Count; i++)
@@ -575,6 +580,18 @@ namespace DispatchSystem.User
         /// </summary>
         private void taskFunc()
         {
+            Thread threadNewTask = new Thread(new ThreadStart(newTaskFunc));
+            threadNewTask.IsBackground = true;
+            threadNewTask.Start();
+
+            Thread threadAssignTask = new Thread(new ThreadStart(assignTaskFunc));
+            threadAssignTask.IsBackground = true;
+            threadAssignTask.Start();
+
+            Thread threadUpadteTask = new Thread(new ThreadStart(updateTaskFunc));
+            threadUpadteTask.IsBackground = true;
+            threadUpadteTask.Start();
+
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
                 //网络连接判断
@@ -582,22 +599,41 @@ namespace DispatchSystem.User
                 {
                     DataTransmission.StartListen();
                 }
-                else
-                {
-                    //监控是否有新任务
-                    NewTask("扩散线");
-                    NewTask("PE线");
 
-                    //派发任务到AGV
-                    AssignTaskToAGV(1);
-                    AssignTaskToAGV(2);
+                //更新MES状态
+                UpdateMES();
 
-                    //更新任务执行状态
-                    UpdateTaskState();
+                Thread.Sleep(Parameter.taskFuncTime);
+            }
+        }
 
-                    //更新MES状态
-                    UpdateMES();
-                }
+        private void updateTaskFunc()
+        {
+            while (this.IsHandleCreated && this.IsDisposed == false)
+            {
+                //监控是否有新任务
+                NewTask("扩散线");
+                NewTask("PE线");
+                Thread.Sleep(Parameter.taskFuncTime);
+            }
+        }
+        private void assignTaskFunc()
+        {
+            while (this.IsHandleCreated && this.IsDisposed == false)
+            {
+                //派发任务到AGV
+                AssignTaskToAGV(1);
+                AssignTaskToAGV(2);
+                Thread.Sleep(Parameter.taskFuncTime);
+            }
+        }
+
+        private void newTaskFunc()
+        {
+            while (this.IsHandleCreated && this.IsDisposed == false)
+            {
+                //更新任务执行状态
+                UpdateTaskState();
                 Thread.Sleep(Parameter.taskFuncTime);
             }
         }
