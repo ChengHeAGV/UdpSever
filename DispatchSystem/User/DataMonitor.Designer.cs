@@ -28,126 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.uDataGridView1 = new DispatchSystem.UserControls.UDataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.uDataGridView1)).BeginInit();
+            this.doubleBufferListView1 = new DispatchSystem.DoubleBufferListView();
             this.SuspendLayout();
             // 
-            // uDataGridView1
+            // doubleBufferListView1
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.uDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.uDataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.uDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.uDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column3,
-            this.Column7,
-            this.Column5,
-            this.Column1,
-            this.Column2,
-            this.Column4,
-            this.Column6});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.uDataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.uDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uDataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.uDataGridView1.Name = "uDataGridView1";
-            this.uDataGridView1.OnSizeChangeScroll = false;
-            this.uDataGridView1.ReadOnly = true;
-            this.uDataGridView1.RowHeadersWidth = 60;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.uDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.uDataGridView1.RowTemplate.Height = 23;
-            this.uDataGridView1.Size = new System.Drawing.Size(939, 701);
-            this.uDataGridView1.TabIndex = 1;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "日期";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 54;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "时间";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 54;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "寄存器类型";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 90;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "寄存器地址";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "值";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 42;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "更新次数";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 78;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "描述";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.doubleBufferListView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.doubleBufferListView1.Font = new System.Drawing.Font("宋体", 16F);
+            this.doubleBufferListView1.GridLines = true;
+            this.doubleBufferListView1.Location = new System.Drawing.Point(0, 0);
+            this.doubleBufferListView1.Name = "doubleBufferListView1";
+            this.doubleBufferListView1.Size = new System.Drawing.Size(939, 701);
+            this.doubleBufferListView1.TabIndex = 2;
+            this.doubleBufferListView1.UseCompatibleStateImageBehavior = false;
+            this.doubleBufferListView1.View = System.Windows.Forms.View.Details;
             // 
             // DataMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(939, 701);
-            this.Controls.Add(this.uDataGridView1);
+            this.Controls.Add(this.doubleBufferListView1);
             this.Name = "DataMonitor";
             this.Text = "DataMonitor";
             this.Load += new System.EventHandler(this.DataMonitor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.uDataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private UserControls.UDataGridView uDataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private DoubleBufferListView doubleBufferListView1;
     }
 }
