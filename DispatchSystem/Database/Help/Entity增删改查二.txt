@@ -1,1 +1,39 @@
-﻿本章为空
+﻿//修改
+	
+	//1.找到对象
+	var config = db.ModbusConfig.AsNoTracking().FirstOrDefault(m => m.key == "ip");
+	//2.更新对象
+	if (config != null)
+	{
+		//1.获得要更新后的数据，在mvc中的Action方法，可直接获得 更新后的对象
+		ModbusConfig u = new ModbusConfig() { Id = config.Id, value = textBoxIp.Text, key = config.key };
+		//2.标识为修改
+		db.Entry<ModbusConfig>(u).State = EntityState.Modified;
+		//3.保存到数据库
+		int count = db.SaveChanges();
+	}
+		
+	//1.加载所有记录,此处AsNoTracking是为了更新，一次读取，提高性能
+    var config = db.ModbusConfig.AsNoTracking().ToList();
+	private void update(string key, string value, string des = "")
+    {
+        var temp = config.FirstOrDefault(m => m.key == key);
+        if (temp != null)
+        {
+            des = des == "" ? temp.des : des;
+            ModbusConfig u = new ModbusConfig() { Id = temp.Id, value = value, key = temp.key, des = temp.des };
+            db.Entry<ModbusConfig>(u).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        else
+        {
+            temp = new ModbusConfig
+            {
+                key = key,
+                value = value,
+                des = des
+            };
+            db.ModbusConfig.Add(temp);
+            db.SaveChanges();
+        }
+    }
