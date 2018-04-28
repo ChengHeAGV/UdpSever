@@ -1,7 +1,10 @@
-﻿using DispatchSystem.Developer;
+﻿using DispatchSystem.Database;
+using DispatchSystem.Developer;
 using Modbus.Device;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,6 +17,10 @@ namespace DispatchSystem.User
         static Thread modbusThread;
         static Thread dbusThread;
         static Thread MainThread;
+
+        static DatabaseEntities db = new DatabaseEntities();
+        static List<ModbusConfig> modbusConfig = new List<ModbusConfig>();
+
         public DataTransmission()
         {
             InitializeComponent();
@@ -21,13 +28,33 @@ namespace DispatchSystem.User
 
         private void DataTransmission_Load(object sender, EventArgs e)
         {
+
         }
 
         public static void StartListen()
         {
+            //加载modbus配置,有配置则更新为配置，没有则不更新
+            modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
+
+            //modbus 检测时间
+            var data = modbusConfig.FirstOrDefault(m => m.key == "circe");
+            if (data != null)
+                Profinet.Cycle = int.Parse(data.value);
+
+            //modbus服务器IP地址
+            data = modbusConfig.FirstOrDefault(m => m.key == "ip");
+            if (data != null)
+                Profinet.ModbusTcpSeverIPAddress = data.value;
+
+            //modbus服务器端口
+            data = modbusConfig.FirstOrDefault(m => m.key == "port");
+            if (data != null)
+                Profinet.ModbusTcpSeverPort = int.Parse(data.value);
+
             MainThread = new Thread(new ThreadStart(Start));
             MainThread.IsBackground = true;
             MainThread.Start();
+
         }
         public static class ListenState
         {
@@ -54,6 +81,7 @@ namespace DispatchSystem.User
             {
                 try
                 {
+                    ConsoleLog.WriteLog(string.Format("[ModbusTcp]IP地址:{0},Port:{1}",Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
                     TcpClient tcpClient = new TcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort);
                     modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
                     modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
@@ -75,7 +103,6 @@ namespace DispatchSystem.User
             }
 
             #endregion
-
         }
 
         /// <summary>
@@ -219,7 +246,7 @@ namespace DispatchSystem.User
                     temp[j - start] = (ushort)UdpSever.Register[deviceAddress, j, 0];
                 }
 
-               UdpSever.Post_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
+                UdpSever.Post_Multiple_Registers(deviceAddress, start, end - start + 1, temp);
 
                 //if (mg.resault == false)
                 //    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
@@ -230,7 +257,7 @@ namespace DispatchSystem.User
                 string Msg = string.Format("设置:{0,-2}", start);
 
 
-                 UdpSever.Post_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
+                UdpSever.Post_Register(deviceAddress, start, (ushort)UdpSever.Register[deviceAddress, start, 0]);
                 //if (mg.resault == false)
                 //    ConsoleLog.WriteLog(string.Format("Dbus操作失败!:[{0}]", Msg), Color.Red, 20);
 

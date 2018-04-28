@@ -70,6 +70,9 @@ namespace DispatchSystem.Set
                 update("circle", textBoxCircle.Text, "查询周期");
                 this.DialogResult = DialogResult.OK;
             }
+
+            //重启modbustcp
+            User.DataTransmission.ListenState.ModbusTcp = false;
         }
 
         private void update(string key, string value, string des = "")
