@@ -31,9 +31,11 @@ namespace DispatchSystem.Developer
 
             //心跳
             th1 = new Thread(Heart);
+            th1.IsBackground = true;
             th1.Start();
             //写单个寄存器
             th2 = new Thread(WriteRegister);
+            th2.IsBackground = true;
             th2.Start();
         }
 
@@ -42,7 +44,7 @@ namespace DispatchSystem.Developer
         //心跳
         private void Heart()
         {
-            while (true)
+            while (this.IsHandleCreated && this.IsDisposed == false)
             {
                 Thread.Sleep(10);
                 try
