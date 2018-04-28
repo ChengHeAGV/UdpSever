@@ -39,20 +39,20 @@ namespace DispatchSystem
 
         private void DataForm_Load(object sender, EventArgs e)
         {
-            UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, UdpSever.RegisterNum);
-            if (rm.resault)
-            {
-                for (int i = 0; i < rm.DataBuf.Length; i++)
-                {
-                    UdpSever.Register[deviceNum, i, 0] = rm.DataBuf[i];
-                    UdpSever.Register[deviceNum, i, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
-                }
-            }
-            else
-            {
-                //ConsoleLog.WriteLog("错误信息", "读取失败！");
-                //UdpSever.Log("错误信息","读取失败！");
-            }
+            //UdpSever.ReturnMsg rm = UdpSever.Read_Multiple_Registers(deviceNum, 0, UdpSever.RegisterNum);
+            //if (rm.resault)
+            //{
+            //    for (int i = 0; i < rm.DataBuf.Length; i++)
+            //    {
+            //        UdpSever.Register[deviceNum, i, 0] = rm.DataBuf[i];
+            //        UdpSever.Register[deviceNum, i, 1] = UdpSever.DateTimeToStamp(DateTime.Now);
+            //    }
+            //}
+            //else
+            //{
+            //    //ConsoleLog.WriteLog("错误信息", "读取失败！");
+            //    //UdpSever.Log("错误信息","读取失败！");
+            //}
             //加载数据
             for (int i = 0; i < UdpSever.RegisterNum; i++)
             {
@@ -77,15 +77,13 @@ namespace DispatchSystem
 
         private void fun()
         {
-            while (true)
+            while (this.IsHandleCreated&&this.IsDisposed==false)
             {
-                if (!formcloseing && this.Created)
-                {
-                    this.Invoke(new MethodInvoker(delegate
+                this.Invoke(new MethodInvoker(delegate
                 {
                     //更新数据
                     for (int i = 0; i < UdpSever.RegisterNum; i++)
-                    {//UdpSever.Ddata[deviceNum, i, 1].ToString();
+                    {
                         doubleBufferListView1.Items[i].SubItems[1].Text = UdpSever.StampToString(UdpSever.Register[deviceNum, i, 1]);//时间戳
                         doubleBufferListView1.Items[i].SubItems[2].Text = UdpSever.Register[deviceNum, i, 0].ToString();//十进制
                         doubleBufferListView1.Items[i].SubItems[3].Text = UdpSever.Register[deviceNum, i, 0].ToString("X2");//十六进制
@@ -100,26 +98,7 @@ namespace DispatchSystem
                             doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
                     }
                 }));
-                }
-
-                for (int i = 0; i < 100; i++)
-                {
-                    if (formcloseing)
-                    {
-                        formcloseing = false;
-                    }
-                    Thread.Sleep(10);
-                }
-            }
-        }
-
-        bool formcloseing = false;
-        private void DataForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            formcloseing = true;
-            while (formcloseing)
-            {
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
             }
         }
 

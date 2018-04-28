@@ -204,6 +204,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Set\ModbusTcpConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Set\ModbusTcpConfigForm.Designer.cs">
+      <DependentUpon>ModbusTcpConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -212,6 +218,12 @@
     </Compile>
     <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
       <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\AddTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\AddTask.Designer.cs">
+      <DependentUpon>AddTask.cs</DependentUpon>
     </Compile>
     <Compile Include="User\DataMonitor.cs">
       <SubType>Form</SubType>
@@ -423,6 +435,9 @@
     <EmbeddedResource Include="Parameter\Process.resx">
       <DependentUpon>Process.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Set\ModbusTcpConfigForm.resx">
+      <DependentUpon>ModbusTcpConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThirdAppResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ThirdAppResource.Designer.cs</LastGenOutput>
@@ -480,6 +495,9 @@
     <EmbeddedResource Include="UserControls\UDataGridView.resx">
       <DependentUpon>UDataGridView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User\AddTask.resx">
+      <DependentUpon>AddTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\DataMonitor.resx">
       <DependentUpon>DataMonitor.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,12 +545,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Database\Database.mdf" />
     <Content Include="Database\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Help\Entity增删改查二.txt" />
     <Content Include="Database\Help\注意事项.txt" />
@@ -593,9 +608,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Set\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -44,17 +44,15 @@
             this.doubleBufferListView1.View = System.Windows.Forms.View.Details;
             this.doubleBufferListView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.doubleBufferListView1_MouseDoubleClick);
             // 
-            // DataForm
+            // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 488);
             this.Controls.Add(this.doubleBufferListView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "DataForm";
+            this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RegisterForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataForm_FormClosing);
             this.Load += new System.EventHandler(this.DataForm_Load);
             this.ResumeLayout(false);
 

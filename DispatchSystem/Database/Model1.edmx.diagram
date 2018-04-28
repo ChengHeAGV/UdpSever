@@ -5,8 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4eade1ad38494771b3a550cb72da5296" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseModel.DbusConfig" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="DatabaseModel.DbusLog" Width="1.5" PointX="2.75" PointY="1.125" />
+        <EntityTypeShape EntityType="DatabaseModel.DbusConfig" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.DbusLog" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.ModbusConfig" Width="1.5" PointX="4.625" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

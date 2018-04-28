@@ -25,8 +25,8 @@ namespace DispatchSystem.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ModbusConfig> ModbusConfig { get; set; }
         public virtual DbSet<DbusConfig> DbusConfig { get; set; }
         public virtual DbSet<DbusLog> DbusLog { get; set; }
-        public virtual DbSet<ModbusConfig> ModbusConfig { get; set; }
     }
 }
