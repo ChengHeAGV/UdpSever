@@ -33,23 +33,23 @@ namespace DispatchSystem.User
 
         public static void StartListen()
         {
-            //加载modbus配置,有配置则更新为配置，没有则不更新
-            modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
+            ////加载modbus配置,有配置则更新为配置，没有则不更新
+            //modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
 
-            //modbus 检测时间
-            var data = modbusConfig.FirstOrDefault(m => m.key == "circe");
-            if (data != null)
-                Profinet.Cycle = int.Parse(data.value);
+            ////modbus 检测时间
+            //var data = modbusConfig.FirstOrDefault(m => m.key == "circe");
+            //if (data != null)
+            //    Profinet.Cycle = int.Parse(data.value);
 
-            //modbus服务器IP地址
-            data = modbusConfig.FirstOrDefault(m => m.key == "ip");
-            if (data != null)
-                Profinet.ModbusTcpSeverIPAddress = data.value;
+            ////modbus服务器IP地址
+            //data = modbusConfig.FirstOrDefault(m => m.key == "ip");
+            //if (data != null)
+            //    Profinet.ModbusTcpSeverIPAddress = data.value;
 
-            //modbus服务器端口
-            data = modbusConfig.FirstOrDefault(m => m.key == "port");
-            if (data != null)
-                Profinet.ModbusTcpSeverPort = int.Parse(data.value);
+            ////modbus服务器端口
+            //data = modbusConfig.FirstOrDefault(m => m.key == "port");
+            //if (data != null)
+            //    Profinet.ModbusTcpSeverPort = int.Parse(data.value);
 
             MainThread = new Thread(new ThreadStart(Start));
             MainThread.IsBackground = true;

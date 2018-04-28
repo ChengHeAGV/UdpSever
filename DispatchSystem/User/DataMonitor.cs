@@ -15,7 +15,7 @@ namespace DispatchSystem.User
 
         private void DataMonitor_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+            for (int i = 0; i < 100; i++)
             {
                 uDataGridView1.Rows.Add();
             }
@@ -30,14 +30,11 @@ namespace DispatchSystem.User
         {
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
-                this.Invoke(new MethodInvoker(delegate
+                this.BeginInvoke(new MethodInvoker(delegate
                  {
-                     for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
-                     {
-                         update(true);
-                     }
+                     update(true);
                  }));
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
         }
 
@@ -47,7 +44,7 @@ namespace DispatchSystem.User
         /// <param name="change">有变化才更新</param>
         private void update(bool change)
         {
-            for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+            for (int i = 0; i < 100; i++)
             {
                 //有变化
                 if ((DataCompare[i] != DataTransmission.Profinet.Register[i]) || change == false)

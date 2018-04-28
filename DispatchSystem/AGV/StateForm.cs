@@ -42,11 +42,11 @@ namespace DispatchSystem.AGV
         {
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
-                this.Invoke(new MethodInvoker(delegate
+                this.BeginInvoke(new MethodInvoker(delegate
                 {
                     update(true);
                 }));
-                Thread.Sleep(500);
+                Thread.Sleep(100);
             }
         }
 

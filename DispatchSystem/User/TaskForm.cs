@@ -115,7 +115,7 @@ namespace DispatchSystem.User
         private void contextWaiting_DeleteTask_Click(object sender, EventArgs e)
         {
             //获取待删除任务索引
-            int index = (int)dataGridViewWaiting.SelectedRows[0].Index;
+            int index = dataGridViewWaiting.SelectedRows[0].Index;
             if (dataGridViewWaiting.Rows[index].Cells[1].Value != null)
             {
                 //从界面删除
@@ -140,7 +140,7 @@ namespace DispatchSystem.User
             if (dataGridViewRunning.SelectedRows[0].Cells[0].Value != null)
             {
                 //获取需要重发任务的AGV编号
-                int num = (int)(dataGridViewRunning.SelectedRows[0].Cells[4].Value);
+                int num = int.Parse(dataGridViewRunning.SelectedRows[0].Cells[4].Value.ToString());
                 if (UdpSever.Register[num, 8, 0] != 2)//判断AGV是否就绪
                 {
                     MessageBox.Show("AGV处于异常状态，请在AGV就绪后重试!");
@@ -148,7 +148,7 @@ namespace DispatchSystem.User
                 else
                 {
                     //重新发送任务到AGV
-                    AssignTaskToAGV(num, true, (int)dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows[0].Index].Cells[2].Value);
+                    AssignTaskToAGV(num, true, int.Parse(dataGridViewRunning.Rows[dataGridViewRunning.SelectedRows[0].Index].Cells[2].Value.ToString()));
                 }
             }
             else
@@ -165,9 +165,12 @@ namespace DispatchSystem.User
         private void contextRunning_Delete_Click(object sender, EventArgs e)
         {
             //获取待删除任务索引
-            int index = (int)dataGridViewRunning.SelectedRows[0].Index;
+            int index = dataGridViewRunning.SelectedRows[0].Index;
+            int AgvNum = int.Parse(dataGridViewRunning.SelectedRows[0].Cells[4].Value.ToString());
             if (dataGridViewRunning.Rows[index].Cells[1].Value != null)
             {
+                //清除AGV忙状态
+                Parameter.AgvRuning[AgvNum] = false;
                 //从界面删除
                 dataGridViewRunning.Rows.Remove(dataGridViewRunning.SelectedRows[0]);
             }
@@ -322,6 +325,7 @@ namespace DispatchSystem.User
                         {
                             if (dataGridViewWaiting.Rows[i].Cells[0].Value != null)
                             {
+                               // var name = dataGridViewWaiting.Rows[i].Cells[3].Value.ToString();
                                 if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == lineName)
                                 {
                                     #region 更新
@@ -354,7 +358,7 @@ namespace DispatchSystem.User
                                     //发送任务到AGV
                                     await Task.Run(() =>
                                     {
-                                        UdpSever.Register[AgvNum, 1, 0] = (int)dataGridViewRunning.Rows[index].Cells[2].Value;
+                                        UdpSever.Register[AgvNum, 1, 0] = int.Parse(dataGridViewRunning.Rows[index].Cells[2].Value.ToString());
 
                                         //等待收到任务
                                         while (UdpSever.Register[AgvNum, 2, 0] == 0)
@@ -391,9 +395,9 @@ namespace DispatchSystem.User
                 {
                     if (dataGridViewRunning.Rows[i].Cells[0].Value != null)
                     {
-                        agvNum = (int)dataGridViewRunning.Rows[i].Cells[4].Value;
-                        //判断是否执行完成
-                        if (UdpSever.Register[agvNum, 4, 0] == 1)//执行完成
+                        agvNum = int.Parse(dataGridViewRunning.Rows[i].Cells[4].Value.ToString());
+                        //判断是否执行完成(通过判断AGVRuning确定任务已经开始)
+                        if (UdpSever.Register[agvNum, 4, 0] == 1 && Parameter.AgvRuning[agvNum] == true)//执行完成
                         {
                             //清除AGV忙状态
                             Parameter.AgvRuning[agvNum] = false;
@@ -475,6 +479,8 @@ namespace DispatchSystem.User
         private void UpdateMES()
         {
             //正在执行
+            DataTransmission.Profinet.Register[1] = 0;
+            DataTransmission.Profinet.Register[21] = 0;
             if (dataGridViewRunning.Rows.Count > 0)
             {
                 for (int i = 0; i < dataGridViewRunning.Rows.Count; i++)
@@ -496,6 +502,12 @@ namespace DispatchSystem.User
             }
             //待执行
             int[] waiting = new int[2];
+            for (int i = 0; i < 5; i++)
+            {
+                DataTransmission.Profinet.Register[2 + i] = 0;
+                DataTransmission.Profinet.Register[22 + i] = 0;
+            }
+            
             if (dataGridViewWaiting.Rows.Count > 0)
             {
                 for (int i = 0; i < dataGridViewWaiting.Rows.Count; i++)
@@ -517,6 +529,11 @@ namespace DispatchSystem.User
             }
             //已完成
             int[] finished = new int[2];
+            for (int i = 0; i < 5; i++)
+            {
+                DataTransmission.Profinet.Register[7 + i] = 0;
+                DataTransmission.Profinet.Register[27 + i] = 0;
+            }
             if (dataGridViewFinished.Rows.Count > 0)
             {
                 for (int i = 0; i < dataGridViewFinished.Rows.Count; i++)

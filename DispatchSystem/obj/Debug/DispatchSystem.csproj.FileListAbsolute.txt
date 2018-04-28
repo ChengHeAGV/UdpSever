@@ -306,8 +306,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojRes
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.UDataGridView.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.DataMonitor.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.RegisterForm.resources
-D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database.mdf
-D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database_log.ldf
 D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
 D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
@@ -366,3 +364,4 @@ D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\zh-CN\AGV调度系统.resour
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CopyComplete
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
+D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
