@@ -1,22 +1,47 @@
 ﻿using DispatchSystem.Database;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DispatchSystem.Set
 {
     public partial class ModbusTcpConfigForm : Form
     {
+        DatabaseEntities db = new DatabaseEntities();
+        List<ModbusConfig> config = new List<ModbusConfig>();
         public ModbusTcpConfigForm()
         {
             InitializeComponent();
+        }
+
+        private void ModbusTcpConfigForm_Load(object sender, EventArgs e)
+        {
+            //1.加载所有记录,此处AsNoTracking是为了更新
+            config = db.ModbusConfig.AsNoTracking().ToList();
+            
+            //2.如果找到记录则显示到界面
+            if (config != null)
+            {
+                foreach (var item in config)
+                {
+                    switch (item.key)
+                    {
+                        case "ip":
+                            textBoxIp.Text = item.value;
+                            break;
+                        case "port":
+                            textBoxPort.Text = item.value;
+                            break;
+                        case "circle":
+                            textBoxCircle.Text = item.value;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
@@ -40,38 +65,37 @@ namespace DispatchSystem.Set
             }
             else
             {
-                //存储到数据库
-                DatabaseEntities db = new DatabaseEntities();
-                //1.找到对象
-                var config = db.ModbusConfig.FirstOrDefault(m => m.key == "IP");
-                //2.更新对象
-                if (config!=null)
-                {
-                    config.value = textBoxIp.Text;
-                }
-                else
-                {
-                    config = new ModbusConfig
-                    {
-                        key = "ip",
-                        value = "textBoxIp.Text",
-                        des = "IP地址"
-                    };
-                    db.ModbusConfig.Add(config);
-                }
-                //3.保存修改
-                db.SaveChanges();
-                //var config = new ModbusConfig
-                //{
-                //    key = "bomo",
-                //    value = 21,
-                //    des = "male"
-                //};
-                //db.DbusSever.Add(user);
-                //db.SaveChanges();
+                update("ip", textBoxIp.Text, "IP地址");
+                update("port", textBoxPort.Text, "端口号");
+                update("circle", textBoxCircle.Text, "查询周期");
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void update(string key, string value, string des = "")
+        {
+            var temp = config.FirstOrDefault(m => m.key == key);
+            if (temp != null)
+            {
+                des = des == "" ? temp.des : des;
+                ModbusConfig u = new ModbusConfig() { Id = temp.Id, value = value, key = temp.key, des = temp.des };
+                db.Entry<ModbusConfig>(u).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                temp = new ModbusConfig
+                {
+                    key = key,
+                    value = value,
+                    des = des
+                };
+                db.ModbusConfig.Add(temp);
+                db.SaveChanges();
+            }
+        }
+
+
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -148,5 +172,6 @@ namespace DispatchSystem.Set
                 return false;
             }
         }
+
     }
 }

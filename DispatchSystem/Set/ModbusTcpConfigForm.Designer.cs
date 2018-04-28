@@ -64,6 +64,7 @@
             this.textBoxCircle.Name = "textBoxCircle";
             this.textBoxCircle.Size = new System.Drawing.Size(135, 26);
             this.textBoxCircle.TabIndex = 10;
+            this.textBoxCircle.Text = "1000";
             // 
             // textBoxPort
             // 
@@ -71,6 +72,7 @@
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(135, 26);
             this.textBoxPort.TabIndex = 9;
+            this.textBoxPort.Text = "8080";
             // 
             // textBoxIp
             // 
@@ -78,6 +80,7 @@
             this.textBoxIp.Name = "textBoxIp";
             this.textBoxIp.Size = new System.Drawing.Size(135, 26);
             this.textBoxIp.TabIndex = 8;
+            this.textBoxIp.Text = "192.168.1.1";
             // 
             // label3
             // 
@@ -140,6 +143,7 @@
             this.Name = "ModbusTcpConfigForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modbus服务器配置";
+            this.Load += new System.EventHandler(this.ModbusTcpConfigForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
