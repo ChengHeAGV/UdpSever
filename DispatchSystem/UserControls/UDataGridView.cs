@@ -47,8 +47,8 @@ namespace DispatchSystem.UserControls
             uDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             //设置间隔色
-            this.RowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
-            this.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            this.RowsDefaultCellStyle.BackColor = Color.White;
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
             //自动列宽
             this.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
