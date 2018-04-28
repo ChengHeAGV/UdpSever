@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DispatchSystem
 {
@@ -29,6 +21,8 @@ namespace DispatchSystem
             doubleBufferListView1.UseCompatibleStateImageBehavior = false;
             doubleBufferListView1.View = System.Windows.Forms.View.Details;
 
+            //doubleBufferListView1.MouseEnter += UDataGridView_CellMouseEnter;
+            //doubleBufferListView1.MouseLeave += UDataGridView_CellMouseLeave;
 
             Controls.Add(doubleBufferListView1);
         }

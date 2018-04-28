@@ -51,6 +51,7 @@
             this.Controls.Add(this.doubleBufferListView1);
             this.Name = "DataMonitor";
             this.Text = "DataMonitor";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DataMonitor_Load);
             this.ResumeLayout(false);
 

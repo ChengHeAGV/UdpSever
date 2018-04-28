@@ -6,7 +6,7 @@
   </Debug>
   <Debug>
     <名称>操作帧</名称>
-    <数值>true</数值>
+    <数值>false</数值>
   </Debug>
   <Debug>
     <名称>响应帧</名称>

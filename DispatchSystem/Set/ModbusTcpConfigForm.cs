@@ -9,7 +9,7 @@ namespace DispatchSystem.Set
 {
     public partial class ModbusTcpConfigForm : Form
     {
-        DatabaseEntities db = new DatabaseEntities();
+        masterEntities db = new masterEntities();
         List<ModbusConfig> config = new List<ModbusConfig>();
         public ModbusTcpConfigForm()
         {

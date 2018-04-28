@@ -73,12 +73,6 @@
             this.串口助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.网络助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.路径规划ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,6 +83,12 @@
             this.dBUSTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cANToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -357,76 +357,30 @@
             // 地标读写ToolStripMenuItem
             // 
             this.地标读写ToolStripMenuItem.Name = "地标读写ToolStripMenuItem";
-            this.地标读写ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.地标读写ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.地标读写ToolStripMenuItem.Text = "地标读写";
             this.地标读写ToolStripMenuItem.Click += new System.EventHandler(this.地标读写ToolStripMenuItem_Click);
             // 
             // 串口助手ToolStripMenuItem
             // 
             this.串口助手ToolStripMenuItem.Name = "串口助手ToolStripMenuItem";
-            this.串口助手ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.串口助手ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.串口助手ToolStripMenuItem.Text = "串口助手";
             this.串口助手ToolStripMenuItem.Click += new System.EventHandler(this.串口助手ToolStripMenuItem_Click);
             // 
             // 网络助手ToolStripMenuItem
             // 
             this.网络助手ToolStripMenuItem.Name = "网络助手ToolStripMenuItem";
-            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.网络助手ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.网络助手ToolStripMenuItem.Text = "网络助手";
             this.网络助手ToolStripMenuItem.Click += new System.EventHandler(this.网络助手ToolStripMenuItem_Click);
             // 
             // 参数设置ToolStripMenuItem
             // 
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
             this.参数设置ToolStripMenuItem.Click += new System.EventHandler(this.参数设置ToolStripMenuItem_Click);
-            // 
-            // helpMenu
-            // 
-            this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator8,
-            this.aboutToolStripMenuItem});
-            this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(61, 21);
-            this.helpMenu.Text = "帮助(&H)";
-            // 
-            // contentsToolStripMenuItem
-            // 
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.contentsToolStripMenuItem.Text = "目录(&C)";
-            // 
-            // indexToolStripMenuItem
-            // 
-            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
-            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.indexToolStripMenuItem.Text = "索引(&I)";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
-            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchToolStripMenuItem.Text = "搜索(&S)";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "关于(&A) ... ...";
             // 
             // 路径规划ToolStripMenuItem
             // 
@@ -447,14 +401,14 @@
             // mESToolStripMenuItem
             // 
             this.mESToolStripMenuItem.Name = "mESToolStripMenuItem";
-            this.mESToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mESToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.mESToolStripMenuItem.Text = "ModbusTcp";
             this.mESToolStripMenuItem.Click += new System.EventHandler(this.mESToolStripMenuItem_Click);
             // 
             // 数据中继ToolStripMenuItem
             // 
             this.数据中继ToolStripMenuItem.Name = "数据中继ToolStripMenuItem";
-            this.数据中继ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.数据中继ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.数据中继ToolStripMenuItem.Text = "数据中继";
             this.数据中继ToolStripMenuItem.Click += new System.EventHandler(this.数据中继ToolStripMenuItem_Click);
             // 
@@ -504,6 +458,52 @@
             this.logToolStripMenuItem.Text = "Log";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
+            // helpMenu
+            // 
+            this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contentsToolStripMenuItem,
+            this.indexToolStripMenuItem,
+            this.searchToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.aboutToolStripMenuItem});
+            this.helpMenu.Name = "helpMenu";
+            this.helpMenu.Size = new System.Drawing.Size(61, 21);
+            this.helpMenu.Text = "帮助(&H)";
+            // 
+            // contentsToolStripMenuItem
+            // 
+            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
+            this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.contentsToolStripMenuItem.Text = "目录(&C)";
+            // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
+            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.indexToolStripMenuItem.Text = "索引(&I)";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
+            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.searchToolStripMenuItem.Text = "搜索(&S)";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(163, 6);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.aboutToolStripMenuItem.Text = "关于(&A) ... ...";
+            // 
             // statusStrip
             // 
             this.statusStrip.BackColor = System.Drawing.Color.LightGray;
@@ -545,7 +545,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(1260, 586);
-            this.splitContainer1.SplitterDistance = 223;
+            this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.TabIndex = 4;
             // 
             // splitContainer2
@@ -562,7 +562,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.treeView1);
-            this.splitContainer2.Size = new System.Drawing.Size(223, 586);
+            this.splitContainer2.Size = new System.Drawing.Size(296, 586);
             this.splitContainer2.SplitterDistance = 28;
             this.splitContainer2.TabIndex = 2;
             // 
@@ -574,7 +574,7 @@
             this.button1.Font = new System.Drawing.Font("宋体", 12F);
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 28);
+            this.button1.Size = new System.Drawing.Size(296, 28);
             this.button1.TabIndex = 1;
             this.button1.Text = "AGV连接";
             this.button1.UseVisualStyleBackColor = false;
@@ -582,7 +582,7 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.treeView1.Font = new System.Drawing.Font("新宋体", 16F, System.Drawing.FontStyle.Bold);
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.ItemHeight = 48;
@@ -622,7 +622,7 @@
             treeNode7,
             treeNode8});
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(223, 554);
+            this.treeView1.Size = new System.Drawing.Size(296, 554);
             this.treeView1.TabIndex = 0;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseMove);
@@ -648,7 +648,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.SizeChanged += new System.EventHandler(this.splitContainer3_Panel2_SizeChanged);
-            this.splitContainer3.Size = new System.Drawing.Size(1033, 586);
+            this.splitContainer3.Size = new System.Drawing.Size(960, 586);
             this.splitContainer3.SplitterDistance = 415;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -661,7 +661,7 @@
             // timerOnlineCheck
             // 
             this.timerOnlineCheck.Enabled = true;
-            this.timerOnlineCheck.Interval = 200;
+            this.timerOnlineCheck.Interval = 500;
             this.timerOnlineCheck.Tick += new System.EventHandler(this.timerOnlineCheck_Tick);
             // 
             // toolStrip

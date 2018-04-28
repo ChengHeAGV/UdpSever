@@ -66,7 +66,7 @@ namespace DispatchSystem.UserControls
 
             //事件
             this.RowLeave += UDataGridView_RowLeave; ;
-            this.RowStateChanged += UDataGridView_RowStateChanged; ;
+            this.RowStateChanged += UDataGridView_RowStateChanged; 
             this.CellMouseEnter += UDataGridView_CellMouseEnter;
             this.CellMouseLeave += UDataGridView_CellMouseLeave;
             this.SizeChanged += UDataGridView_SizeChanged;

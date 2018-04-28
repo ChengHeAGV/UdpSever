@@ -18,7 +18,7 @@ namespace DispatchSystem.User
         static Thread dbusThread;
         static Thread MainThread;
 
-        static DatabaseEntities db = new DatabaseEntities();
+        static masterEntities db = new masterEntities();
         static List<ModbusConfig> modbusConfig = new List<ModbusConfig>();
 
         public DataTransmission()
@@ -33,23 +33,23 @@ namespace DispatchSystem.User
 
         public static void StartListen()
         {
-            ////加载modbus配置,有配置则更新为配置，没有则不更新
-            //modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
+            //加载modbus配置,有配置则更新为配置，没有则不更新
+            modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
 
-            ////modbus 检测时间
-            //var data = modbusConfig.FirstOrDefault(m => m.key == "circe");
-            //if (data != null)
-            //    Profinet.Cycle = int.Parse(data.value);
+            //modbus 检测时间
+            var data = modbusConfig.FirstOrDefault(m => m.key == "circe");
+            if (data != null)
+                Profinet.Cycle = int.Parse(data.value);
 
-            ////modbus服务器IP地址
-            //data = modbusConfig.FirstOrDefault(m => m.key == "ip");
-            //if (data != null)
-            //    Profinet.ModbusTcpSeverIPAddress = data.value;
+            //modbus服务器IP地址
+            data = modbusConfig.FirstOrDefault(m => m.key == "ip");
+            if (data != null)
+                Profinet.ModbusTcpSeverIPAddress = data.value;
 
-            ////modbus服务器端口
-            //data = modbusConfig.FirstOrDefault(m => m.key == "port");
-            //if (data != null)
-            //    Profinet.ModbusTcpSeverPort = int.Parse(data.value);
+            //modbus服务器端口
+            data = modbusConfig.FirstOrDefault(m => m.key == "port");
+            if (data != null)
+                Profinet.ModbusTcpSeverPort = int.Parse(data.value);
 
             MainThread = new Thread(new ThreadStart(Start));
             MainThread.IsBackground = true;
@@ -130,6 +130,9 @@ namespace DispatchSystem.User
             //清除任务标志
             public static bool[] Clear = new bool[200];
 
+            //错误次数
+            public static int ErrorNum = 0;
+
             //设置数据
             public static bool SetRegister(int start, int end)
             {
@@ -169,6 +172,7 @@ namespace DispatchSystem.User
                 catch
                 {
                     ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
+                    ErrorNum++;
                     return false;
                 }
 
@@ -191,6 +195,7 @@ namespace DispatchSystem.User
                 catch
                 {
                     ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
+                    ErrorNum++;
                 }
             }
         }
@@ -357,59 +362,67 @@ namespace DispatchSystem.User
         {
             while (true)
             {
-                Thread.Sleep(Profinet.Cycle);
-                #region MES
-
-                int num;
-                //读取 0
-                num = 0;
-                if (Profinet.Clear[num])
+                if (Profinet.ErrorNum > 10)
                 {
-                    Profinet.Register[num] = 0;
-                    if (Profinet.SetRegister(num, num))
+                    //连续10次出错，重新连接
+                    ListenState.ModbusTcp = false;
+                }
+                if (ListenState.ModbusTcp)
+                {
+                    Thread.Sleep(Profinet.Cycle);
+                    #region MES
+
+                    int num;
+                    //读取 0
+                    num = 0;
+                    if (Profinet.Clear[num])
                     {
-                        Profinet.Clear[num] = false;
+                        Profinet.Register[num] = 0;
+                        if (Profinet.SetRegister(num, num))
+                        {
+                            Profinet.Clear[num] = false;
+                        }
                     }
-                }
-                else
-                {
-                    Profinet.GetRegister(num, num);
-                    Profinet.RegisterCompare[num] = Profinet.Register[num];
-                }
-
-                //读取 20
-                num = 20;
-                if (Profinet.Clear[num])
-                {
-                    Profinet.Register[num] = 0;
-                    if (Profinet.SetRegister(num, num))
+                    else
                     {
-                        Profinet.Clear[num] = false;
+                        Profinet.GetRegister(num, num);
+                        Profinet.RegisterCompare[num] = Profinet.Register[num];
                     }
+
+                    //读取 20
+                    num = 20;
+                    if (Profinet.Clear[num])
+                    {
+                        Profinet.Register[num] = 0;
+                        if (Profinet.SetRegister(num, num))
+                        {
+                            Profinet.Clear[num] = false;
+                        }
+                    }
+                    else
+                    {
+                        Profinet.GetRegister(num, num);
+                        Profinet.RegisterCompare[num] = Profinet.Register[num];
+                    }
+
+                    //写入 1-14
+                    Profinet.SetRegister(1, 14);
+                    //写入 21-34
+                    Profinet.SetRegister(21, 34);
+                    #endregion
+
+                    #region PLC
+                    //读取 56-60
+                    Profinet.GetRegister(56, 60);
+                    //读取 67-71
+                    Profinet.GetRegister(67, 71);
+
+                    //写入 50-55
+                    Profinet.SetRegister(50, 55);
+                    //写入 61-66
+                    Profinet.SetRegister(61, 66);
+                    #endregion
                 }
-                else
-                {
-                    Profinet.GetRegister(num, num);
-                    Profinet.RegisterCompare[num] = Profinet.Register[num];
-                }
-
-                //写入 1-14
-                Profinet.SetRegister(1, 14);
-                //写入 21-34
-                Profinet.SetRegister(21, 34);
-                #endregion
-
-                #region PLC
-                //读取 56-60
-                Profinet.GetRegister(56, 60);
-                //读取 67-71
-                Profinet.GetRegister(67, 71);
-
-                //写入 50-55
-                Profinet.SetRegister(50, 55);
-                //写入 61-66
-                Profinet.SetRegister(61, 66);
-                #endregion
             }
         }
     }

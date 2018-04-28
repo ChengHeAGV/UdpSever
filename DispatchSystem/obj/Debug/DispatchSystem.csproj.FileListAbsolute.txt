@@ -365,3 +365,4 @@ D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CopyCo
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
+D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.UpdateDataInfo.resources

@@ -16,8 +16,6 @@ namespace DispatchSystem
 {
     public partial class MDIParent1 : Form
     {
-        private int childFormNumber = 0;
-
         public MDIParent1()
         {
             InitializeComponent();
@@ -340,6 +338,8 @@ namespace DispatchSystem
                     if (treeView1.Nodes[i.ToString()] == null)
                     {
                         treeView1.Nodes.Add(i.ToString(), "AGV" + i.ToString());
+
+
                         //传感器
                         treeView1.Nodes[i.ToString()].Nodes.Add(AGV.Sensor.Key, AGV.Sensor.Text);
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Sensor.Key].ImageIndex = AGV.Sensor.ImageIndex;
@@ -361,6 +361,18 @@ namespace DispatchSystem
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].ImageIndex = AGV.Register.ImageIndex;
                         treeView1.Nodes[i.ToString()].Nodes[AGV.Register.Key].SelectedImageIndex = AGV.Register.SelectedImageIndex;
                     }
+
+                    //判断AGV是否就绪
+                    if (UdpSever.Register[i, 8, 0] == 2)//就绪
+                        treeView1.Nodes[i.ToString()].ForeColor = Color.Green;
+                    else
+                    {
+                        if (treeView1.Nodes[i.ToString()].ForeColor == Color.Red)
+                            treeView1.Nodes[i.ToString()].ForeColor = Color.Black;
+                        else
+                            treeView1.Nodes[i.ToString()].ForeColor = Color.Red;
+                    }
+
                 }
             }
             UdpSever.OnlieDeviceNum = treeView1.GetNodeCount(false);

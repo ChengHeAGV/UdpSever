@@ -597,7 +597,7 @@ namespace DispatchSystem.User
                 //网络连接判断
                 if (DataTransmission.ListenState.ModbusTcp == false)
                 {
-                    DataTransmission.StartListen();
+                   // DataTransmission.StartListen();
                 }
 
                 //更新MES状态

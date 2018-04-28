@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+    <EntitySetMapping Name="ModbusConfig">
+      <EntityTypeMapping TypeName="masterModel.ModbusConfig">
+        <MappingFragment StoreEntitySet="ModbusConfig">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="des" ColumnName="des" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DbProfinet">
+      <EntityTypeMapping TypeName="masterModel.DbProfinet">
+        <MappingFragment StoreEntitySet="DbProfinet">
+          <ScalarProperty Name="des" ColumnName="des" />
+          <ScalarProperty Name="dir" ColumnName="dir" />
+          <ScalarProperty Name="reg" ColumnName="reg" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
