@@ -1,4 +1,9 @@
 ﻿
+
+
+2018.4.28
+1.将dbus的响应和主动发送的socket分开，或者增加顺序机制
+
 2018.4.27
 1.dataGridView间隔色失效 
 2.dataGridView 增加size变化自动滚动到最后一行选择项  ok

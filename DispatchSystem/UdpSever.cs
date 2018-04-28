@@ -973,6 +973,7 @@ namespace DispatchSystem
             Post_Multiple_Registers(ServerAddress, TargetAddress, RegisterAddress, Num, Data, EndPointArray[TargetAddress]);
         }
 
+        static bool udpBusy = false;
         /// <summary>
         /// 发送
         /// </summary>
@@ -982,8 +983,9 @@ namespace DispatchSystem
         {
             try
             {
-                if (str != null && EndPort != null)
+                if (str != null && EndPort != null && udpBusy == false)
                 {
+                    udpBusy = true;
                     byte[] buf = new byte[str.Length * 2 + 2];
                     buf[0] = (byte)('$');
                     string sting = ByteToHexStr(str);
@@ -1006,6 +1008,8 @@ namespace DispatchSystem
             {
 
             }
+
+            udpBusy = false;
         }
 
         public class CRC
@@ -1102,7 +1106,7 @@ namespace DispatchSystem
         /// <param name="timestamp">时间戳</param>
         /// <param name="format">输出格式，DateTimeFormatInfo</param>
         /// <returns></returns>
-        public static string StampToString(long timestamp,string format= "yyyy-MM-dd HH:mm:ss")
+        public static string StampToString(long timestamp, string format = "yyyy-MM-dd HH:mm:ss")
         {
             var datetime = new DateTime();
             var start = new DateTime(1970, 1, 1, 0, 0, 0, datetime.Kind);
