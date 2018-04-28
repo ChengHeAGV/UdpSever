@@ -44,7 +44,10 @@
             // 
             // uDataGridView1
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.uDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.uDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.uDataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.uDataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.uDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -69,47 +72,54 @@
             this.uDataGridView1.OnSizeChangeScroll = false;
             this.uDataGridView1.ReadOnly = true;
             this.uDataGridView1.RowHeadersWidth = 60;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.uDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.uDataGridView1.RowTemplate.Height = 23;
             this.uDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.uDataGridView1.Size = new System.Drawing.Size(939, 701);
-            this.uDataGridView1.TabIndex = 0;
+            this.uDataGridView1.TabIndex = 1;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "日期";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 54;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "时间";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
+            this.Column7.Width = 54;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "寄存器类型";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 90;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "寄存器地址";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 90;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "值";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 42;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "更新次数";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.Width = 78;
             // 
             // Column6
             // 
