@@ -29,6 +29,7 @@ namespace DispatchSystem.User
         {
             //创建菜单
             contextMenu = new ContextMenuStrip();
+            contextMenu.Font = new Font("新宋体",14);
             contextMenu.Items.Add("更新描述");
             contextMenu.Items.Add("清除描述");
             //添加点击事件
@@ -130,7 +131,7 @@ namespace DispatchSystem.User
             {
                 //获取寄存器编号
                 int regNum = int.Parse(doubleBufferListView1.SelectedItems[0].SubItems[3].Text);
-                UpdateDataInfo updateDataInfo = new UpdateDataInfo(regNum);
+                UpdateDataInfo updateDataInfo = new UpdateDataInfo(regNum, doubleBufferListView1.SelectedItems[0].SubItems[6].Text, doubleBufferListView1.SelectedItems[0].SubItems[7].Text);
                 updateDataInfo.ShowDialog();
                 if (updateDataInfo.DialogResult == DialogResult.OK)
                 {

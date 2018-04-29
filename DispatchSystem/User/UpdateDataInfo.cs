@@ -29,17 +29,25 @@ namespace DispatchSystem.User
 
         int regNum;
 
-        public UpdateDataInfo(int num)
+        public UpdateDataInfo(int num, string dir, string des)
         {
             InitializeComponent();
-            regNum = num;
             comboBoxStart.SelectedIndex = 0;
             comboBoxStop.SelectedIndex = 1;
+
+            regNum = num;
+            if (dir != null)
+            {
+                labelDir.Text = dir;
+            }
+            else
+                labelDir.Text = string.Format("{0} -> {1}", comboBoxStart.Text, comboBoxStop.Text);
+            textBoxDes.Text = des;
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            dir = comboBoxStart.Text + " -> " + comboBoxStop.Text;
+            dir = labelDir.Text;
             des = textBoxDes.Text;
             //读取数据库
             masterEntities db = new masterEntities();
@@ -69,6 +77,16 @@ namespace DispatchSystem.User
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void comboBoxStart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelDir.Text = comboBoxStart.Text + " -> " + comboBoxStop.Text;
+        }
+
+        private void comboBoxStop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelDir.Text = comboBoxStart.Text + " -> " + comboBoxStop.Text;
         }
     }
 }

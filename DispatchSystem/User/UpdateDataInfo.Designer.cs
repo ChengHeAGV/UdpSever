@@ -36,11 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonEnter = new System.Windows.Forms.Button();
+            this.labelDir = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelDir);
             this.groupBox1.Controls.Add(this.comboBoxStop);
             this.groupBox1.Controls.Add(this.comboBoxStart);
             this.groupBox1.Controls.Add(this.textBoxDes);
@@ -52,7 +54,7 @@
             this.groupBox1.Font = new System.Drawing.Font("宋体", 12F);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(341, 233);
+            this.groupBox1.Size = new System.Drawing.Size(341, 259);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -69,6 +71,7 @@
             this.comboBoxStop.Name = "comboBoxStop";
             this.comboBoxStop.Size = new System.Drawing.Size(170, 24);
             this.comboBoxStop.TabIndex = 10;
+            this.comboBoxStop.SelectedIndexChanged += new System.EventHandler(this.comboBoxStop_SelectedIndexChanged);
             // 
             // comboBoxStart
             // 
@@ -83,10 +86,11 @@
             this.comboBoxStart.Name = "comboBoxStart";
             this.comboBoxStart.Size = new System.Drawing.Size(170, 24);
             this.comboBoxStart.TabIndex = 9;
+            this.comboBoxStart.SelectedIndexChanged += new System.EventHandler(this.comboBoxStart_SelectedIndexChanged);
             // 
             // textBoxDes
             // 
-            this.textBoxDes.Location = new System.Drawing.Point(105, 96);
+            this.textBoxDes.Location = new System.Drawing.Point(105, 132);
             this.textBoxDes.Multiline = true;
             this.textBoxDes.Name = "textBoxDes";
             this.textBoxDes.Size = new System.Drawing.Size(170, 76);
@@ -95,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 99);
+            this.label3.Location = new System.Drawing.Point(51, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 7;
@@ -113,7 +117,7 @@
             // buttonCancel
             // 
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Location = new System.Drawing.Point(190, 189);
+            this.buttonCancel.Location = new System.Drawing.Point(190, 214);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(85, 33);
             this.buttonCancel.TabIndex = 1;
@@ -124,7 +128,7 @@
             // buttonEnter
             // 
             this.buttonEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnter.Location = new System.Drawing.Point(74, 189);
+            this.buttonEnter.Location = new System.Drawing.Point(74, 214);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(85, 33);
             this.buttonEnter.TabIndex = 0;
@@ -132,11 +136,24 @@
             this.buttonEnter.UseVisualStyleBackColor = true;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
+            // labelDir
+            // 
+            this.labelDir.AutoSize = true;
+            this.labelDir.BackColor = System.Drawing.Color.Gold;
+            this.labelDir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelDir.Location = new System.Drawing.Point(105, 93);
+            this.labelDir.Margin = new System.Windows.Forms.Padding(1);
+            this.labelDir.Name = "labelDir";
+            this.labelDir.Padding = new System.Windows.Forms.Padding(3);
+            this.labelDir.Size = new System.Drawing.Size(48, 24);
+            this.labelDir.TabIndex = 11;
+            this.labelDir.Text = "A->B";
+            // 
             // UpdateDataInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 233);
+            this.ClientSize = new System.Drawing.Size(341, 259);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -160,5 +177,6 @@
         private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.ComboBox comboBoxStart;
         private System.Windows.Forms.ComboBox comboBoxStop;
+        private System.Windows.Forms.Label labelDir;
     }
 }
