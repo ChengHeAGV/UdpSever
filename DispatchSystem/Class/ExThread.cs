@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DispatchSystem.Class
 {
-    class ThreadClass
+    class ExThread
     {
         public AutoResetEvent exitEvent;
         private Thread thread;
         //定义一个委托
         public delegate void delegateFun();
 
-        public ThreadClass(delegateFun fun)
+        public ExThread(delegateFun fun)
         {
             exitEvent = new AutoResetEvent(false);
             thread = new Thread(new ThreadStart(fun));
