@@ -91,7 +91,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Modbus.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -155,6 +154,7 @@
     <Compile Include="AGV\StateForm.Designer.cs">
       <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class\ExThread.cs" />
     <Compile Include="Database\DbProfinet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -238,7 +238,6 @@
     <Compile Include="User\UpdateDataInfo.Designer.cs">
       <DependentUpon>UpdateDataInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="XmlHelper.cs" />
     <Compile Include="Developer\DebugForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,13 +293,12 @@
     <Compile Include="UserControls\Forklift.designer.cs">
       <DependentUpon>Forklift.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\doubleBufferListView.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="UserControls\ExListView.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\doubleBufferListView.Designer.cs">
-      <DependentUpon>doubleBufferListView.cs</DependentUpon>
+    <Compile Include="UserControls\ExListView.Designer.cs">
+      <DependentUpon>ExListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ini.cs" />
     <Compile Include="MDIParent1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -443,8 +441,8 @@
     <EmbeddedResource Include="UserControls\Forklift.resx">
       <DependentUpon>Forklift.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\doubleBufferListView.resx">
-      <DependentUpon>doubleBufferListView.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ExListView.resx">
+      <DependentUpon>ExListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
