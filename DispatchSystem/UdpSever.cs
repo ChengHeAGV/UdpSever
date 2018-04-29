@@ -1,4 +1,5 @@
-﻿using DispatchSystem.Developer;
+﻿using DispatchSystem.Class;
+using DispatchSystem.Developer;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -68,9 +69,6 @@ namespace DispatchSystem
         //响应帧缓冲池
         public static byte[,] ResponseBuf = new byte[RESPONSE_MAX_LEN, FrameLen];
 
-        //监听服务总进程
-        static Thread UdpThread;
-
         //帧ID
         public static int FrameID = 0;
 
@@ -106,8 +104,7 @@ namespace DispatchSystem
 
         static IPEndPoint ipEndPoint;
         static Socket socket;
-        //主线程状态
-        public static bool UdpThreadIsClosed = true;
+        static ExThread udpThread;
 
         /// <summary>
         /// 启动UDP服务器
@@ -124,9 +121,9 @@ namespace DispatchSystem
                 rs.Message = "启动成功";
 
                 #region UDP数据接收
-                UdpThreadIsClosed = false;
-                UdpThread = new Thread(UdpFunc);
-                UdpThread.Start();
+                udpThread = new ExThread(UdpFunc);
+                udpThread.Run();
+
                 #endregion
 
                 //启动检测连接进程
@@ -152,19 +149,12 @@ namespace DispatchSystem
             try
             {
                 //退出线程
-                UdpThreadIsClosed = true;
                 Log("系统消息", "正在关闭服务器，请稍等...!");
+                udpThread.Stop();
                 socket.Close();
-                //等待线程退出
-                while (UdpThread.ThreadState != System.Threading.ThreadState.Stopped)
-                {
-                    Thread.Sleep(10);
-                }
-                //注销检测连接进程
-                UdpThread.Abort();
+                socket.Dispose();
 
                 State = false;//更新服务器状态 
-
                 rs.Reault = true;
                 rs.Message = "停止成功";
 
@@ -189,10 +179,20 @@ namespace DispatchSystem
                 EndPoint endPoint = (EndPoint)(sender);
                 //定义接收池字符串
                 string StringBuf = string.Empty;
-                while (UdpThreadIsClosed == false)
+                while (true)
                 {
+                    if (udpThread.exitEvent.WaitOne(10))
+                    {
+                        break;
+                    }
                     //从缓冲区读取数据
                     byte[] bytes = new byte[3096];
+
+                    //缓冲区没有数据跳过
+                    if (socket.Available <= 0) continue;
+                    //socket被关闭则退出
+                    if (socket == null) return;
+
                     int length = socket.ReceiveFrom(bytes, ref endPoint);
                     //更新接收到的数据总长度
                     RxLength += (UInt64)length;
