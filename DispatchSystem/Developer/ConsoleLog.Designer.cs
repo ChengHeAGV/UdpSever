@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.doubleBufferListView1 = new DispatchSystem.DoubleBufferListView();
+            this.doubleBufferListView1 = new DispatchSystem.ExListView();
             this.SuspendLayout();
             // 
             // doubleBufferListView1
@@ -64,6 +64,6 @@
 
         #endregion
 
-        private DoubleBufferListView doubleBufferListView1;
+        private ExListView doubleBufferListView1;
     }
 }

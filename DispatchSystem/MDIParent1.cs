@@ -1,4 +1,5 @@
 ﻿using DispatchSystem.AGV;
+using DispatchSystem.Class;
 using DispatchSystem.Database;
 using DispatchSystem.Developer;
 using DispatchSystem.Set;
@@ -9,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -21,54 +23,61 @@ namespace DispatchSystem
             InitializeComponent();
         }
 
-        private void MDIParent1_Load(object sender, EventArgs e)
+        private async void MDIParent1_Load(object sender, EventArgs e)
         {
-            #region 启动消息界面
-            consoleLog.TopLevel = false;
-            consoleLog.Parent = splitContainer3.Panel2;
-            consoleLog.Show();//弹出这个窗口
-            consoleLog.Focus();//激活显示
-            #endregion
-
-            ConsoleLog.WriteLog("系统启动...", Color.Black);
-            ConsoleLog.WriteLog("加载调试信息...", Color.Black);
-            ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
-
-            ConsoleLog.WriteLog("[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
-            ConsoleLog.WriteLog("[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
-            ConsoleLog.WriteLog("[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
-            ConsoleLog.WriteLog("[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
-            ConsoleLog.WriteLog("[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
-            ConsoleLog.WriteLog("[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
-            ConsoleLog.WriteLog("[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
-            ConsoleLog.WriteLog("[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
-            ConsoleLog.WriteLog("[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
-
-            #region 获取本机IP，自动开启服务器
-            string name = Dns.GetHostName();
-            IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
-            foreach (IPAddress ipa in ipadrlist)
+            //发送任务到AGV
+            await Task.Run(() =>
             {
-                if (ipa.AddressFamily == AddressFamily.InterNetwork)
+                this.Invoke(new MethodInvoker(delegate
                 {
-                    ConsoleLog.WriteLog("系统消息", "本机IP:[{0}]", ipa.ToString());
-                    UdpSever.ipaddress = ipa;
-                }
-            }
-            //自动启动服务器
-            UdpSever.Resault rs = UdpSever.Start();
-            //更新界面
-            udpConfigForm_MyEvent();
-            #endregion
+                    #region 启动消息界面
+                    consoleLog.TopLevel = false;
+                    consoleLog.Parent = splitContainer3.Panel2;
+                    consoleLog.Show();//弹出这个窗口
+                    consoleLog.Focus();//激活显示
+                    #endregion
 
-            treeView1.Nodes.Clear();
+                    ConsoleLog.WriteLog("系统启动...", Color.Black);
+                    ConsoleLog.WriteLog("加载调试信息...", Color.Black);
+                    ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
 
-            #region 启动任务界面
-            //taskForm.TopLevel = false;
-            //taskForm.Parent = splitContainer3.Panel1;
-            //taskForm.Show();//弹出这个窗口
-            //taskForm.Focus();//激活显示
-            #endregion
+                    ConsoleLog.WriteLog("[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
+                    ConsoleLog.WriteLog("[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
+                    ConsoleLog.WriteLog("[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
+                    ConsoleLog.WriteLog("[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
+                    ConsoleLog.WriteLog("[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
+                    ConsoleLog.WriteLog("[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
+                    ConsoleLog.WriteLog("[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
+                    ConsoleLog.WriteLog("[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
+                    ConsoleLog.WriteLog("[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
+
+                    #region 获取本机IP，自动开启服务器
+                    string name = Dns.GetHostName();
+                    IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
+                    foreach (IPAddress ipa in ipadrlist)
+                    {
+                        if (ipa.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            ConsoleLog.WriteLog("系统消息", "本机IP:[{0}]", ipa.ToString());
+                            UdpSever.ipaddress = ipa;
+                        }
+                    }
+                    //自动启动服务器
+                    UdpSever.Resault rs = UdpSever.Start();
+                    //更新界面
+                    udpConfigForm_MyEvent();
+                    #endregion
+
+                    treeView1.Nodes.Clear();
+
+                    #region 启动任务界面
+                    //taskForm.TopLevel = false;
+                    //taskForm.Parent = splitContainer3.Panel1;
+                    //taskForm.Show();//弹出这个窗口
+                    //taskForm.Focus();//激活显示
+                    #endregion
+                }));
+            });
         }
 
         /// <summary>

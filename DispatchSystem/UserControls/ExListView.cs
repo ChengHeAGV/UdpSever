@@ -2,9 +2,9 @@
 
 namespace DispatchSystem
 {
-    public class DoubleBufferListView : ListView
+    public class ExListView : ListView
     {
-        public DoubleBufferListView()
+        public ExListView()
         {
             SetStyle(ControlStyles.DoubleBuffer |
               ControlStyles.OptimizedDoubleBuffer |
