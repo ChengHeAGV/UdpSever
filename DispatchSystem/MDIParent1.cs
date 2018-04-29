@@ -30,9 +30,6 @@ namespace DispatchSystem
             consoleLog.Focus();//激活显示
             #endregion
 
-            //初始化系统参数
-            XmlHelper.InitDebug();
-
             ConsoleLog.WriteLog("系统启动...", Color.Black);
             ConsoleLog.WriteLog("加载调试信息...", Color.Black);
             ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
@@ -67,10 +64,10 @@ namespace DispatchSystem
             treeView1.Nodes.Clear();
 
             #region 启动任务界面
-            taskForm.TopLevel = false;
-            taskForm.Parent = splitContainer3.Panel1;
-            taskForm.Show();//弹出这个窗口
-            taskForm.Focus();//激活显示
+            //taskForm.TopLevel = false;
+            //taskForm.Parent = splitContainer3.Panel1;
+            //taskForm.Show();//弹出这个窗口
+            //taskForm.Focus();//激活显示
             #endregion
         }
 
