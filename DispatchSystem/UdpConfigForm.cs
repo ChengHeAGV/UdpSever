@@ -62,17 +62,17 @@ namespace DispatchSystem
                     break;
                 }
             }
-           
 
-            string str = Ini.Read("网络配置", "Port");
-            if (str != "null")
-            {
-                textBoxPort.Text = str;
-            }
-            else
-            {
-                textBoxPort.Text = "18666";
-            }
+
+            // string str = Ini.Read("网络配置", "Port");
+            //if (str != "null")
+            //{
+            //    textBoxPort.Text = str;
+            //}
+            //else
+            //{
+            textBoxPort.Text = "18666";
+            //}
         }
 
         //转移焦点，避免输出框被选中
@@ -124,12 +124,12 @@ namespace DispatchSystem
 
         private void textBoxIP_TextChanged(object sender, EventArgs e)
         {
-            Ini.Write("网络配置", "IP", textBoxIP.Text);
+            //Ini.Write("网络配置", "IP", textBoxIP.Text);
         }
 
         private void textBoxPort_TextChanged(object sender, EventArgs e)
         {
-            Ini.Write("网络配置", "Port", textBoxPort.Text);
+            //Ini.Write("网络配置", "Port", textBoxPort.Text);
         }
     }
 }
