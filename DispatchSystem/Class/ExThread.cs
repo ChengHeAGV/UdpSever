@@ -19,7 +19,7 @@ namespace DispatchSystem.Class
             exitEvent = new AutoResetEvent(false);
             thread = new Thread(new ThreadStart(fun));
         }
-        public void Run()
+        public void Start()
         {
             thread.Start();
         }
