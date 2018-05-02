@@ -22,11 +22,11 @@ namespace DispatchSystem.UserControls
             exListView1.FullRowSelect = true;//要选择就是一行
             exListView1.Columns.Add(datekey[0], 120, HorizontalAlignment.Left);
             exListView1.Columns.Add(datekey[1], 140, HorizontalAlignment.Left);
-            exListView1.Columns.Add(datekey[2], 680, HorizontalAlignment.Left);
+            exListView1.Columns.Add(datekey[2], -2, HorizontalAlignment.Left);//根据内容自适应宽度
             #endregion
         }
 
-        public void WriteLine(string msg,Color color, int fontSize = 14) 
+        public void WriteLine(string msg, Color color, int fontSize = 14)
         {
             Write(msg, color, fontSize);
         }
@@ -35,11 +35,11 @@ namespace DispatchSystem.UserControls
             Write(msg, Color.Black, fontSize);
         }
 
-        public void WriteLine(string msg) 
+        public void WriteLine(string msg)
         {
             Write(msg, Color.Black, 14);
         }
-        public void WriteLine(string format, params object[] args)  
+        public void WriteLine(string format, params object[] args)
         {
             Write(string.Format(format, args), Color.Black, 14);
         }
