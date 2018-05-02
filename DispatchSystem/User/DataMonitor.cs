@@ -1,4 +1,5 @@
-﻿using DispatchSystem.Database;
+﻿using DispatchSystem.Class;
+using DispatchSystem.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +12,9 @@ namespace DispatchSystem.User
 {
     public partial class DataMonitor : Form
     {
-        Thread mainThread;
+        ExThread mainThread;
+
+
         ushort[] DataCompare = new ushort[DataTransmission.Profinet.Register.Length];
 
         masterEntities db = new masterEntities();
@@ -27,9 +30,10 @@ namespace DispatchSystem.User
         string[] datekey = new string[10];
         private void DataMonitor_Load(object sender, EventArgs e)
         {
+            this.FormClosing += DataMonitor_FormClosing;
             //创建菜单
             contextMenu = new ContextMenuStrip();
-            contextMenu.Font = new Font("新宋体",14);
+            contextMenu.Font = new Font("新宋体", 14);
             contextMenu.Items.Add("更新描述");
             contextMenu.Items.Add("清除描述");
             //添加点击事件
@@ -71,12 +75,20 @@ namespace DispatchSystem.User
                 item.SubItems.Add("");//  "传输方向";
                 item.SubItems.Add("");//  "描述";
                 doubleBufferListView1.Items.Add(item);
+                doubleBufferListView1.Items[i].ForeColor = Color.Gray;
+                if (i % 2 == 0)
+                    doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
             }
             #endregion
 
-            mainThread = new Thread(new ThreadStart(func));
-            mainThread.IsBackground = true;
+
+            mainThread = new ExThread(func);
             mainThread.Start();
+        }
+
+        private void DataMonitor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainThread.Stop();
         }
 
         private void DoubleBufferListView1_MouseClick(object sender, MouseEventArgs e)
@@ -153,11 +165,12 @@ namespace DispatchSystem.User
             }));
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
+                if (mainThread.exitEvent.WaitOne(1000))//延时1000ms
+                    break;
                 this.BeginInvoke(new MethodInvoker(delegate
                  {
                      update(true);
                  }));
-                Thread.Sleep(1000);
             }
         }
 
@@ -175,7 +188,7 @@ namespace DispatchSystem.User
                     if (change)
                     {
                         doubleBufferListView1.Items[i].ForeColor = Color.Blue;
-                        doubleBufferListView1.Items[i].Font = new Font("新宋体", 18,FontStyle.Bold);
+                        doubleBufferListView1.Items[i].Font = new Font("新宋体", 18, FontStyle.Bold);
                     }
                     else
                         doubleBufferListView1.Items[i].ForeColor = Color.Gray;
