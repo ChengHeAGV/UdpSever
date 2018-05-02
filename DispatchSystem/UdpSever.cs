@@ -122,7 +122,7 @@ namespace DispatchSystem
 
                 #region UDP数据接收
                 udpThread = new ExThread(UdpFunc);
-                udpThread.Run();
+                udpThread.Start();
 
                 #endregion
 
