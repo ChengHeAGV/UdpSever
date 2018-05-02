@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\
 DispatchSystem
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 1-264474977
 161426976911
-97-155908185
-35-1831407380
+96696490691
+352146943094
 UserControls\WPF\UCTabItemWithClose.xaml;
 
 False

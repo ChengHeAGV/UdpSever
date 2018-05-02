@@ -71,7 +71,8 @@ namespace DispatchSystem.User
                 dbusThread = new Thread(new ThreadStart(Syncdbus));
                 dbusThread.IsBackground = true;
                 dbusThread.Start();
-                ConsoleLog.WriteLog("监听Dbus启动成功！", Color.Green, 24);
+                //ConsoleLog.WriteLog("监听Dbus启动成功！", Color.Green, 24);
+
                 ListenState.Dbus = true;
             }
             #endregion
@@ -81,7 +82,7 @@ namespace DispatchSystem.User
             {
                 try
                 {
-                    ConsoleLog.WriteLog(string.Format("[ModbusTcp]IP地址:{0},Port:{1}",Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
+                    //ConsoleLog.WriteLog(string.Format("[ModbusTcp]IP地址:{0},Port:{1}",Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
                     TcpClient tcpClient = new TcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort);
                     modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
                     modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
@@ -93,12 +94,12 @@ namespace DispatchSystem.User
                     modbusThread = new Thread(new ThreadStart(SyncModbus));
                     modbusThread.IsBackground = true;
                     modbusThread.Start();
-                    ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
+                    //ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
                     ListenState.ModbusTcp = true;
                 }
                 catch
                 {
-                    ConsoleLog.WriteLog("监听ModbusTCP失败！", Color.Red, 24);
+                    //ConsoleLog.WriteLog("监听ModbusTCP失败！", Color.Red, 24);
                 }
             }
 
@@ -171,7 +172,7 @@ namespace DispatchSystem.User
                 }
                 catch
                 {
-                    ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
+                    //ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
                     ErrorNum++;
                     return false;
                 }
@@ -194,7 +195,7 @@ namespace DispatchSystem.User
                 }
                 catch
                 {
-                    ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
+                    //ConsoleLog.WriteLog(string.Format("ProfiNet操作失败!:[{0}]", Msg), Color.Red, 20);
                     ErrorNum++;
                 }
             }

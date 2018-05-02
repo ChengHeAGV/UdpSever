@@ -155,6 +155,7 @@
       <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\ExThread.cs" />
+    <Compile Include="Class\MyConsole.cs" />
     <Compile Include="Database\DbProfinet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -181,12 +182,6 @@
     </Compile>
     <Compile Include="Developer\CanForm.designer.cs">
       <DependentUpon>CanForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Developer\ConsoleLog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Developer\ConsoleLog.Designer.cs">
-      <DependentUpon>ConsoleLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -409,9 +404,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AGV\StateForm.resx">
       <DependentUpon>StateForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Developer\ConsoleLog.resx">
-      <DependentUpon>ConsoleLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Developer\DebugForm.resx">
       <DependentUpon>DebugForm.cs</DependentUpon>

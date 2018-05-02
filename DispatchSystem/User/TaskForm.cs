@@ -314,7 +314,7 @@ namespace DispatchSystem.User
                     }
                     //清除AGV任务标志
                     UdpSever.Register[AgvNum, 1, 0] = 0;
-                    ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}", AgvNum));
+                    //ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}", AgvNum));
                 });
             }
             //正常派任务
@@ -372,7 +372,7 @@ namespace DispatchSystem.User
                                         }
                                         //清除AGV任务标志
                                         UdpSever.Register[AgvNum, 1, 0] = 0;
-                                        ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}", AgvNum));
+                                        //ConsoleLog.WriteLog(string.Format("任务已经下发至AGV{0}", AgvNum));
                                     });
                                     //设置AGV忙状态
                                     Parameter.AgvRuning[AgvNum] = true;

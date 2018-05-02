@@ -5,6 +5,7 @@ using DispatchSystem.Developer;
 using DispatchSystem.Set;
 using DispatchSystem.User;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,27 @@ namespace DispatchSystem
 {
     public partial class MDIParent1 : Form
     {
+        #region Console信息同步进程
+        ExThread ConsoleThread;
+        private void ConsoleFunc()
+        {
+            while (true)
+            {
+                if (ConsoleThread.exitEvent.WaitOne(100))
+                {
+                    break;
+                }
+                if (exConsole1.Count < MyConsole.ConsoleList.Count && exConsole1.Count >= 0)
+                {
+                    for (int i = exConsole1.Count; i < MyConsole.ConsoleList.Count; i++)
+                    {
+                        exConsole1.WriteLine(MyConsole.ConsoleList[i].Msg, MyConsole.ConsoleList[i].color, MyConsole.ConsoleList[i].Size);
+                    }
+                }
+            }
+        }
+        #endregion
+
         public MDIParent1()
         {
             InitializeComponent();
@@ -27,36 +49,39 @@ namespace DispatchSystem
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            //清除AGV列表
             treeView1.Nodes.Clear();
-            //#region 启动消息界面
-            //consoleLog.TopLevel = false;
-            //consoleLog.Parent = splitContainer3.Panel2;
-            //consoleLog.Show();//弹出这个窗口
-            //consoleLog.Focus();//激活显示
-            //#endregion
-
-
+            //启动主线程
             Thread th = new Thread(new ThreadStart(mainThread));
             th.Start();
-            ////发送任务到AGV
-            //await Task.Run(() =>
-            //{
-            //    this.Invoke(new MethodInvoker(delegate
-            //    {
+        }
 
-            //        ConsoleLog.WriteLog("系统启动...", Color.Black);
-            //        ConsoleLog.WriteLog("加载调试信息...", Color.Black);
-            //        ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
+        private void mainThread()
+        {
+            //启动Console信息同步进程
+            ConsoleThread = new ExThread(ConsoleFunc);
+            ConsoleThread.Start();
 
-            //        ConsoleLog.WriteLog("[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
-            //        ConsoleLog.WriteLog("[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
-            //        ConsoleLog.WriteLog("[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
-            //        ConsoleLog.WriteLog("[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
-            //        ConsoleLog.WriteLog("[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
-            //        ConsoleLog.WriteLog("[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
-            //        ConsoleLog.WriteLog("[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
-            //        ConsoleLog.WriteLog("[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
-            //        ConsoleLog.WriteLog("[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
+            MyConsole.Add("系统启动中...");
+
+            MyConsole.Add(string.Format("[服务器地址][{0}]", UdpSever.ServerAddress));
+            MyConsole.Add(string.Format("[设备数][{0}]", UdpSever.DeviceNum));
+            MyConsole.Add(string.Format("[寄存器数][{0}]", UdpSever.RegisterNum));
+            MyConsole.Add(string.Format("[单帧数据长度][{0}]", UdpSever.FrameLen));
+            MyConsole.Add(string.Format("[心跳周期][{0}]秒", UdpSever.HeartCycle));
+            MyConsole.Add(string.Format("[重发次数][{0}]", UdpSever.RepeatNum));
+            MyConsole.Add(string.Format("[超时时间][{0}]", UdpSever.ResponseTimeout));
+            MyConsole.Add(string.Format("[响应帧缓冲池容量][{0}]", UdpSever.RESPONSE_MAX_LEN));
+            MyConsole.Add(string.Format("[设备总数][{0}]\r\n", UdpSever.DeviceNum));
+
+            //测试ModbusTcp服务器连接
+            Ping pingSender = new Ping();
+            PingReply reply = pingSender.Send("192.168.250.102", 100);//第一个参数为ip地址，第二个参数为ping的时间
+            if (reply.Status == IPStatus.Success)
+                MyConsole.Add("ModbusTcp服务器连接成功!", Color.Green);
+            else
+                MyConsole.Add("ModbusTcp服务器连接失败!", Color.Red);
+
 
             //        #region 获取本机IP，自动开启服务器
             //        string name = Dns.GetHostName();
@@ -84,27 +109,6 @@ namespace DispatchSystem
             //        //taskForm.Focus();//激活显示
             //        #endregion
             //    }));
-            //});
-        }
-
-        private void mainThread()
-        {
-            //ConsoleLog.WriteLog("尝试和ModbusTCP服务器通信...");
-            //exConsole1.WriteLine= "尝试和ModbusTCP服务器通信...";
-            Ping pingSender = new Ping();
-
-            PingReply reply = pingSender.Send("127.0.0.1", 120);//第一个参数为ip地址，第二个参数为ping的时间
-            if (reply.Status == IPStatus.Success)
-            {
-                //ping的通
-                Thread.Sleep(1000);
-                exConsole1.WriteLine("通信成功!",Color.Green,18);
-            }
-            else
-            {
-                //ping不通
-               // ConsoleLog.WriteLog("通信失败!");
-            }
         }
 
         /// <summary>
@@ -475,10 +479,14 @@ namespace DispatchSystem
                 e.Cancel = true;
             }
             else
-            if (UdpSever.State)//如果服务器运行，则关闭服务器
             {
-                UdpSever.Stop();
+                ConsoleThread.Stop();
+                if (UdpSever.State)//如果服务器运行，则关闭服务器
+                {
+                    UdpSever.Stop();
+                }
             }
+
         }
 
         private void MDIParent1_FormClosed(object sender, FormClosedEventArgs e)
@@ -566,8 +574,6 @@ namespace DispatchSystem
             }
         }
         #endregion
-
-
 
         //调试信息
         DebugForm debugForm = new DebugForm();
@@ -689,24 +695,6 @@ namespace DispatchSystem
                 canForm.Focus();//激活显示
             }
         }
-        ConsoleLog consoleLog = new ConsoleLog();
-        private void logToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (consoleLog.IsDisposed != true)
-            {
-                consoleLog.TopLevel = false;
-                consoleLog.Parent = splitContainer3.Panel2;
-
-                consoleLog.Show();//弹出这个窗口
-                consoleLog.Focus();//激活显示
-            }
-            else
-            {
-                consoleLog = new ConsoleLog();
-                consoleLog.Show();//弹出这个窗口
-                consoleLog.Focus();//激活显示
-            }
-        }
 
         private void dbus服务器配置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -715,8 +703,8 @@ namespace DispatchSystem
 
         private void splitContainer3_Panel2_SizeChanged(object sender, EventArgs e)
         {
-            consoleLog.WindowState = FormWindowState.Normal;
-            consoleLog.WindowState = FormWindowState.Maximized;
+            //consoleLog.WindowState = FormWindowState.Normal;
+            //consoleLog.WindowState = FormWindowState.Maximized;
 
             taskForm.WindowState = FormWindowState.Normal;
             taskForm.WindowState = FormWindowState.Maximized;

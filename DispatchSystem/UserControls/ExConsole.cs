@@ -7,6 +7,15 @@ namespace DispatchSystem.UserControls
     public partial class ExConsole : UserControl
     {
         string[] datekey = new string[10];
+
+        public int Count
+        {
+            get
+            {
+                return exListView1.Items.Count;
+            }
+        }
+
         public ExConsole()
         {
             InitializeComponent();
@@ -20,30 +29,24 @@ namespace DispatchSystem.UserControls
             datekey[2] = "事件";
 
             exListView1.FullRowSelect = true;//要选择就是一行
-            exListView1.Columns.Add(datekey[0], 120, HorizontalAlignment.Left);
-            exListView1.Columns.Add(datekey[1], 140, HorizontalAlignment.Left);
+            exListView1.Columns.Add(datekey[0], 200, HorizontalAlignment.Left);
+            exListView1.Columns.Add(datekey[1], 200, HorizontalAlignment.Left);
             exListView1.Columns.Add(datekey[2], -2, HorizontalAlignment.Left);//根据内容自适应宽度
             #endregion
+
+        }
+
+        public void WriteLine(string msg, int fontSize = 14)
+        {
+            Write(msg, Color.Black, fontSize);
         }
 
         public void WriteLine(string msg, Color color, int fontSize = 14)
         {
             Write(msg, color, fontSize);
         }
-        public void WriteLine(string msg, int fontSize = 14)
-        {
-            Write(msg, Color.Black, fontSize);
-        }
 
-        public void WriteLine(string msg)
-        {
-            Write(msg, Color.Black, 14);
-        }
-        public void WriteLine(string format, params object[] args)
-        {
-            Write(string.Format(format, args), Color.Black, 14);
-        }
-        public void Write(string msg, Color color, int fontSize)
+        private void Write(string msg, Color color, int fontSize = 14)
         {
             try
             {
@@ -57,8 +60,8 @@ namespace DispatchSystem.UserControls
                     item.ForeColor = color;//字体颜色
                     item.Font = new Font("新宋体", fontSize, FontStyle.Regular); //字体颜色
 
-                    if (exListView1.Items.Count % 2 == 0)
-                        item.BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
+                    if (exListView1.Items.Count % 2 == 1)
+                        item.BackColor = Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
 
                     exListView1.Items.Add(item);
                     exListView1.EnsureVisible(exListView1.Items.Count - 1);//滚动到指定的行位置

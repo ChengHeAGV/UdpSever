@@ -129,7 +129,7 @@ namespace DispatchSystem
                 //启动检测连接进程
                 State = true;//更新服务器状态
 
-                ConsoleLog.WriteLog("系统消息", "服务已启动!");
+                //ConsoleLog.WriteLog("系统消息", "服务已启动!");
                 return rs;
             }
             catch (Exception ex)

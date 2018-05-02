@@ -247,8 +247,6 @@ E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 E:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 E:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database.mdf
 E:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database_log.ldf
-D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database.mdf
-D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\Database\Database_log.ldf
 D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
 D:\github\App\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.pdb
@@ -269,7 +267,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.Contr
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.DisplayForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.SetForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AGV.StateForm.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.ConsoleLog.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.DebugForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.CanForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Developer.ListenForm.resources
@@ -279,7 +276,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Process.r
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.ThirdAppResource.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Buttons.LBButton.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.Forklift.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.doubleBufferListView.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.MDIParent1.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Properties.Resources.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.SensorForm.resources
@@ -302,7 +298,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\zh-CN\AGV调度系统.re
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.CopyComplete
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.UDataGridView.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.DataMonitor.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.RegisterForm.resources
@@ -367,3 +362,9 @@ D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolve
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.UpdateDataInfo.resources
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.ExListView.resources
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.ExConsole.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Set.ModbusTcpConfigForm.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.ExConsole.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.ExListView.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.AddTask.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.UpdateDataInfo.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache

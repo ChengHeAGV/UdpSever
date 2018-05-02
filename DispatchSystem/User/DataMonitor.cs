@@ -30,6 +30,7 @@ namespace DispatchSystem.User
         string[] datekey = new string[10];
         private void DataMonitor_Load(object sender, EventArgs e)
         {
+            MyConsole.Add("数据镜像启动",Color.Orange);
             this.FormClosing += DataMonitor_FormClosing;
             //创建菜单
             contextMenu = new ContextMenuStrip();
@@ -61,7 +62,7 @@ namespace DispatchSystem.User
             doubleBufferListView1.Columns.Add(datekey[4], 100, HorizontalAlignment.Left);
             doubleBufferListView1.Columns.Add(datekey[5], 100, HorizontalAlignment.Left);
             doubleBufferListView1.Columns.Add(datekey[6], 150, HorizontalAlignment.Left);
-            doubleBufferListView1.Columns.Add(datekey[7], 300, HorizontalAlignment.Left);
+            doubleBufferListView1.Columns.Add(datekey[7], -2, HorizontalAlignment.Left);
 
             for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
             {
@@ -77,7 +78,7 @@ namespace DispatchSystem.User
                 doubleBufferListView1.Items.Add(item);
                 doubleBufferListView1.Items[i].ForeColor = Color.Gray;
                 if (i % 2 == 0)
-                    doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
+                    doubleBufferListView1.Items[i].BackColor = Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
             }
             #endregion
 
@@ -217,7 +218,7 @@ namespace DispatchSystem.User
                     }
 
                     if (i % 2 == 0)
-                        doubleBufferListView1.Items[i].BackColor = Color.FromArgb(200, 0xf5, 0xf6, 0xeb);
+                        doubleBufferListView1.Items[i].BackColor = Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
 
                     //更新对比缓存
                     DataCompare[i] = DataTransmission.Profinet.Register[i];

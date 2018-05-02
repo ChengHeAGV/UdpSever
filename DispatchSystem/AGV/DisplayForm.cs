@@ -94,7 +94,7 @@ namespace DispatchSystem
             data ^= 1;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -107,7 +107,7 @@ namespace DispatchSystem
             data ^= 1 << 1;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+           // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -120,7 +120,7 @@ namespace DispatchSystem
             data ^= 1 << 2;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -133,7 +133,7 @@ namespace DispatchSystem
             data ^= 1 << 3;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -146,7 +146,7 @@ namespace DispatchSystem
             data ^= 1 << 4;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -159,7 +159,7 @@ namespace DispatchSystem
             data ^= 1 << 5;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -172,7 +172,7 @@ namespace DispatchSystem
             data ^= 1 << 6;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -185,7 +185,7 @@ namespace DispatchSystem
             data ^= 1 << 7;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -198,7 +198,7 @@ namespace DispatchSystem
             data ^= 1 << 8;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+           // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -211,7 +211,7 @@ namespace DispatchSystem
             data ^= 1 << 9;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -224,7 +224,7 @@ namespace DispatchSystem
             data ^= 1 << 10;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+           // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -237,7 +237,7 @@ namespace DispatchSystem
             data ^= 1 << 11;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -250,7 +250,7 @@ namespace DispatchSystem
             data ^= 1 << 12;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -263,7 +263,7 @@ namespace DispatchSystem
             data ^= 1 << 13;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+            //Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -276,7 +276,7 @@ namespace DispatchSystem
             data ^= 1 << 14;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+           // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -289,7 +289,7 @@ namespace DispatchSystem
             data ^= 1 << 15;
             UdpSever.ReturnMsg returnmsg = new UdpSever.ReturnMsg();
             returnmsg = UdpSever.Write_Register(deviceID, registerID, (UInt16)data);
-            Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+           // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
             if (!returnmsg.resault)
             {
                 MessageBox.Show("写入失败！");
@@ -313,7 +313,7 @@ namespace DispatchSystem
                     data = (UInt16)((byt[0] << 8) | byt[1]);
                 }
                 returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
-                Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+               // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
                 if (!returnmsg.resault)
                 {
                     MessageBox.Show("写入失败！");
@@ -349,7 +349,7 @@ namespace DispatchSystem
                 {
                     UInt16 data = UInt16.Parse(tx.Text);
                     returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
-                    Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+                   // Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
                     if (!returnmsg.resault)
                     {
                         MessageBox.Show("写入失败！");
@@ -400,7 +400,7 @@ namespace DispatchSystem
                         data = (UInt16)((byt[0] << 8) | byt[1]);
                     }
                     returnmsg = UdpSever.Write_Register(deviceID, registerID, data);
-                    Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
+                  //  Console.WriteLine(string.Format("写单个字节结果:{0}\r\n", returnmsg.resault.ToString()));
                     if (!returnmsg.resault)
                     {
                         MessageBox.Show("写入失败！");

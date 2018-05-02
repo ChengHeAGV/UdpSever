@@ -82,7 +82,6 @@
             this.ListenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dBUSTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cANToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -426,8 +425,7 @@
             this.高级ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ListenToolStripMenuItem,
             this.dBUSTestToolStripMenuItem,
-            this.cANToolStripMenuItem,
-            this.logToolStripMenuItem});
+            this.cANToolStripMenuItem});
             this.高级ToolStripMenuItem.Name = "高级ToolStripMenuItem";
             this.高级ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.高级ToolStripMenuItem.Text = "Developer";
@@ -452,13 +450,6 @@
             this.cANToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.cANToolStripMenuItem.Text = "CAN";
             this.cANToolStripMenuItem.Click += new System.EventHandler(this.cANToolStripMenuItem_Click);
-            // 
-            // logToolStripMenuItem
-            // 
-            this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.logToolStripMenuItem.Text = "Log";
-            this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -823,7 +814,6 @@
         private System.Windows.Forms.ToolStripMenuItem 路径规划ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cANToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DebugToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.ToolStripMenuItem mESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据中继ToolStripMenuItem;
@@ -831,7 +821,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStrip toolStrip;
-        private UserControls.ExConsole exConsole1;
+        public UserControls.ExConsole exConsole1;
     }
 }
 

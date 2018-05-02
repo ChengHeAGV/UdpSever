@@ -66,7 +66,7 @@ namespace DispatchSystem.Developer
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
-            Console.Clear();
+           /// Console.Clear();
         }
 
         private void buttonCheckAll_Click(object sender, EventArgs e)
