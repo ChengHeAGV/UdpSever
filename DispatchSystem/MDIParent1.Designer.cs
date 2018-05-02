@@ -104,6 +104,7 @@
             this.ToolStripButtonUdpConfig = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.exConsole1 = new DispatchSystem.UserControls.ExConsole();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -115,6 +116,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -647,6 +649,7 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.exConsole1);
             this.splitContainer3.Panel2.SizeChanged += new System.EventHandler(this.splitContainer3_Panel2_SizeChanged);
             this.splitContainer3.Size = new System.Drawing.Size(960, 586);
             this.splitContainer3.SplitterDistance = 415;
@@ -716,6 +719,14 @@
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // exConsole1
+            // 
+            this.exConsole1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exConsole1.Location = new System.Drawing.Point(0, 0);
+            this.exConsole1.Name = "exConsole1";
+            this.exConsole1.Size = new System.Drawing.Size(960, 167);
+            this.exConsole1.TabIndex = 0;
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -747,6 +758,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
@@ -819,6 +831,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStrip toolStrip;
+        private UserControls.ExConsole exConsole1;
     }
 }
 

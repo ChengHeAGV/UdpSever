@@ -366,3 +366,4 @@ D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.UpdateDataInfo.resources
 D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.ExListView.resources
+D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.ExConsole.resources

@@ -199,6 +199,12 @@
     <Compile Include="Set\ModbusTcpConfigForm.Designer.cs">
       <DependentUpon>ModbusTcpConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ExConsole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ExConsole.Designer.cs">
+      <DependentUpon>ExConsole.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Button\LBButton.resx">
       <DependentUpon>LBButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ExConsole.resx">
+      <DependentUpon>ExConsole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Forklift.resx">
       <DependentUpon>Forklift.cs</DependentUpon>

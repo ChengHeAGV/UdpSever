@@ -9,7 +9,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,61 +25,86 @@ namespace DispatchSystem
             InitializeComponent();
         }
 
-        private async void MDIParent1_Load(object sender, EventArgs e)
+        private void MDIParent1_Load(object sender, EventArgs e)
         {
-            //发送任务到AGV
-            await Task.Run(() =>
+            treeView1.Nodes.Clear();
+            //#region 启动消息界面
+            //consoleLog.TopLevel = false;
+            //consoleLog.Parent = splitContainer3.Panel2;
+            //consoleLog.Show();//弹出这个窗口
+            //consoleLog.Focus();//激活显示
+            //#endregion
+
+
+            Thread th = new Thread(new ThreadStart(mainThread));
+            th.Start();
+            ////发送任务到AGV
+            //await Task.Run(() =>
+            //{
+            //    this.Invoke(new MethodInvoker(delegate
+            //    {
+
+            //        ConsoleLog.WriteLog("系统启动...", Color.Black);
+            //        ConsoleLog.WriteLog("加载调试信息...", Color.Black);
+            //        ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
+
+            //        ConsoleLog.WriteLog("[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
+            //        ConsoleLog.WriteLog("[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
+            //        ConsoleLog.WriteLog("[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
+            //        ConsoleLog.WriteLog("[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
+            //        ConsoleLog.WriteLog("[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
+            //        ConsoleLog.WriteLog("[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
+            //        ConsoleLog.WriteLog("[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
+            //        ConsoleLog.WriteLog("[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
+            //        ConsoleLog.WriteLog("[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
+
+            //        #region 获取本机IP，自动开启服务器
+            //        string name = Dns.GetHostName();
+            //        IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
+            //        foreach (IPAddress ipa in ipadrlist)
+            //        {
+            //            if (ipa.AddressFamily == AddressFamily.InterNetwork)
+            //            {
+            //                ConsoleLog.WriteLog("系统消息", "本机IP:[{0}]", ipa.ToString());
+            //                UdpSever.ipaddress = ipa;
+            //            }
+            //        }
+            //        //自动启动服务器
+            //        UdpSever.Resault rs = UdpSever.Start();
+            //        //更新界面
+            //        udpConfigForm_MyEvent();
+            //        #endregion
+
+            //        treeView1.Nodes.Clear();
+
+            //        #region 启动任务界面
+            //        //taskForm.TopLevel = false;
+            //        //taskForm.Parent = splitContainer3.Panel1;
+            //        //taskForm.Show();//弹出这个窗口
+            //        //taskForm.Focus();//激活显示
+            //        #endregion
+            //    }));
+            //});
+        }
+
+        private void mainThread()
+        {
+            //ConsoleLog.WriteLog("尝试和ModbusTCP服务器通信...");
+            //exConsole1.WriteLine= "尝试和ModbusTCP服务器通信...";
+            Ping pingSender = new Ping();
+
+            PingReply reply = pingSender.Send("127.0.0.1", 120);//第一个参数为ip地址，第二个参数为ping的时间
+            if (reply.Status == IPStatus.Success)
             {
-                this.Invoke(new MethodInvoker(delegate
-                {
-                    #region 启动消息界面
-                    consoleLog.TopLevel = false;
-                    consoleLog.Parent = splitContainer3.Panel2;
-                    consoleLog.Show();//弹出这个窗口
-                    consoleLog.Focus();//激活显示
-                    #endregion
-
-                    ConsoleLog.WriteLog("系统启动...", Color.Black);
-                    ConsoleLog.WriteLog("加载调试信息...", Color.Black);
-                    ConsoleLog.WriteLog("加载服务器配置...", Color.Black);
-
-                    ConsoleLog.WriteLog("[服务器][服务器地址][ServerAddress][{0}]", UdpSever.ServerAddress);
-                    ConsoleLog.WriteLog("[服务器][设备数][DeviceNum][{0}]", UdpSever.DeviceNum);
-                    ConsoleLog.WriteLog("[服务器][寄存器数][RegisterNum][{0}]", UdpSever.RegisterNum);
-                    ConsoleLog.WriteLog("[服务器][单帧数据长度][FrameLen][{0}]", UdpSever.FrameLen);
-                    ConsoleLog.WriteLog("[服务器][心跳周期][HeartCycle][{0}]秒", UdpSever.HeartCycle);
-                    ConsoleLog.WriteLog("[服务器][重发次数][RepeatNum][{0}]", UdpSever.RepeatNum);
-                    ConsoleLog.WriteLog("[服务器][超时时间][ResponseTimeout][{0}]", UdpSever.ResponseTimeout);
-                    ConsoleLog.WriteLog("[服务器][响应帧缓冲池容量][RESPONSE_MAX_LEN][{0}]", UdpSever.RESPONSE_MAX_LEN);
-                    ConsoleLog.WriteLog("[服务器][设备总数][DeviceNum][{0}]\r\n", UdpSever.DeviceNum);
-
-                    #region 获取本机IP，自动开启服务器
-                    string name = Dns.GetHostName();
-                    IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
-                    foreach (IPAddress ipa in ipadrlist)
-                    {
-                        if (ipa.AddressFamily == AddressFamily.InterNetwork)
-                        {
-                            ConsoleLog.WriteLog("系统消息", "本机IP:[{0}]", ipa.ToString());
-                            UdpSever.ipaddress = ipa;
-                        }
-                    }
-                    //自动启动服务器
-                    UdpSever.Resault rs = UdpSever.Start();
-                    //更新界面
-                    udpConfigForm_MyEvent();
-                    #endregion
-
-                    treeView1.Nodes.Clear();
-
-                    #region 启动任务界面
-                    //taskForm.TopLevel = false;
-                    //taskForm.Parent = splitContainer3.Panel1;
-                    //taskForm.Show();//弹出这个窗口
-                    //taskForm.Focus();//激活显示
-                    #endregion
-                }));
-            });
+                //ping的通
+                Thread.Sleep(1000);
+                exConsole1.WriteLine("通信成功!",Color.Green,18);
+            }
+            else
+            {
+                //ping不通
+               // ConsoleLog.WriteLog("通信失败!");
+            }
         }
 
         /// <summary>
