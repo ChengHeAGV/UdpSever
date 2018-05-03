@@ -128,14 +128,14 @@ namespace DispatchSystem
 
                 //启动检测连接进程
                 State = true;//更新服务器状态
-
-                //ConsoleLog.WriteLog("系统消息", "服务已启动!");
+                MyConsole.Add("Dbus服务器已开启！",Color.Green);
                 return rs;
             }
             catch (Exception ex)
             {
                 rs.Reault = false;
                 rs.Message = ex.Message;
+                MyConsole.Add("Dbus服务器开启失败！", Color.Red);
                 return rs;
             }
         }
@@ -149,7 +149,6 @@ namespace DispatchSystem
             try
             {
                 //退出线程
-                Log("系统消息", "正在关闭服务器，请稍等...!");
                 udpThread.Stop();
                 socket.Close();
                 socket.Dispose();
@@ -157,14 +156,14 @@ namespace DispatchSystem
                 State = false;//更新服务器状态 
                 rs.Reault = true;
                 rs.Message = "停止成功";
-
-                Log("系统消息", "服务已停止!");
+                MyConsole.Add("Dbus服务器已停止！", Color.Blue);
                 return rs;
             }
             catch (Exception ex)
             {
                 rs.Reault = false;
                 rs.Message = ex.Message;
+                MyConsole.Add("Dbus服务器停止失败！", Color.Red);
                 return rs;
             }
 
