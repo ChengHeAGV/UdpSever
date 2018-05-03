@@ -12,43 +12,43 @@ namespace DispatchSystem
         private Color nowColor = Color.FromArgb(0xff, 0xff, 0x99, 0x00);//当前行高亮色
         private Color nowForceColor = Color.Black;//当前行前景色
         private Font nowFont = new Font("新宋体", 18, FontStyle.Regular);//当前行字体
-        private int nowHight = 18;//当前行高
+        private int hight = 25;//行高
         #endregion
 
         #region 属性
-        [Category("Author:孙毅明"), Description("动态高亮当前光标所在行！")]
+        [Category("Author:孙毅明"), Description("动态高亮当前光标所在行.")]
         public bool HighLightNow
         {
             get { return highLightNow; }
             set { highLightNow = value; }
         }
 
-        [Category("Author:孙毅明"), Description("当前光标所在行高亮色！")]
+        [Category("Author:孙毅明"), Description("当前光标所在行高亮色.")]
         public Color NowColor
         {
             get { return nowColor; }
             set { nowColor = value; }
         }
 
-        [Category("Author:孙毅明"), Description("当前光标所在行前景(字体)色！")]
+        [Category("Author:孙毅明"), Description("当前光标所在行前景(字体)色.")]
         public Color NowForceColor
         {
             get { return nowForceColor; }
             set { nowForceColor = value; }
         }
 
-        [Category("Author:孙毅明"), Description("当前光标所在行当前行字体！")]
+        [Category("Author:孙毅明"), Description("当前光标所在行当前行字体.")]
         public Font NowFont
         {
             get { return nowFont; }
             set { nowFont = value; }
         }
 
-        [Category("Author:孙毅明"), Description("当前光标所在行当前行字体！")]
-        public int NowHight
+        [Category("Author:孙毅明"), Description("行高.")]
+        public int Hight
         {
-            get { return nowHight; }
-            set { nowHight = value; }
+            get { return hight; }
+            set { hight = value; }
         }
         #endregion
 
@@ -63,6 +63,13 @@ namespace DispatchSystem
             HideSelection = false;
             GridLines = false;//不显示线条
             View = View.Details;//以数据表显示
+
+            //设置行高
+            ImageList il = new ImageList();
+            //设置高度
+            il.ImageSize = new Size(1, hight);
+            //绑定listView控件
+            SmallImageList = il;
 
             //判断是否需要高亮当前行
             if (highLightNow)
