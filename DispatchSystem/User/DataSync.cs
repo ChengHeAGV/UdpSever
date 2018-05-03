@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DispatchSystem.User
 {
-    class DataTransmission
+    class DataSync
     {
         static ModbusIpMaster modbusMaster;
         static Thread modbusThread;

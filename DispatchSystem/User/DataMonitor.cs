@@ -14,7 +14,7 @@ namespace DispatchSystem.User
     {
         ExThread mainThread;
 
-        ushort[] DataCompare = new ushort[DataTransmission.Profinet.Register.Length];
+        ushort[] DataCompare = new ushort[DataSync.Profinet.Register.Length];
 
         masterEntities db = new masterEntities();
         List<DbProfinet> dbProfinet = new List<DbProfinet>();
@@ -63,7 +63,7 @@ namespace DispatchSystem.User
             doubleBufferListView1.Columns.Add(datekey[6], 150, HorizontalAlignment.Left);
             doubleBufferListView1.Columns.Add(datekey[7], -2, HorizontalAlignment.Left);
 
-            for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+            for (int i = 0; i < DataSync.Profinet.Register.Length; i++)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = DateTime.Now.ToString("yyyy-MM-dd");//"日期";
@@ -180,10 +180,10 @@ namespace DispatchSystem.User
         /// <param name="change">有变化才更新</param>
         private void update(bool change)
         {
-            for (int i = 0; i < DataTransmission.Profinet.Register.Length; i++)
+            for (int i = 0; i < DataSync.Profinet.Register.Length; i++)
             {
                 //有变化
-                if ((DataCompare[i] != DataTransmission.Profinet.Register[i]) || change == false)
+                if ((DataCompare[i] != DataSync.Profinet.Register[i]) || change == false)
                 {
                     if (change)
                     {
@@ -198,7 +198,7 @@ namespace DispatchSystem.User
                     doubleBufferListView1.Items[i].SubItems[1].Text = DateTime.Now.ToString("HH:mm:ss fff");//
                     doubleBufferListView1.Items[i].SubItems[2].Text = "[Word]";//
                     doubleBufferListView1.Items[i].SubItems[3].Text = i.ToString();//
-                    doubleBufferListView1.Items[i].SubItems[4].Text = DataTransmission.Profinet.Register[i].ToString();//
+                    doubleBufferListView1.Items[i].SubItems[4].Text = DataSync.Profinet.Register[i].ToString();//
                     doubleBufferListView1.Items[i].SubItems[5].Text = (false ? 0 : int.Parse(doubleBufferListView1.Items[i].SubItems[5].Text) + 1).ToString();//
 
                     //第一次加载时从数据库读取
@@ -217,7 +217,7 @@ namespace DispatchSystem.User
                     }
 
                     //更新对比缓存
-                    DataCompare[i] = DataTransmission.Profinet.Register[i];
+                    DataCompare[i] = DataSync.Profinet.Register[i];
                 }
             }
         }

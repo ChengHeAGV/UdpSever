@@ -256,7 +256,7 @@ namespace DispatchSystem.User
             }
             //MES下单
             else
-            if (DataTransmission.Profinet.Register[taskReg] > 0 && DataTransmission.Profinet.Clear[taskReg] == false)
+            if (DataSync.Profinet.Register[taskReg] > 0 && DataSync.Profinet.Clear[taskReg] == false)
             {
                 //创建任务
                 this.Invoke(new MethodInvoker(delegate
@@ -267,7 +267,7 @@ namespace DispatchSystem.User
                     //订单号
                     dataGridViewWaiting.Rows[index].Cells[1].Value = GetTimeStamp();
                     //任务编号
-                    dataGridViewWaiting.Rows[index].Cells[2].Value = DataTransmission.Profinet.Register[taskReg];
+                    dataGridViewWaiting.Rows[index].Cells[2].Value = DataSync.Profinet.Register[taskReg];
                     //产线名称
                     dataGridViewWaiting.Rows[index].Cells[3].Value = lineName;
                     //下单时间
@@ -277,9 +277,9 @@ namespace DispatchSystem.User
                     dataGridViewWaiting.FirstDisplayedScrollingRowIndex = dataGridViewWaiting.RowCount - 1;
                 }));
                 //清除MES任务标志寄存器
-                DataTransmission.Profinet.Clear[taskReg] = true;
+                DataSync.Profinet.Clear[taskReg] = true;
                 //等待收到清零
-                while (DataTransmission.Profinet.Clear[taskReg] == true)
+                while (DataSync.Profinet.Clear[taskReg] == true)
                 {
                     Thread.Sleep(100);
                 }
@@ -489,8 +489,8 @@ namespace DispatchSystem.User
         private void UpdateMES()
         {
             //正在执行
-            DataTransmission.Profinet.Register[1] = 0;
-            DataTransmission.Profinet.Register[21] = 0;
+            DataSync.Profinet.Register[1] = 0;
+            DataSync.Profinet.Register[21] = 0;
             if (dataGridViewRunning.Rows.Count > 0)
             {
                 for (int i = 0; i < dataGridViewRunning.Rows.Count; i++)
@@ -500,12 +500,12 @@ namespace DispatchSystem.User
                         if (dataGridViewRunning.Rows[i].Cells[3].Value.ToString() == "扩散线")
                         {
                             //正在执行任务
-                            DataTransmission.Profinet.Register[1] = ushort.Parse(dataGridViewRunning.Rows[i].Cells[2].Value.ToString());
+                            DataSync.Profinet.Register[1] = ushort.Parse(dataGridViewRunning.Rows[i].Cells[2].Value.ToString());
                         }
                         else if (dataGridViewRunning.Rows[i].Cells[3].Value.ToString() == "PE线")
                         {
                             //正在执行任务
-                            DataTransmission.Profinet.Register[21] = ushort.Parse(dataGridViewRunning.Rows[i].Cells[2].Value.ToString());
+                            DataSync.Profinet.Register[21] = ushort.Parse(dataGridViewRunning.Rows[i].Cells[2].Value.ToString());
                         }
                     }
                 }
@@ -514,8 +514,8 @@ namespace DispatchSystem.User
             int[] waiting = new int[2];
             for (int i = 0; i < 5; i++)
             {
-                DataTransmission.Profinet.Register[2 + i] = 0;
-                DataTransmission.Profinet.Register[22 + i] = 0;
+                DataSync.Profinet.Register[2 + i] = 0;
+                DataSync.Profinet.Register[22 + i] = 0;
             }
 
             if (dataGridViewWaiting.Rows.Count > 0)
@@ -527,12 +527,12 @@ namespace DispatchSystem.User
                         if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == "扩散线" && waiting[0] < 5)
                         {
                             //待执行任务
-                            DataTransmission.Profinet.Register[2 + waiting[0]++] = ushort.Parse(dataGridViewWaiting.Rows[i].Cells[2].Value.ToString());
+                            DataSync.Profinet.Register[2 + waiting[0]++] = ushort.Parse(dataGridViewWaiting.Rows[i].Cells[2].Value.ToString());
                         }
                         else if (dataGridViewWaiting.Rows[i].Cells[3].Value.ToString() == "PE线" && waiting[1] < 5)
                         {
                             //待执行任务
-                            DataTransmission.Profinet.Register[22 + waiting[1]++] = ushort.Parse(dataGridViewWaiting.Rows[i].Cells[2].Value.ToString());
+                            DataSync.Profinet.Register[22 + waiting[1]++] = ushort.Parse(dataGridViewWaiting.Rows[i].Cells[2].Value.ToString());
                         }
                     }
                 }
@@ -541,8 +541,8 @@ namespace DispatchSystem.User
             int[] finished = new int[2];
             for (int i = 0; i < 5; i++)
             {
-                DataTransmission.Profinet.Register[7 + i] = 0;
-                DataTransmission.Profinet.Register[27 + i] = 0;
+                DataSync.Profinet.Register[7 + i] = 0;
+                DataSync.Profinet.Register[27 + i] = 0;
             }
             if (dataGridViewFinished.Rows.Count > 0)
             {
@@ -553,30 +553,30 @@ namespace DispatchSystem.User
                         if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "扩散线" && finished[0] < 5)
                         {
                             //待执行任务
-                            DataTransmission.Profinet.Register[7 + finished[0]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
+                            DataSync.Profinet.Register[7 + finished[0]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
                         }
                         else if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "PE线" && finished[1] < 5)
                         {
                             //待执行任务
-                            DataTransmission.Profinet.Register[27 + finished[1]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
+                            DataSync.Profinet.Register[27 + finished[1]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
                         }
                     }
                 }
             }
 
             //上一个位置
-            DataTransmission.Profinet.Register[12] = (ushort)UdpSever.Register[1, 5, 0];
+            DataSync.Profinet.Register[12] = (ushort)UdpSever.Register[1, 5, 0];
             //当前位置
-            DataTransmission.Profinet.Register[13] = (ushort)UdpSever.Register[1, 6, 0];
+            DataSync.Profinet.Register[13] = (ushort)UdpSever.Register[1, 6, 0];
             //运行状态
-            DataTransmission.Profinet.Register[14] = (ushort)UdpSever.Register[1, 8, 0];
+            DataSync.Profinet.Register[14] = (ushort)UdpSever.Register[1, 8, 0];
 
             //上一个位置
-            DataTransmission.Profinet.Register[32] = (ushort)UdpSever.Register[2, 5, 0];
+            DataSync.Profinet.Register[32] = (ushort)UdpSever.Register[2, 5, 0];
             //当前位置
-            DataTransmission.Profinet.Register[33] = (ushort)UdpSever.Register[2, 6, 0];
+            DataSync.Profinet.Register[33] = (ushort)UdpSever.Register[2, 6, 0];
             //运行状态
-            DataTransmission.Profinet.Register[34] = (ushort)UdpSever.Register[2, 8, 0];
+            DataSync.Profinet.Register[34] = (ushort)UdpSever.Register[2, 8, 0];
         }
         #endregion
 
@@ -602,9 +602,9 @@ namespace DispatchSystem.User
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
                 //网络连接判断
-                if (DataTransmission.ListenState.ModbusTcp == false)
+                if (DataSync.ListenState.ModbusTcp == false)
                 {
-                    DataTransmission.StartListen();
+                    DataSync.StartListen();
                 }
 
                 //更新MES状态
