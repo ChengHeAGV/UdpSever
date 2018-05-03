@@ -14,7 +14,6 @@ namespace DispatchSystem.User
     {
         ExThread mainThread;
 
-
         ushort[] DataCompare = new ushort[DataTransmission.Profinet.Register.Length];
 
         masterEntities db = new masterEntities();
@@ -77,8 +76,8 @@ namespace DispatchSystem.User
                 item.SubItems.Add("");//  "描述";
                 doubleBufferListView1.Items.Add(item);
                 doubleBufferListView1.Items[i].ForeColor = Color.Gray;
-                if (i % 2 == 0)
-                    doubleBufferListView1.Items[i].BackColor = Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
+
+                doubleBufferListView1.Items[i].BackColor = i % 2 == 0 ? Color.White : Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
             }
             #endregion
 
@@ -216,9 +215,6 @@ namespace DispatchSystem.User
                         }
 
                     }
-
-                    if (i % 2 == 0)
-                        doubleBufferListView1.Items[i].BackColor = Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
 
                     //更新对比缓存
                     DataCompare[i] = DataTransmission.Profinet.Register[i];

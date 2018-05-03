@@ -35,7 +35,8 @@
             // 
             this.doubleBufferListView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doubleBufferListView1.Font = new System.Drawing.Font("宋体", 16F);
-            this.doubleBufferListView1.GridLines = true;
+            this.doubleBufferListView1.FullRowSelect = true;
+            this.doubleBufferListView1.HideSelection = false;
             this.doubleBufferListView1.Location = new System.Drawing.Point(0, 0);
             this.doubleBufferListView1.Name = "doubleBufferListView1";
             this.doubleBufferListView1.Size = new System.Drawing.Size(939, 701);
