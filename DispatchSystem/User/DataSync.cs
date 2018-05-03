@@ -1,5 +1,5 @@
-﻿using DispatchSystem.Database;
-using DispatchSystem.Developer;
+﻿using DispatchSystem.Class;
+using DispatchSystem.Database;
 using Modbus.Device;
 using System;
 using System.Collections.Generic;
@@ -7,23 +7,23 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
-using System.Windows.Forms;
 
 namespace DispatchSystem.User
 {
     class DataSync
     {
         static ModbusIpMaster modbusMaster;
-        static Thread modbusThread;
-        static Thread dbusThread;
-        static Thread MainThread;
+        static ExThread modbusThread;
+        static ExThread dbusThread;
+        static ExThread MainThread;
 
-        static masterEntities db = new masterEntities();
+
         static List<ModbusConfig> modbusConfig = new List<ModbusConfig>();
 
-
-        public static void StartListen()
+        //开始同步
+        public static void Start()
         {
+            masterEntities db = new masterEntities();
             //加载modbus配置,有配置则更新为配置，没有则不更新
             modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
 
@@ -42,38 +42,44 @@ namespace DispatchSystem.User
             if (data != null)
                 Profinet.ModbusTcpSeverPort = int.Parse(data.value);
 
-            MainThread = new Thread(new ThreadStart(Start));
-            MainThread.IsBackground = true;
+            MainThread = new ExThread(mainThreadFunc);
             MainThread.Start();
+        }
+
+        //结束同步
+        public static void Stop()
+        {
+            if (SyncState.Dbus)
+                dbusThread.Stop();
+
+            if (SyncState.ModbusTcp)
+                modbusThread.Stop();
 
         }
-        public static class ListenState
+        public static class SyncState
         {
             public static bool ModbusTcp = false;
             public static bool Dbus = false;
         }
-
-        private static void Start()
+        private static void mainThreadFunc()
         {
             #region 启动Dbus
             //启动监听进程
-            if (ListenState.Dbus == false)
+            if (SyncState.Dbus == false)
             {
-                dbusThread = new Thread(new ThreadStart(Syncdbus));
-                dbusThread.IsBackground = true;
+                dbusThread = new ExThread(Syncdbus);
                 dbusThread.Start();
-                //ConsoleLog.WriteLog("监听Dbus启动成功！", Color.Green, 24);
-
-                ListenState.Dbus = true;
+                MyConsole.Add("监听Dbus线程已启动!", Color.Green);
+                SyncState.Dbus = true;
             }
             #endregion
 
             #region 启动ModbusTcp
-            if (ListenState.ModbusTcp == false)
+            if (SyncState.ModbusTcp == false)
             {
                 try
                 {
-                    //ConsoleLog.WriteLog(string.Format("[ModbusTcp]IP地址:{0},Port:{1}",Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
+                    MyConsole.Add(string.Format("开始连接ModbusTcp客户端,IP地址:{0},Port:{1}", Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
                     TcpClient tcpClient = new TcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort);
                     modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
                     modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
@@ -82,18 +88,16 @@ namespace DispatchSystem.User
                     modbusMaster.Transport.Retries = Profinet.RetryNum;//重试次数
 
                     //启动监听进程
-                    modbusThread = new Thread(new ThreadStart(SyncModbus));
-                    modbusThread.IsBackground = true;
+                    modbusThread = new ExThread(SyncModbus);
                     modbusThread.Start();
-                    //ConsoleLog.WriteLog("监听ModbusTCP启动", Color.Orange, 24);
-                    ListenState.ModbusTcp = true;
+                    SyncState.ModbusTcp = true;
+                    MyConsole.Add("监听ModbusTCP线程启动成功!", Color.Green);
                 }
                 catch
                 {
-                    //ConsoleLog.WriteLog("监听ModbusTCP失败！", Color.Red, 24);
+                    MyConsole.Add("监听ModbusTCP线程启动失败!", Color.Green);
                 }
             }
-
             #endregion
         }
 
@@ -297,7 +301,7 @@ namespace DispatchSystem.User
         {
             while (true)
             {
-                Thread.Sleep(Dbus.Cycle);
+                if (dbusThread.exitEvent.WaitOne(Dbus.Cycle)) { break; }
                 int AgvNum;
 
                 #region AGV1
@@ -357,13 +361,12 @@ namespace DispatchSystem.User
                 if (Profinet.ErrorNum > 10)
                 {
                     //连续10次出错，重新连接
-                    ListenState.ModbusTcp = false;
+                    SyncState.ModbusTcp = false;
                 }
-                if (ListenState.ModbusTcp)
+                if (SyncState.ModbusTcp)
                 {
-                    Thread.Sleep(Profinet.Cycle);
+                    if (modbusThread.exitEvent.WaitOne(Profinet.Cycle)) { break; }
                     #region MES
-
                     int num;
                     //读取 0
                     num = 0;

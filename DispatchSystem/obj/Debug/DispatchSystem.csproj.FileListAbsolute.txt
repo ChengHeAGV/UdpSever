@@ -289,7 +289,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserContr
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\LBSoft.IndustrialCtrls.Meters.LBDigitalMeter.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.RFID.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.SignalLed.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.DataTransmission.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.TaskForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.AgvParameter.zh-CN.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.GenerateResource.cache
@@ -299,7 +298,6 @@ D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csproj.Co
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.exe
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\AGV调度系统.pdb
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.UDataGridView.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.DataMonitor.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.RegisterForm.resources
 D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe.config
 D:\github\Winform-UdpSever\DispatchSystem\bin\Debug\AGV调度系统.exe
@@ -365,6 +363,7 @@ D:\github\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.Set.ModbusTcpConfigForm.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.UserControls.ExConsole.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.ExListView.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.AddTask.resources
-D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.UpdateDataInfo.resources
 D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.csprojResolveAssemblyReference.cache
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.AddTaskForm.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.DataMonitorForm.resources
+D:\github\App\Winform-UdpSever\DispatchSystem\obj\Debug\DispatchSystem.User.DataInfoUpdateForm.resources

@@ -209,35 +209,30 @@
     <Compile Include="UserControls\WPF\UCTabItemWithClose.xaml.cs">
       <DependentUpon>UCTabItemWithClose.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\AddTask.cs">
+    <Compile Include="User\AddTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\AddTask.Designer.cs">
-      <DependentUpon>AddTask.cs</DependentUpon>
+    <Compile Include="User\AddTaskForm.Designer.cs">
+      <DependentUpon>AddTaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\DataMonitor.cs">
+    <Compile Include="User\DataMonitorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\DataMonitor.Designer.cs">
-      <DependentUpon>DataMonitor.cs</DependentUpon>
+    <Compile Include="User\DataMonitorForm.Designer.cs">
+      <DependentUpon>DataMonitorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\DataTransmission.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\DataTransmission.Designer.cs">
-      <DependentUpon>DataTransmission.cs</DependentUpon>
-    </Compile>
+    <Compile Include="User\DataSync.cs" />
     <Compile Include="User\TaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User\TaskForm.Designer.cs">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\UpdateDataInfo.cs">
+    <Compile Include="User\DataInfoUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\UpdateDataInfo.Designer.cs">
-      <DependentUpon>UpdateDataInfo.cs</DependentUpon>
+    <Compile Include="User\DataInfoUpdateForm.Designer.cs">
+      <DependentUpon>DataInfoUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Developer\DebugForm.cs">
       <SubType>Form</SubType>
@@ -489,20 +484,17 @@
     <EmbeddedResource Include="UserControls\UDataGridView.resx">
       <DependentUpon>UDataGridView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\AddTask.resx">
-      <DependentUpon>AddTask.cs</DependentUpon>
+    <EmbeddedResource Include="User\AddTaskForm.resx">
+      <DependentUpon>AddTaskForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\DataMonitor.resx">
-      <DependentUpon>DataMonitor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\DataTransmission.resx">
-      <DependentUpon>DataTransmission.cs</DependentUpon>
+    <EmbeddedResource Include="User\DataMonitorForm.resx">
+      <DependentUpon>DataMonitorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\UpdateDataInfo.resx">
-      <DependentUpon>UpdateDataInfo.cs</DependentUpon>
+    <EmbeddedResource Include="User\DataInfoUpdateForm.resx">
+      <DependentUpon>DataInfoUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Database\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

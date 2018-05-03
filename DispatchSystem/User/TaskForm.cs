@@ -104,7 +104,7 @@ namespace DispatchSystem.User
         /// <param name="e"></param>
         private void contextWaiting_AddTask_Click(object sender, EventArgs e)
         {
-            AddTask addtask = new AddTask();
+            AddTaskForm addtask = new AddTaskForm();
             addtask.ShowDialog();
             if (addtask.DialogResult == DialogResult.OK)
             {
@@ -599,14 +599,11 @@ namespace DispatchSystem.User
 
             //任务调度已经完全开启
             TaskState = true;
+
+            //启动数据同步
+            DataSync.Start();
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
-                //网络连接判断
-                if (DataSync.ListenState.ModbusTcp == false)
-                {
-                    DataSync.StartListen();
-                }
-
                 //更新MES状态
                 UpdateMES();
 
@@ -661,6 +658,7 @@ namespace DispatchSystem.User
                 threadNewTask.Stop();
                 threadUpadteTask.Stop();
                 threadAssignTask.Stop();
+                DataSync.Stop();
             }
 
         }

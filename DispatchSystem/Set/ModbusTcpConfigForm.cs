@@ -72,7 +72,7 @@ namespace DispatchSystem.Set
             }
 
             //重启modbustcp
-            User.DataSync.ListenState.ModbusTcp = false;
+            User.DataSync.SyncState.ModbusTcp = false;
         }
 
         private void update(string key, string value, string des = "")
