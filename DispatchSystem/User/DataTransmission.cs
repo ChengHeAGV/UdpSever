@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DispatchSystem.User
 {
-    public partial class DataTransmission : Form
+    class DataTransmission
     {
         static ModbusIpMaster modbusMaster;
         static Thread modbusThread;
@@ -21,15 +21,6 @@ namespace DispatchSystem.User
         static masterEntities db = new masterEntities();
         static List<ModbusConfig> modbusConfig = new List<ModbusConfig>();
 
-        public DataTransmission()
-        {
-            InitializeComponent();
-        }
-
-        private void DataTransmission_Load(object sender, EventArgs e)
-        {
-
-        }
 
         public static void StartListen()
         {
@@ -37,7 +28,7 @@ namespace DispatchSystem.User
             modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
 
             //modbus 检测时间
-            var data = modbusConfig.FirstOrDefault(m => m.key == "circe");
+            var data = modbusConfig.FirstOrDefault(m => m.key == "circle");
             if (data != null)
                 Profinet.Cycle = int.Parse(data.value);
 
