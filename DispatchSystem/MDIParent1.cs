@@ -64,15 +64,15 @@ namespace DispatchSystem
 
             MyConsole.Add("系统启动中...");
 
-            MyConsole.Add(string.Format("[服务器地址][{0}]", UdpSever.ServerAddress));
-            MyConsole.Add(string.Format("[设备数][{0}]", UdpSever.DeviceNum));
-            MyConsole.Add(string.Format("[寄存器数][{0}]", UdpSever.RegisterNum));
-            MyConsole.Add(string.Format("[单帧数据长度][{0}]", UdpSever.FrameLen));
-            MyConsole.Add(string.Format("[心跳周期][{0}]秒", UdpSever.HeartCycle));
-            MyConsole.Add(string.Format("[重发次数][{0}]", UdpSever.RepeatNum));
-            MyConsole.Add(string.Format("[超时时间][{0}]", UdpSever.ResponseTimeout));
-            MyConsole.Add(string.Format("[响应帧缓冲池容量][{0}]", UdpSever.RESPONSE_MAX_LEN));
-            MyConsole.Add(string.Format("[设备总数][{0}]\r\n", UdpSever.DeviceNum));
+            MyConsole.Add(string.Format("服务器地址:{0}", UdpSever.ServerAddress));
+            MyConsole.Add(string.Format("设备数:{0}", UdpSever.DeviceNum));
+            MyConsole.Add(string.Format("寄存器数:{0}", UdpSever.RegisterNum));
+            MyConsole.Add(string.Format("单帧数据长度:{0}", UdpSever.FrameLen));
+            MyConsole.Add(string.Format("心跳周期:{0}秒", UdpSever.HeartCycle));
+            MyConsole.Add(string.Format("重发次数:{0}", UdpSever.RepeatNum));
+            MyConsole.Add(string.Format("超时时间:{0}", UdpSever.ResponseTimeout));
+            MyConsole.Add(string.Format("响应帧缓冲池容量:{0}", UdpSever.RESPONSE_MAX_LEN));
+            MyConsole.Add(string.Format("设备总数:{0}", UdpSever.DeviceNum));
 
             //测试ModbusTcp服务器连接
             Ping pingSender = new Ping();
@@ -82,33 +82,33 @@ namespace DispatchSystem
             else
                 MyConsole.Add("ModbusTcp服务器连接失败!", Color.Red);
 
+            #region 获取本机IP，自动开启Dbus服务器
+            string name = Dns.GetHostName();
+            IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
+            foreach (IPAddress ipa in ipadrlist)
+            {
+                if (ipa.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    MyConsole.Add(string.Format("本机IP:[{0}]", ipa));
+                    UdpSever.ipaddress = ipa;
+                }
+            }
 
-            //        #region 获取本机IP，自动开启服务器
-            //        string name = Dns.GetHostName();
-            //        IPAddress[] ipadrlist = Dns.GetHostAddresses(name);
-            //        foreach (IPAddress ipa in ipadrlist)
-            //        {
-            //            if (ipa.AddressFamily == AddressFamily.InterNetwork)
-            //            {
-            //                ConsoleLog.WriteLog("系统消息", "本机IP:[{0}]", ipa.ToString());
-            //                UdpSever.ipaddress = ipa;
-            //            }
-            //        }
-            //        //自动启动服务器
-            //        UdpSever.Resault rs = UdpSever.Start();
-            //        //更新界面
-            //        udpConfigForm_MyEvent();
-            //        #endregion
+            //自动启动服务器
+            UdpSever.Resault rs = UdpSever.Start();
+            //更新界面
+            udpConfigForm_MyEvent();
+            #endregion
 
-            //        treeView1.Nodes.Clear();
-
-            //        #region 启动任务界面
-            //        //taskForm.TopLevel = false;
-            //        //taskForm.Parent = splitContainer3.Panel1;
-            //        //taskForm.Show();//弹出这个窗口
-            //        //taskForm.Focus();//激活显示
-            //        #endregion
-            //    }));
+            #region 启动任务界面
+            this.Invoke(new MethodInvoker(delegate
+            {
+                taskForm.TopLevel = false;
+            taskForm.Parent = splitContainer3.Panel1;
+            taskForm.Show();//弹出这个窗口
+            taskForm.Focus();//激活显示
+            }));
+            #endregion
         }
 
         /// <summary>
@@ -156,20 +156,23 @@ namespace DispatchSystem
         //处理     
         void udpConfigForm_MyEvent()
         {
-            if (UdpSever.State)
+            this.Invoke(new MethodInvoker(delegate
             {
-                toolStripStatusLabel1.ForeColor = Color.Green;
-                toolStripStatusLabel1.Text = "运行中";
-                timerState.Enabled = false;
-            }
-            else
-            {
-                toolStripStatusLabel1.ForeColor = Color.Red;
-                toolStripStatusLabel1.Text = "已断开";
-                //断开连接时以500ms闪烁显示
-                timerState.Interval = 500;
-                timerState.Enabled = true;
-            }
+                if (UdpSever.State)
+                {
+                    toolStripStatusLabel1.ForeColor = Color.Green;
+                    toolStripStatusLabel1.Text = "运行中";
+                    timerState.Enabled = false;
+                }
+                else
+                {
+                    toolStripStatusLabel1.ForeColor = Color.Red;
+                    toolStripStatusLabel1.Text = "已断开";
+                    //断开连接时以500ms闪烁显示
+                    timerState.Interval = 500;
+                    timerState.Enabled = true;
+                }
+            }));
         }
         //断开连接时状态自动闪烁
         private void timerState_Tick(object sender, EventArgs e)
@@ -485,6 +488,8 @@ namespace DispatchSystem
                 {
                     UdpSever.Stop();
                 }
+                //关闭任务调度线程
+                taskForm.TaskStop();
             }
 
         }
