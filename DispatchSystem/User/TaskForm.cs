@@ -1,4 +1,5 @@
-﻿using DispatchSystem.Developer;
+﻿using DispatchSystem.Class;
+using DispatchSystem.Developer;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -17,6 +18,10 @@ namespace DispatchSystem.User
         }
 
         Thread taskThread;
+
+        //任务调度开启状态
+        bool TaskState = false;
+
         private void TaskForm_Load(object sender, EventArgs e)
         {
             #region 创建等待任务列表右键菜单
@@ -578,26 +583,28 @@ namespace DispatchSystem.User
         /// <summary>
         /// 任务方法
         /// </summary>
+        ExThread threadNewTask;
+        ExThread threadAssignTask;
+        ExThread threadUpadteTask;
         private void taskFunc()
         {
-            Thread threadNewTask = new Thread(new ThreadStart(newTaskFunc));
-            threadNewTask.IsBackground = true;
+            threadNewTask = new ExThread(newTaskFunc);
             threadNewTask.Start();
 
-            Thread threadAssignTask = new Thread(new ThreadStart(assignTaskFunc));
-            threadAssignTask.IsBackground = true;
+            threadAssignTask = new ExThread(assignTaskFunc);
             threadAssignTask.Start();
 
-            Thread threadUpadteTask = new Thread(new ThreadStart(updateTaskFunc));
-            threadUpadteTask.IsBackground = true;
+            threadUpadteTask = new ExThread(updateTaskFunc);
             threadUpadteTask.Start();
 
+            //任务调度已经完全开启
+            TaskState = true;
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
                 //网络连接判断
                 if (DataTransmission.ListenState.ModbusTcp == false)
                 {
-                   DataTransmission.StartListen();
+                    DataTransmission.StartListen();
                 }
 
                 //更新MES状态
@@ -609,32 +616,32 @@ namespace DispatchSystem.User
 
         private void updateTaskFunc()
         {
-            while (this.IsHandleCreated && this.IsDisposed == false)
+            while (true)
             {
+                if (threadUpadteTask.exitEvent.WaitOne(Parameter.taskFuncTime)) { break; }
                 //监控是否有新任务
                 NewTask("扩散线");
                 NewTask("PE线");
-                Thread.Sleep(Parameter.taskFuncTime);
             }
         }
         private void assignTaskFunc()
         {
-            while (this.IsHandleCreated && this.IsDisposed == false)
+            while (true)
             {
+                if (threadAssignTask.exitEvent.WaitOne(Parameter.taskFuncTime)) { break; }
                 //派发任务到AGV
                 AssignTaskToAGV(1);
                 AssignTaskToAGV(2);
-                Thread.Sleep(Parameter.taskFuncTime);
             }
         }
 
         private void newTaskFunc()
         {
-            while (this.IsHandleCreated && this.IsDisposed == false)
+            while (true)
             {
+                if (threadNewTask.exitEvent.WaitOne(Parameter.taskFuncTime)) { break; }
                 //更新任务执行状态
                 UpdateTaskState();
-                Thread.Sleep(Parameter.taskFuncTime);
             }
         }
 
@@ -644,6 +651,18 @@ namespace DispatchSystem.User
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
             long timeStamp = (long)(DateTime.Now - startTime).TotalMilliseconds; // 相差毫秒数
             return timeStamp;
+        }
+
+        //结束任务
+        public void TaskStop()
+        {
+            if (TaskState)
+            {
+                threadNewTask.Stop();
+                threadUpadteTask.Stop();
+                threadAssignTask.Stop();
+            }
+
         }
     }
 }
