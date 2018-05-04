@@ -602,8 +602,10 @@ namespace DispatchSystem.User
 
             //启动数据同步
             DataSync.Start();
+
             while (this.IsHandleCreated && this.IsDisposed == false)
             {
+
                 //更新MES状态
                 UpdateMES();
 

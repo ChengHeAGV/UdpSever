@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Windows;
 
 namespace DispatchSystem.User
 {
@@ -23,26 +25,37 @@ namespace DispatchSystem.User
         //开始同步
         public static void Start()
         {
-            masterEntities db = new masterEntities();
             //加载modbus配置,有配置则更新为配置，没有则不更新
-            modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
+            ExTimeOut et = new ExTimeOut(2000);
+            modbusConfig = et.Connect();
 
-            //modbus 检测时间
-            var data = modbusConfig.FirstOrDefault(m => m.key == "circle");
-            if (data != null)
-                Profinet.Cycle = int.Parse(data.value);
+            if (modbusConfig != null)
+            {
+                //modbus 检测时间
+                var data = modbusConfig.FirstOrDefault(m => m.key == "circle");
+                if (data != null)
+                    Profinet.Cycle = int.Parse(data.value);
 
-            //modbus服务器IP地址
-            data = modbusConfig.FirstOrDefault(m => m.key == "ip");
-            if (data != null)
-                Profinet.ModbusTcpSeverIPAddress = data.value;
+                //modbus服务器IP地址
+                data = modbusConfig.FirstOrDefault(m => m.key == "ip");
+                if (data != null)
+                    Profinet.ModbusTcpSeverIPAddress = data.value;
 
-            //modbus服务器端口
-            data = modbusConfig.FirstOrDefault(m => m.key == "port");
-            if (data != null)
-                Profinet.ModbusTcpSeverPort = int.Parse(data.value);
+                //modbus服务器端口
+                data = modbusConfig.FirstOrDefault(m => m.key == "port");
+                if (data != null)
+                    Profinet.ModbusTcpSeverPort = int.Parse(data.value);
+
+                MyConsole.Add("数据库打开成功！", Color.Green);
+            }
+            else
+            {
+                MyConsole.Add("数据库打开失败！", Color.Red);
+            }
+
 
             MainThread = new ExThread(mainThreadFunc);
+            MainThread.thread.IsBackground = true;
             MainThread.Start();
         }
 
@@ -54,7 +67,6 @@ namespace DispatchSystem.User
 
             if (SyncState.ModbusTcp)
                 modbusThread.Stop();
-
         }
         public static class SyncState
         {
@@ -63,44 +75,68 @@ namespace DispatchSystem.User
         }
         private static void mainThreadFunc()
         {
-            #region 启动Dbus
-            //启动监听进程
-            if (SyncState.Dbus == false)
+            while (true)
             {
-                dbusThread = new ExThread(Syncdbus);
-                dbusThread.Start();
-                MyConsole.Add("监听Dbus线程已启动!", Color.Green);
-                SyncState.Dbus = true;
-            }
-            #endregion
+                if (MainThread.exitEvent.WaitOne(1000)) { break; }
 
-            #region 启动ModbusTcp
-            if (SyncState.ModbusTcp == false)
-            {
-                try
+                #region 启动Dbus
+                //启动监听进程
+                if (SyncState.Dbus == false)
                 {
-                    MyConsole.Add(string.Format("开始连接ModbusTcp客户端,IP地址:{0},Port:{1}", Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
-                    TcpClient tcpClient = new TcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort);
-                    modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
-                    modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
-                    modbusMaster.Transport.ReadTimeout = Profinet.Timeout;//读超时
-                    modbusMaster.Transport.WaitToRetryMilliseconds = Profinet.WaitToRetryTime;//重试等待时间
-                    modbusMaster.Transport.Retries = Profinet.RetryNum;//重试次数
+                    dbusThread = new ExThread(Syncdbus);
+                    dbusThread.Start();
+                    MyConsole.Add("监听Dbus线程已启动!", Color.Green);
+                    SyncState.Dbus = true;
+                }
+                #endregion
 
-                    //启动监听进程
-                    modbusThread = new ExThread(SyncModbus);
-                    modbusThread.Start();
-                    SyncState.ModbusTcp = true;
-                    MyConsole.Add("监听ModbusTCP线程启动成功!", Color.Green);
-                }
-                catch
+                #region 启动ModbusTcp
+                if (SyncState.ModbusTcp == false)
                 {
-                    MyConsole.Add("监听ModbusTCP线程启动失败!", Color.Green);
+                    try
+                    {
+                        MyConsole.Add(string.Format("开始连接ModbusTcp客户端,IP地址:{0},Port:{1}", Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
+                        //连接超时300ms
+                        TcpClient tcpClient = new ExTcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort, 100).Connect();
+                        modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
+                        modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
+                        modbusMaster.Transport.ReadTimeout = Profinet.Timeout;//读超时
+                        modbusMaster.Transport.WaitToRetryMilliseconds = Profinet.WaitToRetryTime;//重试等待时间
+                        modbusMaster.Transport.Retries = Profinet.RetryNum;//重试次数
+
+                        //启动监听进程
+                        modbusThread = new ExThread(SyncModbus);
+                        modbusThread.Start();
+                        SyncState.ModbusTcp = true;
+                        MyConsole.Add("监听ModbusTCP线程启动成功!", Color.Green);
+                    }
+                    catch
+                    {
+                        MyConsole.Add("监听ModbusTCP线程启动失败!", Color.Red);
+                    }
                 }
+                #endregion
+
             }
-            #endregion
         }
+        private delegate string ConnectSocketDelegate(IPEndPoint ipep, Socket sock);
+        private static string ConnectSocket(IPEndPoint ipep, Socket sock)
+        {
+            string exmessage = "";
+            try
+            {
+                sock.Connect(ipep);
+            }
+            catch (System.Exception ex)
+            {
+                exmessage = ex.Message;
+            }
+            finally
+            {
+            }
 
+            return exmessage;
+        }
         /// <summary>
         /// Modbus配置
         /// </summary>

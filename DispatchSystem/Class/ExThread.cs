@@ -10,14 +10,14 @@ namespace DispatchSystem.Class
     class ExThread
     {
         public AutoResetEvent exitEvent;
-        private Thread thread;
+        public Thread thread;
         //定义一个委托
         public delegate void delegateFun();
 
         public ExThread(delegateFun fun)
         {
             exitEvent = new AutoResetEvent(false);
-            thread = new Thread(new ThreadStart(fun));
+            thread = new Thread(new ThreadStart(fun)); 
         }
         public void Start()
         {

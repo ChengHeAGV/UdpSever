@@ -154,6 +154,8 @@
     <Compile Include="AGV\StateForm.Designer.cs">
       <DependentUpon>StateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class\ExTimeOut.cs" />
+    <Compile Include="Class\ExTcpClient.cs" />
     <Compile Include="Class\ExThread.cs" />
     <Compile Include="Class\MyConsole.cs" />
     <Compile Include="Database\DbProfinet.cs">
