@@ -36,7 +36,7 @@ namespace DispatchSystem.User
             comboBoxStop.SelectedIndex = 1;
 
             regNum = num;
-            if (dir != null)
+            if (dir.Length>0)
             {
                 labelDir.Text = dir;
             }
