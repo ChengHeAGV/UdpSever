@@ -96,8 +96,8 @@ namespace DispatchSystem.User
                     try
                     {
                         MyConsole.Add(string.Format("开始连接ModbusTcp客户端,IP地址:{0},Port:{1}", Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort));
-                        //连接超时300ms
-                        TcpClient tcpClient = new ExTcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort, 100).Connect();
+                        //连接超时1000ms
+                        TcpClient tcpClient = new ExTcpClient(Profinet.ModbusTcpSeverIPAddress, Profinet.ModbusTcpSeverPort, 1000).Connect();
                         modbusMaster = ModbusIpMaster.CreateIp(tcpClient);
                         modbusMaster.Transport.WriteTimeout = Profinet.Timeout;//写超时
                         modbusMaster.Transport.ReadTimeout = Profinet.Timeout;//读超时
