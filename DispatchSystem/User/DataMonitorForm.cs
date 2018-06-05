@@ -29,7 +29,7 @@ namespace DispatchSystem.User
         string[] datekey = new string[10];
         private void DataMonitor_Load(object sender, EventArgs e)
         {
-            MyConsole.Add("数据镜像启动",Color.Orange);
+            MyConsole.Add("数据监控启动",Color.Orange);
             this.FormClosing += DataMonitor_FormClosing;
             //创建菜单
             contextMenu = new ContextMenuStrip();
