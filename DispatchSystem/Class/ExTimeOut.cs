@@ -19,14 +19,14 @@ namespace DispatchSystem.Class
         {
             _timeout = timeout;
         }
-        public List<ModbusConfig> Connect(object dbset)
+        public List<ModbusConfig> Connect()
         {
             connected = false;
             exception = null;
-            Thread thread = new Thread(new ParameterizedThreadStart(BeginConnect));
+            Thread thread = new Thread(new ThreadStart(BeginConnect));
             thread.IsBackground = true; // 作为后台线程处理
                                         // 不会占用机器太长的时间
-            thread.Start(dbset);
+            thread.Start();
 
             // 等待如下的时间
             thread.Join(_timeout);
@@ -51,12 +51,12 @@ namespace DispatchSystem.Class
             }
         }
 
-        protected void BeginConnect(object dbset)
+        protected void BeginConnect()
         {
             try
             {
-               var set = dbset as System.Data.Entity.DbSet<ModbusConfig>;
-                modbusConfig = set.AsNoTracking().ToList();
+               //var set = db as System.Data.Entity.DbSet<ModbusConfig>;
+                modbusConfig = db.ModbusConfig.AsNoTracking().ToList();
                 // 标记成功，返回调用者
                 connected = true;
             }
