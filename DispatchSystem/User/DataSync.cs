@@ -199,6 +199,7 @@ namespace DispatchSystem.User
                         temp[j - start] = Register[j];
                     }
                     modbusMaster.WriteMultipleRegisters((ushort)start, temp);
+                    ErrorNum = 0;
                     return true;
                 }
                 catch
@@ -223,6 +224,7 @@ namespace DispatchSystem.User
                     {
                         Register[start++] = temp[i++];
                     }
+                    ErrorNum = 0;
                 }
                 catch
                 {
@@ -398,6 +400,7 @@ namespace DispatchSystem.User
                 {
                     //连续10次出错，重新连接
                     SyncState.ModbusTcp = false;
+                    break;//退出当前进程
                 }
                 if (SyncState.ModbusTcp)
                 {
@@ -408,10 +411,22 @@ namespace DispatchSystem.User
                     num = 0;
                     if (Profinet.Clear[num])
                     {
-                        Profinet.Register[num] = 0;
-                        if (Profinet.SetRegister(num, num))
+                        //此处循环是防止清除失败，做了重读验证
+                        while (true)
                         {
-                            Profinet.Clear[num] = false;
+                            //清除寄存器
+                            Profinet.Register[num] = 0;
+                            Profinet.SetRegister(num, num);
+
+                            Thread.Sleep(100);
+
+                            //读取结果
+                            Profinet.GetRegister(num, num);
+                            if (Profinet.Register[num] == 0)
+                            {
+                                Profinet.Clear[num] = false;
+                                break;
+                            }
                         }
                     }
                     else
@@ -424,10 +439,22 @@ namespace DispatchSystem.User
                     num = 20;
                     if (Profinet.Clear[num])
                     {
-                        Profinet.Register[num] = 0;
-                        if (Profinet.SetRegister(num, num))
+                        //此处循环是防止清除失败，做了重读验证
+                        while (true)
                         {
-                            Profinet.Clear[num] = false;
+                            //清除寄存器
+                            Profinet.Register[num] = 0;
+                            Profinet.SetRegister(num, num);
+
+                            Thread.Sleep(100);
+
+                            //读取结果
+                            Profinet.GetRegister(num, num);
+                            if (Profinet.Register[num] == 0)
+                            {
+                                Profinet.Clear[num] = false;
+                                break;
+                            }
                         }
                     }
                     else
