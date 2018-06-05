@@ -552,12 +552,12 @@ namespace DispatchSystem.User
                     {
                         if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "扩散线" && finished[0] < 5)
                         {
-                            //待执行任务
+                            //已完成任务
                             DataSync.Profinet.Register[7 + finished[0]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
                         }
                         else if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "PE线" && finished[1] < 5)
                         {
-                            //待执行任务
+                            //已完成任务
                             DataSync.Profinet.Register[27 + finished[1]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
                         }
                     }
