@@ -7,6 +7,7 @@ namespace DispatchSystem.UserControls
     public partial class ExConsole : UserControl
     {
         string[] datekey = new string[10];
+        bool MouseHover = false;
 
         public int Count
         {
@@ -23,6 +24,8 @@ namespace DispatchSystem.UserControls
 
         private void ExConsole_Load(object sender, EventArgs e)
         {
+            exListView1.MouseHover += ExListView1_MouseHover;//鼠标进入事件
+            exListView1.MouseLeave += ExListView1_MouseLeave;//鼠标离开事件
             #region 数据列表
             datekey[0] = "日期";
             datekey[1] = "时间";
@@ -34,6 +37,17 @@ namespace DispatchSystem.UserControls
             exListView1.Columns.Add(datekey[2], -2, HorizontalAlignment.Left);//根据内容自适应宽度
             #endregion
 
+        }
+
+        //光标进入
+        private void ExListView1_MouseLeave(object sender, EventArgs e)
+        {
+            MouseHover = false;
+        }
+        //光标离开
+        private void ExListView1_MouseHover(object sender, EventArgs e)
+        {
+            MouseHover = true;
         }
 
         public void WriteLine(string msg, int fontSize = 14)
@@ -64,7 +78,10 @@ namespace DispatchSystem.UserControls
                         item.BackColor = Color.FromArgb(0xf0, 0xf5, 0xf5, 0xf5);
 
                     exListView1.Items.Add(item);
-                    exListView1.EnsureVisible(exListView1.Items.Count - 1);//滚动到指定的行位置
+
+                    //光标在控件内时不自动滚动
+                    if (MouseHover == false)
+                        exListView1.EnsureVisible(exListView1.Items.Count - 1);//滚动到指定的行位置
                 }));
             }
             catch
