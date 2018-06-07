@@ -244,7 +244,7 @@ namespace DispatchSystem.User
                     //订单号
                     dataGridViewWaiting.Rows[index].Cells[1].Value = GetTimeStamp();
                     //任务编号
-                    dataGridViewWaiting.Rows[index].Cells[2].Value = taskNum;
+                    dataGridViewWaiting.Rows[index].Cells[2].Value = taskNum*10;
                     //产线名称
                     dataGridViewWaiting.Rows[index].Cells[3].Value = lineName;
                     //下单时间
@@ -294,6 +294,7 @@ namespace DispatchSystem.User
         /// <param name="taskNum">任务号:在任务列表发任务时用</param>
         private async void AssignTaskToAGV(int AgvNum, bool Repeat = false, int taskNum = 0)
         {
+            //原来的十位和个位向前移动一位，个位现在是炉管号，不用处理
             string lineName = string.Empty;
             if (AgvNum == 1)
             {
@@ -310,7 +311,7 @@ namespace DispatchSystem.User
             {
                 await Task.Run(() =>
                 {
-                    UdpSever.Register[AgvNum, 1, 0] = taskNum;
+                    UdpSever.Register[AgvNum, 1, 0] = taskNum/10;
 
                     //等待收到任务
                     while (UdpSever.Register[AgvNum, 2, 0] == 0)
@@ -368,7 +369,7 @@ namespace DispatchSystem.User
                                     //发送任务到AGV
                                     await Task.Run(() =>
                                     {
-                                        UdpSever.Register[AgvNum, 1, 0] = int.Parse(dataGridViewRunning.Rows[index].Cells[2].Value.ToString());
+                                        UdpSever.Register[AgvNum, 1, 0] = int.Parse(dataGridViewRunning.Rows[index].Cells[2].Value.ToString())/10;
 
                                         //等待收到任务
                                         while (UdpSever.Register[AgvNum, 2, 0] == 0)
