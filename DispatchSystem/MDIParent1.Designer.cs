@@ -97,13 +97,13 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.exConsole1 = new DispatchSystem.UserControls.ExConsole();
             this.timerState = new System.Windows.Forms.Timer(this.components);
             this.timerOnlineCheck = new System.Windows.Forms.Timer(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStripButtonUdpConfig = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.exConsole1 = new DispatchSystem.UserControls.ExConsole();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -646,6 +646,14 @@
             this.splitContainer3.SplitterDistance = 415;
             this.splitContainer3.TabIndex = 0;
             // 
+            // exConsole1
+            // 
+            this.exConsole1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exConsole1.Location = new System.Drawing.Point(0, 0);
+            this.exConsole1.Name = "exConsole1";
+            this.exConsole1.Size = new System.Drawing.Size(960, 167);
+            this.exConsole1.TabIndex = 0;
+            // 
             // timerState
             // 
             this.timerState.Enabled = true;
@@ -710,14 +718,6 @@
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // exConsole1
-            // 
-            this.exConsole1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exConsole1.Location = new System.Drawing.Point(0, 0);
-            this.exConsole1.Name = "exConsole1";
-            this.exConsole1.Size = new System.Drawing.Size(960, 167);
-            this.exConsole1.TabIndex = 0;
-            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -732,7 +732,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIParent1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "诚合AGV 调度软件 V1.2";
+            this.Text = "诚合AGV 调度软件 V1.3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDIParent1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDIParent1_FormClosed);
