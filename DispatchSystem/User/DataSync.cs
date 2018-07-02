@@ -464,9 +464,15 @@ namespace DispatchSystem.User
                     }
 
                     //写入 1-14
-                    Profinet.SetRegister(1, 14);
+                    // Profinet.SetRegister(1, 14);
+                    Profinet.SetRegister(1, 6);
+                    Profinet.SetRegister(8, 14);
+
+
                     //写入 21-34
-                    Profinet.SetRegister(21, 34);
+                    Profinet.SetRegister(21, 26);
+                    Profinet.SetRegister(28, 34);
+
                     #endregion
 
                     #region PLC

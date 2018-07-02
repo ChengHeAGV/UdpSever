@@ -244,7 +244,7 @@ namespace DispatchSystem.User
                     //订单号
                     dataGridViewWaiting.Rows[index].Cells[1].Value = GetTimeStamp();
                     //任务编号
-                    dataGridViewWaiting.Rows[index].Cells[2].Value = taskNum*10;
+                    dataGridViewWaiting.Rows[index].Cells[2].Value = taskNum * 10;
                     //产线名称
                     dataGridViewWaiting.Rows[index].Cells[3].Value = lineName;
                     //下单时间
@@ -311,7 +311,7 @@ namespace DispatchSystem.User
             {
                 await Task.Run(() =>
                 {
-                    UdpSever.Register[AgvNum, 1, 0] = taskNum/10;
+                    UdpSever.Register[AgvNum, 1, 0] = taskNum / 10;
 
                     //等待收到任务
                     while (UdpSever.Register[AgvNum, 2, 0] == 0)
@@ -361,7 +361,6 @@ namespace DispatchSystem.User
                                         dataGridViewRunning.Rows[index].Cells[6].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                                         //滚动到最后一行
                                         dataGridViewRunning.FirstDisplayedScrollingRowIndex = dataGridViewRunning.RowCount - 1;
-
                                         //从等待执行任务列表删除
                                         dataGridViewWaiting.Rows.RemoveAt(i);
                                     }));
@@ -369,7 +368,7 @@ namespace DispatchSystem.User
                                     //发送任务到AGV
                                     await Task.Run(() =>
                                     {
-                                        UdpSever.Register[AgvNum, 1, 0] = int.Parse(dataGridViewRunning.Rows[index].Cells[2].Value.ToString())/10;
+                                        UdpSever.Register[AgvNum, 1, 0] = int.Parse(dataGridViewRunning.Rows[index].Cells[2].Value.ToString()) / 10;
 
                                         //等待收到任务
                                         while (UdpSever.Register[AgvNum, 2, 0] == 0)
@@ -399,6 +398,7 @@ namespace DispatchSystem.User
         private void UpdateTaskState()
         {
             int agvNum;
+            string linename;
             //是否有正在执行的任务
             if (dataGridViewRunning.Rows.Count > 0)
             {
@@ -406,12 +406,14 @@ namespace DispatchSystem.User
                 {
                     if (dataGridViewRunning.Rows[i].Cells[0].Value != null)
                     {
+                        DataSync.Profinet.GetRegister(7, 7);
+                        DataSync.Profinet.GetRegister(27, 27);
                         agvNum = int.Parse(dataGridViewRunning.Rows[i].Cells[4].Value.ToString());
+                        linename = dataGridViewRunning.Rows[i].Cells[3].Value.ToString();
                         //判断是否执行完成(通过判断AGVRuning确定任务已经开始)
-                        if (UdpSever.Register[agvNum, 4, 0] == 1 && Parameter.AgvRuning[agvNum] == true)//执行完成
+                        if (UdpSever.Register[agvNum, 4, 0] == 1 && UdpSever.Register[agvNum, 7, 0] == 0 && linename == "扩散线" && Parameter.AgvRuning[agvNum] == true)//执行完成&& Parameter.AgvRuning[agvNum] == true
                         {
-                            //清除AGV忙状态
-                            Parameter.AgvRuning[agvNum] = false;
+
 
                             //将该任务转至执行完成任务列表
                             #region 更新-完成任务-到界面
@@ -434,12 +436,51 @@ namespace DispatchSystem.User
                                 dataGridViewFinished.Rows[index].Cells[6].Value = dataGridViewRunning.Rows[i].Cells[6].Value;
                                 //完成时间
                                 dataGridViewFinished.Rows[index].Cells[7].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                //清除AGV忙状态
+                                Parameter.AgvRuning[agvNum] = false;
 
+                                dataGridViewRunning.Rows.RemoveAt(i);
+                                //滚动到最后一行
+
+                                dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
+                                //位寄存器赋值
+                                DataSync.Profinet.Register[7] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
+                                DataSync.Profinet.SetRegister(7, 7);
+                            }));
+                            #endregion
+                        }
+                        else if (UdpSever.Register[agvNum, 4, 0] == 1 && UdpSever.Register[agvNum, 27, 0] == 0 && linename == "PE线" && Parameter.AgvRuning[agvNum] == true)//&& Parameter.AgvRuning[agvNum] == true
+                        {
+                            //将该任务转至执行完成任务列表
+                            #region 更新-完成任务-到界面
+                            this.Invoke(new MethodInvoker(delegate
+                            {
+                                var index = dataGridViewFinished.Rows.Add();
+                                //序号
+                                dataGridViewFinished.Rows[index].Cells[0].Value = index;
+                                //订单编号
+                                dataGridViewFinished.Rows[index].Cells[1].Value = dataGridViewRunning.Rows[i].Cells[1].Value;
+                                //任务编号
+                                dataGridViewFinished.Rows[index].Cells[2].Value = dataGridViewRunning.Rows[i].Cells[2].Value;
+                                //产线名称
+                                dataGridViewFinished.Rows[index].Cells[3].Value = dataGridViewRunning.Rows[i].Cells[3].Value;
+                                //AGV编号
+                                dataGridViewFinished.Rows[index].Cells[4].Value = agvNum;
+                                //下单时间
+                                dataGridViewFinished.Rows[index].Cells[5].Value = dataGridViewRunning.Rows[i].Cells[5].Value;
+                                //启动时间
+                                dataGridViewFinished.Rows[index].Cells[6].Value = dataGridViewRunning.Rows[i].Cells[6].Value;
+                                //完成时间
+                                dataGridViewFinished.Rows[index].Cells[7].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                //清除AGV忙状态
+                                Parameter.AgvRuning[agvNum] = false;
+
+                                dataGridViewRunning.Rows.RemoveAt(i);
                                 //滚动到最后一行
                                 dataGridViewFinished.FirstDisplayedScrollingRowIndex = dataGridViewFinished.RowCount - 1;
-
-                                //从正在执行列表删除
-                                dataGridViewRunning.Rows.RemoveAt(i);
+                                //对指定寄存器赋值
+                                DataSync.Profinet.Register[27] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
+                                DataSync.Profinet.SetRegister(27, 27);
                             }));
                             #endregion
                         }
@@ -538,32 +579,6 @@ namespace DispatchSystem.User
                     }
                 }
             }
-            //已完成
-            int[] finished = new int[2];
-            for (int i = 0; i < 5; i++)
-            {
-                DataSync.Profinet.Register[7 + i] = 0;
-                DataSync.Profinet.Register[27 + i] = 0;
-            }
-            if (dataGridViewFinished.Rows.Count > 0)
-            {
-                for (int i = 0; i < dataGridViewFinished.Rows.Count; i++)
-                {
-                    if (dataGridViewFinished.Rows[i].Cells[0].Value != null)
-                    {
-                        if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "扩散线" && finished[0] < 5)
-                        {
-                            //已完成任务
-                            DataSync.Profinet.Register[7 + finished[0]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
-                        }
-                        else if (dataGridViewFinished.Rows[i].Cells[3].Value.ToString() == "PE线" && finished[1] < 5)
-                        {
-                            //已完成任务
-                            DataSync.Profinet.Register[27 + finished[1]++] = ushort.Parse(dataGridViewFinished.Rows[i].Cells[2].Value.ToString());
-                        }
-                    }
-                }
-            }
 
             //上一个位置
             DataSync.Profinet.Register[12] = (ushort)UdpSever.Register[1, 5, 0];
@@ -572,12 +587,16 @@ namespace DispatchSystem.User
             //运行状态
             DataSync.Profinet.Register[14] = (ushort)UdpSever.Register[1, 8, 0];
 
+            DataSync.Profinet.Register[11] = (ushort)UdpSever.Register[1, 9, 0];
+
             //上一个位置
             DataSync.Profinet.Register[32] = (ushort)UdpSever.Register[2, 5, 0];
             //当前位置
             DataSync.Profinet.Register[33] = (ushort)UdpSever.Register[2, 6, 0];
             //运行状态
             DataSync.Profinet.Register[34] = (ushort)UdpSever.Register[2, 8, 0];
+
+            DataSync.Profinet.Register[31] = (ushort)UdpSever.Register[2, 9, 0];
         }
         #endregion
 
@@ -663,7 +682,6 @@ namespace DispatchSystem.User
                 threadAssignTask.Stop();
                 DataSync.Stop();
             }
-
         }
     }
 }
